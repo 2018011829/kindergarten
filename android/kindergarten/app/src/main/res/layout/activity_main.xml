@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:fitsSystemWindows="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".main.activity.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/main_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <!--底部导航栏-->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/main_tab"
+            app:tabIndicatorHeight="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:tabTextColor="@android:color/black"
+            app:tabSelectedTextColor="@color/colorPrimary">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="主页"
+                android:icon="@mipmap/home_img1" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="暂定..."
+                android:icon="@mipmap/moments_img0"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系人"
+                android:icon="@mipmap/relations_img0"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/ti_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的"
+                android:icon="@mipmap/my_img0"/>
+        </com.google.android.material.tabs.TabLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

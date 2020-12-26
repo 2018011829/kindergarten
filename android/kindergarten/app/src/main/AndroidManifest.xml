@@ -20,6 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 学校简介用到的activity 开始-->
+        <activity android:name=".school.activity.ImageShower" />
+        <!-- 学校简介用到的activity 结束-->
     </application>
 
 </manifest>

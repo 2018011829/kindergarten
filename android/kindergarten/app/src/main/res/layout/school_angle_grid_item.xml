@@ -6,5 +6,6 @@
     <ImageView
         android:id="@+id/item_img"
         android:layout_width="95dp"
-        android:layout_height="65dp"/>
+        android:layout_height="65dp"
+        android:onClick="show_click"/>
 </LinearLayout>

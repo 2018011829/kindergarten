@@ -242,7 +242,8 @@
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:src="@mipmap/wall1"
-                            android:onClick="show_click" />
+                            android:onClick="show_click"
+                            android:tag="wall1"/>
 
                         <ImageView
                             android:layout_marginLeft="5dp"
@@ -250,7 +251,8 @@
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:src="@mipmap/wall2"
-                            android:onClick="show_click" />
+                            android:onClick="show_click"
+                            android:tag="wall2" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -271,14 +273,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@mipmap/desk"
-                            android:onClick="show_click" />
+                            android:onClick="show_click"
+                            android:tag="desk" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:src="@mipmap/drawer"
-                            android:onClick="show_click" />
+                            android:onClick="show_click"
+                            android:tag="drawer" />
                     </LinearLayout>
 
                     <TextView
@@ -311,21 +315,24 @@
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:src="@mipmap/play1"
-                            android:onClick="show_click" />
+                            android:onClick="show_click"
+                            android:tag="play1" />
 
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:src="@mipmap/play3"
-                            android:onClick="show_click" />
+                            android:onClick="show_click"
+                            android:tag="play3" />
 
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:src="@mipmap/play4"
-                            android:onClick="show_click" />
+                            android:onClick="show_click"
+                            android:tag="play4" />
                     </LinearLayout>
 
                 </LinearLayout>

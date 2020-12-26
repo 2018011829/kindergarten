@@ -6,8 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.school.activity.ImageShower;
+import com.example.myapplication.school.tool.GetMipmapName;
 
 import java.util.List;
 
@@ -45,6 +48,10 @@ public class MyAdapter extends BaseAdapter {
         }
         ImageView imageView=view.findViewById(R.id.item_img);
         imageView.setImageResource((Integer) getItem(i));
+        imageView.setTag(new GetMipmapName().getIdName(imgs.get(i)));
+//        Toast.makeText(mContext,
+//                new GetMipmapName().getIdName(imgs.get(i)),
+//                Toast.LENGTH_SHORT).show();
 
         return view;
     }

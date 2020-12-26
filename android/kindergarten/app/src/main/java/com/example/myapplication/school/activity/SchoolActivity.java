@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
@@ -19,10 +19,11 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 import com.example.myapplication.school.adapter.MyAdapter;
 import com.example.myapplication.school.tool.LoadBannerTool;
-import com.example.myapplication.school.tool.TransformBytes;
 import com.youth.banner.Banner;
 
-import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,16 +64,13 @@ public class SchoolActivity extends AppCompatActivity {
 
     /**
      * 显示图片
+     * 将bitmap对象存入临时文件里
      * @param v
      */
     public void show_click(View v){
-        v.setDrawingCacheEnabled(true);
-        Bitmap bitmap=v.getDrawingCache();
-        byte buf[] = new byte[1024*1024];
-        buf = TransformBytes.Bitmap2Bytes(bitmap);
+        Object tag=v.getTag();
         Intent intent=new Intent(this,ImageShower.class);
-        intent.putExtra("img",buf);
-        v.setDrawingCacheEnabled(false);
+        intent.putExtra("tag",tag.toString());
         startActivity(intent);
     }
 
@@ -84,6 +82,7 @@ public class SchoolActivity extends AppCompatActivity {
         tv_bottom=findViewById(R.id.test_tv_bottom);
         imageView =findViewById(R.id.test_image);
         imageView.setImageResource(R.mipmap.all);
+        imageView.setTag("all");
         screenWidth = getWindowManager().getDefaultDisplay().getWidth();
 
         //给外部环境添加轮播照片

@@ -6,10 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.school.activity.ImageShower;
 import com.example.myapplication.school.tool.GetMipmapName;
 
 import java.util.List;

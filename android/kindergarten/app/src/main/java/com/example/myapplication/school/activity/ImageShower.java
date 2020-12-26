@@ -2,10 +2,7 @@ package com.example.myapplication.school.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.os.Bundle;
-import android.view.MotionEvent;
 
 import com.example.myapplication.R;
 import com.github.chrisbanes.photoview.PhotoView;

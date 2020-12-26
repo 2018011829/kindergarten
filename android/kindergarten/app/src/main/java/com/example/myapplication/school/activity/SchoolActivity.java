@@ -6,23 +6,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.school.tool.GlideImageLoader;
+import com.example.myapplication.school.adapter.MyAdapter;
+import com.example.myapplication.school.tool.LoadBannerTool;
 import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SchoolActivity extends AppCompatActivity {
 
+    private MyAdapter adapter;
+    private GridView gridView;
+    private List<Integer> listGrid;
     private List<Integer> outsideImages = new ArrayList<>();
     private Banner bannerOutside;
+    private List<Integer> angleImages = new ArrayList<>();
+    private Banner bannerAngle;
     private ImageView imageView;
     private TextView tv_right;
     private TextView tv_bottom;
@@ -50,7 +57,9 @@ public class SchoolActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+        gridView=findViewById(R.id.gridview);
         bannerOutside=findViewById(R.id.outside_banner);
+        bannerAngle=findViewById(R.id.banner_angle);
         tv_right=findViewById(R.id.test_tv_right);
         tv_bottom=findViewById(R.id.test_tv_bottom);
         imageView =findViewById(R.id.test_image);
@@ -59,7 +68,10 @@ public class SchoolActivity extends AppCompatActivity {
 
         //给外部环境添加轮播照片
         addOutsideImages();
-
+        //给区角添加轮播照片
+        addAngleImages();
+        //给GridView添加图片
+        addGridViewImages();
 
         /**
          * 获取一个字的宽度
@@ -85,6 +97,42 @@ public class SchoolActivity extends AppCompatActivity {
     }
 
     /**
+     * 给区角添加轮播照片
+     */
+    private void addAngleImages() {
+        angleImages.add(R.mipmap.angle1);
+        angleImages.add(R.mipmap.angle8);
+        angleImages.add(R.mipmap.angle9);
+        angleImages.add(R.mipmap.angle10);
+        angleImages.add(R.mipmap.angle11);
+        LoadBannerTool.startBanner(bannerAngle,angleImages);
+    }
+
+    /**
+     * 给GridView添加图片
+     */
+    private void addGridViewImages() {
+        listGrid=new ArrayList<>();
+        listGrid.add(R.mipmap.angle2);
+        listGrid.add(R.mipmap.angle3);
+        listGrid.add(R.mipmap.angle7);
+        listGrid.add(R.mipmap.angle15);
+        listGrid.add(R.mipmap.angle12);
+        listGrid.add(R.mipmap.angle13);
+        listGrid.add(R.mipmap.angle14);
+        listGrid.add(R.mipmap.angle4);
+
+        adapter=new MyAdapter(SchoolActivity.this,R.layout.school_angle_grid_item,listGrid);
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //点击事件
+            }
+        });
+    }
+
+    /**
      * 给外部环境添加轮播照片
      */
     private void addOutsideImages() {
@@ -93,24 +141,10 @@ public class SchoolActivity extends AppCompatActivity {
         outsideImages.add(R.mipmap.fruit2);
         outsideImages.add(R.mipmap.fruit3);
         outsideImages.add(R.mipmap.fruit4);
-        startBanner();
+        LoadBannerTool.startBanner(bannerOutside,outsideImages);
     }
 
-    /**
-     * 加载幼儿园外部环境
-     */
-    private void startBanner() {
-        //设置图片加载器
-        bannerOutside.setImageLoader(new GlideImageLoader());
-        //设置图片集合
-        bannerOutside.setImages(outsideImages);
-        //设置自动轮播，默认为true
-        bannerOutside.isAutoPlay(true);
-        //设置轮播时间
-        bannerOutside.setDelayTime(3000);
-        //banner设置方法全部调用完毕时最后调用
-        bannerOutside.start();
-    }
+
 
     private void drawImageViewDone(int width, int height) {
         // 一行字体的高度

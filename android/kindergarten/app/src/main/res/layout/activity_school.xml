@@ -59,9 +59,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:background="@android:color/white"
             android:orientation="vertical"
+            android:layout_marginTop="15dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp">
 
@@ -164,11 +164,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:background="#FFFFCC">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="〈园所环境〉"
                 android:textColor="#99CCFF"
@@ -227,18 +230,26 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="充满\n文艺气息\n的楼道"
-                        android:textStyle="bold" />
+                        android:text="充满\n文艺气息\n的楼道"/>
 
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/wall1" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/wall2" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="120dp"
+                            android:src="@mipmap/wall1" />
+
+                        <ImageView
+                            android:layout_marginLeft="5dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="120dp"
+                            android:src="@mipmap/wall2" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -281,7 +292,7 @@
                     android:gravity="center">
 
                     <TextView
-                        android:layout_width="100dp"
+                        android:layout_width="90dp"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="我园配备了\n大型玩具\n游乐设施\n供幼儿玩耍" />
@@ -291,25 +302,127 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:layout_width="92dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="120dp"
                             android:src="@mipmap/play1" />
 
                         <ImageView
-                            android:layout_width="92dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="120dp"
                             android:src="@mipmap/play3" />
 
                         <ImageView
-                            android:layout_width="92dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="120dp"
                             android:src="@mipmap/play4" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center">
+
+                    <com.example.myapplication.school.tool.NoScrollGridView
+                        android:id="@+id/gridview"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:numColumns="2"
+                        android:horizontalSpacing="3dp"
+                        android:verticalSpacing="3dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="我园"
+                            android:textColor="#FF624A"
+                            android:textSize="15dp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="非常注重\n幼儿动手、\n动脑能力\n发展幼儿思维\n为此\n设立了活动区域" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="温馨的区角"
+                            android:gravity="center"
+                            android:textColor="#FF624A"
+                            android:textSize="15dp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:text="有利于幼儿\n积极动脑\n大胆创作\n学会友好合作\n互帮互助\n促进幼儿\n良好个性发展" />
+                    </LinearLayout>
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/banner_angle"
+                        android:layout_width="150dp"
+                        android:layout_height="220dp"/>
+
+                </LinearLayout>
+
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:gravity="center"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="联系电话：0311-85885701"
+                android:gravity="center"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="地址：裕华区体育南大街华兴小区华兴小学旁"
+                android:gravity="center"
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

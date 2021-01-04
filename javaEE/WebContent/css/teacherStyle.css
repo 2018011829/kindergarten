@@ -12,3 +12,61 @@ ul, li {
     margin: 0;
     list-style: none
 }
+
+/* 展示教师信息的界面 */
+.box1{
+	width:100%;
+	height:80px;
+}
+#inputName{
+	width:260px;
+	height:35px;
+	float:left;
+    margin-top:20px;
+	text-indent: 8px;
+	private:relative;
+    background:#ffffff;
+    border:2px solid #F07818;
+}
+#submitSearch{
+	width:80px;
+	height:40px;
+    float:left;
+	border:none;
+    color:#ffffff;
+	margin-top:20px;
+	background:#F07818;
+}
+#submitAdd{
+	width:80px;
+	height:40px;
+	float:left;
+	border:none;
+    color:#ffffff;
+    margin-top:20px;
+    margin-left:50px;
+    background:#F07818;
+}
+.box2{
+	width:100%;
+}
+.box3{
+	width:100%;
+	float:left;
+	position:relative;
+	text-align:center;
+	margin-top:20px;
+}
+.box4{
+	width:100%;
+	margin-top:20px;
+	margin-bottom:25px;
+}
+.box5{
+	margin:0 auto;
+	font-size:18px;
+}
+
+
+
+

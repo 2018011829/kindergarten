@@ -78,6 +78,103 @@ public class TeacherDaoImpl {
 	}
 	
 	/**
+	 * 根据教师姓名模糊查找蛋糕并将其分页
+	 * @param name
+	 * @return
+	 */
+	public int countByPageAndName(String name) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			String sql = "";
+			conn = DBUtil.getConnection();
+			sql = "select count(id) from teacher where name like ?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, "%" + name + "%");
+			rs = pstm.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs, pstm, conn);
+		}
+		return count;
+	}
+	
+	/**
+	 * 根据页数和搜索条件查找教师
+	 * @param pageNum
+	 * @param pageSize
+	 * @param name
+	 * @return
+	 */
+	public List<Teacher> findByPageAndName(int pageNum, int pageSize, String name) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<Teacher> list = new ArrayList<>();
+		try {
+			String sql = "";
+			conn = DBUtil.getConnection();
+			sql = "select * from teacher where name like ? limit ?, ?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, "%" + name + "%");
+			pstm.setInt(2, (pageNum - 1) * pageSize);
+			pstm.setInt(3, pageSize);
+			rs = pstm.executeQuery();
+			while (rs.next()) {
+				Teacher teacher = new Teacher();
+				teacher.setId(rs.getInt(1));
+				teacher.setName(rs.getString(2));
+				teacher.setPosition(rs.getString(3));
+				teacher.setPhone(rs.getString(4));
+				teacher.setPicture(rs.getString(5));
+				teacher.setMotto(rs.getString(6));
+				list.add(teacher);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs, pstm, conn);
+		}
+		return list;
+	}
+	
+	/**
+	 * 根据id获取教师信息
+	 * @param id
+	 * @return
+	 */
+	public Teacher findTeacherById(int id) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		Teacher teacher = new Teacher();
+		try {
+			conn = DBUtil.getConnection();
+			pstm = conn.prepareStatement("select * from teacher where id=" + id);
+			rs = pstm.executeQuery();
+			while(rs.next()) {
+				teacher.setId(rs.getInt(1));
+				teacher.setName(rs.getString(2));
+				teacher.setPosition(rs.getString(3));
+				teacher.setPhone(rs.getString(4));
+				teacher.setPicture(rs.getString(5));
+				teacher.setMotto(rs.getString(6));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs, pstm, conn);
+		}
+		return teacher;
+	}
+	
+	/**
 	 * 获取所有教师信息
 	 * @return
 	 */
@@ -150,11 +247,9 @@ public class TeacherDaoImpl {
 								+ phone + "')";
 					}
 				}
-				// 将成语收藏信息插入到数据库表中
+				// 将信息插入到数据库表中
 				n = pstm.executeUpdate(sql);
-				System.out.println("收藏成语的SQL语句：" + sql);
 			}
-			System.out.println("收藏成语前的sql语句：" + select);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -212,7 +307,7 @@ public class TeacherDaoImpl {
 		int n = -1;// 存储插入的记录数
 		try {
 			conn = DBUtil.getConnection();
-			String select = "select * from cake where id=" + id + "";
+			String select = "select * from teacher where id=" + id + "";
 			pstm = conn.prepareStatement(select);
 			rs = pstm.executeQuery();
 			boolean isExist = rs.next();

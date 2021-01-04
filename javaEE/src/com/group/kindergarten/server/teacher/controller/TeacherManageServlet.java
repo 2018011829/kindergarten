@@ -31,7 +31,6 @@ public class TeacherManageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		String page1 = request.getParameter("page");
 		int pageNum = 1, pageSize = 10;
 		if (page1 != null && !page1.equals("")) {

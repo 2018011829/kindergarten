@@ -25,6 +25,32 @@ public class TeacherServiceImpl {
 	}
 	
 	/**
+	 * 根据页数和搜索条件查找教师信息
+	 * @param pageNum
+	 * @param pageSize
+	 * @param name
+	 * @return
+	 */
+	public Page<Teacher> listByPageAndName(int pageNum, int pageSize, String name){
+		Page<Teacher> page = new Page<Teacher>(pageNum, pageSize);
+		TeacherDaoImpl teacherDaoImpl = new TeacherDaoImpl();
+		int count = teacherDaoImpl.countByPageAndName(name);
+		List<Teacher> list = teacherDaoImpl.findByPageAndName(pageNum,pageSize,name);
+		page.setList(list);
+		page.setTotalCount(count);
+		return page;
+	}
+	
+	/**
+	 * 根据id获取教师信息
+	 * @param id
+	 * @return
+	 */
+	public Teacher findTeacherByIdService(int id) {
+		return new TeacherDaoImpl().findTeacherById(id);
+	}
+	
+	/**
 	 * 获取所有教师信息
 	 * @return
 	 */

@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
-import com.example.myapplication.apply.activity.ApplyActivity;
+import com.example.myapplication.apply.activity.ApplyActivityBaby;
 import com.example.myapplication.more.activity.MoreActivity;
 import com.example.myapplication.school.activity.SchoolActivity;
 import com.example.myapplication.teacher.activity.TeacherActivity;
@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment implements OnBannerListener {
             switch (view.getId()){
                 case R.id.linear_to_apply:
                     Intent intent0 = new Intent();
-                    intent0.setClass(getContext(), ApplyActivity.class);
+                    intent0.setClass(getContext(), ApplyActivityBaby.class);
                     startActivity(intent0);
                     break;
                 case R.id.linear_to_school:

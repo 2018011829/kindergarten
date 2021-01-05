@@ -41,6 +41,8 @@ public class SearchTeacherServlet extends HttpServlet {
 			request.setAttribute("name", name);
 			request.setAttribute("page", page);
 			request.getRequestDispatcher("teacherSearchResult.jsp").forward(request, response);
+		}else {
+			response.sendRedirect("teacherManage");
 		}
 	}
 

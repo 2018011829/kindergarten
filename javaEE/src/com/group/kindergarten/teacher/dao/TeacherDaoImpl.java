@@ -78,7 +78,7 @@ public class TeacherDaoImpl {
 	}
 	
 	/**
-	 * 根据教师姓名模糊查找蛋糕并将其分页
+	 * 根据教师姓名模糊查找并将其分页
 	 * @param name
 	 * @return
 	 */

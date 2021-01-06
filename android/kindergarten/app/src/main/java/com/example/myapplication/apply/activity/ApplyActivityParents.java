@@ -25,11 +25,13 @@ import com.google.gson.GsonBuilder;
 public class ApplyActivityParents extends AppCompatActivity {
     private EditText parentName1;//家长姓名1
     private EditText relation1;//与宝宝关系1
+    private EditText parentIDnumber1;//家长身份证号1
     private EditText phoneNumber1;//联系方式1
     private EditText workSpace1;//工作单位1
     private EditText homeAddress1;//家庭住址1
     private EditText parentName2;//家长姓名2
     private EditText relation2;//与宝宝关系2
+    private EditText parentIDnumber2;//家长身份证号1
     private EditText phoneNumber2;//联系方式2
     private EditText workSpace2;//工作单位2
     private EditText homeAddress2;//家庭住址2
@@ -55,6 +57,8 @@ public class ApplyActivityParents extends AppCompatActivity {
         parentName2 = findViewById(R.id.parent_name2);
         relation1 = findViewById(R.id.relation1);
         relation2 = findViewById(R.id.relation2);
+        parentIDnumber1 = findViewById(R.id.parentIDnumber1);
+        parentIDnumber2 = findViewById(R.id.parentIDnumber2);
         phoneNumber1 = findViewById(R.id.phone_number1);
         phoneNumber2 = findViewById(R.id.phone_number2);
         workSpace1 = findViewById(R.id.work_space1);
@@ -68,6 +72,8 @@ public class ApplyActivityParents extends AppCompatActivity {
         parentName2.addTextChangedListener(textWatcher);
         relation1.addTextChangedListener(textWatcher);
         relation2.addTextChangedListener(textWatcher);
+        parentIDnumber1.addTextChangedListener(textWatcher);
+        parentIDnumber2.addTextChangedListener(textWatcher);
         phoneNumber1.addTextChangedListener(textWatcher);
         phoneNumber2.addTextChangedListener(textWatcher);
         workSpace1.addTextChangedListener(textWatcher);
@@ -119,8 +125,8 @@ public class ApplyActivityParents extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if(!parentName1.getText().toString().equals("")&&!relation1.getText().toString().equals("")
-            &&!phoneNumber1.getText().toString().equals("")&&!workSpace1.getText().toString().equals("")
-            &&!homeAddress1.getText().toString().equals("")){
+            &&!parentIDnumber1.getText().toString().equals("")&&!phoneNumber1.getText().toString().equals("")
+            &&!workSpace1.getText().toString().equals("")&&!homeAddress1.getText().toString().equals("")){
                 Resources resources = ApplyActivityParents.this.getResources();
                 Drawable drawable = resources.getDrawable(R.drawable.apply_button2);
                 next2.setBackground(drawable);
@@ -128,10 +134,11 @@ public class ApplyActivityParents extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if(parentName2.getText().toString().equals("")&&relation2.getText().toString().equals("")
-                                &&phoneNumber2.getText().toString().equals("")&&workSpace2.getText().toString().equals("")
-                                &&homeAddress2.getText().toString().equals("")){
+                                &&parentIDnumber2.getText().toString().equals("")&&phoneNumber2.getText().toString().equals("")
+                                &&workSpace2.getText().toString().equals("")&&homeAddress2.getText().toString().equals("")){
                             applyInfo.setParentName1(parentName1.getText().toString());
                             applyInfo.setRelation1(relation1.getText().toString());
+                            applyInfo.setParentIDnumber1(parentIDnumber1.getText().toString());
                             applyInfo.setPhoneNumber1(phoneNumber1.getText().toString());
                             applyInfo.setWorkSpace1(workSpace1.getText().toString());
                             applyInfo.setHomeAddress1(homeAddress1.getText().toString());
@@ -142,16 +149,18 @@ public class ApplyActivityParents extends AppCompatActivity {
                             intent.putExtra("whether","0");
                             startActivity(intent);
                         }else if(!parentName2.getText().toString().equals("")&&!relation2.getText().toString().equals("")
-                                &&!phoneNumber2.getText().toString().equals("")&&!workSpace2.getText().toString().equals("")
-                                &&!homeAddress2.getText().toString().equals("")){
+                                &&!parentIDnumber2.getText().toString().equals("")&&!phoneNumber2.getText().toString().equals("")
+                                &&!workSpace2.getText().toString().equals("")&&!homeAddress2.getText().toString().equals("")){
                             applyInfo.setParentName1(parentName1.getText().toString());
                             applyInfo.setRelation1(relation1.getText().toString());
+                            applyInfo.setParentIDnumber1(parentIDnumber1.getText().toString());
                             applyInfo.setPhoneNumber1(phoneNumber1.getText().toString());
                             applyInfo.setWorkSpace1(workSpace1.getText().toString());
                             applyInfo.setHomeAddress1(homeAddress1.getText().toString());
 
                             applyInfo.setParentName2(parentName2.getText().toString());
                             applyInfo.setRelation2(relation2.getText().toString());
+                            applyInfo.setParentIDnumber2(parentIDnumber2.getText().toString());
                             applyInfo.setPhoneNumber2(phoneNumber2.getText().toString());
                             applyInfo.setWorkSpace2(workSpace2.getText().toString());
                             applyInfo.setHomeAddress2(homeAddress2.getText().toString());

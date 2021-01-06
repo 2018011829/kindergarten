@@ -12,12 +12,14 @@ public class ApplyInfo {
     //家长1信息部分
     private String parentName1;//家长姓名1
     private String relation1;//与宝宝关系1
+    private String parentIDnumber1;//家长身份证号1
     private String phoneNumber1;//联系方式1
     private String workSpace1;//工作单位1
     private String homeAddress1;//家庭住址1
     //家长2信息部分
     private String parentName2;//家长姓名2
     private String relation2;//与宝宝关系2
+    private String parentIDnumber2;//家长身份证号2
     private String phoneNumber2;//联系方式2
     private String workSpace2;//工作单位2
     private String homeAddress2;//家庭住址2
@@ -34,7 +36,7 @@ public class ApplyInfo {
         this.babyAddoAllergies = babyAddoAllergies;
     }
 
-    public ApplyInfo(String userNumber,String babyName, String babyBirthday, String babySex, String babyIDnumber, String babyAddoAllergies, String parentName1, String relation1, String phoneNumber1, String workSpace1, String homeAddress1) {
+    public ApplyInfo(String userNumber,String babyName, String babyBirthday, String babySex, String babyIDnumber, String babyAddoAllergies, String parentName1, String relation1,String parentIDnumber1, String phoneNumber1, String workSpace1, String homeAddress1) {
         this.userNumber = userNumber;
         this.babyName = babyName;
         this.babyBirthday = babyBirthday;
@@ -43,12 +45,13 @@ public class ApplyInfo {
         this.babyAddoAllergies = babyAddoAllergies;
         this.parentName1 = parentName1;
         this.relation1 = relation1;
+        this.parentIDnumber1 = parentIDnumber1;
         this.phoneNumber1 = phoneNumber1;
         this.workSpace1 = workSpace1;
         this.homeAddress1 = homeAddress1;
     }
 
-    public ApplyInfo(String userNumber,String babyName, String babyBirthday, String babySex, String babyIDnumber, String babyAddoAllergies, String parentName1, String relation1, String phoneNumber1, String workSpace1, String homeAddress1, String parentName2, String relation2, String phoneNumber2, String workSpace2, String homeAddress2) {
+    public ApplyInfo(String userNumber,String babyName, String babyBirthday, String babySex, String babyIDnumber, String babyAddoAllergies, String parentName1, String relation1,String parentIDnumber1,String phoneNumber1, String workSpace1, String homeAddress1, String parentName2, String relation2,String parentIDnumber2,String phoneNumber2, String workSpace2, String homeAddress2) {
         this.userNumber = userNumber;
         this.babyName = babyName;
         this.babyBirthday = babyBirthday;
@@ -57,17 +60,19 @@ public class ApplyInfo {
         this.babyAddoAllergies = babyAddoAllergies;
         this.parentName1 = parentName1;
         this.relation1 = relation1;
+        this.parentIDnumber1 = parentIDnumber1;
         this.phoneNumber1 = phoneNumber1;
         this.workSpace1 = workSpace1;
         this.homeAddress1 = homeAddress1;
         this.parentName2 = parentName2;
         this.relation2 = relation2;
+        this.parentIDnumber2 = parentIDnumber2;
         this.phoneNumber2 = phoneNumber2;
         this.workSpace2 = workSpace2;
         this.homeAddress2 = homeAddress2;
     }
 
-    public ApplyInfo(int id, String userNumber,String babyName, String babyBirthday, String babySex, String babyIDnumber, String babyAddoAllergies, String parentName1, String relation1, String phoneNumber1, String workSpace1, String homeAddress1, String parentName2, String relation2, String phoneNumber2, String workSpace2, String homeAddress2) {
+    public ApplyInfo(int id, String userNumber,String babyName, String babyBirthday, String babySex, String babyIDnumber, String babyAddoAllergies, String parentName1, String relation1,String parentIDnumber1, String phoneNumber1, String workSpace1, String homeAddress1, String parentName2, String relation2,String parentIDnumber2, String phoneNumber2, String workSpace2, String homeAddress2) {
         this.id = id;
         this.userNumber = userNumber;
         this.babyName = babyName;
@@ -77,11 +82,13 @@ public class ApplyInfo {
         this.babyAddoAllergies = babyAddoAllergies;
         this.parentName1 = parentName1;
         this.relation1 = relation1;
+        this.parentIDnumber1 = parentIDnumber1;
         this.phoneNumber1 = phoneNumber1;
         this.workSpace1 = workSpace1;
         this.homeAddress1 = homeAddress1;
         this.parentName2 = parentName2;
         this.relation2 = relation2;
+        this.parentIDnumber2 = parentIDnumber2;
         this.phoneNumber2 = phoneNumber2;
         this.workSpace2 = workSpace2;
         this.homeAddress2 = homeAddress2;
@@ -201,6 +208,22 @@ public class ApplyInfo {
 
     public String getPhoneNumber2() {
         return phoneNumber2;
+    }
+
+    public String getParentIDnumber1() {
+        return parentIDnumber1;
+    }
+
+    public void setParentIDnumber1(String parentIDnumber1) {
+        this.parentIDnumber1 = parentIDnumber1;
+    }
+
+    public String getParentIDnumber2() {
+        return parentIDnumber2;
+    }
+
+    public void setParentIDnumber2(String parentIDnumber2) {
+        this.parentIDnumber2 = parentIDnumber2;
     }
 
     public void setPhoneNumber2(String phoneNumber2) {

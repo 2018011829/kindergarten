@@ -39,11 +39,13 @@ public class ApplyActivityAffirm extends AppCompatActivity {
 
     private TextView parentName1;//家长姓名1
     private TextView relation1;//与宝宝关系1
+    private TextView parentIDnumber1;//家长身份证号1
     private TextView phoneNumber1;//联系方式1
     private TextView workSpace1;//工作单位1
     private TextView homeAddress1;//家庭住+54址1
     private TextView parentName2;//家长姓名2
     private TextView relation2;//与宝宝关系2
+    private TextView parentIDnumber2;//家长身份证号2
     private TextView phoneNumber2;//联系方式2
     private TextView workSpace2;//工作单位2
     private TextView homeAddress2;//家庭住址2
@@ -83,6 +85,8 @@ public class ApplyActivityAffirm extends AppCompatActivity {
         parentName2 = findViewById(R.id.parent_name2);
         relation1 = findViewById(R.id.relation1);
         relation2 = findViewById(R.id.relation2);
+        parentIDnumber1 = findViewById(R.id.parentIDnumber1);
+        parentIDnumber2 = findViewById(R.id.parentIDnumber2);
         phoneNumber1 = findViewById(R.id.phone_number1);
         phoneNumber2 = findViewById(R.id.phone_number2);
         workSpace1 = findViewById(R.id.work_space1);
@@ -144,6 +148,7 @@ public class ApplyActivityAffirm extends AppCompatActivity {
 
         parentName1.setText(applyInfo.getParentName1());
         relation1.setText(applyInfo.getRelation1());
+        parentIDnumber1.setText(applyInfo.getParentIDnumber1());
         phoneNumber1.setText(applyInfo.getPhoneNumber1());
         workSpace1.setText(applyInfo.getWorkSpace1());
         homeAddress1.setText(applyInfo.getHomeAddress1());
@@ -152,6 +157,7 @@ public class ApplyActivityAffirm extends AppCompatActivity {
             rl3.setVisibility(View.VISIBLE);
             parentName2.setText(applyInfo.getParentName2());
             relation2.setText(applyInfo.getRelation2());
+            parentIDnumber2.setText(applyInfo.getParentIDnumber2());
             phoneNumber2.setText(applyInfo.getPhoneNumber2());
             workSpace2.setText(applyInfo.getWorkSpace2());
             homeAddress2.setText(applyInfo.getHomeAddress2());

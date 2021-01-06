@@ -45,7 +45,6 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:padding="15dp"
             android:src="@drawable/ic_arrow_left" />
 
         <RelativeLayout
@@ -55,10 +54,10 @@
             android:background="@drawable/bg_black_oval">
 
             <TextView
-                android:text="教师风采"
+                android:text="教师详情"
                 android:textColor="@color/white"
                 android:layout_margin="2dp"
-                android:background="@drawable/bg_orange_oval"
+                android:background="@drawable/bg_theme_oval"
                 style="@style/TextViewProfileToolbarTitle" />
 
             <!--            <TextView-->

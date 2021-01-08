@@ -10,10 +10,41 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-01-03 18:17:54
+Date: 2021-01-08 10:11:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `applyinfo`
+-- ----------------------------
+DROP TABLE IF EXISTS `applyinfo`;
+CREATE TABLE `applyinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userNumber` varchar(11) NOT NULL,
+  `babyName` varchar(255) NOT NULL,
+  `babyBirthday` varchar(255) NOT NULL,
+  `babySex` varchar(255) NOT NULL,
+  `babyIDnumber` varchar(255) NOT NULL,
+  `babyAddoAllergies` varchar(255) NOT NULL,
+  `parentName1` varchar(255) NOT NULL,
+  `relation1` varchar(255) NOT NULL,
+  `parentIDnumber1` varchar(255) NOT NULL,
+  `phoneNumber1` varchar(255) NOT NULL,
+  `workSpace1` varchar(255) NOT NULL,
+  `homeAddress1` varchar(255) NOT NULL,
+  `parentName2` varchar(255) DEFAULT NULL,
+  `relation2` varchar(255) DEFAULT NULL,
+  `parentIDnumber2` varchar(255) DEFAULT NULL,
+  `phoneNumber2` varchar(255) DEFAULT NULL,
+  `workSpace2` varchar(255) DEFAULT NULL,
+  `homeAddress2` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of applyinfo
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `class`

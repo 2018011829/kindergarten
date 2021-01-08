@@ -1,7 +1,15 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.mob.sdk'
+
 //BufferKnife依赖
 apply plugin: 'com.jakewharton.butterknife'
+
+MobSDK {
+    appKey "32055d87eee00"
+    appSecret "925551b849e4c73d22f1acab2b771e7d"
+    SMSSDK {}
+}
 
 android {
     compileSdkVersion 30
@@ -74,6 +82,15 @@ dependencies {
 allprojects {
     repositories {
         jcenter()
-        maven { url "https://jitpack.io" }
+    }
+}
+buildscript {
+    repositories {
+        jcenter()
+//        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        // 注册MobSDK
+        classpath "com.mob.sdk:MobSDK:2018.0319.1724"
     }
 }

@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".teacher.tool.euclid.EuclidActivity"></activity>
+        <activity android:name=".login.LoginByPhoneActivity"></activity>
+        <activity android:name=".teacher.tool.euclid.EuclidActivity" />
         <activity android:name=".more.activity.MoreActivity" />
         <activity android:name=".school.activity.SchoolActivity" />
         <activity android:name=".teacher.activity.TeacherActivity" />

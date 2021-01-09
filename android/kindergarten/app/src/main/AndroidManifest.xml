@@ -6,14 +6,39 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+<!--     mob所需权限-->
+<!--   允许访问WiFi网络状态信息（必须） -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<!--  允许读取手机状态（必须）  -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<!--   允许访问网络状态（必须）  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<!--  允许写手机存储（必须） -->
+<!--   GUI自动填充验证码功能（非必须） -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+<!--  从短信中读取验证码接口（非必须）  -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme">
-        <activity android:name=".teacher.tool.euclid.EuclidActivity"></activity>
+        <activity android:name=".login.RegisterActivity"></activity>
+        <activity android:name=".login.LoginByPasswordActivity" />
+        <activity android:name=".login.LoginByPhoneActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".teacher.tool.euclid.EuclidActivity" />
         <activity android:name=".more.activity.MoreActivity" />
         <activity android:name=".school.activity.SchoolActivity" />
         <activity android:name=".teacher.activity.TeacherActivity" />
@@ -21,11 +46,11 @@
         <activity android:name=".apply.activity.ApplyActivityParents" />
         <activity android:name=".apply.activity.ApplyActivityAffirm" />
         <activity android:name=".main.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity> <!-- 学校简介用到的activity 开始 -->
         <activity android:name=".school.activity.ImageShower" />
     </application>

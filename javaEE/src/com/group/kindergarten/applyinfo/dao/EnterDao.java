@@ -2,8 +2,12 @@ package com.group.kindergarten.applyinfo.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.group.kindergarten.applyinfo.entity.ApplyInfo;
 import com.group.kindergarten.util.DBUtil;
 
 
@@ -80,5 +84,35 @@ public class EnterDao {
 			e.printStackTrace();
 		}
 		return b;
+	}
+	
+	/**
+	 * 查询所有报名的孩子的所有信息
+	 * @return list包含所有孩子信息的集合
+	 */
+	public List<ApplyInfo> searchAllChild(){
+		List<ApplyInfo> list=null;
+		String sql="select * from applyinfo";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs!=null) {
+				list=new ArrayList<>();
+				while(rs.next()) {
+					ApplyInfo applyInfo=new ApplyInfo(rs.getInt("id"),rs.getString("userNumber"),rs.getString("babyName"),
+							rs.getString("babyBirthday"),rs.getString("babySex"),rs.getString("babyIDnumber"),
+							rs.getString("babyAddoAllergies"),rs.getString("parentName1"),rs.getString("relation1"),
+							rs.getString("parentIDnumber1"),rs.getString("phoneNumber1"),rs.getString("workSpace1"),
+							rs.getString("homeAddress1"),rs.getString("parentName2"),rs.getString("relation2"),
+							rs.getString("parentIDnumber2"),rs.getString("phoneNumber2"),rs.getString("workSpace2"),
+							rs.getString("homeAddress2"));
+					list.add(applyInfo);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 }

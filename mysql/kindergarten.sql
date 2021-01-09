@@ -10,10 +10,28 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-01-08 10:11:10
+Date: 2021-01-09 15:24:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `admin`
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `head_picture` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES ('1', 'lxl', '111', '');
+INSERT INTO `admin` VALUES ('2', 'lg', '222', '');
 
 -- ----------------------------
 -- Table structure for `applyinfo`
@@ -186,6 +204,25 @@ CREATE TABLE `kindergarten_phone` (
 INSERT INTO `kindergarten_phone` VALUES ('1', '0311-858857');
 
 -- ----------------------------
+-- Table structure for `parent`
+-- ----------------------------
+DROP TABLE IF EXISTS `parent`;
+CREATE TABLE `parent` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` char(11) NOT NULL,
+  `password` varchar(15) NOT NULL,
+  `nickname` varchar(20) NOT NULL,
+  `avatar` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of parent
+-- ----------------------------
+INSERT INTO `parent` VALUES ('1', '18831166551', '7777777', '七道', null);
+INSERT INTO `parent` VALUES ('2', '18831166552', '77777772', '七道二', null);
+
+-- ----------------------------
 -- Table structure for `teacher`
 -- ----------------------------
 DROP TABLE IF EXISTS `teacher`;
@@ -202,33 +239,33 @@ CREATE TABLE `teacher` (
 -- ----------------------------
 -- Records of teacher
 -- ----------------------------
-INSERT INTO `teacher` VALUES ('1', '贾静宇', '园长', '18732184631', 'teacherImgs/jiajingyu.jpg', '爱就是教育，没有爱便没有教育；不求尽善尽美，但求无愧于心。');
-INSERT INTO `teacher` VALUES ('2', '周萍', '后勤主任', '15832138253', 'teacherImgs/zhouping.jpg', '用我的细心、耐心和爱心，换你的安心、放心和舒心。');
-INSERT INTO `teacher` VALUES ('3', '丁锦', '保健主任', '13315989238', 'teacherImgs/dingjin.jpg', null);
-INSERT INTO `teacher` VALUES ('4', '李可冉', '教学主任', '15630182128', 'teacherImgs/likeran.jpg', '爱己之心爱人，律人之心律己');
-INSERT INTO `teacher` VALUES ('5', '郭立轻', '教师', '18103397561', 'teacherImgs/guoliqing.jpg', null);
-INSERT INTO `teacher` VALUES ('6', '尹亚红', '教师', '15803216933', 'teacherImgs/yinyahong.jpg', null);
-INSERT INTO `teacher` VALUES ('7', '闫慧娟', '教师', '13403214476', 'teacherImgs/yanhuijuan.jpg', null);
-INSERT INTO `teacher` VALUES ('8', '贾佳佳', '教师', '18931187590', 'teacherImgs/jiajiajia.jpg', null);
-INSERT INTO `teacher` VALUES ('9', '孙红森', '教师', '18713138712', 'teacherImgs/sunhongsen.jpg', null);
-INSERT INTO `teacher` VALUES ('10', '康丽', '教师', '13931860066', 'teacherImgs/kangli.jpg', null);
-INSERT INTO `teacher` VALUES ('11', '索素敏', '教师', '15354215535', 'teacherImgs/suosumin.jpg', null);
-INSERT INTO `teacher` VALUES ('12', '牛金叶', '教师', '15226590277', 'teacherImgs/niujinye.jpg', null);
-INSERT INTO `teacher` VALUES ('13', '冯稳', '教师', '17732170224', 'teacherImgs/fengwen.jpg', null);
-INSERT INTO `teacher` VALUES ('14', '张宇彤', '教师', '18031920309', 'teacherImgs/zhangyutong.jpg', null);
-INSERT INTO `teacher` VALUES ('15', '张敬敏', '教师', '15100110968', 'teacherImgs/zhangjingmin.jpg', null);
-INSERT INTO `teacher` VALUES ('16', '李艳雪', '教师', '15831121240', 'teacherImgs/liyanxue.jpg', null);
-INSERT INTO `teacher` VALUES ('17', '宋勋勋', '教师', '13832165042', 'teacherImgs/songxunxun.jpg', null);
-INSERT INTO `teacher` VALUES ('18', '高静', '教师', '13184772586', 'teacherImgs/gaojing.jpg', null);
-INSERT INTO `teacher` VALUES ('19', '宋术娟', '教师', '15632305770', 'teacherImgs/songshujuan.jpg', null);
-INSERT INTO `teacher` VALUES ('20', '韩利亚', '保育员', '15531170879', 'teacherImgs/hanliya.jpg', null);
-INSERT INTO `teacher` VALUES ('21', '董焕丽', '保育员', '15631169325', 'teacherImgs/donghuanli.jpg', null);
-INSERT INTO `teacher` VALUES ('22', '倪小娜', '保育员', '13126132773', 'teacherImgs/nixiaona.jpg', null);
-INSERT INTO `teacher` VALUES ('23', '杜花英', '保育员', '18233187590', 'teacherImgs/duhuaying.jpg', null);
-INSERT INTO `teacher` VALUES ('24', '戎计梅', '保育员', '13633212136', 'teacherImgs/rongjimei.jpg', null);
-INSERT INTO `teacher` VALUES ('25', '王俊杰', '保育员', '13315989238', 'teacherImgs/wangjunjie.jpg', null);
-INSERT INTO `teacher` VALUES ('26', '刘哲', '保育员', '13933127175', 'teacherImgs/liuzhe.jpg', null);
-INSERT INTO `teacher` VALUES ('27', '刘兰', '保育员', '15303292267', 'teacherImgs/liulan.jpg', null);
+INSERT INTO `teacher` VALUES ('1', '贾静宇', '园长', '18732184631', '1.jpg', '爱就是教育，没有爱便没有教育；不求尽善尽美，但求无愧于心。');
+INSERT INTO `teacher` VALUES ('2', '周萍', '后勤主任', '15832138253', '2.jpg', '用我的细心、耐心和爱心，换你的安心、放心和舒心。');
+INSERT INTO `teacher` VALUES ('3', '丁锦', '保健主任', '13315989238', '3.jpg', null);
+INSERT INTO `teacher` VALUES ('4', '李可冉', '教学主任', '15630182128', '4.jpg', '爱己之心爱人，律人之心律己');
+INSERT INTO `teacher` VALUES ('5', '郭立轻', '教师', '18103397561', '5.jpg', null);
+INSERT INTO `teacher` VALUES ('6', '尹亚红', '教师', '15803216933', '6.jpg', null);
+INSERT INTO `teacher` VALUES ('7', '闫慧娟', '教师', '13403214476', '7.jpg', null);
+INSERT INTO `teacher` VALUES ('8', '贾佳佳', '教师', '18931187590', '8.jpg', null);
+INSERT INTO `teacher` VALUES ('9', '孙红森', '教师', '18713138712', '9.jpg', null);
+INSERT INTO `teacher` VALUES ('10', '康丽', '教师', '13931860066', '10.jpg', null);
+INSERT INTO `teacher` VALUES ('11', '索素敏', '教师', '15354215535', '11.jpg', null);
+INSERT INTO `teacher` VALUES ('12', '牛金叶', '教师', '15226590277', '12.jpg', null);
+INSERT INTO `teacher` VALUES ('13', '冯稳', '教师', '17732170224', '13.jpg', null);
+INSERT INTO `teacher` VALUES ('14', '张宇彤', '教师', '18031920309', '14.jpg', null);
+INSERT INTO `teacher` VALUES ('15', '张敬敏', '教师', '15100110968', '15.jpg', null);
+INSERT INTO `teacher` VALUES ('16', '李艳雪', '教师', '15831121240', '16.jpg', null);
+INSERT INTO `teacher` VALUES ('17', '宋勋勋', '教师', '13832165042', '17.jpg', null);
+INSERT INTO `teacher` VALUES ('18', '高静', '教师', '13184772586', '18.jpg', null);
+INSERT INTO `teacher` VALUES ('19', '宋术娟', '教师', '15632305770', '19.jpg', null);
+INSERT INTO `teacher` VALUES ('20', '韩利亚', '保育员', '15531170879', '20.jpg', null);
+INSERT INTO `teacher` VALUES ('21', '董焕丽', '保育员', '15631169325', '21.jpg', null);
+INSERT INTO `teacher` VALUES ('22', '倪小娜', '保育员', '13126132773', '22.jpg', null);
+INSERT INTO `teacher` VALUES ('23', '杜花英', '保育员', '18233187590', '23.jpg', null);
+INSERT INTO `teacher` VALUES ('24', '戎计梅', '保育员', '13633212136', '24.jpg', null);
+INSERT INTO `teacher` VALUES ('25', '王俊杰', '保育员', '13315989238', '25.jpg', null);
+INSERT INTO `teacher` VALUES ('26', '刘哲', '保育员', '13933127175', '26.jpg', null);
+INSERT INTO `teacher` VALUES ('27', '刘兰', '保育员', '15303292267', '27.jpg', null);
 
 -- ----------------------------
 -- Table structure for `teacher_class`

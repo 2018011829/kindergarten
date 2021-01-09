@@ -28,12 +28,12 @@ public class EnterService {
 	 * @return boolean
 	 * */
 	public boolean addChildApplyInformation(String userNumber,String babyName,String babyBirthday,String babySex,String babyIDnumber
-			,String babyAddoAllergies,String parentName1,String relation1,String phoneNumber1,String workSpace1,
-			String homeAddress1,String parentName2,String relation2,String phoneNumber2,String workSpace2,
+			,String babyAddoAllergies,String parentName1,String relation1,String parentIDnumber1,String phoneNumber1,String workSpace1,
+			String homeAddress1,String parentName2,String relation2,String parentIDnumber2,String phoneNumber2,String workSpace2,
 			String homeAddress2) {
 		
 		return enterDao.addChildApplyInformation(userNumber,babyName, babyBirthday, babySex, babyIDnumber, babyAddoAllergies, 
-				parentName1, relation1, phoneNumber1, workSpace1, homeAddress1, 
-				parentName2, relation2, phoneNumber2, workSpace2, homeAddress2);
+				parentName1, relation1,parentIDnumber1, phoneNumber1, workSpace1, homeAddress1, 
+				parentName2, relation2,parentIDnumber2, phoneNumber2, workSpace2, homeAddress2);
 	}
 }

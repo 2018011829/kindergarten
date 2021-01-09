@@ -29,6 +29,7 @@ public class EnterDao {
 	
 	/**
 	 * 向数据库添加一个孩子报名信息
+	 * @param userNumber 当前家长的手机号
 	 * @param babyName 孩子姓名
 	 * @param babyBirthday 孩子出生年月
 	 * @param babySex 孩子性别
@@ -47,13 +48,13 @@ public class EnterDao {
 	 * @return 添加是否成功
 	 */
 	public boolean addChildApplyInformation(String userNumber,String babyName,String babyBirthday,String babySex,String babyIDnumber
-			,String babyAddoAllergies,String parentName1,String relation1,String phoneNumber1,String workSpace1,
-			String homeAddress1,String parentName2,String relation2,String phoneNumber2,String workSpace2,
+			,String babyAddoAllergies,String parentName1,String relation1,String parentIDnumber1,String phoneNumber1,String workSpace1,
+			String homeAddress1,String parentName2,String relation2,String parentIDnumber2,String phoneNumber2,String workSpace2,
 			String homeAddress2) {
 		boolean b=false;
 		try {
 			preparedStatement=connection.prepareStatement("insert into applyinfo(userNumber,babyName,babyBirthday,babySex,babyIDnumber"
-					+ ",babyAddoAllergies,parentName1,relation1,phoneNumber1,workSpace1,homeAddress1,parentName2,relation2,phoneNumber2,workSpace2,homeAddress2) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+					+ ",babyAddoAllergies,parentName1,relation1,parentIDnumber1,phoneNumber1,workSpace1,homeAddress1,parentName2,relation2,parentIDnumber2,phoneNumber2,workSpace2,homeAddress2) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			preparedStatement.setString(1, userNumber);
 			preparedStatement.setString(2, babyName);
 			preparedStatement.setString(3, babyBirthday);
@@ -62,14 +63,16 @@ public class EnterDao {
 			preparedStatement.setString(6, babyAddoAllergies);
 			preparedStatement.setString(7, parentName1);
 			preparedStatement.setString(8, relation1);
-			preparedStatement.setString(9, phoneNumber1);
-			preparedStatement.setString(10, workSpace1);
-			preparedStatement.setString(11, homeAddress1);
-			preparedStatement.setString(12, parentName2);
-			preparedStatement.setString(13, relation2);
-			preparedStatement.setString(14, phoneNumber2);
-			preparedStatement.setString(15, workSpace2);
-			preparedStatement.setString(16, homeAddress2);
+			preparedStatement.setString(9, parentIDnumber1);
+			preparedStatement.setString(10, phoneNumber1);
+			preparedStatement.setString(11, workSpace1);
+			preparedStatement.setString(12, homeAddress1);
+			preparedStatement.setString(13, parentName2);
+			preparedStatement.setString(14, relation2);
+			preparedStatement.setString(15, parentIDnumber2);
+			preparedStatement.setString(16, phoneNumber2);
+			preparedStatement.setString(17, workSpace2);
+			preparedStatement.setString(18, homeAddress2);
 			int rows=preparedStatement.executeUpdate();
 			if(rows>0) {
 				b=true;

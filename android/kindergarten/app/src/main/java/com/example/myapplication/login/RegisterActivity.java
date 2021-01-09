@@ -168,13 +168,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Log.e("密码登录", "请求失败");
+                Log.e("密码登录：", "请求失败");
             }
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String result = response.body().string();
-                //todo:啥玩意，message了个啥
                 //在环信注册该用户
 //                new Thread(
 //                        new Runnable() {
@@ -218,7 +217,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
         else {
-            Log.e("检验结果",""+tel.matches(telRegex));
+            Log.e("检验结果：",""+tel.matches(telRegex));
             return tel.matches(telRegex);
         }
     }

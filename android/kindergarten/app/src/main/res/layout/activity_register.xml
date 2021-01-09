@@ -13,67 +13,22 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:text="验证码登录"
+            android:text="用户注册"
             android:textSize="30sp"
             android:gravity="center"
             android:textColor="@color/theme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <RelativeLayout
-            android:gravity="center_vertical"
-            android:layout_height="52dp"
-            android:layout_marginTop="30dp"
-            android:layout_width="match_parent"
-            android:background="@drawable/linear_center_border">
-            <ImageView
-                android:id="@+id/iv_phone"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="18dp"
-                android:src="@drawable/phone_num"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"/>
-            <ImageView
-                android:id="@+id/iv_part"
-                android:src="@drawable/part"
-                android:layout_width="20dp"
-                android:layout_height="25dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/iv_phone"/>
-            <EditText
-                android:id="@+id/et_phone"
-                android:inputType="number"
-                android:hint="请输入手机号"
-                android:layout_height="40dp"
-                android:textColor="@color/white"
-                android:layout_width="match_parent"
-                android:layout_centerVertical="true"
-                android:textColorHint="@color/white_gray"
-                android:layout_toRightOf="@id/iv_part"
-                android:background="@android:color/transparent"
-                android:layout_toLeftOf="@id/btn_get_check_num"/>
-            <Button
-                android:id="@+id/btn_get_check_num"
-                android:layout_marginRight="1dp"
-                android:padding="15dp"
-                android:text="获取验证码"
-                android:textColor="@color/theme"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/half_circle_button"/>
-        </RelativeLayout>
-
         <LinearLayout
             android:padding="8dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/linear_center_border">
             <ImageView
-                android:src="@drawable/testword"
+                android:src="@drawable/phone_num"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="10dp"/>
@@ -82,11 +37,64 @@
                 android:layout_width="20dp"
                 android:layout_height="25dp"/>
             <EditText
-                android:id="@+id/et_check_num"
+                android:id="@+id/et_phone"
                 android:inputType="number"
-                android:hint="请输入验证码"
+                android:hint="请输入手机号"
                 android:layout_height="40dp"
-                android:textColor="@color/theme"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:textColorHint="@color/white_gray"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/linear_center_border">
+            <ImageView
+                android:src="@drawable/nickname"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"/>
+            <ImageView
+                android:src="@drawable/part"
+                android:layout_width="20dp"
+                android:layout_height="25dp"/>
+            <EditText
+                android:id="@+id/et_nickname"
+                android:hint="请输入昵称"
+                android:layout_height="40dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:textColorHint="@color/white_gray"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/linear_center_border">
+            <ImageView
+                android:src="@drawable/password"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"/>
+            <ImageView
+                android:src="@drawable/part"
+                android:layout_width="20dp"
+                android:layout_height="25dp"/>
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_height="40dp"
+                android:hint="请输入6~20位密码"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:textColorHint="@color/white_gray"
                 android:background="@android:color/transparent"/>
@@ -98,33 +106,33 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_login_by_password"
+                android:id="@+id/tv_login_by_msg"
                 android:padding="8dp"
                 android:textSize="16sp"
-                android:text="密码登录？"
                 android:textStyle="bold"
+                android:text="验证码登录？"
                 android:textColor="@color/theme"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"/>
 
             <TextView
-                android:id="@+id/tv_register"
+                android:id="@+id/tv_login_by_password"
                 android:padding="8dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:text="新用户注册？"
+                android:text="密码登录？"
                 android:textColor="@color/theme"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
 
         <Button
-            android:id="@+id/btn_login"
-            android:text="登  录"
-            android:textSize="20sp"
-            android:textColor="@color/theme"
+            android:id="@+id/btn_register"
+            android:text="注  册"
+            android:textSize="18sp"
+            android:textColor="#FF9900"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

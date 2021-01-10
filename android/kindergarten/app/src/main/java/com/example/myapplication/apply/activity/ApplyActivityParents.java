@@ -85,7 +85,7 @@ public class ApplyActivityParents extends AppCompatActivity {
         gson = new GsonBuilder()//创建GsonBuilder对象
                 .setPrettyPrinting()//格式化输出
                 .serializeNulls()//允许输出Null值属性
-                .setDateFormat("YY:MM:dd")//日期格式化
+                .setDateFormat("yy:MM:dd")//日期格式化
                 .create();//创建Gson对象
     }
     private void setListener() {

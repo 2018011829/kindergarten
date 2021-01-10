@@ -5,9 +5,12 @@ buildscript {
         jcenter()
         //BufferKnife依赖
         mavenCentral()
+        //mob
+        maven{url "http://mvn.mob.com/android"}
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
+
 
         //BufferKnife依赖
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'

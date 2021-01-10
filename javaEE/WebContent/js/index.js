@@ -191,6 +191,48 @@ function showMenu_info2() {
 	enrollMenu.style.display = "inline-block";
 	g("enroll_info");
 }
+function showMenu_manage2() {
+	var enrollMenu = document.getElementById("click_enroll_menu");
+	var userMenu = document.getElementById("click_user_menu");
+	var xiala2 = document.getElementById("xiala1");
+	var introduceMenu = document.getElementById("click_introduce_menu");
+	var xiala3 = document.getElementById("xiala3");
+	var teacherMenu = document.getElementById("click_teacher_menu");
+	var xiala4 = document.getElementById("xiala4");
+	userMenu.style.visibility = "hidden";
+	userMenu.style.display = "none";
+	xiala2.src = "imgs/home/xiala.png";
+	introduceMenu.style.visibility = "hidden";
+	introduceMenu.style.display = "none";
+	xiala3.src = "imgs/home/xiala.png";
+	teacherMenu.style.visibility = "hidden";
+	teacherMenu.style.display = "none";
+	xiala4.src = "imgs/home/xiala.png";
+	enrollMenu.style.visibility = "visible";
+	enrollMenu.style.display = "inline-block";
+	g("enroll_info_manage");
+}
+function showMenu_add2() {
+	var enrollMenu = document.getElementById("click_enroll_menu");
+	var userMenu = document.getElementById("click_user_menu");
+	var xiala2 = document.getElementById("xiala1");
+	var introduceMenu = document.getElementById("click_introduce_menu");
+	var xiala3 = document.getElementById("xiala3");
+	var teacherMenu = document.getElementById("click_teacher_menu");
+	var xiala4 = document.getElementById("xiala4");
+	userMenu.style.visibility = "hidden";
+	userMenu.style.display = "none";
+	xiala2.src = "imgs/home/xiala.png";
+	introduceMenu.style.visibility = "hidden";
+	introduceMenu.style.display = "none";
+	xiala3.src = "imgs/home/xiala.png";
+	teacherMenu.style.visibility = "hidden";
+	teacherMenu.style.display = "none";
+	xiala4.src = "imgs/home/xiala.png";
+	enrollMenu.style.visibility = "visible";
+	enrollMenu.style.display = "inline-block";
+	g("enroll_info_add");
+}
 function showMenu_info3() {
 	var introduceMenu = document.getElementById("click_introduce_menu");
 	var userMenu = document.getElementById("click_user_menu");

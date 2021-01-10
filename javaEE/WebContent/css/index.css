@@ -1,171 +1,171 @@
 /*
 * @Author: dell
 * @Date:   2020-12-12 15:27:44
-* @Last Modified by:   dell
-* @Last Modified time: 2020-12-12 15:28:19
+* @Last Modified by:   Administrator
+* @Last Modified time: 2021-01-08 11:24:17
 */
-		*{
-		    margin: 0px;
-		    padding: 0px;
-		    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-		}
-    	body{
-    		background-color: #F3F4F5;
-    	}
-    	a{
-			text-decoration: none;
-			color: #FCFCFC;
-    	}
-    	ul,li{ 
-    		padding:0;
-    		margin:0;
-    		list-style:none
-    	}
-    	#box{
-    		width: 100%;
-    		position: relative;
-    	}
-    	#header{
-    		height: 70px;
-    		width: 100%;
-    		background-color: #1A1B20;
-    		position: fixed;
-    		top: 0px;
-    		margin:0 auto;
-    		z-index:2;
-    	}
-    	#header_content{
-    		width: 100%;
-    		height: 70px;
-    		margin: auto;
-    	}
-    	#header_content .left_content_text{
-    		float: left;
-    		display: block;
-    		height: 70px;
-    		width: 200px;
-    		line-height: 70px;
-			font-size: 20px;
-			color: #FCFCFC;
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        body{
+            background-color: #F3F4F5;
+        }
+        a{
+            text-decoration: none;
+            color: #FCFCFC;
+        }
+        ul,li{ 
+            padding:0;
+            margin:0;
+            list-style:none
+        }
+        #box{
+            width: 100%;
+            position: relative;
+        }
+        #header{
+            height: 70px;
+            width: 100%;
+            background-color: #1A1B20;
+            position: fixed;
+            top: 0px;
+            margin:0 auto;
+            z-index:2;
+        }
+        #header_content{
+            width: 100%;
+            height: 70px;
+            margin: auto;
+        }
+        #header_content .left_content_text{
+            float: left;
+            display: block;
+            height: 70px;
+            width: 200px;
+            line-height: 70px;
+            font-size: 20px;
+            color: #FCFCFC;
         }
         #header_content img{
-    		height: 70px; 
-    		width:180px;
-    		display: block;
-    		float: left;
-    		margin-right: 15px;
-    	}
-    	#header_content .right_content_user_settings{
-    		float: right;
-			display: block;
-    		height: 70px;
-    		width: 200px;
-			font-size: 15px;
-			color: #FCFCFC;
-    	}
-    	#admin{
-    		width: 100px;
-    		padding-left: 20px;
-    		height: 70px;
-    		line-height: 70px;
-    	}
-    	#admin span{
-    		float: left;
-    	}
-    	#admin img{
-    		height: 20px;
-    		width: 20px;
-    		vertical-align: middle; 
-    		margin-top: 25px;
-    	}
-    	#admin_settings li{
-    		width: 100px;
-    		height: 40px;
-    		color: #1A1B20;
-    		background-color: #1A1B20;
-    		text-align: center;
-    		line-height: 40px;
-    		color: #FCFCFC;
-    	}
-    	#admin_settings li:hover{
-    		background-color: #009688;
-    		color: #FCFCFC;
-    	}
-    	#menu{
-    		height: 1000px;
-    		background: #1A1B20;
-    		margin-top: 70px;
-    		position: fixed;
-    		z-index:2;
-    	}
-    	#info{
-    		width: 1100px;
-    		position: absolute;
-    		top: 80px;
-    		right: 0px;
-    		background: #FFFFFF;
-    		text-align:center
-    	}
-    	.menu li{
-    		height: 50px;
-    		width: 200px;
-    		text-align: center;
-    		line-height: 50px;
-    		background: #1A1B20;
-    		color: white;
-    		font-size: 15px;
-    		display: block;
-    	}
-    	.menu li:hover{
-    		background: #009688 !important;
-    	}
-    	.menu img{
-    		height: 20px;
-    		width: 20px;
-    		vertical-align: middle; 
-    		margin-left: 10px;
-    	}
-		.user_menu li{
-			height: 50px;
-    		width: 200px;
-    		text-align: center;
-    		line-height: 50px;
-    		background-color: #1A1B20;
-    		color: white;
-    		display: block;
-	   		font-size: 15px;
-		}
-		.idiom_menu li{
-		 	height: 50px;
-	   		width: 200px;
-	   		text-align: center;
-	   		line-height: 50px;
-	   		background: #1A1B20;
-	   		color: white;
-	   		display: block;
-	   		font-size: 15px;
-		}
-		.book_menu li{
-			height: 50px;
-	   		width: 200px;
-	   		text-align: center;
-	   		line-height: 50px;
-	   		background: #1A1B20;
-	   		color: white;
-	   		display: block;
-	   		font-size: 15px;
-		} 
-		.active_menu li{
-			height: 50px;
-	   		width: 200px;
-	   		text-align: center;
-	   		line-height: 50px;
-	   		background: #1A1B20;
-	   		color: white;
-	   		display: block;
-	   		font-size: 15px;
-		}
-		
+            height: 70px; 
+            width:180px;
+            display: block;
+            float: left;
+            margin-right: 15px;
+        }
+        #header_content .right_content_user_settings{
+            float: right;
+            display: block;
+            height: 70px;
+            width: 200px;
+            font-size: 15px;
+            color: #FCFCFC;
+        }
+        #admin{
+            width: 100px;
+            padding-left: 20px;
+            height: 70px;
+            line-height: 70px;
+        }
+        #admin span{
+            float: left;
+        }
+        #admin img{
+            height: 20px;
+            width: 20px;
+            vertical-align: middle; 
+            margin-top: 25px;
+        }
+        #admin_settings li{
+            width: 100px;
+            height: 40px;
+            color: #1A1B20;
+            background-color: #1A1B20;
+            text-align: center;
+            line-height: 40px;
+            color: #FCFCFC;
+        }
+        #admin_settings li:hover{
+            background-color: #009688;
+            color: #FCFCFC;
+        }
+        #menu{
+            height: 1000px;
+            background: #1A1B20;
+            position: fixed;
+            z-index:2;
+            top:70px;
+        }
+        #info{
+            width: 1100px;
+            position: absolute;
+            top: 80px;
+            right: 0px;
+            background: #FFFFFF;
+            text-align:center
+        }
+        .menu li{
+            height: 50px;
+            width: 200px;
+            text-align: center;
+            line-height: 50px;
+            background: #1A1B20;
+            color: white;
+            font-size: 15px;
+            display: block;
+        }
+        .menu li:hover{
+            background: #009688 !important;
+        }
+        .menu img{
+            height: 20px;
+            width: 20px;
+            vertical-align: middle; 
+            margin-left: 10px;
+        }
+        .user_menu li{
+            height: 50px;
+            width: 200px;
+            text-align: center;
+            line-height: 50px;
+            background-color: #1A1B20;
+            color: white;
+            display: block;
+            font-size: 15px;
+        }
+        .idiom_menu li{
+            height: 50px;
+            width: 200px;
+            text-align: center;
+            line-height: 50px;
+            background: #1A1B20;
+            color: white;
+            display: block;
+            font-size: 15px;
+        }
+        .book_menu li{
+            height: 50px;
+            width: 200px;
+            text-align: center;
+            line-height: 50px;
+            background: #1A1B20;
+            color: white;
+            display: block;
+            font-size: 15px;
+        } 
+        .active_menu li{
+            height: 50px;
+            width: 200px;
+            text-align: center;
+            line-height: 50px;
+            background: #1A1B20;
+            color: white;
+            display: block;
+            font-size: 15px;
+        }
+        
 .table{
     width:1000px;
     margin:0 auto;
@@ -183,5 +183,57 @@
     border:1px solid #E6E6E6; 
 }
 tr:hover{
-	background:#F2F2F2;
+    background:#F2F2F2;
+}
+#schoolInfo{
+    top: 70px;
+    position: fixed;
+    left: 200px;
+    height: 1000px;
+    width: 100%;
+}
+#schoolInfoMenu{
+    width: 100%;
+    position: absolute;
+}
+.schoolInfoMenu{
+    width: 100%;
+    background: black;
+    height: 50px;
+
+}
+.schoolInfoMenu li{
+    position: relative;
+    left: 300px;
+    float: left;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    line-height: 50px;
+    background: #1A1B20;
+    color: white;
+    font-size: 15px;
+    display: block;
+}
+.schoolInfoMenu li:hover{
+    background-color: #009688;
+    color: #FCFCFC;
+}
+#environment{
+    top: 50px;
+    height:1000px;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    background: #FFFFFF;
+    text-align:center;
+
+    
+}
+#search{
+    position: absolute;
+    top: 30px;
+    left: 450px;
+    height: 25px; 
+    width: 200px;
 }

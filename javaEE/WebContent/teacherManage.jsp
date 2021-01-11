@@ -14,9 +14,6 @@
             <input type="text" name="teacherName" placeholder="请输入教师名字" id="inputName"/>
             <input type="submit" value="点击搜索" id="submitSearch">
         </form>
-        <form action="addTeacher.jsp" method="post">
-            <input type="submit" value="添加教师" id="submitAdd">
-        </form>
     </div>
     <div class="box2">
         <div class="box3">

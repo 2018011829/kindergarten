@@ -1,4 +1,4 @@
-package com.group.kindergarten.server.teacher.controller;
+package com.group.kindergarten.teacher.controller;
 
 import java.io.IOException;
 import java.util.List;

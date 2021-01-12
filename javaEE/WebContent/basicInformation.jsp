@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>主页</title>
-<link rel="stylesheet" type="text/css" href="css/index.css" />
-<script type="text/javascript" src="js/index.js"></script>
+<link rel="stylesheet" type="text/css" href="css/schoolInfo.css" />
+<script type="text/javascript" src="js/schoolInfo.js"></script>
 <body>
     <div id="box">
         <%@ include file="header.jsp"%>
@@ -33,9 +33,9 @@
                         src="imgs/home/xiala.png" id="xiala3"></li>
                     <ul class="introduce_menu" id="click_introduce_menu" style="display: block">
                         <li onclick="showMenu_info3()" id="introduce_info"><a
-                            href="#">学校简介</a></li>
+                            href="DescriptionManageServlet">学校简介</a></li>
                         <li onclick="showMenu_add3()" id="introduce_add"><a
-                            href="#">新增学校信息</a></li>
+                            href="addEnvironmentDescription.jsp">新增学校信息</a></li>
                     </ul>
                     <li id="teacher" onclick="showTeacherMenu()"><a>教师信息管理</a><img
                         src="imgs/home/xiala.png" id="xiala4"></li>
@@ -50,21 +50,22 @@
                 <div id="schoolInfoMenu">
 
                 <ul class="schoolInfoMenu">
-                    <li><a href="environmentDescription.jsp">环境描述</a></li>
-                    <li><a href="environmentPicture.jsp">环境图片</a></li>
+                    <li><a href="DescriptionManageServlet">环境描述</a></li>
+                    <li><a href="PictureManageServlet">环境图片</a></li>
                     <li>基本信息</li>
+                    <li><a href="PhoneManageServlet">联系电话</a></li>
                 </ul>
                 </div>
                 <div id="environment">
                 <!-- 显示表格 -->
                 <div style="height: 40px; line-height: 40px; margin-bottom: 20px">
-                    <form action="SearchBookServlet">
+                    <form action="SearchBookServlet" style="margin-left: 500px">
                         <span> <input type="text" name="searchInfo"
                             style="height: 25px; width: 200px; vertical-align: bottom"
                             placeholder="请输入要查找的书籍信息" value="${searchInfo }">
                         </span> 
                         <span> 
-                            <input value="" type="submit" style="border:none;width:40px;height:30px;background: url('imgs/home/search.png');background-size: 40px 30px; vertical-align: bottom">
+                            <input id="searchImg" value="" type="submit" style="border:none;width:40px;height:30px;background: url('imgs/home/search.png');background-size: 40px 30px; vertical-align: bottom">
                         </span>
                         <input type="hidden" name="userName" value="${userName }">
                     </form>
@@ -75,19 +76,17 @@
                             <td style="background: #F2F2F2">id</td>
                             <td style="background: #F2F2F2">校园简介文件</td>
                             <td style="background: #F2F2F2">地址</td>
-                            <td style="background: #F2F2F2">电话</td>
                             <td style="background: #F2F2F2">操作1</td>
                             <td style="background: #F2F2F2">操作2</td>
                         </tr>
                         <!-- 循环输出菜单 -->
-                        <c:forEach var="idiomItem" items="${page.list }">
+                        <c:forEach var="basicInfo" items="${page.list }">
                             <tr>
-                                <td>${idiomItem.id }</td>
-                                <td>${idiomItem.idiom }</td>
-                                <td>${idiomItem.idiom }</td>
-                                <td>${idiomItem.idiom }</td>
+                                <td>${basicInfo.id }</td>
+                                <td>${basicInfo.introduceFile }</td>
+                                <td>${basicInfo.address }</td>
                                 <td><a
-                                    href="msgIdiomType?id=${idiomItem.id }&userName=${userName }&idiom=${idiomItem.idiom }&idiomType=${idiomItem.idiomType }"
+                                    href="uploadBasicInformation.jsp?id=${idiomItem.id }&userName=${userName }&idiom=${idiomItem.idiom }&idiomType=${idiomItem.idiomType }"
                                     style="color: black">修改</a></td>
                                 <td><a
                                     href="DeleteIdiomServlet?id=${idiomItem.id }&userName=${userName }&page=${page.prePageNum+1 }"
@@ -97,13 +96,13 @@
                     </table>
                     <div style="margin-top: 30px">
                         总共有${page.totalPageNum }页，总共有${page.totalCount }个数据； <a
-                            href="GetIdiomInfoServlet?page=1&userName=${userName }"
+                            href="BasicInfoServlet?page=1&userName=${userName }"
                             style="color: black">首页</a> <a
-                            href="GetIdiomInfoServlet?page=${page.prePageNum }&userName=${userName }"
+                            href="BasicInfoServlet?page=${page.prePageNum }&userName=${userName }"
                             style="color: black">上一页</a> <a
-                            href="GetIdiomInfoServlet?page=${page.nextPageNum }&userName=${userName }"
+                            href="BasicInfoServlet?page=${page.nextPageNum }&userName=${userName }"
                             style="color: black">下一页</a> <a
-                            href="GetIdiomInfoServlet?page=${page.totalPageNum }&userName=${userName }"
+                            href="BasicInfoServlet?page=${page.totalPageNum }&userName=${userName }"
                             style="color: black">末页</a>
                     </div>
                 </div>

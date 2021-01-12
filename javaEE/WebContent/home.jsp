@@ -39,15 +39,9 @@
 						src="imgs/home/xiala.png" id="xiala3"></li>
 					<ul class="introduce_menu" id="click_introduce_menu" style="display: none">
 						<li onclick="showMenu_info3()" id="introduce_info"><a
-<<<<<<< HEAD
-							href="environmentDescription.jsp">学校简介</a></li>
+							href="DescriptionManageServlet">学校简介</a></li>
 						<li onclick="showMenu_add3()" id="introduce_add"><a
                             href="addEnvironmentDescription.jsp">新增学校信息</a></li>
-=======
-							href="#">查看学校简介</a></li>
-						<li onclick="showMenu_add3()" id="introduce_add"><a
-                            href="#">管理学校简介</a></li>
->>>>>>> 08b5194ae386f284507c108b8a99a3ef01b57d16
 					</ul>
 					<li id="teacher" onclick="showTeacherMenu()"><a>教师信息管理</a><img
 						src="imgs/home/xiala.png" id="xiala4"></li>

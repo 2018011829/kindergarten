@@ -11,8 +11,8 @@
 <script type="text/javascript" src="js/index.js"></script>
 <body>
     <div id="box">
+        <%@ include file="header.jsp"%>
         <div id="index_home">
-            <%@ include file="header.jsp"%>
             <div id="menu">
                 <ul class="menu">
                     <li id="user" onclick="showUserMenu()"><a>用户信息管理</a> <img
@@ -33,9 +33,9 @@
                         src="imgs/home/xiala.png" id="xiala3"></li>
                     <ul class="introduce_menu" id="click_introduce_menu" style="display: block">
                         <li onclick="showMenu_info3()" id="introduce_info"><a
-                            href="DescriptionManageServlet">学校简介</a></li>
+                            href="#">学校简介</a></li>
                         <li onclick="showMenu_add3()" id="introduce_add"><a
-                            href="addEnvironmentDescription.jsp">新增学校信息</a></li>
+                            href="#">新增学校信息</a></li>
                     </ul>
                     <li id="teacher" onclick="showTeacherMenu()"><a>教师信息管理</a><img
                         src="imgs/home/xiala.png" id="xiala4"></li>
@@ -47,28 +47,32 @@
                 </ul>
             </div>
             <div id="schoolInfo">
-                <div id="schoolInfoMenu">
-
-                <ul class="schoolInfoMenu">
-                    <li><a href="addEnvironmentDescription.jsp">环境描述</a></li>
-                    <li><a href="addEnvironmentPicture.jsp">环境图片</a></li>
-                    <li><a href="addBasicInformation.jsp">基本信息</a></li>
-                </ul>
-                </div>
-                <div id="environment">
-                <!-- 显示表格 -->
-                <div class="addBox2">
-                    <p id="addTitle">添加描述</p>
-                    <form action="addTeacherManage" method="post" enctype="multipart/form-data" style="margin-top:30px">
-                            <input type="text" name="id" placeholder="描述id" class="addInput"/>
-                            <br/><br/>
-                            <input type="text" name="description" placeholder="描述" class="addInput"/>
-                            <br/><br/>
-                             <input type="submit" value="提交"  id="submitAddInfo"/>
-                    </form>
-                </div>
+                <fieldset>
+        <div class="editBox1"style="width:100%;height:800px;text-align:center;">
+            <div class="updateBox2">
+               <p id="updateTitle">Update Teacher Info</p>
+               <form action="updateTeacherManage" method="post" enctype="multipart/form-data" style="margin-top:30px">
+                    <input type="hidden" name="teacherId" value="${teacherId }" />
+                    <div class="updateBox3">
+                        <div class="updateBox4">id：</div>
+                        <input type="text" name="teacherName" value="${teacher.name }" class="updateInput"/>
+                    </div><br/>
+                    <div class="updateBox3">
+                        <div class="updateBox4">描述：</div>
+                        <input type="text" name="teacherPosition" value="${teacher.position }" class="updateInput"/>
+                    </div><br/>
+                    <input type="submit" value="提交修改信息"  id="submitUpdate"/>
+                </form>
             </div>
-            </div>  
+        </div>
+    </fieldset>
+            </div>
+
+
+            
+
+            
+            
         </div>
     </div>
 </body>

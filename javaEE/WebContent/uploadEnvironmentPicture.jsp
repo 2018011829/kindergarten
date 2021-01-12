@@ -32,9 +32,8 @@
 					<ul class="introduce_menu" id="click_introduce_menu"
 						style="display: block">
 						<li onclick="showMenu_info3()" id="introduce_info"><a
-							href="environmentDescription.jsp">学校简介</a></li>
-						<li onclick="showMenu_add3()" id="introduce_add"><a
-							href="addEnvironmentDescription.jsp">新增学校信息</a></li>
+							href="#">学校简介</a></li>
+						<li onclick="showMenu_add3()" id="introduce_add"><a href="#">新增学校信息</a></li>
 					</ul>
 					<li id="teacher" onclick="showTeacherMenu()"><a>教师信息管理</a><img
 						src="imgs/home/xiala.png" id="xiala4"></li>
@@ -46,31 +45,51 @@
 				</ul>
 			</div>
 			<div id="schoolInfo">
-				<div id="schoolInfoMenu">
-					<ul class="schoolInfoMenu">
-						<li><a href="addEnvironmentDescription.jsp">环境描述</a></li>
-						<li><a href="addEnvironmentPicture.jsp">环境图片</a></li>
-						<li><a href="addBasicInformation.jsp">基本信息</a></li>
-					</ul>
-				</div>
-				<div id="environment">
-					<!-- 显示表格 -->
-					<div class="addBox2">
-						<p id="addTitle">添加描述图片</p>
-						<form action="addTeacherManage" method="post"
-							enctype="multipart/form-data" style="margin-top: 30px">
-							<input type="text" name="id" placeholder="id" class="addInput" />
-							<br /> <br />
-							<div class="chooseBox">
-								<input type="file" name="teacherPicture" class="chooseFile" />
-							</div>
-							<br /> <br /> <input type="text" name="descriptionId"
-								placeholder="描述id" class="addInput" /> <br /> <br /> <input
-								type="submit" value="提交" id="submitAddInfo" />
-						</form>
+				<fieldset>
+					<div class="editBox1"
+						style="width: 100%; height: 800px; text-align: center;">
+						<div class="updateBox1">
+							<p id="text">原图片</p>
+							<img alt="" src="${teacher.picture }" id="oldImg">
+						</div>
+						<div class="updateBox2">
+							<p id="updateTitle">Update Teacher Info</p>
+							<form action="updateTeacherManage" method="post"
+								enctype="multipart/form-data" style="margin-top: 30px">
+								<input type="hidden" name="teacherId" value="${teacherId }" />
+								<div class="updateBox3">
+									<div class="updateBox4">id：</div>
+									<input type="text" name="teacherName" value="${teacher.name }"
+										class="updateInput" />
+								</div>
+								<br />
+								<div
+									style="width: 500px; height: 50px; text-align: center; text-indent: 8px;">
+									<div style="margin: 0 auto;">
+										<div class="updateBox4">图片：</div>
+										<div class="updateBox5">
+											<input type="file" name="teacherPicture" id="updateImgFile" />
+										</div>
+									</div>
+								</div>
+								<br />
+								<div class="updateBox3">
+									<div class="updateBox4">描述id：</div>
+									<input type="text" name="teacherPosition"
+										value="${teacher.position }" class="updateInput" />
+								</div>
+								<br /> <input type="submit" value="提交修改信息" id="submitUpdate" />
+							</form>
+						</div>
 					</div>
-				</div>
+				</fieldset>
 			</div>
+
+
+
+
+
+
 		</div>
 	</div>
 </body>

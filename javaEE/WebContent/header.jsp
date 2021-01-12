@@ -21,9 +21,9 @@
                     </ul>
                     <ul id="admin_settings" style="display: none">
                         <li onmouseout="hiddenAdminSetting()"
-                            onmouseover="showAdminSetting()"><a href="adminInfo.jsp">个人信息</a></li>
+                            onmouseover="showAdminSetting()"><a class="jump" href="adminInfo.jsp">个人信息</a></li>
                         <li onmouseout="hiddenAdminSetting()"
-                            onmouseover="showAdminSetting()"><a href="index.jsp">切换账户</a></li>
+                            onmouseover="showAdminSetting()"><a class="jump" href="index.jsp">切换账户</a></li>
                     </ul>
                 </span>
             </div>

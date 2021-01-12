@@ -1,6 +1,7 @@
 * {
 	margin: 0px;
 	padding: 0px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -13,38 +14,214 @@ ul, li {
 	list-style: none
 }
 
+/* 左侧菜单栏和上方标题栏 */
+.jump{
+	color:#FCFCFC;
+}
+
+#box {
+    width: 100%;
+    position: relative;
+}
+
+#header {
+    height: 70px;
+    width: 100%;
+    background-color: #1A1B20;
+    position: fixed;
+    top: 0px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+#header_content {
+    width: 100%;
+    height: 70px;
+    margin: auto;
+}
+
+#header_content .left_content_text {
+    float: left;
+    display: block;
+    height: 70px;
+    width: 200px;
+    line-height: 70px;
+    font-size: 20px;
+    color: #FCFCFC;
+}
+
+#header_content img {
+    height: 70px;
+    width: 180px;
+    display: block;
+    float: left;
+    margin-right: 15px;
+}
+
+#header_content .right_content_user_settings {
+    float: right;
+    display: block;
+    height: 70px;
+    width: 200px;
+    font-size: 15px;
+    color: #FCFCFC;
+}
+
+#admin {
+    width: 100px;
+    padding-left: 20px;
+    height: 70px;
+    line-height: 70px;
+}
+
+#admin span {
+    float: left;
+}
+
+#admin img {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    margin-top: 25px;
+}
+
+#admin_settings li {
+    width: 100px;
+    height: 40px;
+    color: #1A1B20;
+    background-color: #1A1B20;
+    text-align: center;
+    line-height: 40px;
+    color: #FCFCFC;
+}
+
+#admin_settings li:hover {
+    background-color: #009688;
+    color: #FCFCFC;
+}
+
+#menu {
+    height: 100%;
+    background: #1A1B20;
+    position: fixed;
+    z-index: 2;
+    top: 70px;
+    width:200px;
+    float:left;
+}
+
+#info {
+    width: 1100px;
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    background: #FFFFFF;
+    text-align: center
+}
+
+.menu li {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    line-height: 50px;
+    background: #1A1B20;
+    color: white;
+    font-size: 15px;
+    display: block;
+}
+
+.menu li:hover {
+    background: #009688 !important;
+}
+
+.menu img {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.user_menu li {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #1A1B20;
+    color: white;
+    display: block;
+    font-size: 15px;
+}
+
+.idiom_menu li {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    line-height: 50px;
+    background: #1A1B20;
+    color: white;
+    display: block;
+    font-size: 15px;
+}
+
+.book_menu li {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    line-height: 50px;
+    background: #1A1B20;
+    color: white;
+    display: block;
+    font-size: 15px;
+}
+
+.active_menu li {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    line-height: 50px;
+    background: #1A1B20;
+    color: white;
+    display: block;
+    font-size: 15px;
+}
+
 /* 展示教师信息的界面 */
 #inputName {
 	width: 260px;
 	height: 35px;
 	float: left;
-	margin-top: 20px;
+	margin-top: 100px;
+	margin-left:260px;
 	text-indent: 8px;
 	private: relative;
 	background: #ffffff;
-	border: 2px solid #F07818;
+	border: 2px solid #009688;
 }
 
 #submitSearch {
 	width: 80px;
-	height: 40px;
+	height: 39px;
 	float: left;
 	border: none;
 	color: #ffffff;
-	margin-top: 20px;
-	background: #F07818;
+    margin-top: 100px;
+	background: #009688;
 }
 
-.box2 {
-	width: 100%;
+.box0{
+    float: left;
+    margin-top: 100px;
+    margin-left:260px;
 }
 
-.box3 {
-	width: 100%;
-	float: left;
-	position: relative;
-	text-align: center;
-	margin-top: 20px;
+.box2{
+    float: left;
+    margin-top: 20px;
+    margin-left:260px;
+}
+
+.box3{
+    text-align: center;
 }
 
 .box4 {

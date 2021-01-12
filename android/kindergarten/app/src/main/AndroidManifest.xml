@@ -50,6 +50,7 @@
             </intent-filter>
         </activity> <!-- 学校简介用到的activity 开始 -->
         <activity android:name=".school.activity.ImageShower" />
+        <activity android:name=".main.activity.my.AddChildActivity" />
     </application>
 
 </manifest>

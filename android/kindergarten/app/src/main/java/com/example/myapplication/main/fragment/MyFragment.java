@@ -27,6 +27,7 @@ import com.contrarywind.listener.OnItemSelectedListener;
 import com.contrarywind.view.WheelView;
 import com.example.myapplication.R;
 import com.example.myapplication.main.activity.my.AddChildActivity;
+import com.example.myapplication.main.activity.my.ApplyInfoActivity;
 import com.example.myapplication.main.entity.Child;
 import com.example.myapplication.main.util.ConfigUtil;
 import com.google.gson.Gson;
@@ -53,6 +54,7 @@ public class MyFragment extends Fragment {
     private View view;
     private RelativeLayout addChild;
     private LinearLayout chooseChild;
+    private LinearLayout applyInfo;
     private PopupWindow popupWindow;
     private WheelView wheelView;
     private TextView tv_ok;
@@ -162,6 +164,11 @@ public class MyFragment extends Fragment {
                     }
 
                     break;
+                case R.id.ll_applyinfo_by_phone://点击报名信息，跳转到显示该手机号下的报名信息的activity
+                    Intent intent=new Intent(getContext(), ApplyInfoActivity.class);
+                    startActivity(intent);
+
+                    break;
             }
         }
     }
@@ -255,5 +262,7 @@ public class MyFragment extends Fragment {
         chooseChild.setOnClickListener(myListener);
         tv_mine_myChildName = view.findViewById(R.id.tv_mine_myChildName);
         iv_mine_myChildImg = view.findViewById(R.id.iv_mine_myChildImg);
+        applyInfo=view.findViewById(R.id.ll_applyinfo_by_phone);
+        applyInfo.setOnClickListener(myListener);
     }
 }

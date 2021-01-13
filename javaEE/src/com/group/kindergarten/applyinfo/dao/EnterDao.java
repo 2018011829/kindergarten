@@ -118,4 +118,64 @@ public class EnterDao {
 		
 		return list;
 	}
+	
+	/**
+	 * 根据当前手机号查询报名的孩子的所有信息
+	 * @return list包含当前手机号所报名的孩子信息的集合
+	 */
+	public List<ApplyInfo> searchChildByPhoneNum(String phoneNum){
+		List<ApplyInfo> list=null;
+		String sql="select * from applyinfo where phoneNum=?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, phoneNum);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs!=null) {
+				list=new ArrayList<>();
+				while(rs.next()) {
+					ApplyInfo applyInfo=new ApplyInfo(rs.getInt("id"),rs.getString("userNumber"),rs.getString("babyName"),
+							rs.getString("babyBirthday"),rs.getString("babySex"),rs.getString("babyIDnumber"),
+							rs.getString("babyAddoAllergies"),rs.getString("parentName1"),rs.getString("relation1"),
+							rs.getString("parentIDnumber1"),rs.getString("phoneNumber1"),rs.getString("workSpace1"),
+							rs.getString("homeAddress1"),rs.getString("parentName2"),rs.getString("relation2"),
+							rs.getString("parentIDnumber2"),rs.getString("phoneNumber2"),rs.getString("workSpace2"),
+							rs.getString("homeAddress2"));
+					list.add(applyInfo);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	/**
+	 * 根据当前applyId查询报名的孩子的所有信息
+	 * @return 报名的孩子信息
+	 */
+	public ApplyInfo searchChildById(int id){
+		ApplyInfo applyInfo=null;
+		String sql="select * from applyinfo where id=?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs!=null) {
+				while(rs.next()) {
+					applyInfo=new ApplyInfo(rs.getInt("id"),rs.getString("userNumber"),rs.getString("babyName"),
+							rs.getString("babyBirthday"),rs.getString("babySex"),rs.getString("babyIDnumber"),
+							rs.getString("babyAddoAllergies"),rs.getString("parentName1"),rs.getString("relation1"),
+							rs.getString("parentIDnumber1"),rs.getString("phoneNumber1"),rs.getString("workSpace1"),
+							rs.getString("homeAddress1"),rs.getString("parentName2"),rs.getString("relation2"),
+							rs.getString("parentIDnumber2"),rs.getString("phoneNumber2"),rs.getString("workSpace2"),
+							rs.getString("homeAddress2"));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return applyInfo;
+	}
 }

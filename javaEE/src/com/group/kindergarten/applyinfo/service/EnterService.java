@@ -49,4 +49,24 @@ public class EnterService {
 		
 		return list;
 	}
+	
+	/**
+	 * 根据当前手机号查询报名的孩子的所有信息
+	 * @return list包含当前手机号所报名的孩子信息的集合
+	 */
+	public List<ApplyInfo> searchChildByPhoneNum(String phoneNum){
+		List<ApplyInfo> list=enterDao.searchChildByPhoneNum(phoneNum);
+		
+		return list;
+	}
+	
+	/**
+	 * 根据当前applyId查询报名的孩子的所有信息
+	 * @return 报名的孩子信息
+	 */
+	public ApplyInfo searchChildById(int id){
+		ApplyInfo applyInfo=enterDao.searchChildById(id);
+		
+		return applyInfo;
+	}
 }

@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="css/editTeacher.css">
 </head>
 <body>
-    <fieldset>
         <div class="editBox1">
             <div class="addBox2">
                <p id="addTitle">Add Teacher Info</p>
@@ -31,6 +30,5 @@
                 </form>
             </div>
         </div>
-    </fieldset>
 </body>
 </html>

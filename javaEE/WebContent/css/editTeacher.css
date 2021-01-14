@@ -12,7 +12,7 @@
 #addTitle{
     margin-top:60px;
     font-size:36px;
-    color:#F07818;
+    color:#009688;
 }
 .addInput{
     width:500px;
@@ -38,7 +38,7 @@
 	height:50px;
     border: none;
     color: #ffffff;
-    background: #F07818;
+    background: #009688;
 }
 /* 修改教师信息的界面 */
 .updateBox1{

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.group.kindergarten.applyinfo.dao.EnterDao;
 import com.group.kindergarten.applyinfo.entity.ApplyInfo;
+import com.group.kindergarten.util.Page;
 
 public class EnterService {
 	private static EnterService enterService;
@@ -68,5 +69,58 @@ public class EnterService {
 		ApplyInfo applyInfo=enterDao.searchChildById(id);
 		
 		return applyInfo;
+	}
+	
+	
+	/**
+	 * 分页查询所有报名的孩子的所有信息
+	 * @return list包含孩子信息的集合
+	 */
+	public Page<ApplyInfo> searchChildByPage(int pageNum, int pageSize){
+		Page<ApplyInfo> page = new Page<ApplyInfo>(pageNum, pageSize);
+		int count = enterDao.countByPage();
+		List<ApplyInfo> list=enterDao.searchChildByPage(pageNum, pageSize);
+		page.setList(list);
+		page.setTotalCount(count);
+		
+		return page;
+	}
+	
+	/**
+	 * 根据名字查询孩子报名信息
+	 * @return list包含孩子信息的集合
+	 */
+	public Page<ApplyInfo> searchChildByName(int pageNum, int pageSize,String msg){
+		Page<ApplyInfo> page = new Page<ApplyInfo>(pageNum, pageSize);
+		int count = enterDao.searchCountByPage(msg);
+		List<ApplyInfo> list=enterDao.searchChildByName(pageNum, pageSize, msg);
+		page.setList(list);
+		page.setTotalCount(count);
+		
+		return page;
+	}
+	
+	/**
+	 * 修改孩子报名信息
+	 * @return boolean
+	 * */
+	public boolean updataApplyinfo(String id,String userNumber,String babyName,String babyBirthday,String babySex,String babyIDnumber
+			,String babyAddoAllergies,String parentName1,String relation1,String parentIDnumber1,String phoneNumber1,String workSpace1,
+			String homeAddress1,String parentName2,String relation2,String parentIDnumber2,String phoneNumber2,String workSpace2,
+			String homeAddress2) {
+		
+		
+		return enterDao.updataApplyinfo(id, userNumber, babyName, babyBirthday, babySex, babyIDnumber, babyAddoAllergies, 
+				parentName1, relation1, parentIDnumber1, phoneNumber1, workSpace1, homeAddress1, parentName2, relation2, parentIDnumber2, phoneNumber2, workSpace2, homeAddress2);
+	}
+	
+	/**
+	 * 删除孩子报名信息
+	 * 
+	 * */
+	public boolean deleteApplyinfo(String id) {
+		
+		return enterDao.deleteApplyinfo(id);
+		
 	}
 }

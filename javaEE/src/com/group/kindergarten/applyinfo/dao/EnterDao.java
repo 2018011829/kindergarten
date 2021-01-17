@@ -30,6 +30,37 @@ public class EnterDao {
 		return enterDao;
 	}
 	
+	public int countByPage(){
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			String sql="select count(id) from applyinfo";
+			preparedStatement = connection.prepareStatement(sql);
+			rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	public int searchCountByPage(String msg){
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			String sql="select count(id) from applyinfo where babyName like '%"+msg+"%'";
+			preparedStatement = connection.prepareStatement(sql);
+			rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 	
 	/**
 	 * 向数据库添加一个孩子报名信息
@@ -87,6 +118,118 @@ public class EnterDao {
 			e.printStackTrace();
 		}
 		return b;
+	}
+	
+	
+	/**
+	 * 修改孩子报名信息
+	 * @return boolean
+	 * */
+	public boolean updataApplyinfo(String id,String userNumber,String babyName,String babyBirthday,String babySex,String babyIDnumber
+			,String babyAddoAllergies,String parentName1,String relation1,String parentIDnumber1,String phoneNumber1,String workSpace1,
+			String homeAddress1,String parentName2,String relation2,String parentIDnumber2,String phoneNumber2,String workSpace2,
+			String homeAddress2) {
+			boolean b=false;
+			try {
+				preparedStatement=connection.prepareStatement("update applyinfo set userNumber='"+userNumber+"',babyName='"+babyName+"',babyBirthday='"+babyBirthday+"',babySex='"+babySex+"',babyIDnumber='"+babyIDnumber+"'" + 
+				",babyAddoAllergies='"+babyAddoAllergies+"',parentName1='"+parentName1+"',relation1='"+relation1+"',parentIDnumber1='"+parentIDnumber1+"',phoneNumber1='"+phoneNumber1+"',workSpace1='"+workSpace1+"',homeAddress1='"+homeAddress1+"'"
+						+ ",parentName2='"+parentName2+"',relation2='"+relation2+"',parentIDnumber2='"+parentIDnumber2+"',phoneNumber2='"+phoneNumber2+"',workSpace2='"+workSpace2+"',homeAddress2='"+homeAddress2+"' where id = "+id);
+				int rows=preparedStatement.executeUpdate();
+				if(rows>0) {
+				b=true;
+				System.out.println("成功修改孩子报名信息");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return b;
+	}
+	
+	/**
+	 * 删除孩子报名信息
+	 * 
+	 * */
+	public boolean deleteApplyinfo(String id) {
+		boolean b=false;
+		try {
+			preparedStatement=connection.prepareStatement("delete from applyinfo where id ="+id);
+			int rows=preparedStatement.executeUpdate();
+			if(rows>0) {
+			b=true;
+			System.out.println("成功删除孩子报名信息");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return b;
+	}
+	
+	/**
+	 * 分页查询所有报名的孩子的所有信息
+	 * @return list包含孩子信息的集合
+	 */
+	public List<ApplyInfo> searchChildByPage(int pageNum, int pageSize){
+		List<ApplyInfo> list=null;
+		String sql="select * from applyinfo limit ?, ?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setInt(1, (pageNum-1)*pageSize);
+			preparedStatement.setInt(2, pageSize);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs!=null) {
+				list=new ArrayList<>();
+				while(rs.next()) {
+					ApplyInfo applyInfo=new ApplyInfo(rs.getInt("id"),rs.getString("userNumber"),rs.getString("babyName"),
+							rs.getString("babyBirthday"),rs.getString("babySex"),rs.getString("babyIDnumber"),
+							rs.getString("babyAddoAllergies"),rs.getString("parentName1"),rs.getString("relation1"),
+							rs.getString("parentIDnumber1"),rs.getString("phoneNumber1"),rs.getString("workSpace1"),
+							rs.getString("homeAddress1"),rs.getString("parentName2"),rs.getString("relation2"),
+							rs.getString("parentIDnumber2"),rs.getString("phoneNumber2"),rs.getString("workSpace2"),
+							rs.getString("homeAddress2"));
+					list.add(applyInfo);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
+	
+	/**
+	 * 根据名字查询孩子报名信息
+	 * @return list包含孩子信息的集合
+	 */
+	public List<ApplyInfo> searchChildByName(int pageNum, int pageSize,String msg){
+		List<ApplyInfo> list=null;
+		String sql="select * from applyinfo where babyName like '%"+msg+"%' limit ?, ?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setInt(1, (pageNum-1)*pageSize);
+			preparedStatement.setInt(2, pageSize);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs!=null) {
+				list=new ArrayList<>();
+				while(rs.next()) {
+					ApplyInfo applyInfo=new ApplyInfo(rs.getInt("id"),rs.getString("userNumber"),rs.getString("babyName"),
+							rs.getString("babyBirthday"),rs.getString("babySex"),rs.getString("babyIDnumber"),
+							rs.getString("babyAddoAllergies"),rs.getString("parentName1"),rs.getString("relation1"),
+							rs.getString("parentIDnumber1"),rs.getString("phoneNumber1"),rs.getString("workSpace1"),
+							rs.getString("homeAddress1"),rs.getString("parentName2"),rs.getString("relation2"),
+							rs.getString("parentIDnumber2"),rs.getString("phoneNumber2"),rs.getString("workSpace2"),
+							rs.getString("homeAddress2"));
+					list.add(applyInfo);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 	
 	/**

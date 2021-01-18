@@ -1,4 +1,4 @@
-package com.group.kindergarten.server.parent.controller;
+package com.group.kindergarten.parent.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.group.kindergarten.parent.service.ParentService;
+import com.group.kindergarten.parent.service.UserParentService;
 
 /**
  * Servlet implementation class LoginByPhoneNumServlet
  */
-@WebServlet("/LoginByPhoneNumServlet")
-public class LoginByPhoneNumServlet extends HttpServlet {
+@WebServlet("/ParentLoginByPhoneNumServlet")
+public class ParentLoginByPhoneNumServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginByPhoneNumServlet() {
+	public ParentLoginByPhoneNumServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,7 +37,7 @@ public class LoginByPhoneNumServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		System.out.println(phone);
 		// 查找手机号是否已经注册
-		ParentService parentService = ParentService.getInstance();
+		UserParentService parentService = UserParentService.getInstance();
 		boolean b = parentService.isExistPhone(phone);
 		if (b) {
 			response.getWriter().write("success");

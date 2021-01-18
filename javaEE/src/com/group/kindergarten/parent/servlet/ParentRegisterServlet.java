@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.group.kindergarten.parent.service.ParentService;
+import com.group.kindergarten.parent.service.UserParentService;
 
 
 /**
@@ -36,7 +36,7 @@ public class ParentRegisterServlet extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
 		System.out.println("1.获取相关参数");
-		ParentService parentService = ParentService.getInstance();
+		UserParentService parentService = UserParentService.getInstance();
 		if (!parentService.isExistPhone(phone)) {
 			boolean b = parentService.resigter(phone, nickname, password);
 			if (b) {

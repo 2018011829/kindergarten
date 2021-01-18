@@ -1,6 +1,6 @@
 package com.group.kindergarten.parent.entity;
 
-public class Parent {
+public class UserParent {
 	private int id;
 	private String phone;
 	private String password;
@@ -47,11 +47,11 @@ public class Parent {
 		this.avator = avator;
 	}
 
-	public Parent() {
+	public UserParent() {
 		super();
 	}
 
-	public Parent(int id, String phone, String password, String nickname, String avator) {
+	public UserParent(int id, String phone, String password, String nickname, String avator) {
 		super();
 		this.id = id;
 		this.phone = phone;
@@ -62,7 +62,7 @@ public class Parent {
 
 	@Override
 	public String toString() {
-		return "Parent [id=" + id + ", phone=" + phone + ", password=" + password + ", nickname=" + nickname
+		return "UserParent [id=" + id + ", phone=" + phone + ", password=" + password + ", nickname=" + nickname
 				+ ", avator=" + avator + "]";
 	}
 

@@ -1,4 +1,4 @@
-package com.group.kindergarten.parent.servlet;
+package com.group.kindergarten.teacher.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.group.kindergarten.parent.service.ParentService;
+import com.group.kindergarten.teacher.service.UserTeacherService;
 
 /**
- * Servlet implementation class LoginByPhoneNumServlet
+ * Servlet implementation class TeacherRegisterServlet
  */
-@WebServlet("/LoginByPhoneNumServlet")
-public class LoginByPhoneNumServlet extends HttpServlet {
+@WebServlet("/TeacherRegisterServlet")
+public class TeacherRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginByPhoneNumServlet() {
+	public TeacherRegisterServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -30,21 +30,24 @@ public class LoginByPhoneNumServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 设置编码方式
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		// 得到手机号码
+		// 得到手机号码、昵称、密码进行注册
 		String phone = request.getParameter("phone");
-		System.out.println(phone);
-		// 查找手机号是否已经注册
-		ParentService parentService = ParentService.getInstance();
-		boolean b = parentService.isExistPhone(phone);
-		if (b) {
-			response.getWriter().write("success");
-			System.out.println("手机号已经注册：" + phone);
+		String nickname = request.getParameter("nickname");
+		String password = request.getParameter("password");
+		System.out.println("1.获取相关参数");
+		UserTeacherService teacherService = UserTeacherService.getInstance();
+		if (!teacherService.isExistPhone(phone)) {
+			boolean b = teacherService.resigter(phone, nickname, password);
+			if (b) {
+				response.getWriter().write("success");
+				System.out.println("注册成功：" + phone);
+			} else {
+				response.getWriter().write("手机号注册失败！");
+				System.out.println("注册失败：" + phone);
+			}
 		} else {
-			response.getWriter().write("faliure");
-			System.out.println("手机号还未注册：" + phone);
+			response.getWriter().write("手机号已注册！");
+			System.out.println("注册失败：" + phone);
 		}
 	}
 

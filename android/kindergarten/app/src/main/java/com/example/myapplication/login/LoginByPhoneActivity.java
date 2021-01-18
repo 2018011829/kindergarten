@@ -209,7 +209,7 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
         //创建请求对象
         Request request = new Request.Builder()
                 .url(ConfigUtil.SERVICE_ADDRESS
-                        + "LoginByPhoneNumServlet"+"?phone="+trim)
+                        + "ParentLoginByPhoneNumServlet"+"?phone="+trim)
                 .build();
         //创建CALL对象
         Call call = new OkHttpClient().newCall(request);

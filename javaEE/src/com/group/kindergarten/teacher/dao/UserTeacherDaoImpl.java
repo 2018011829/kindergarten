@@ -1,4 +1,4 @@
-package com.group.kindergarten.parent.dao;
+package com.group.kindergarten.teacher.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,32 +7,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.group.kindergarten.parent.entity.Parent;
+import com.group.kindergarten.teacher.entity.UserTeacher;
 import com.group.kindergarten.util.DBUtil;
 
-
-public class ParentDaoImpl {
+public class UserTeacherDaoImpl {
 	public static Connection connection;
-	public static ParentDaoImpl parentDao;
+	public static UserTeacherDaoImpl teacherDao;
 	public static PreparedStatement preparedStatement;
 
 	/**
-	 * 获取ParentDao实例
+	 * 获取teacherDao实例
 	 * 
-	 * @return ParentDao
+	 * @return teacherDao
 	 */
-	public static ParentDaoImpl getInstance() {
-		if (null == parentDao) {
-			parentDao = new ParentDaoImpl();
+	public static UserTeacherDaoImpl getInstance() {
+		if (null == teacherDao) {
+			teacherDao = new UserTeacherDaoImpl();
 		}
 		if (null == connection) {
 			connection = DBUtil.getConnection(); 
 		}
-		return parentDao;
+		return teacherDao;
 	}
 
 	/**
-	 * 向数据库添加一个父母信息
+	 * 向数据库添加一个教師信息
 	 * 
 	 * @param phone    电话号码
 	 * @param nickname 昵称
@@ -43,7 +42,7 @@ public class ParentDaoImpl {
 		boolean b = false;
 		try {
 			preparedStatement = connection
-					.prepareStatement("insert into parent(phone,nickname,password) values (?,?,?)");
+					.prepareStatement("insert into user_teacher(phone,nickname,password) values (?,?,?)");
 			preparedStatement.setString(1, phone);
 			preparedStatement.setString(2, nickname);
 			preparedStatement.setString(3, password);
@@ -66,7 +65,7 @@ public class ParentDaoImpl {
 	 * @return 号码是否存在
 	 */
 	public boolean isExist(String phone) {
-		String sql = "select * from parent where phone = ?";
+		String sql = "select * from user_teacher where phone = ?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, phone);
@@ -92,7 +91,7 @@ public class ParentDaoImpl {
 	 */
 	public boolean isExistUser(String phone, String password) {
 		boolean b = false;
-		String sql = "select * from parent where phone = ? and password = ?";
+		String sql = "select * from user_teacher where phone = ? and password = ?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, phone);
@@ -114,9 +113,9 @@ public class ParentDaoImpl {
 	 * @param phone 根据号码查找该父母
 	 * @return Parent对象
 	 */
-	public Parent selectOneParent(String phone) {
-		Parent parent = new Parent();
-		String sql = "select * from parent where phone=?";
+	public UserTeacher selectOneParent(String phone) {
+		UserTeacher parent = new UserTeacher();
+		String sql = "select * from user_teacher where phone=?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, phone);
@@ -140,14 +139,14 @@ public class ParentDaoImpl {
 	 * 查询所有的父母信息，用于向后台管理系统展示
 	 * @return
 	 */
-	public List<Parent> selectAllParent() {
-		List<Parent> parents=new ArrayList<Parent>();
-		String sql = "select * from parent";
+	public List<UserTeacher> selectAllParent() {
+		List<UserTeacher> parents=new ArrayList<UserTeacher>();
+		String sql = "select * from user_teacher";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
-				Parent parent = new Parent();
+				UserTeacher parent = new UserTeacher();
 				parent.setId(resultSet.getInt(1));
 				parent.setPhone(resultSet.getString(2));
 				parent.setPassword(resultSet.getString(3));
@@ -164,15 +163,15 @@ public class ParentDaoImpl {
 
 	}
 
-	public List<Parent> queryParentsByPhone(String query) {
-		String sql = "select * from parent where phone=?";
-		List<Parent> parents = new ArrayList<Parent>();
+	public List<UserTeacher> queryParentsByPhone(String query) {
+		String sql = "select * from user_teacher where phone=?";
+		List<UserTeacher> parents = new ArrayList<UserTeacher>();
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, query);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				Parent parent = new Parent();
+				UserTeacher parent = new UserTeacher();
 				parent.setId(resultSet.getInt(1));
 				parent.setPhone(resultSet.getString(2));
 				parent.setPassword(resultSet.getString(3));
@@ -221,7 +220,7 @@ public class ParentDaoImpl {
 	public static int countAll() {
 		int count=0;
 		try {
-			preparedStatement =connection.prepareStatement("select count(id) from parent");
+			preparedStatement =connection.prepareStatement("select count(id) from user_teacher");
 			ResultSet resultSet=preparedStatement.executeQuery();
 			resultSet.next();
 			count=resultSet.getInt(1);
@@ -238,17 +237,17 @@ public class ParentDaoImpl {
 	 * @param pageSize 每页的数据个数
 	 * @return 返回picture的list集合
 	 */
-	public static List<Parent> selectPage(int pageNum, int pageSize) {
-		List<Parent> list=new ArrayList<Parent>();
+	public static List<UserTeacher> selectPage(int pageNum, int pageSize) {
+		List<UserTeacher> list=new ArrayList<UserTeacher>();
 		try {
-			preparedStatement=connection.prepareStatement("select * from parent limit ?,?");
+			preparedStatement=connection.prepareStatement("select * from user_teacher limit ?,?");
 			preparedStatement.setInt(1, (pageNum-1)*pageSize);
 			preparedStatement.setInt(2, pageSize);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
 				System.out.println("添加一个用户");
-				Parent parent=new Parent();
+				UserTeacher parent=new UserTeacher();
 				parent.setId(resultSet.getInt(1));
 				parent.setPhone(resultSet.getString(2));
 				parent.setPassword(resultSet.getString(3));
@@ -267,7 +266,7 @@ public class ParentDaoImpl {
 		int count=0;
 		Connection conn=DBUtil.getConnection();
 		PreparedStatement pstamt=null;
-		String sql="select count(*) from parent where nickname like ? or phone like ?";
+		String sql="select count(*) from user_teacher where nickname like ? or phone like ?";
 		try {
 			pstamt=conn.prepareStatement(sql);
 			String str="%"+searchInfo+"%";
@@ -284,10 +283,10 @@ public class ParentDaoImpl {
 		return count;
 	}
 
-	public static List<Parent> selectPage(int pageNum, int pageSize, String searchInfo) {
-		List<Parent> list=new ArrayList<Parent>();
+	public static List<UserTeacher> selectPage(int pageNum, int pageSize, String searchInfo) {
+		List<UserTeacher> list=new ArrayList<UserTeacher>();
 		try {
-			preparedStatement=connection.prepareStatement("select * from parent where nickname like ? or phone like ? limit ?,?");
+			preparedStatement=connection.prepareStatement("select * from user_teacher where nickname like ? or phone like ? limit ?,?");
 			String str="%"+searchInfo+"%";
 			preparedStatement.setString(1, str);
 			preparedStatement.setString(2, str);
@@ -297,7 +296,7 @@ public class ParentDaoImpl {
 			
 			while(resultSet.next()) {
 				System.out.println("添加一个用户");
-				Parent parent=new Parent();
+				UserTeacher parent=new UserTeacher();
 				parent.setId(resultSet.getInt(1));
 				parent.setPhone(resultSet.getString(2));
 				parent.setPassword(resultSet.getString(3));
@@ -319,7 +318,7 @@ public class ParentDaoImpl {
 	 */
 	public String selectPasswordByPhone(String phone) {
 		String password="";
-		String sql="select password from parent where phone=?";
+		String sql="select password from user_teacher where phone=?";
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, phone);

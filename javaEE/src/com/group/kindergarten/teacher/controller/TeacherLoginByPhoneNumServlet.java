@@ -1,4 +1,4 @@
-package com.group.kindergarten.server.parent.controller;
+package com.group.kindergarten.teacher.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.group.kindergarten.parent.service.ParentService;
+import com.group.kindergarten.teacher.service.UserTeacherService;
 
 /**
- * Servlet implementation class LoginByPhoneAndPwdServlet
+ * Servlet implementation class TeacherLoginByPhoneNumServlet
  */
-@WebServlet("/LoginByPhoneAndPwdServlet")
-public class LoginByPhoneAndPwdServlet extends HttpServlet {
+@WebServlet("/TeacherLoginByPhoneNumServlet")
+public class TeacherLoginByPhoneNumServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginByPhoneAndPwdServlet() {
+	public TeacherLoginByPhoneNumServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -30,25 +30,15 @@ public class LoginByPhoneAndPwdServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 设置编码方式
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
 		// 得到手机号码
 		String phone = request.getParameter("phone");
-		String password = request.getParameter("password");
+		System.out.println(phone);
 		// 查找手机号是否已经注册
-		ParentService parentService = ParentService.getInstance();
-		boolean b = parentService.isExistPhone(phone);
+		UserTeacherService teacherService = UserTeacherService.getInstance();
+		boolean b = teacherService.isExistPhone(phone);
 		if (b) {
-			// 判断用户密码是否正确
-			boolean a = new ParentService().isExistUser(phone, password);
-			if (a) {
-				response.getWriter().write("success");
-				System.out.println("手机号已经注册：" + phone);
-			} else {
-				response.getWriter().write("密码错误！");
-				System.out.println("密码错误：" + password);
-			}
+			response.getWriter().write("success");
+			System.out.println("手机号已经注册：" + phone);
 		} else {
 			response.getWriter().write("faliure");
 			System.out.println("手机号还未注册：" + phone);

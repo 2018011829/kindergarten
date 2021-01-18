@@ -179,7 +179,7 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
         FormBody body = builder.build();
         Request request = new Request.Builder()
                 .post(body)
-                .url(ConfigUtil.SERVICE_ADDRESS + "LoginByPhoneAndPwdServlet")
+                .url(ConfigUtil.SERVICE_ADDRESS + "ParentLoginByPhoneAndPwdServlet")
                 .build();
         //获得call对象
         Call call = new OkHttpClient().newCall(request);

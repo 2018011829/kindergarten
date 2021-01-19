@@ -33,20 +33,11 @@
 						<li onclick="showMenu_add2()" id="enroll_info_add"><a
 							href="addApplyinfo.jsp">新增报名信息</a></li>
 					</ul>
-<<<<<<< HEAD
 					<li id="introduce" onclick="showIntroduceMenu()"><a href="#">管理学校简介信息</a> <img
 						src="imgs/home/xiala.png" id="xiala3"></li>
 					<ul class="introduce_menu" id="click_introduce_menu" style="display: none">
 						<li onclick="showMenu_info3()" id="introduce_info"><a
 							href="DescriptionManageServlet">学校简介</a></li>
-=======
-					<li id="introduce" onclick="showIntroduceMenu()"><a>管理学校简介信息</a>
-						<img src="imgs/home/xiala.png" id="xiala3"></li>
-					<ul class="introduce_menu" id="click_introduce_menu"
-						style="display: none">
-						<li onclick="showMenu_info3()" id="introduce_info">
-						<a href="environmentDescription.jsp">学校简介</a></li>
->>>>>>> e38986564fd1f6ee0f22a3bcb02b3b1745be5781
 						<li onclick="showMenu_add3()" id="introduce_add"><a
                             href="addEnvironmentPicture.jsp">新增学校信息</a></li>
 					</ul>

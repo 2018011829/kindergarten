@@ -15,7 +15,7 @@ import com.group.kindergarten.applyinfo.service.EnterService;
 /**
  * Servlet implementation class GetApplyInfoServlet
  */
-@WebServlet("/GetApplyInfoServlet")
+@WebServlet("/GetApplyInfo")
 public class GetApplyInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

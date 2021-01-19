@@ -3,14 +3,14 @@ package com.group.kindergarten.parent.service;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.group.kindergarten.parent.dao.ParentDaoImpl;
+import com.group.kindergarten.parent.dao.UserParentDaoImpl;
 
-import com.group.kindergarten.parent.entity.Parent;
+import com.group.kindergarten.parent.entity.UserParent;
 import com.group.kindergarten.util.Page;
 
-public class ParentService {
-	private static ParentService parentService;
-	private static ParentDaoImpl parentDao;
+public class UserParentService {
+	private static UserParentService parentService;
+	private static UserParentDaoImpl parentDao;
 	private static Gson gson;
 
 	/**
@@ -18,15 +18,15 @@ public class ParentService {
 	 * 
 	 * @return
 	 */
-	public static ParentService getInstance() {
+	public static UserParentService getInstance() {
 		if (null == parentService) {
-			parentService = new ParentService();
+			parentService = new UserParentService();
 		}
 		if (null == parentDao) {
-			parentDao = ParentDaoImpl.getInstance();
+			parentDao = UserParentDaoImpl.getInstance();
 		}
-		if(null==gson) {
-			gson=new Gson();
+		if (null == gson) {
+			gson = new Gson();
 		}
 		return parentService;
 	}
@@ -41,8 +41,8 @@ public class ParentService {
 	 */
 	public boolean resigter(String phone, String nickname, String password) {
 		boolean b = false;
-		b=parentDao.addParent(phone, nickname, password);
-		
+		b = parentDao.addParent(phone, nickname, password);
+
 		return b;
 	}
 
@@ -74,9 +74,10 @@ public class ParentService {
 		}
 		return b;
 	}
-	
+
 	/**
 	 * 返回某个父母信息的Json串
+	 * 
 	 * @param phone
 	 * @return json串
 	 */
@@ -86,62 +87,59 @@ public class ParentService {
 
 	public String searchParentsByPhone(String query) {
 		return new Gson().toJson(parentDao.queryParentsByPhone(query));
-		
-	}
-	
 
-	
+	}
+
 	/**
-	 *根据手机号更新指定家长信息
+	 * 根据手机号更新指定家长信息
+	 * 
 	 * @return 更新是否成功
 	 */
-	public Boolean updateParentMessage(String phone,String nickName,String headName) {
-		
-		return parentDao.updateParentMessage(phone,nickName, headName);
-		
+	public Boolean updateParentMessage(String phone, String nickName, String headName) {
+
+		return parentDao.updateParentMessage(phone, nickName, headName);
+
 	}
-
-
-
 
 	/**
 	 * 获取一页的用户信息，用于后台管理系统展示
+	 * 
 	 * @param pageNum
 	 * @param pageSize
 	 * @return
 	 */
-	public Page<Parent> getPage(int pageNum, int pageSize) {
-		Page<Parent> page=new Page<Parent>(pageNum,pageSize);
-		int count=ParentDaoImpl.countAll();
-		List<Parent> list=ParentDaoImpl.selectPage(pageNum,pageSize);
+	public Page<UserParent> getPage(int pageNum, int pageSize) {
+		Page<UserParent> page = new Page<UserParent>(pageNum, pageSize);
+		int count = UserParentDaoImpl.countAll();
+		List<UserParent> list = UserParentDaoImpl.selectPage(pageNum, pageSize);
 		page.setList(list);
 		page.setTotalCount(count);
-		System.out.println("测试page中的count"+count);
-		System.out.println("测试page中的list"+list.size());
+		System.out.println("测试page中的count" + count);
+		System.out.println("测试page中的list" + list.size());
 		System.out.println(list.get(2).getNickname());
 		return page;
 	}
 
-	public Page<Parent> getPage(int pageNum, int pageSize, String searchInfo) {
-		Page<Parent> page=new Page<Parent>(pageNum,pageSize);
-		int count=ParentDaoImpl.countAll(searchInfo);
-		List<Parent> list=ParentDaoImpl.selectPage(pageNum,pageSize,searchInfo);
+	public Page<UserParent> getPage(int pageNum, int pageSize, String searchInfo) {
+		Page<UserParent> page = new Page<UserParent>(pageNum, pageSize);
+		int count = UserParentDaoImpl.countAll(searchInfo);
+		List<UserParent> list = UserParentDaoImpl.selectPage(pageNum, pageSize, searchInfo);
 		page.setList(list);
 		page.setTotalCount(count);
-		System.out.println("测试page中的count"+count);
-		System.out.println("测试page中的list"+list.size());
+		System.out.println("测试page中的count" + count);
+		System.out.println("测试page中的list" + list.size());
 //		System.out.println(list.get(2).getNickname());
 		return page;
 	}
 
 	/**
 	 * 通过手机号码获取密码，用来客户端使用手机验证码登录
+	 * 
 	 * @param phone
 	 * @return
 	 */
 	public String getPassword(String phone) {
 		return parentDao.selectPasswordByPhone(phone);
 	}
-	
-	
+
 }

@@ -26,10 +26,13 @@ import com.contrarywind.adapter.WheelAdapter;
 import com.contrarywind.listener.OnItemSelectedListener;
 import com.contrarywind.view.WheelView;
 import com.example.myapplication.R;
+import com.example.myapplication.apply.activity.Bean.ApplyInfo;
 import com.example.myapplication.main.activity.my.AddChildActivity;
+import com.example.myapplication.main.activity.my.ApplyInfoActivity;
 import com.example.myapplication.main.entity.Child;
 import com.example.myapplication.main.util.ConfigUtil;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -37,6 +40,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +57,7 @@ public class MyFragment extends Fragment {
     private View view;
     private RelativeLayout addChild;
     private LinearLayout chooseChild;
+    private LinearLayout applyInfo;
     private PopupWindow popupWindow;
     private WheelView wheelView;
     private TextView tv_ok;
@@ -72,7 +77,15 @@ public class MyFragment extends Fragment {
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what){
                 case 1:
-//                    init();
+                    String str1= (String) msg.obj;
+                    if (!str1.equals("") && str1.equals("未找到相关报名信息")){
+                        Toast.makeText(getContext(),
+                                "您还没有进行报名操作！",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        Intent intent=new Intent(getContext(), ApplyInfoActivity.class);
+                        startActivity(intent);
+                    }
                     break;
                 case 2://加载孩子列表
                     String str= (String) msg.obj;
@@ -162,8 +175,39 @@ public class MyFragment extends Fragment {
                     }
 
                     break;
+                case R.id.ll_applyinfo_by_phone://点击报名信息，跳转到显示该手机号下的报名信息的activity
+                    queryApplyInfoByPhoneNum();
+
+                    break;
             }
         }
+    }
+
+    private void queryApplyInfoByPhoneNum() {
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("phone", MyFragment.phoneNum);
+        FormBody formBody = builder.build();
+        Request request = new Request.Builder()
+                .post(formBody)
+                .url(ConfigUtil.SERVICE_ADDRESS + "QueryApplyInfoServlet")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("查询孩子信息", "请求失败");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = new Message();
+                message.obj = result;
+                message.what = 1;
+                handler.sendMessage(message);
+                Log.i("result", result);
+            }
+        });
     }
 
     private void showSelectChildPopupwindow() {
@@ -255,5 +299,7 @@ public class MyFragment extends Fragment {
         chooseChild.setOnClickListener(myListener);
         tv_mine_myChildName = view.findViewById(R.id.tv_mine_myChildName);
         iv_mine_myChildImg = view.findViewById(R.id.iv_mine_myChildImg);
+        applyInfo=view.findViewById(R.id.ll_applyinfo_by_phone);
+        applyInfo.setOnClickListener(myListener);
     }
 }

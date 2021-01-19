@@ -1,4 +1,4 @@
-package com.group.kindergarten.server.parent.controller;
+package com.group.kindergarten.teacher.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.group.kindergarten.parent.service.ParentService;
-
+import com.group.kindergarten.teacher.service.UserTeacherService;
 
 /**
- * Servlet implementation class ParentRegisterServlet
+ * Servlet implementation class TeacherRegisterServlet
  */
-@WebServlet("/ParentRegisterServlet")
-public class ParentRegisterServlet extends HttpServlet {
+@WebServlet("/TeacherRegisterServlet")
+public class TeacherRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ParentRegisterServlet() {
+	public TeacherRegisterServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,9 +35,9 @@ public class ParentRegisterServlet extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		String password = request.getParameter("password");
 		System.out.println("1.获取相关参数");
-		ParentService parentService = ParentService.getInstance();
-		if (!parentService.isExistPhone(phone)) {
-			boolean b = parentService.resigter(phone, nickname, password);
+		UserTeacherService teacherService = UserTeacherService.getInstance();
+		if (!teacherService.isExistPhone(phone)) {
+			boolean b = teacherService.resigter(phone, nickname, password);
 			if (b) {
 				response.getWriter().write("success");
 				System.out.println("注册成功：" + phone);

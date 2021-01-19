@@ -1,5 +1,6 @@
 package com.example.myapplication.school.activity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,37 +8,71 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
+import com.example.myapplication.apply.activity.Bean.ApplyInfo;
+import com.example.myapplication.main.activity.my.ShowApplyInfoActivity;
+import com.example.myapplication.main.util.ConfigUtil;
 import com.example.myapplication.school.adapter.MyAdapter;
+import com.example.myapplication.school.entity.SchoolOutside;
+import com.example.myapplication.school.entity.ThreePicture;
+import com.example.myapplication.school.entity.TwoPicture;
 import com.example.myapplication.school.tool.LoadBannerTool;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.youth.banner.Banner;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class SchoolActivity extends AppCompatActivity {
 
     private MyAdapter adapter;
     private GridView gridView;
-    private List<Integer> listGrid;
-    private List<Integer> outsideImages = new ArrayList<>();
+    private List<String> listGrid = new ArrayList<>();
+    private List<String> outsideImages = new ArrayList<>();
     private Banner bannerOutside;
-    private List<Integer> angleImages = new ArrayList<>();
+    private List<String> angleImages = new ArrayList<>();
     private Banner bannerAngle;
     private ImageView imageView;
     private TextView tv_right;
     private TextView tv_bottom;
-    static final String text = "华兴幼儿园成立于2000年，我园始终以“服务于社会，服务于家长，服务于幼儿”促进幼儿身心和谐发展为办园宗旨。以塑造优美的校园环境，优秀的教师队伍，优质的园所教育为办园目标。以”在游戏中学习，在实践中获得并创造“为教育理念。以培养”自信 、乐观 、 具有创造力   、具有人文情怀“的孩子为培养目标。全面贯彻落实《幼儿园工作规程》、《幼儿园教育指导纲要》、《3-6岁儿童学习与发展指南》，以提高教师专业化技能为根本，将素质教育贯穿于培养幼儿的全过程，不断提高幼儿园的办园质量，形成了团结、奋进、求实、创新的园风。";
+    private String text;
+    private TextView tv_school_outside;
+    private TextView tv_school_angle_banner;
+    private TextView tv_school_passageway;
+    private ImageView iv_school_passageway1;
+    private ImageView iv_school_passageway2;
+    private TextView tv_school_inside;
+    private ImageView iv_school_inside1;
+    private ImageView iv_school_inside2;
+    private TextView tv_school_play;
+    private ImageView iv_school_play1;
+    private ImageView iv_school_play2;
+    private ImageView iv_school_play3;
+    private TextView tv_school_gridview;
 
     boolean imageMeasured = false;
     // 屏幕的高度
@@ -50,6 +85,152 @@ public class SchoolActivity extends AppCompatActivity {
     float textWidth = 0.0f;
     Paint paint =new Paint();
 
+    private Handler handler=new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            switch (msg.what) {
+                case 1://简介文字信息
+                    text = (String) msg.obj;
+                    /**
+                     * 获取一个字的宽度
+                     */
+                    textWidth = tv_right.getTextSize();
+                    paint.setTextSize(textWidth);
+                    /**
+                     * 因为图片一开始的时候，高度是测量不出来的，通过增加一个监听器，即可获取其图片的高度和长度
+                     */
+                    ViewTreeObserver vto = imageView.getViewTreeObserver();
+                    vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                        public boolean onPreDraw() {
+                            if(!imageMeasured) {
+                                imageMeasured =true;
+                                int height = imageView.getMeasuredHeight();
+                                int width = imageView.getMeasuredWidth();
+                                drawImageViewDone(width, height);
+                            }
+                            return imageMeasured;
+                        }
+                    });
+                    break;
+                case 2://获取校园外部环境
+                    String str= (String) msg.obj;
+                    if (!str.equals("") && str.equals("未找到校园外部环境信息")){
+                        Toast.makeText(SchoolActivity.this,
+                                "未找到校园外部环境信息！",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        SchoolOutside schoolOutside =new Gson().fromJson(str, SchoolOutside.class);
+                        tv_school_outside.setText(schoolOutside.getDescription().replace("\\n","\n"));
+                        outsideImages.addAll(schoolOutside.getList());
+                        LoadBannerTool.startBanner(bannerOutside,outsideImages);
+                    }
+                    break;
+                case 3://获取校园区角环境
+                    String str1= (String) msg.obj;
+                    if (!str1.equals("") && str1.equals("未找到校园区角环境信息")){
+                        Toast.makeText(SchoolActivity.this,
+                                "未找到校园区角环境信息！",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        SchoolOutside schoolOutside =new Gson().fromJson(str1, SchoolOutside.class);
+                        tv_school_angle_banner.setText(schoolOutside.getDescription().replace("\\n","\n"));
+                        angleImages.addAll(schoolOutside.getList());
+                        LoadBannerTool.startBanner(bannerAngle,angleImages);
+                    }
+                    break;
+                case 4://校园楼道环境信息
+                    String str2= (String) msg.obj;
+                    if (!str2.equals("") && str2.equals("未找到校园楼道环境信息")){
+                        Toast.makeText(SchoolActivity.this,
+                                "未找到校园楼道环境信息！",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        TwoPicture twoPicture =new Gson().fromJson(str2, TwoPicture.class);
+                        tv_school_passageway.setText(twoPicture.getDescription().replace("\\n","\n"));
+                        Glide.with(SchoolActivity.this)
+                                .load(ConfigUtil.SERVICE_ADDRESS + "imgs/schoolInfoPicture/"+twoPicture.getPicture1())
+                                .placeholder(R.mipmap.loading)
+                                .error(R.mipmap.faliure)
+                                .into(iv_school_passageway1);
+                        Glide.with(SchoolActivity.this)
+                                .load(ConfigUtil.SERVICE_ADDRESS + "imgs/schoolInfoPicture/"+twoPicture.getPicture2())
+                                .placeholder(R.mipmap.loading)
+                                .error(R.mipmap.faliure)
+                                .into(iv_school_passageway2);
+                    }
+                    break;
+                case 5://校园内部环境信息
+                    String str3= (String) msg.obj;
+                    if (!str3.equals("") && str3.equals("未找到校园内部环境信息")){
+                        Toast.makeText(SchoolActivity.this,
+                                "未找到校园内部环境信息！",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        TwoPicture twoPicture =new Gson().fromJson(str3, TwoPicture.class);
+                        tv_school_inside.setText(twoPicture.getDescription().replace("\\n","\n"));
+                        Glide.with(SchoolActivity.this)
+                                .load(ConfigUtil.SERVICE_ADDRESS + "imgs/schoolInfoPicture/"+twoPicture.getPicture1())
+                                .placeholder(R.mipmap.loading)
+                                .error(R.mipmap.faliure)
+                                .into(iv_school_inside1);
+                        Glide.with(SchoolActivity.this)
+                                .load(ConfigUtil.SERVICE_ADDRESS + "imgs/schoolInfoPicture/"+twoPicture.getPicture2())
+                                .placeholder(R.mipmap.loading)
+                                .error(R.mipmap.faliure)
+                                .into(iv_school_inside2);
+                    }
+                    break;
+                case 6://校园游乐设施环境信息
+                    String str4= (String) msg.obj;
+                    if (!str4.equals("") && str4.equals("未找到游乐设施环境信息")){
+                        Toast.makeText(SchoolActivity.this,
+                                "未找到游乐设施环境信息！",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        ThreePicture threePicture =new Gson().fromJson(str4, ThreePicture.class);
+                        tv_school_play.setText(threePicture.getDescription().replace("\\n","\n"));
+                        Glide.with(SchoolActivity.this)
+                                .load(ConfigUtil.SERVICE_ADDRESS + "imgs/schoolInfoPicture/"+threePicture.getPicture1())
+                                .placeholder(R.mipmap.loading)
+                                .error(R.mipmap.faliure)
+                                .into(iv_school_play1);
+                        Glide.with(SchoolActivity.this)
+                                .load(ConfigUtil.SERVICE_ADDRESS + "imgs/schoolInfoPicture/"+threePicture.getPicture2())
+                                .placeholder(R.mipmap.loading)
+                                .error(R.mipmap.faliure)
+                                .into(iv_school_play2);
+                        Glide.with(SchoolActivity.this)
+                                .load(ConfigUtil.SERVICE_ADDRESS + "imgs/schoolInfoPicture/"+threePicture.getPicture3())
+                                .placeholder(R.mipmap.loading)
+                                .error(R.mipmap.faliure)
+                                .into(iv_school_play3);
+                    }
+                    break;
+                case 7://给GridView添加图片
+                    String str5= (String) msg.obj;
+                    if (!str5.equals("") && str5.equals("未找到GridView环境信息")){
+                        Toast.makeText(SchoolActivity.this,
+                                "未找到GridView环境信息！",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        SchoolOutside schoolOutside =new Gson().fromJson(str5, SchoolOutside.class);
+                        tv_school_gridview.setText(schoolOutside.getDescription().replace("\\n","\n"));
+                        listGrid.addAll(schoolOutside.getList());
+
+                        adapter=new MyAdapter(SchoolActivity.this,R.layout.school_angle_grid_item,listGrid);
+                        gridView.setAdapter(adapter);
+                        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                //点击事件
+                            }
+                        });
+                    }
+                    break;
+            }
+        }
+    };
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +238,47 @@ public class SchoolActivity extends AppCompatActivity {
         setContentView(R.layout.activity_school);
 
         findViews();
+        initData();
+    }
 
+    private void initData() {
+        //加载幼儿园简洁的全景图片
+        Glide.with(SchoolActivity.this)
+                .load(ConfigUtil.SERVICE_ADDRESS + "imgs/schoolInfoPicture/all.png")
+                .placeholder(R.mipmap.loading)
+                .error(R.mipmap.faliure)
+                .into(imageView);
+        //加载幼儿园简介文字信息
+        initDataAboutIntroduceText();
+    }
+
+    /**
+     * 加载幼儿园简介文字信息
+     */
+    public void initDataAboutIntroduceText() {
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVICE_ADDRESS + "InitDataAboutIntroduceText")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("获取幼儿园简介信息失败", "请求失败");
+                Toast.makeText(SchoolActivity.this,
+                        "网络错误，请连接网络",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = new Message();
+                message.obj = result;
+                message.what = 1;
+                handler.sendMessage(message);
+                Log.i("result", result);
+            }
+        });
     }
 
     /**
@@ -73,13 +294,25 @@ public class SchoolActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+        tv_school_gridview=findViewById(R.id.tv_school_gridview);
+        iv_school_play1=findViewById(R.id.iv_school_play1);
+        iv_school_play2=findViewById(R.id.iv_school_play2);
+        iv_school_play3=findViewById(R.id.iv_school_play3);
+        tv_school_play=findViewById(R.id.tv_school_play);
+        iv_school_inside1=findViewById(R.id.iv_school_inside1);
+        iv_school_inside2=findViewById(R.id.iv_school_inside2);
+        tv_school_inside=findViewById(R.id.tv_school_inside);
+        iv_school_passageway1=findViewById(R.id.iv_school_passageway1);
+        iv_school_passageway2=findViewById(R.id.iv_school_passageway2);
+        tv_school_passageway=findViewById(R.id.tv_school_passageway);
+        tv_school_angle_banner=findViewById(R.id.tv_school_angle_banner);
+        tv_school_outside=findViewById(R.id.tv_school_outside);
         gridView=findViewById(R.id.gridview);
         bannerOutside=findViewById(R.id.outside_banner);
         bannerAngle=findViewById(R.id.banner_angle);
         tv_right=findViewById(R.id.test_tv_right);
         tv_bottom=findViewById(R.id.test_tv_bottom);
         imageView =findViewById(R.id.test_image);
-        imageView.setImageResource(R.mipmap.all);
         imageView.setTag("all");
         screenWidth = getWindowManager().getDefaultDisplay().getWidth();
 
@@ -87,78 +320,197 @@ public class SchoolActivity extends AppCompatActivity {
         addOutsideImages();
         //给区角添加轮播照片
         addAngleImages();
+        //给楼道添加图片
+        addPassagewayImages();
+        //给室内添加图片
+        addInsideImages();
+        //给游乐设施添加图片
+        addPlayImages();
         //给GridView添加图片
         addGridViewImages();
 
-        /**
-         * 获取一个字的宽度
-         */
-        textWidth = tv_right.getTextSize();
-        paint.setTextSize(textWidth);
-        /**
-         * 因为图片一开始的时候，高度是测量不出来的，通过增加一个监听器，即可获取其图片的高度和长度
-         */
-        ViewTreeObserver vto = imageView.getViewTreeObserver();
-        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            public boolean onPreDraw() {
-                if(!imageMeasured) {
-                    imageMeasured =true;
-                    int height = imageView.getMeasuredHeight();
-                    int width = imageView.getMeasuredWidth();
-                    drawImageViewDone(width, height);
-                }
-                return imageMeasured;
+    }
+
+    /**
+     * 给游乐设施添加图片
+     */
+    private void addPlayImages() {
+        //从服务器端获取游乐设施环境的描述与图片
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVICE_ADDRESS + "InitDataAboutSchoolPlay")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("获取游乐设施环境信息失败", "请求失败");
+                Toast.makeText(SchoolActivity.this,
+                        "网络错误，请连接网络",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = new Message();
+                message.obj = result;
+                message.what = 6;
+                handler.sendMessage(message);
+                Log.i("游乐设施环境", result);
             }
         });
+    }
 
+    /**
+     * 给室内添加图片
+     */
+    private void addInsideImages() {
+        //从服务器端获取外部环境的描述与图片
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVICE_ADDRESS + "InitDataAboutSchoolInside")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("获取室内环境信息失败", "请求失败");
+                Toast.makeText(SchoolActivity.this,
+                        "网络错误，请连接网络",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = new Message();
+                message.obj = result;
+                message.what = 5;
+                handler.sendMessage(message);
+                Log.i("室内环境", result);
+            }
+        });
+    }
+
+    /**
+     * 给楼道添加图片
+     */
+    private void addPassagewayImages() {
+        //从服务器端获取外部环境的描述与图片
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVICE_ADDRESS + "InitDataAboutSchoolPassageway")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("获取楼道环境信息失败", "请求失败");
+                Toast.makeText(SchoolActivity.this,
+                        "网络错误，请连接网络",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = new Message();
+                message.obj = result;
+                message.what = 4;
+                handler.sendMessage(message);
+                Log.i("楼道环境", result);
+            }
+        });
     }
 
     /**
      * 给区角添加轮播照片
      */
     private void addAngleImages() {
-        angleImages.add(R.mipmap.angle1);
-        angleImages.add(R.mipmap.angle8);
-        angleImages.add(R.mipmap.angle9);
-        angleImages.add(R.mipmap.angle10);
-        angleImages.add(R.mipmap.angle11);
-        LoadBannerTool.startBanner(bannerAngle,angleImages);
+        //从服务器端获取外部环境的描述与图片
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVICE_ADDRESS + "InitDataAboutSchoolAngleBanner")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("获取幼儿园区角环境轮播图信息失败", "请求失败");
+                Toast.makeText(SchoolActivity.this,
+                        "网络错误，请连接网络",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = new Message();
+                message.obj = result;
+                message.what = 3;
+                handler.sendMessage(message);
+                Log.i("区角环境", result);
+            }
+        });
+
     }
 
     /**
      * 给GridView添加图片
      */
     private void addGridViewImages() {
-        listGrid=new ArrayList<>();
-        listGrid.add(R.mipmap.angle2);
-        listGrid.add(R.mipmap.angle3);
-        listGrid.add(R.mipmap.angle7);
-        listGrid.add(R.mipmap.angle15);
-        listGrid.add(R.mipmap.angle12);
-        listGrid.add(R.mipmap.angle13);
-        listGrid.add(R.mipmap.angle14);
-        listGrid.add(R.mipmap.angle4);
-
-        adapter=new MyAdapter(SchoolActivity.this,R.layout.school_angle_grid_item,listGrid);
-        gridView.setAdapter(adapter);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVICE_ADDRESS + "InitDataAboutSchoolGridView")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //点击事件
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("获取幼儿园GridView环境轮播图信息失败", "请求失败");
+                Toast.makeText(SchoolActivity.this,
+                        "网络错误，请连接网络",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = new Message();
+                message.obj = result;
+                message.what = 7;
+                handler.sendMessage(message);
+                Log.i("GridView环境", result);
             }
         });
+
     }
 
     /**
      * 给外部环境添加轮播照片
      */
     private void addOutsideImages() {
-        outsideImages.add(R.mipmap.all);
-        outsideImages.add(R.mipmap.fruit1);
-        outsideImages.add(R.mipmap.fruit2);
-        outsideImages.add(R.mipmap.fruit3);
-        outsideImages.add(R.mipmap.fruit4);
-        LoadBannerTool.startBanner(bannerOutside,outsideImages);
+        //从服务器端获取外部环境的描述与图片
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVICE_ADDRESS + "InitDataAboutSchoolOutside")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("获取幼儿园外部环境信息失败", "请求失败");
+                Toast.makeText(SchoolActivity.this,
+                        "网络错误，请连接网络",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = new Message();
+                message.obj = result;
+                message.what = 2;
+                handler.sendMessage(message);
+                Log.i("外部环境", result);
+            }
+        });
+
     }
 
 

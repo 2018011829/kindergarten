@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-01-14 10:08:10
+Date: 2021-01-19 13:09:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -223,23 +223,20 @@ CREATE TABLE `kindergarten_phone` (
 INSERT INTO `kindergarten_phone` VALUES ('1', '0311-858857');
 
 -- ----------------------------
--- Table structure for `parent`
+-- Table structure for `relation`
 -- ----------------------------
-DROP TABLE IF EXISTS `parent`;
-CREATE TABLE `parent` (
+DROP TABLE IF EXISTS `relation`;
+CREATE TABLE `relation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` char(11) NOT NULL,
-  `password` varchar(15) NOT NULL,
-  `nickname` varchar(20) NOT NULL,
-  `avatar` varchar(20) DEFAULT NULL,
+  `from` char(11) NOT NULL,
+  `to` char(11) NOT NULL,
+  `remark` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of parent
+-- Records of relation
 -- ----------------------------
-INSERT INTO `parent` VALUES ('1', '18831166551', '7777777', '七道', null);
-INSERT INTO `parent` VALUES ('2', '18831166552', '77777772', '七道二', null);
 
 -- ----------------------------
 -- Table structure for `teacher`
@@ -312,4 +309,40 @@ CREATE TABLE `teacher_course` (
 
 -- ----------------------------
 -- Records of teacher_course
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `user_parent`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_parent`;
+CREATE TABLE `user_parent` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` char(11) NOT NULL,
+  `password` varchar(15) NOT NULL,
+  `nickname` varchar(20) NOT NULL,
+  `avatar` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of user_parent
+-- ----------------------------
+INSERT INTO `user_parent` VALUES ('1', '18831166551', '7777777', '七道', null);
+INSERT INTO `user_parent` VALUES ('2', '18831166552', '77777772', '七道二', null);
+
+-- ----------------------------
+-- Table structure for `user_teacher`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_teacher`;
+CREATE TABLE `user_teacher` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` char(11) NOT NULL,
+  `password` varchar(15) NOT NULL,
+  `nickname` varchar(20) NOT NULL,
+  `avatar` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of user_teacher
 -- ----------------------------

@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50506
+Source Server Version : 50701
 Source Host           : localhost:3306
 Source Database       : kindergarten
 
 Target Server Type    : MYSQL
-Target Server Version : 50506
+Target Server Version : 50701
 File Encoding         : 65001
 
-Date: 2021-01-09 15:24:17
+Date: 2021-01-12 22:04:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -63,6 +63,25 @@ CREATE TABLE `applyinfo` (
 -- ----------------------------
 -- Records of applyinfo
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `child`
+-- ----------------------------
+DROP TABLE IF EXISTS `child`;
+CREATE TABLE `child` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `grade` varchar(10) NOT NULL,
+  `sex` varchar(5) NOT NULL,
+  `parentPhone` varchar(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of child
+-- ----------------------------
+INSERT INTO `child` VALUES ('1', '小红', '小班', '女', '19831127142');
+INSERT INTO `child` VALUES ('2', '小明', '中班', '男', '19831127142');
 
 -- ----------------------------
 -- Table structure for `class`

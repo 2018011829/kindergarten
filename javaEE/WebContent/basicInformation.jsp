@@ -75,7 +75,6 @@
 								<td style="background: #F2F2F2">校园简介文件</td>
 								<td style="background: #F2F2F2">地址</td>
 								<td style="background: #F2F2F2">操作1</td>
-								<td style="background: #F2F2F2">操作2</td>
 							</tr>
 							<!-- 循环输出菜单 -->
 							<c:forEach var="basicInfo" items="${page.list }">
@@ -84,11 +83,8 @@
 									<td>${basicInfo.introduceFile }</td>
 									<td>${basicInfo.address }</td>
 									<td><a
-										href="uploadBasicInformation.jsp?id=${idiomItem.id }&userName=${userName }&idiom=${idiomItem.idiom }&idiomType=${idiomItem.idiomType }"
+										href="UpdateBasicInfo?id=${basicInfo.id }&userName=${userName }"
 										style="color: black">修改</a></td>
-									<td><a
-										href="DeleteIdiomServlet?id=${idiomItem.id }&userName=${userName }&page=${page.prePageNum+1 }"
-										style="color: black">删除</a></td>
 								</tr>
 							</c:forEach>
 						</table>

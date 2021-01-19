@@ -140,7 +140,7 @@
                         android:src="@drawable/mine_child"/>
                     <TextView
                         android:id="@+id/tv_mine_myChildName"
-                        android:text="我的孩子"
+                        android:text="选择孩子"
                         android:textSize="16sp"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"

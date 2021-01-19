@@ -59,7 +59,7 @@
                 <div id="environment">
                 <!-- 显示表格 -->
                 <div style="height: 40px; line-height: 40px; margin-bottom: 20px">
-                    <form action="SearchBookServlet" style="margin-left: 500px">
+                    <form action="SearchPictureServlet" style="margin-left: 500px">
                         <span> <input type="text" name="searchInfo"
                             style="height: 25px; width: 200px; vertical-align: bottom"
                             placeholder="请输入要查找的书籍信息" value="${searchInfo }">
@@ -87,10 +87,10 @@
                                     style="width: 90px; height: 120px"></td>
                                 <td>${picture.descriptionId }</td>
                                 <td><a
-                                    href="uploadEnvironmentPicture.jsp?id=${idiomItem.id }&userName=${userName }&idiom=${idiomItem.idiom }&idiomType=${idiomItem.idiomType }"
+                                    href="UpdatePicureServlet?id=${picture.id }&userName=${userName }"
                                     style="color: black">修改</a></td>
                                 <td><a
-                                    href="DeleteIdiomServlet?id=${idiomItem.id }&userName=${userName }&page=${page.prePageNum+1 }"
+                                    href="DeletePictureServlet?id=${picture.id }&userName=${userName }&page=${page.prePageNum+1 }"
                                     style="color: black">删除</a></td>
                             </tr>
                         </c:forEach>

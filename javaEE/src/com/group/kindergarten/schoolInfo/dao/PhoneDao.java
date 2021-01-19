@@ -98,5 +98,61 @@ public class PhoneDao {
 		}
 		return list;
 	}
+	
+	/**
+	 * 根据id获取电话
+	 * @param id
+	 * @return
+	 */
+	public Phone findPhoneById(int id) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		Phone phone = new Phone();
+		try {
+			conn = DBUtil.getConnection();
+			pstm = conn.prepareStatement("select * from kindergarten_phone where id=" + id);
+			rs = pstm.executeQuery();
+			while(rs.next()) {
+				phone.setId(rs.getInt(1));
+				phone.setPhone(rs.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs, pstm, conn);
+		}
+		return phone;
+	}
 
+	/**
+	 * 根据id修改描述
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public boolean updatePhone(int id,String phone) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		int n = -1;// 存储修改的记录
+		try {
+			conn = DBUtil.getConnection();
+			String select = "select * from kindergarten_phone where id=" + id + "";
+			pstm = conn.prepareStatement(select);
+			rs = pstm.executeQuery();
+			boolean isExist = rs.next();
+			if (isExist) {
+				String sql = "update kindergarten_phone set phone ='"+ phone +"' where id=" + id + "";
+				n = pstm.executeUpdate(sql);
+			}else {
+				n=-1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs, pstm, conn);
+		}
+		return n > 0 ? true : false;
+	}
 }

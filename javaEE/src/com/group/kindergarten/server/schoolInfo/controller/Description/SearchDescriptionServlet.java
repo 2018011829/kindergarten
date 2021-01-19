@@ -1,4 +1,4 @@
-package com.group.kindergarten.server.schoolInfo.controller;
+package com.group.kindergarten.server.schoolInfo.controller.Description;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,22 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.group.kindergarten.schoolInfo.entity.Description;
-import com.group.kindergarten.schoolInfo.entity.Picture;
 import com.group.kindergarten.schoolInfo.service.DescriptionService;
-import com.group.kindergarten.schoolInfo.service.PictureServce;
+import com.group.kindergarten.teacher.entity.Teacher;
+import com.group.kindergarten.teacher.service.TeacherServiceImpl;
 import com.group.kindergarten.util.Page;
 
 /**
- * Servlet implementation class PictureManageServlet
+ * Servlet implementation class SearchDescriptionServlet
  */
-@WebServlet("/PictureManageServlet")
-public class PictureManageServlet extends HttpServlet {
+@WebServlet("/SearchDescriptionServlet")
+public class SearchDescriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PictureManageServlet() {
+    public SearchDescriptionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +32,21 @@ public class PictureManageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page1 = request.getParameter("page");
-		int pageNum = 1, pageSize = 3;
-		if (page1 != null && !page1.equals("")) {
-			pageNum = Integer.parseInt(page1);
+		String searchInfo = request.getParameter("searchInfo");
+		if(searchInfo != null && !searchInfo.equals("")) {
+			String page1 = request.getParameter("page");
+			int pageNum = 1, pageSize = 10;
+			if (page1 != null && !page1.equals("")) {
+				pageNum = Integer.parseInt(page1);
+			}
+			DescriptionService descriptionService = new DescriptionService();
+			Page<Description> page = descriptionService.listByPageAndSearchInfo(pageNum, pageSize,searchInfo);
+			request.setAttribute("searchInfo", searchInfo);
+			request.setAttribute("page", page);
+			request.getRequestDispatcher("searchResultDescription.jsp").forward(request, response);
+		}else {
+			response.sendRedirect("DescriptionManageServlet");
 		}
-		PictureServce pictureServce = new PictureServce();
-		Page<Picture> page = pictureServce.listByPage(pageNum, pageSize);
-		
-		request.setAttribute("page", page);
-		request.getRequestDispatcher("environmentPicture.jsp").forward(request, response);
 	}
 
 	/**

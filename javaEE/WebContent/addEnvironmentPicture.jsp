@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8" import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,23 +46,13 @@
 				</ul>
 			</div>
 			<div id="schoolInfo">
-				<div id="schoolInfoMenu">
-					<ul class="schoolInfoMenu">
-						<li><a href="addEnvironmentDescription.jsp">环境描述</a></li>
-						<li><a href="addEnvironmentPicture.jsp">环境图片</a></li>
-						<li><a href="addBasicInformation.jsp">基本信息</a></li>
-					</ul>
-				</div>
 				<div id="environment">
 					<!-- 显示表格 -->
 					<div class="addBox2">
 						<p id="addTitle">添加描述图片</p>
-						<form action="addTeacherManage" method="post"
-							enctype="multipart/form-data" style="margin-top: 30px">
-							<input type="text" name="id" placeholder="id" class="addInput" />
-							<br /> <br />
+						<form action="addPictureServlet" method="post" enctype="multipart/form-data" style="margin-top: 30px">
 							<div class="chooseBox">
-								<input type="file" name="teacherPicture" class="chooseFile" />
+								<input type="file" name="Picture" class="chooseFile" />
 							</div>
 							<br /> <br /> <input type="text" name="descriptionId"
 								placeholder="描述id" class="addInput" /> <br /> <br /> <input

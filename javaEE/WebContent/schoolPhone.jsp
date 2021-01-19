@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8" import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +9,7 @@
 <title>主页</title>
 <link rel="stylesheet" type="text/css" href="css/schoolInfo.css" />
 <script type="text/javascript" src="js/index.js"></script>
+</head>
 <body>
 	<div id="box">
 		<%@ include file="header.jsp"%>
@@ -73,7 +74,6 @@
 								<td style="background: #F2F2F2">id</td>
 								<td style="background: #F2F2F2">电话</td>
 								<td style="background: #F2F2F2">操作1</td>
-								<td style="background: #F2F2F2">操作2</td>
 							</tr>
 							<!-- 循环输出菜单 -->
 							<c:forEach var="phone" items="${page.list }">
@@ -81,11 +81,8 @@
 									<td>${phone.id }</td>
 									<td>${phone.phone }</td>
 									<td><a
-										href="uploadSchoolPhone.jsp?id=${idiomItem.id }&userName=${userName }&idiom=${idiomItem.idiom }&idiomType=${idiomItem.idiomType }"
+										href="UpdatePhone?id=${phone.id }&userName=${userName }"
 										style="color: black">修改</a></td>
-									<td><a
-										href="DeleteIdiomServlet?id=${idiomItem.id }&userName=${userName }&page=${page.prePageNum+1 }"
-										style="color: black">删除</a></td>
 								</tr>
 							</c:forEach>
 						</table>

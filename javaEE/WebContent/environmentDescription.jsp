@@ -57,7 +57,7 @@
 				<div id="environment">
 					<!-- 显示表格 -->
 					<div style="height: 40px; line-height: 40px; margin-bottom: 20px">
-                    <form action="SearchBookServlet" style="margin-left: 500px">
+                    <form action="SearchDescriptionServlet" style="margin-left: 500px">
                         <span> <input type="text" name="searchInfo"
                             style="height: 25px; width: 200px; vertical-align: bottom"
                             placeholder="请输入要查找的描述信息" value="${searchInfo }">
@@ -65,7 +65,7 @@
                         <span> 
                             <input value="" type="submit" style="border:none;width:40px;height:30px;background: url('imgs/home/search.png');background-size: 40px 30px; vertical-align: bottom">
                         </span>
-                        <input type="hidden" name="userName" value="${userName }">
+                        
                     </form>
                 </div>
 					<div
@@ -83,7 +83,7 @@
 									<td>${description.id }</td>
 									<td>${description.description }</td>
 									<td><a
-										href="uploadEnvironmentDescription.jsp?id=${description.id }&userName=${userName }&idiom=${idiomItem.idiom }&idiomType=${idiomItem.idiomType }"
+										href="UpdateDescription?id=${description.id }&userName=${userName }&idiom=${idiomItem.idiom }&idiomType=${idiomItem.idiomType }"
 										style="color: black">修改</a></td>
 									<td><a
 										href="DeleteDescriptionServlet?id=${description.id }&userName=${userName }&page=${page.prePageNum+1 }"

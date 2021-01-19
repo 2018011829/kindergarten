@@ -294,8 +294,7 @@ tr:hover{
 }
 .updateBox2{
     width:500px;
-    margin-left:350px;
-    position: relative;
+    left:350px;
     padding: 0 20px;
 }
 #updateTitle{

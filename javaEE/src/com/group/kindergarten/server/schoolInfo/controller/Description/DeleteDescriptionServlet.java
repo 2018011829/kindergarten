@@ -1,5 +1,6 @@
-package com.group.kindergarten.server.schoolInfo.controller;
+package com.group.kindergarten.server.schoolInfo.controller.Description;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,23 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.group.kindergarten.schoolInfo.entity.BasicInfo;
-import com.group.kindergarten.schoolInfo.entity.Description;
-import com.group.kindergarten.schoolInfo.service.BasicInfoService;
 import com.group.kindergarten.schoolInfo.service.DescriptionService;
-import com.group.kindergarten.util.Page;
+import com.group.kindergarten.teacher.service.TeacherServiceImpl;
 
 /**
- * Servlet implementation class BasicInfoServlet
+ * Servlet implementation class DeleteDescriptionServlet
  */
-@WebServlet("/BasicInfoServlet")
-public class BasicInfoManageServlet extends HttpServlet {
+@WebServlet("/DeleteDescriptionServlet")
+public class DeleteDescriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BasicInfoManageServlet() {
+    public DeleteDescriptionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +30,17 @@ public class BasicInfoManageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page1 = request.getParameter("page");
-		int pageNum = 1, pageSize = 10;
-		if (page1 != null && !page1.equals("")) {
-			pageNum = Integer.parseInt(page1);
+		String descriptionId = request.getParameter("id");
+		if(descriptionId != null && !descriptionId.equals("")) {
+			int id = Integer.parseInt(descriptionId);
+			DescriptionService descriptionService = new DescriptionService();
+			boolean flag = descriptionService.deleteDescriptionService(id);
+			if(flag) {
+				response.sendRedirect("DescriptionManageServlet");
+			}else {
+				System.out.println("É¾³ýÊ§°Ü£¡");
+			}
 		}
-		BasicInfoService basicInfoService = new BasicInfoService();
-		Page<BasicInfo> page = basicInfoService.listByPage(pageNum, pageSize);
-		
-		request.setAttribute("page", page);
-		request.getRequestDispatcher("basicInformation.jsp").forward(request, response);
 	}
 
 	/**

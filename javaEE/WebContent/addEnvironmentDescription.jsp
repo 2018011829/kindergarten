@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,12 +48,6 @@
             </div>
             <div id="schoolInfo">
                 <div id="schoolInfoMenu">
-
-                <ul class="schoolInfoMenu">
-                    <li><a href="addEnvironmentDescription.jsp">环境描述</a></li>
-                    <li><a href="addEnvironmentPicture.jsp">环境图片</a></li>
-                    <li><a href="addBasicInformation.jsp">基本信息</a></li>
-                </ul>
                 </div>
                 <div id="environment">
                 <!-- 显示表格 -->

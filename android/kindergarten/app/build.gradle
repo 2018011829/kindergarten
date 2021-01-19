@@ -78,6 +78,8 @@ dependencies {
     implementation ('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
         transitive = true;
     }
+    //添加
+    implementation 'com.contrarywind:wheelview:4.1.0'
 }
 allprojects {
     repositories {

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8" import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,11 +31,11 @@
                     </ul>
                     <li id="introduce" onclick="showIntroduceMenu()"><a>学校简介信息管理</a> <img
                         src="imgs/home/xiala.png" id="xiala3"></li>
-                    <ul class="introduce_menu" id="click_introduce_menu" style="display: block">
+                    <ul class="introduce_menu" id="click_introduce_menu" style="display: none">
                         <li onclick="showMenu_info3()" id="introduce_info"><a
-                            href="#">学校简介</a></li>
+                            href="DescriptionManageServlet">学校简介</a></li>
                         <li onclick="showMenu_add3()" id="introduce_add"><a
-                            href="#">新增学校信息</a></li>
+                            href="addEnvironmentPicture.jsp">新增学校信息</a></li>
                     </ul>
                     <li id="teacher" onclick="showTeacherMenu()"><a>教师信息管理</a><img
                         src="imgs/home/xiala.png" id="xiala4"></li>
@@ -50,20 +50,15 @@
                 <fieldset>
         <div class="editBox1"style="width:100%;height:800px;text-align:center;">
             <div class="updateBox2">
-               <p id="updateTitle">Update Teacher Info</p>
-               <form action="updateTeacherManage" method="post" enctype="multipart/form-data" style="margin-top:30px">
+               <form action="UploadDescription" method="post"  style="margin-top:30px">
                     <input type="hidden" name="teacherId" value="${teacherId }" />
                     <div class="updateBox3">
                         <div class="updateBox4">id：</div>
-                        <input type="text" name="teacherName" value="${teacher.name }" class="updateInput"/>
+                        <input type="text" name="id" value="${id }" class="updateInput"/>
                     </div><br/>
                     <div class="updateBox3">
-                        <div class="updateBox4">校园简介：</div>
-                        <input type="text" name="teacherPosition" value="${teacher.position }" class="updateInput"/>
-                    </div><br/>
-                    <div class="updateBox3">
-                        <div class="updateBox4">地址：</div>
-                        <input type="text" name="teacherPosition" value="${teacher.position }" class="updateInput"/>
+                        <div class="updateBox4">描述：</div>
+                        <input type="text" name="description" value="${description }" class="updateInput"/>
                     </div><br/>
                     <input type="submit" value="提交修改信息"  id="submitUpdate"/>
                 </form>

@@ -26,22 +26,25 @@ import com.group.kindergarten.teacher.service.TeacherServiceImpl;
 @WebServlet("/UploadPicture")
 public class UploadPicture extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UploadPicture() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public UploadPicture() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Picture picture = new Picture();
-		String pictureLast = null;
-		String url = request.getRealPath("/")+"imgs\\schoolInfoPicture\\";
+		String pictureLast = null;// 原图片路径
+		String pictureName = null;// 原图片名称
+		String url = request.getRealPath("/") + "imgs\\schoolInfoPicture\\";
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		PictureServce pictureServce = new PictureServce();
@@ -62,19 +65,23 @@ public class UploadPicture extends HttpServlet {
 						}
 					}
 					if (item.getFieldName().equals("pictureLast")) {
-						pictureLast = url+item.getString("utf-8");
+						pictureName = item.getString("utf-8");
+						pictureLast = url + pictureName;
 					}
-				}else {// 是文件 进行文件的读写
+				} else {// 是文件 进行文件的读写
+					deleteLastPicture(pictureLast);
 					String imgName = item.getName();
 					if (imgName != null && !imgName.equals("")) {
 						String path = this.getServletContext().getRealPath("/imgs/schoolInfoPicture");
-						System.out.println("path:"+path);
-						String name = "" + System.currentTimeMillis();
-						System.out.println("name:"+name);
+						System.out.println("path:" + path);
+						String[] temp;
+						temp = pictureName.split("\\."); // 分割字符串
+						String name = temp[0];
+						System.out.println("name:" + name);
 						String ext = imgName.substring(item.getName().lastIndexOf("."), item.getName().length());
-						System.out.println("ext:"+ext);
-						picture.setPicture(name + ext);
-						item.write(new File(path + "/" + name + ext));
+						System.out.println("ext:" + ext);
+						picture.setPicture(name+ext);
+						item.write(new File(path + "/" + name+ext));
 					} else {
 						picture.setPicture(null);
 					}
@@ -83,18 +90,33 @@ public class UploadPicture extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		boolean flag = pictureServce.updatePictureService(picture,pictureLast);
-		if(flag) {
+		boolean flag = pictureServce.updatePictureService(picture, pictureLast);
+		if (flag) {
 			response.sendRedirect("PictureManageServlet");
-		}else {
+		} else {
 			response.sendRedirect("updatePictureServlet");
 		}
 	}
+	public void deleteLastPicture(String pictureLast) {
+		//删除原图片
+		File file = new File(pictureLast);
+        //判断文件是否存在
+        if (file.exists() == true){
+            System.out.println("图片存在，可执行删除操作");
+            Boolean flag = false;
+            flag = file.delete();
+            if (flag){
+                System.out.println("成功删除图片"+file.getName());
+            }
+        }
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

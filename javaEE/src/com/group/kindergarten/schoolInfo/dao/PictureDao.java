@@ -303,21 +303,6 @@ public class PictureDao {
 					if (String.valueOf(descriptionId)!=null&&!String.valueOf(descriptionId).equals("")) {
 						System.out.println(pictureUrl);
 						sql = "update kindergarten_environment_picture set picture='" + pictureUrl + "', description_id=" + descriptionId + " where id=" + id + "";
-						//删除原图片
-						File file = new File(pictureLast);
-			            //判断文件是否存在
-			            if (file.exists() == true){
-			                System.out.println("图片存在，可执行删除操作");
-			                Boolean flag = false;
-			                flag = file.delete();
-			                if (flag){
-			                    System.out.println("成功删除图片"+file.getName());
-			                }else {
-			                    n=-1;
-			                }
-			            }else {
-			            	n=-1;
-			            }
 			            // 将更新后的教师信息插入到数据库表中
 						n = pstm.executeUpdate(sql);
 					} else {

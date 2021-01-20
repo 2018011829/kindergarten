@@ -9,7 +9,7 @@ public class LoadBannerTool {
     /**
      * 加载轮播图
      */
-    public static void startBanner(Banner banner, List<Integer> images) {
+    public static void startBanner(Banner banner, List<String> images) {
         //设置图片加载器
         banner.setImageLoader(new GlideImageLoader());
         //设置图片集合

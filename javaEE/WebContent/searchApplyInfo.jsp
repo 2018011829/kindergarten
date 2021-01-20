@@ -48,8 +48,9 @@
 						src="imgs/home/xiala.png" id="xiala4"></li>
 					<ul class="teacher_menu" id="click_teacher_menu"
 						style="display: none">
-						<li onclick="showMenu_info4()" id="teacher_info"><a href="teacherManage">查看教师信息</a></li>
+                        <li onclick="showMenu_info4()" id="teacher_info"><a href="teacherManage">查看教师信息</a></li>
                         <li onclick="showMenu_add4()" id="teacher_add"><a href="addTeacher.jsp">新增教师信息</a></li>
+                        <li onclick="showMenu_info5()" id="teacher_add"><a href="deletedTeacherManage">查看离职教师信息</a></li>
 					</ul>
 				</ul>
 			</div>

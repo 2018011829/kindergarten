@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>UpdateTeacherInfo</title>
-<link rel="stylesheet" type="text/css" href="css/editTeacher.css">
-<script type="text/javascript" src="js/index.js"></script>
+<title>Search Teacher</title>
+<link rel="stylesheet" href="css/teacherStyle.css">
 </head>
 <body>
 	<div id="box">
@@ -58,51 +56,43 @@
 					</ul>
 				</ul>
 			</div>
-			<div class="editBox1">
-				<div class="updateBox1">
-					<p id="text">原图片</p><br/>
-					<img alt="" src="${teacher.picture }" id="oldImg">
-				</div>
-				<div class="updateBox2">
-					<p id="updateTitle">Update Teacher Info</p>
-					<form action="updateTeacherManage" method="post"
-						enctype="multipart/form-data" style="margin-top: 30px">
-						<input type="hidden" name="teacherId" value="${teacherId }" />
-						<div class="updateBox3">
-							<div class="updateBox4">教师姓名：</div>
-							<input type="text" name="teacherName" value="${teacher.name }"
-								class="updateInput" />
+			<div class="box0">
+				<div class="box3">
+					<table border="1" style="margin: 0 auto;">
+						<tr height="40px">
+							<th width="100px" style="text-align: center;">教师id</th>
+							<th width="120px" style="text-align: center;">教师姓名</th>
+							<th width="120px" style="text-align: center;">教师职位</th>
+							<th width="150px" style="text-align: center;">联系方式</th>
+							<th width="180px" style="text-align: center;">教师图片</th>
+							<th style="text-align: center;">座右铭</th>
+						</tr>
+						<c:forEach items="${page.list }" var="teacher">
+							<tr align="center">
+								<td>${teacher.id }</td>
+								<td>${teacher.name }</td>
+								<td>${teacher.position }</td>
+								<td>${teacher.phone }</td>
+								<td style="text-align: center;"><img alt=""
+									src="${teacher.picture }"
+									style="width: 140px; height: 180px; background: #ffffff;">
+								</td>
+								<td width="200px" style="padding-left: 10px; text-align: left;">${teacher.motto }</td>
+							</tr>
+						</c:forEach>
+					</table>
+					<div class="box4">
+						<div class="box5">
+							总共有${page.totalPageNum }页，总共有${page.totalCount }个数据；&nbsp;&nbsp;
+							<a href="searchDeletedTeacherByName?teacherName=${name }&page=1">首页</a>&nbsp;&nbsp;
+							<a
+								href="searchDeletedTeacherByName?teacherName=${name }&page=${page.prePageNum }">上一页</a>&nbsp;&nbsp;
+							<a
+								href="searchDeletedTeacherByName?teacherName=${name }&page=${page.nextPageNum }">下一页</a>&nbsp;&nbsp;
+							<a
+								href="searchDeletedTeacherByName?teacherName=${name }&page=${page.totalPageNum }">末页</a>&nbsp;&nbsp;
 						</div>
-						<br />
-						<div
-							style="width: 500px; height: 50px; text-align: center; text-indent: 8px;">
-							<div style="margin: 0 auto;">
-								<div class="updateBox4">教师图片：</div>
-								<div class="updateBox5">
-									<input type="file" name="teacherPicture" id="updateImgFile" />
-								</div>
-							</div>
-						</div>
-						<br />
-						<div class="updateBox3">
-							<div class="updateBox4">教师职位：</div>
-							<input type="text" name="teacherPosition"
-								value="${teacher.position }" class="updateInput" />
-						</div>
-						<br />
-						<div class="updateBox3">
-							<div class="updateBox4">联系方式：</div>
-							<input type="text" name="teacherPhone" value="${teacher.phone }"
-								class="updateInput" />
-						</div>
-						<br />
-						<div class="updateBox3">
-							<div class="updateBox4">座右铭：</div>
-							<input type="text" name="teacherMotto" value="${teacher.motto }"
-								class="updateInput" />
-						</div>
-						<br /> <input type="submit" value="提交修改信息" id="submitUpdate" />
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>

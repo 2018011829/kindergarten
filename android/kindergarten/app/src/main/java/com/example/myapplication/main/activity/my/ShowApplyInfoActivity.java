@@ -137,7 +137,7 @@ public class ShowApplyInfoActivity extends AppCompatActivity {
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
                 .post(formBody)
-                .url(ConfigUtil.SERVICE_ADDRESS + "GetApplyInfoServlet")
+                .url(ConfigUtil.SERVICE_ADDRESS + "GetApplyInfo")
                 .build();
         Call call = new OkHttpClient().newCall(request);
         call.enqueue(new Callback() {

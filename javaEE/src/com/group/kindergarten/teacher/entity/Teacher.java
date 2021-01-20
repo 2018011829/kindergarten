@@ -7,6 +7,7 @@ public class Teacher {
 	private String phone;
 	private String picture;
 	private String motto;
+	private int status;
 
 	public int getId() {
 		return id;
@@ -56,11 +57,19 @@ public class Teacher {
 		this.motto = motto;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public Teacher() {
 		super();
 	}
 
-	public Teacher(int id, String name, String position, String phone, String picture, String motto) {
+	public Teacher(int id, String name, String position, String phone, String picture, String motto, int status) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -68,12 +77,13 @@ public class Teacher {
 		this.phone = phone;
 		this.picture = picture;
 		this.motto = motto;
+		this.status = status;
 	}
 
 	@Override
 	public String toString() {
 		return "Teacher [id=" + id + ", name=" + name + ", position=" + position + ", phone=" + phone + ", picture="
-				+ picture + ", motto=" + motto + "]";
+				+ picture + ", motto=" + motto + ", status=" + status + "]";
 	}
 
 }

@@ -25,7 +25,23 @@ public class TeacherServiceImpl {
 	}
 	
 	/**
-	 * 根据页数和搜索条件查找教师信息
+	 * 分页查询离职教师信息
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public Page<Teacher> listDeletedByPage(int pageNum, int pageSize){
+		Page<Teacher> page = new Page<Teacher>(pageNum, pageSize);
+		TeacherDaoImpl teacherDaoImpl = new TeacherDaoImpl();
+		int count = teacherDaoImpl.countDeletedByPage();
+		List<Teacher> list = teacherDaoImpl.findDeletedByPage(pageNum,pageSize);
+		page.setList(list);
+		page.setTotalCount(count);
+		return page;
+	}
+	
+	/**
+	 * 根据页数和搜索条件查找离职教师信息
 	 * @param pageNum
 	 * @param pageSize
 	 * @param name
@@ -36,6 +52,23 @@ public class TeacherServiceImpl {
 		TeacherDaoImpl teacherDaoImpl = new TeacherDaoImpl();
 		int count = teacherDaoImpl.countByPageAndName(name);
 		List<Teacher> list = teacherDaoImpl.findByPageAndName(pageNum,pageSize,name);
+		page.setList(list);
+		page.setTotalCount(count);
+		return page;
+	}
+	
+	/**
+	 * 根据页数和搜索条件查找离职教师信息
+	 * @param pageNum
+	 * @param pageSize
+	 * @param name
+	 * @return
+	 */
+	public Page<Teacher> listDeletedByPageAndName(int pageNum, int pageSize, String name){
+		Page<Teacher> page = new Page<Teacher>(pageNum, pageSize);
+		TeacherDaoImpl teacherDaoImpl = new TeacherDaoImpl();
+		int count = teacherDaoImpl.countDeletedByPageAndName(name);
+		List<Teacher> list = teacherDaoImpl.findDeletedByPageAndName(pageNum,pageSize,name);
 		page.setList(list);
 		page.setTotalCount(count);
 		return page;

@@ -53,6 +53,8 @@
 							class="jump" href="teacherManage">查看教师信息</a></li>
 						<li onclick="showMenu_add4()" id="teacher_add"><a
 							class="jump" href="addTeacher.jsp">新增教师信息</a></li>
+						<li onclick="showMenu_info5()" id="teacher_add"><a
+                            class="jump" href="deletedTeacherManage">查看离职教师信息</a></li>
 					</ul>
 				</ul>
 			</div>

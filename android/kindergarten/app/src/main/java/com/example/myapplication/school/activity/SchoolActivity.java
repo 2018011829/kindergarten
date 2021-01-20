@@ -33,6 +33,7 @@ import com.example.myapplication.school.tool.LoadBannerTool;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -123,6 +124,14 @@ public class SchoolActivity extends AppCompatActivity {
                         tv_school_outside.setText(schoolOutside.getDescription().replace("\\n","\n"));
                         outsideImages.addAll(schoolOutside.getList());
                         LoadBannerTool.startBanner(bannerOutside,outsideImages);
+                        bannerOutside.setOnBannerListener(new OnBannerListener() {
+                            @Override
+                            public void OnBannerClick(int position) {
+                                Intent intent=new Intent(SchoolActivity.this,ImageShower.class);
+                                intent.putExtra("tag",outsideImages.get(position));
+                                startActivity(intent);
+                            }
+                        });
                     }
                     break;
                 case 3://获取校园区角环境
@@ -136,6 +145,14 @@ public class SchoolActivity extends AppCompatActivity {
                         tv_school_angle_banner.setText(schoolOutside.getDescription().replace("\\n","\n"));
                         angleImages.addAll(schoolOutside.getList());
                         LoadBannerTool.startBanner(bannerAngle,angleImages);
+                        bannerAngle.setOnBannerListener(new OnBannerListener() {
+                            @Override
+                            public void OnBannerClick(int position) {
+                                Intent intent=new Intent(SchoolActivity.this,ImageShower.class);
+                                intent.putExtra("tag",angleImages.get(position));
+                                startActivity(intent);
+                            }
+                        });
                     }
                     break;
                 case 4://校园楼道环境信息
@@ -313,7 +330,6 @@ public class SchoolActivity extends AppCompatActivity {
         tv_right=findViewById(R.id.test_tv_right);
         tv_bottom=findViewById(R.id.test_tv_bottom);
         imageView =findViewById(R.id.test_image);
-        imageView.setTag("all");
         screenWidth = getWindowManager().getDefaultDisplay().getWidth();
 
         //给外部环境添加轮播照片

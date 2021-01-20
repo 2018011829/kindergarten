@@ -35,6 +35,7 @@
                     android:layout_width="180dp"
                     android:layout_height="130dp"
                     android:scaleType="fitXY"
+                    android:tag="all.png"
                     android:onClick="show_click"/>
 
                 <TextView
@@ -246,7 +247,7 @@
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:onClick="show_click"
-                            android:tag="wall1"/>
+                            android:tag="wall1.png"/>
 
                         <ImageView
                             android:id="@+id/iv_school_passageway2"
@@ -255,7 +256,7 @@
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:onClick="show_click"
-                            android:tag="wall2" />
+                            android:tag="wall2.png" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -277,7 +278,7 @@
                             android:layout_width="130dp"
                             android:layout_height="110dp"
                             android:onClick="show_click"
-                            android:tag="desk" />
+                            android:tag="desk.png" />
 
                         <ImageView
                             android:id="@+id/iv_school_inside2"
@@ -285,7 +286,7 @@
                             android:layout_height="110dp"
                             android:layout_marginLeft="5dp"
                             android:onClick="show_click"
-                            android:tag="drawer" />
+                            android:tag="drawer.png" />
                     </LinearLayout>
 
                     <TextView
@@ -319,7 +320,7 @@
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:onClick="show_click"
-                            android:tag="play1" />
+                            android:tag="play1.png" />
 
                         <ImageView
                             android:id="@+id/iv_school_play2"
@@ -327,7 +328,7 @@
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:onClick="show_click"
-                            android:tag="play3" />
+                            android:tag="play3.png" />
 
                         <ImageView
                             android:id="@+id/iv_school_play3"
@@ -335,7 +336,7 @@
                             android:layout_weight="1"
                             android:layout_height="120dp"
                             android:onClick="show_click"
-                            android:tag="play4" />
+                            android:tag="play4.png" />
                     </LinearLayout>
 
                 </LinearLayout>

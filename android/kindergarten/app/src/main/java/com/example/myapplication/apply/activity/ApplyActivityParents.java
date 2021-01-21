@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -19,8 +20,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.apply.activity.Bean.ApplyInfo;
+import com.example.myapplication.main.util.IdCardVerification;
+import com.example.myapplication.main.util.PhoneVerification;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.text.ParseException;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ApplyActivityParents extends AppCompatActivity {
     private EditText parentName1;//家长姓名1
@@ -127,54 +135,118 @@ public class ApplyActivityParents extends AppCompatActivity {
             if(!parentName1.getText().toString().equals("")&&!relation1.getText().toString().equals("")
             &&!parentIDnumber1.getText().toString().equals("")&&!phoneNumber1.getText().toString().equals("")
             &&!workSpace1.getText().toString().equals("")&&!homeAddress1.getText().toString().equals("")){
-                Resources resources = ApplyActivityParents.this.getResources();
-                Drawable drawable = resources.getDrawable(R.drawable.apply_button2);
-                next2.setBackground(drawable);
-                next2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(parentName2.getText().toString().equals("")&&relation2.getText().toString().equals("")
-                                &&parentIDnumber2.getText().toString().equals("")&&phoneNumber2.getText().toString().equals("")
-                                &&workSpace2.getText().toString().equals("")&&homeAddress2.getText().toString().equals("")){
-                            applyInfo.setParentName1(parentName1.getText().toString());
-                            applyInfo.setRelation1(relation1.getText().toString());
-                            applyInfo.setParentIDnumber1(parentIDnumber1.getText().toString());
-                            applyInfo.setPhoneNumber1(phoneNumber1.getText().toString());
-                            applyInfo.setWorkSpace1(workSpace1.getText().toString());
-                            applyInfo.setHomeAddress1(homeAddress1.getText().toString());
-
-                            String appInfo = gson.toJson(applyInfo);
-                            Intent intent = new Intent(ApplyActivityParents.this, ApplyActivityAffirm.class);
-                            intent.putExtra("applyInfo",appInfo);
-                            intent.putExtra("whether","0");
-                            startActivity(intent);
-                        }else if(!parentName2.getText().toString().equals("")&&!relation2.getText().toString().equals("")
-                                &&!parentIDnumber2.getText().toString().equals("")&&!phoneNumber2.getText().toString().equals("")
-                                &&!workSpace2.getText().toString().equals("")&&!homeAddress2.getText().toString().equals("")){
-                            applyInfo.setParentName1(parentName1.getText().toString());
-                            applyInfo.setRelation1(relation1.getText().toString());
-                            applyInfo.setParentIDnumber1(parentIDnumber1.getText().toString());
-                            applyInfo.setPhoneNumber1(phoneNumber1.getText().toString());
-                            applyInfo.setWorkSpace1(workSpace1.getText().toString());
-                            applyInfo.setHomeAddress1(homeAddress1.getText().toString());
-
-                            applyInfo.setParentName2(parentName2.getText().toString());
-                            applyInfo.setRelation2(relation2.getText().toString());
-                            applyInfo.setParentIDnumber2(parentIDnumber2.getText().toString());
-                            applyInfo.setPhoneNumber2(phoneNumber2.getText().toString());
-                            applyInfo.setWorkSpace2(workSpace2.getText().toString());
-                            applyInfo.setHomeAddress2(homeAddress2.getText().toString());
-
-                            String appInfo = gson.toJson(applyInfo);
-                            Intent intent = new Intent(ApplyActivityParents.this, ApplyActivityAffirm.class);
-                            intent.putExtra("applyInfo",appInfo);
-                            intent.putExtra("whether","1");
-                            startActivity(intent);
-                        }else {
-                            Toast.makeText(ApplyActivityParents.this,"信息未完成",Toast.LENGTH_LONG).show();
+                String IdCardRational = null;
+                //判断身份证号的合理性
+                try {
+                    // 将身份证最后一位的x转换为大写，便于统一
+                    String IdCard = parentIDnumber1.getText().toString();
+                    IdCard = IdCard.toUpperCase();
+                    IdCardRational = IdCardVerification.IDCardValidate(IdCard);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if (!IdCardRational.equals("该身份证有效！")){
+                    Resources resources = ApplyActivityParents.this.getResources();
+                    Drawable drawable = resources.getDrawable(R.drawable.apply_button1);
+                    next2.setBackground(drawable);
+                    next2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(ApplyActivityParents.this,"身份证号不合理",Toast.LENGTH_LONG).show();
                         }
-                    }
-                });
+                    });
+                }else if(!phoneNumber1.getText().toString().matches(PhoneVerification.REGEX_MOBILE)){
+                    Resources resources = ApplyActivityParents.this.getResources();
+                    Drawable drawable = resources.getDrawable(R.drawable.apply_button1);
+                    next2.setBackground(drawable);
+                    next2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(ApplyActivityParents.this,"手机号错误",Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }else {
+                    Resources resources = ApplyActivityParents.this.getResources();
+                    Drawable drawable = resources.getDrawable(R.drawable.apply_button2);
+                    next2.setBackground(drawable);
+                    next2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(parentName2.getText().toString().equals("")&&relation2.getText().toString().equals("")
+                                    &&parentIDnumber2.getText().toString().equals("")&&phoneNumber2.getText().toString().equals("")
+                                    &&workSpace2.getText().toString().equals("")&&homeAddress2.getText().toString().equals("")){
+                                applyInfo.setParentName1(parentName1.getText().toString());
+                                applyInfo.setRelation1(relation1.getText().toString());
+                                applyInfo.setParentIDnumber1(parentIDnumber1.getText().toString());
+                                applyInfo.setPhoneNumber1(phoneNumber1.getText().toString());
+                                applyInfo.setWorkSpace1(workSpace1.getText().toString());
+                                applyInfo.setHomeAddress1(homeAddress1.getText().toString());
+
+                                String appInfo = gson.toJson(applyInfo);
+                                Intent intent = new Intent(ApplyActivityParents.this, ApplyActivityAffirm.class);
+                                intent.putExtra("applyInfo",appInfo);
+                                intent.putExtra("whether","0");
+                                startActivity(intent);
+                            }else if(!parentName2.getText().toString().equals("")&&!relation2.getText().toString().equals("")
+                                    &&!parentIDnumber2.getText().toString().equals("")&&!phoneNumber2.getText().toString().equals("")
+                                    &&!workSpace2.getText().toString().equals("")&&!homeAddress2.getText().toString().equals("")){
+                                String IdCardRational = null;
+                                //判断身份证号的合理性
+                                try {
+                                    // 将身份证最后一位的x转换为大写，便于统一
+                                    String IdCard = parentIDnumber2.getText().toString();
+                                    IdCard = IdCard.toUpperCase();
+                                    IdCardRational = IdCardVerification.IDCardValidate(IdCard);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                if (!IdCardRational.equals("该身份证有效！")){
+                                    Resources resources = ApplyActivityParents.this.getResources();
+                                    Drawable drawable = resources.getDrawable(R.drawable.apply_button1);
+                                    next2.setBackground(drawable);
+                                    next2.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Toast.makeText(ApplyActivityParents.this,"身份证号不合理",Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                                }else if(!phoneNumber2.getText().toString().matches(PhoneVerification.REGEX_MOBILE)){
+                                    Resources resources = ApplyActivityParents.this.getResources();
+                                    Drawable drawable = resources.getDrawable(R.drawable.apply_button1);
+                                    next2.setBackground(drawable);
+                                    next2.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Toast.makeText(ApplyActivityParents.this,"手机号错误",Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                                }else {
+                                    applyInfo.setParentName1(parentName1.getText().toString());
+                                    applyInfo.setRelation1(relation1.getText().toString());
+                                    applyInfo.setParentIDnumber1(parentIDnumber1.getText().toString());
+                                    applyInfo.setPhoneNumber1(phoneNumber1.getText().toString());
+                                    applyInfo.setWorkSpace1(workSpace1.getText().toString());
+                                    applyInfo.setHomeAddress1(homeAddress1.getText().toString());
+
+                                    applyInfo.setParentName2(parentName2.getText().toString());
+                                    applyInfo.setRelation2(relation2.getText().toString());
+                                    applyInfo.setParentIDnumber2(parentIDnumber2.getText().toString());
+                                    applyInfo.setPhoneNumber2(phoneNumber2.getText().toString());
+                                    applyInfo.setWorkSpace2(workSpace2.getText().toString());
+                                    applyInfo.setHomeAddress2(homeAddress2.getText().toString());
+
+                                    String appInfo = gson.toJson(applyInfo);
+                                    Intent intent = new Intent(ApplyActivityParents.this, ApplyActivityAffirm.class);
+                                    intent.putExtra("applyInfo",appInfo);
+                                    intent.putExtra("whether","1");
+                                    startActivity(intent);
+                                }
+                            }else {
+                                Toast.makeText(ApplyActivityParents.this,"信息未完成",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                }
             }else {
                 Resources resources = ApplyActivityParents.this.getResources();
                 Drawable drawable = resources.getDrawable(R.drawable.apply_button1);

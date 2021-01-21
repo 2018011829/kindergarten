@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -22,8 +23,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.apply.activity.Bean.ApplyInfo;
 import com.example.myapplication.main.util.ChangeStatusBarColor;
+import com.example.myapplication.main.util.IdCardVerification;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.text.ParseException;
 
 public class ApplyActivityBaby extends AppCompatActivity {
     private EditText babyName;//宝宝姓名
@@ -144,21 +148,54 @@ public class ApplyActivityBaby extends AppCompatActivity {
             if(!babyName.getText().toString().equals("")&&!babyBirthday.getText().toString().equals("")
                     &&!babySex.getText().toString().equals("")&&!babyIDnumber.getText().toString().equals("")
                     &&!babyAddoAllergies.getText().toString().equals("")){
-                Resources resources = ApplyActivityBaby.this.getResources();
-                Drawable drawable = resources.getDrawable(R.drawable.apply_button2);
-                next1.setBackground(drawable);
-                next1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ApplyInfo applyInfo = new ApplyInfo(getUserNumber(),babyName.getText().toString(),
-                                babyBirthday.getText().toString(),babySex.getText().toString(),
-                                babyIDnumber.getText().toString(),babyAddoAllergies.getText().toString());
-                        String appInfo = gson.toJson(applyInfo);
-                        Intent intent = new Intent(ApplyActivityBaby.this, ApplyActivityParents.class);
-                        intent.putExtra("applyInfo",appInfo);
-                        startActivity(intent);
-                    }
-                });
+                String IdCardRational = null;
+                //判断身份证号的合理性
+                try {
+                    // 将身份证最后一位的x转换为大写，便于统一
+                    String IdCard = babyIDnumber.getText().toString();
+                    IdCard = IdCard.toUpperCase();
+                    IdCardRational = IdCardVerification.IDCardValidate(IdCard);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if (!IdCardRational.equals("该身份证有效！")){
+                    Resources resources = ApplyActivityBaby.this.getResources();
+                    Drawable drawable = resources.getDrawable(R.drawable.apply_button1);
+                    next1.setBackground(drawable);
+                    next1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(ApplyActivityBaby.this,"身份证号不合理",Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }else if(!babySex.getText().toString().equals("男")&&!babySex.getText().toString().equals("女")){
+                    Resources resources = ApplyActivityBaby.this.getResources();
+                    Drawable drawable = resources.getDrawable(R.drawable.apply_button1);
+                    next1.setBackground(drawable);
+                    next1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(ApplyActivityBaby.this,"宝宝性别不合理",Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }else {
+                    Resources resources = ApplyActivityBaby.this.getResources();
+                    Drawable drawable = resources.getDrawable(R.drawable.apply_button2);
+                    next1.setBackground(drawable);
+                    next1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ApplyInfo applyInfo = new ApplyInfo(getUserNumber(),babyName.getText().toString(),
+                                    babyBirthday.getText().toString(),babySex.getText().toString(),
+                                    babyIDnumber.getText().toString(),babyAddoAllergies.getText().toString());
+                            String appInfo = gson.toJson(applyInfo);
+
+                            Intent intent = new Intent(ApplyActivityBaby.this, ApplyActivityParents.class);
+                            intent.putExtra("applyInfo",appInfo);
+                            startActivity(intent);
+                        }
+                    });
+                }
             }else {
                 Resources resources = ApplyActivityBaby.this.getResources();
                 Drawable drawable = resources.getDrawable(R.drawable.apply_button1);

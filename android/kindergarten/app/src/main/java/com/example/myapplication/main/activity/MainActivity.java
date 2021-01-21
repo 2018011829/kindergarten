@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.myapplication.R;
 import com.example.myapplication.main.fragment.HomeFragment;
@@ -14,6 +15,7 @@ import com.example.myapplication.main.fragment.MyFragment;
 import com.example.myapplication.main.fragment.NewFragment;
 import com.example.myapplication.main.fragment.RelationFragment;
 import com.example.myapplication.main.util.ChangeStatusBarColor;
+import com.example.myapplication.main.util.ConfigUtil;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ChangeStatusBarColor.initSystemBar(this);
+
+        //打印下手机号
+        Log.i("lxl", "onCreate: "+ ConfigUtil.PHONE);
 
         ButterKnife.bind(this);
 

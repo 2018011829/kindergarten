@@ -21,6 +21,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class App extends Application {
 
+
     // 此 id 与 key 仅供测试使用
     private final String APP_ID = "ywlMubJ7lbzajm8S7YnPlK7n-gzGzoHsz";
     private final String APP_KEY = "XS2MbN6mytDYB0yMkCnHTyQf";

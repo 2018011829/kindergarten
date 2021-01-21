@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.contact.TestActivity;
 import com.example.myapplication.main.activity.MainActivity;
 import com.example.myapplication.main.util.ChangeStatusBarColor;
 import com.example.myapplication.main.util.ConfigUtil;
@@ -28,6 +29,11 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.im.AVIMOptions;
+import cn.leancloud.im.v2.AVIMClient;
+import cn.leancloud.im.v2.AVIMException;
+import cn.leancloud.im.v2.callback.AVIMClientCallback;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import okhttp3.Call;
@@ -90,6 +96,21 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
 
                     if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {//验证通过
                         Log.i("lxl", "afterEvent: 验证成功");
+                        // 存入用户手机电话
+                        ConfigUtil.PHONE= etPhoneNum.getText().toString().trim();
+                        // 在LeanCloud登录
+                        AVIMOptions.getGlobalOptions().setAutoOpen(true);
+                        LCChatKit.getInstance().open(etPhoneNum.getText().toString().trim(), new AVIMClientCallback() {
+                            @Override
+                            public void done(AVIMClient avimClient, AVIMException e) {
+                                if (null == e) {
+                                    Intent intent = new Intent(LoginByPhoneActivity.this, TestActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(LoginByPhoneActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                        /**
                         *  //1.环信登录需要用户名和密码，需要先从本地服务器得到该用户的密码
                         OkHttpClient okHttpClient=new OkHttpClient();

@@ -191,7 +191,8 @@ public class AddChildActivity extends AppCompatActivity {
 
     private void addChildMessage() {
         FormBody.Builder builder = new FormBody.Builder();
-        builder.add("parentPhone", MyFragment.phoneNum);
+//        builder.add("parentPhone", MyFragment.phoneNum);
+        builder.add("parentPhone", ConfigUtil.PHONE);
         builder.add("name",edt_name.getText().toString());
         builder.add("grade", tv_class.getText().toString());
         builder.add("sex",sex);

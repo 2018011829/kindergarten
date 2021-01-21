@@ -91,7 +91,8 @@ public class ApplyInfoActivity extends AppCompatActivity {
 
     private void queryApplyInfoByPhoneNum() {
         FormBody.Builder builder = new FormBody.Builder();
-        builder.add("phone", MyFragment.phoneNum);
+//        builder.add("phone", MyFragment.phoneNum);
+        builder.add("phone", ConfigUtil.PHONE);
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
                 .post(formBody)

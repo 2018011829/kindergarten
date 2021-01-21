@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-01-21 11:05:15
+Date: 2021-01-21 21:13:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -223,25 +223,6 @@ CREATE TABLE `kindergarten_phone` (
 INSERT INTO `kindergarten_phone` VALUES ('1', '0311-858857');
 
 -- ----------------------------
--- Table structure for `parent`
--- ----------------------------
-DROP TABLE IF EXISTS `parent`;
-CREATE TABLE `parent` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` char(11) NOT NULL,
-  `password` varchar(15) NOT NULL,
-  `nickname` varchar(20) NOT NULL,
-  `avatar` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of parent
--- ----------------------------
-INSERT INTO `parent` VALUES ('1', '18831166551', '7777777', '七道', null);
-INSERT INTO `parent` VALUES ('2', '18831166552', '77777772', '七道二', null);
-
--- ----------------------------
 -- Table structure for `relation`
 -- ----------------------------
 DROP TABLE IF EXISTS `relation`;
@@ -340,15 +321,15 @@ CREATE TABLE `user_parent` (
   `phone` char(11) NOT NULL,
   `password` varchar(15) NOT NULL,
   `nickname` varchar(20) NOT NULL,
-  `avatar` varchar(20) DEFAULT NULL,
+  `avatar` varchar(20) DEFAULT 'user_default.png',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of user_parent
 -- ----------------------------
-INSERT INTO `user_parent` VALUES ('1', '18831166551', '7777777', '七道', null);
-INSERT INTO `user_parent` VALUES ('2', '18831166552', '77777772', '七道二', null);
+INSERT INTO `user_parent` VALUES ('1', '18831166551', '7777777', '七道', 'user_default.png');
+INSERT INTO `user_parent` VALUES ('2', '18831166552', '77777772', '七道二', 'user_default.png');
 
 -- ----------------------------
 -- Table structure for `user_teacher`

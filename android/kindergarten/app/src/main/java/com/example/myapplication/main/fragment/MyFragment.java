@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.contrarywind.adapter.WheelAdapter;
 import com.contrarywind.listener.OnItemSelectedListener;
 import com.contrarywind.view.WheelView;
@@ -30,6 +31,7 @@ import com.example.myapplication.apply.activity.Bean.ApplyInfo;
 import com.example.myapplication.main.activity.my.AddChildActivity;
 import com.example.myapplication.main.activity.my.ApplyInfoActivity;
 import com.example.myapplication.main.entity.Child;
+import com.example.myapplication.main.entity.UserParent;
 import com.example.myapplication.main.util.ConfigUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -53,7 +55,15 @@ import okhttp3.Response;
 
 public class MyFragment extends Fragment {
 
-    public static String phoneNum="19831127142"; //当前手机号
+//    public static String phoneNum="19831127142"; //当前手机号
+
+    //个人信息填充
+    private TextView tvUserName;
+    private TextView tvUserPhone;
+    private ImageView ivUserPic;
+    
+    
+
     private View view;
     private RelativeLayout addChild;
     private LinearLayout chooseChild;
@@ -111,6 +121,14 @@ public class MyFragment extends Fragment {
                     }
 
                     break;
+                case 3:
+                    String userMsg = msg.obj.toString();
+                    UserParent userParent = new Gson().fromJson(userMsg,UserParent.class);
+                    tvUserName.setText(userParent.getNickname());
+                    tvUserPhone.setText(userParent.getPhone());
+                    Glide.with(getActivity()).load(ConfigUtil.SETVER_AVATAR+userParent.getAvator()).into(ivUserPic);
+
+                    break;
             }
         }
     };
@@ -120,14 +138,49 @@ public class MyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_my,container,false);
         findViews();
+        //个人信息填充
+        getUserMsg();
+        
         queryChildren();
 
         return view;
     }
 
+    /**
+     * 填充信息 用户昵称 电话 头像
+     */
+    private void getUserMsg() {
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("phone", ConfigUtil.PHONE);
+        FormBody formBody = builder.build();
+        Request request = new Request.Builder()
+                .post(formBody)
+                .url(ConfigUtil.SERVICE_ADDRESS + "GetUserParentMsgServlet")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("查询User信息", "请求失败");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Log.i("userMsg", "onResponse: "+result);
+                Message message = new Message();
+                message.obj = result;
+                message.what = 3;
+                handler.sendMessage(message);
+                Log.i("result", result);
+            }
+        });
+    }
+
     private void queryChildren() {
         FormBody.Builder builder = new FormBody.Builder();
-        builder.add("phone", phoneNum);
+//        builder.add("phone", phoneNum);
+        builder.add("phone", ConfigUtil.PHONE);
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
                 .post(formBody)
@@ -185,7 +238,8 @@ public class MyFragment extends Fragment {
 
     private void queryApplyInfoByPhoneNum() {
         FormBody.Builder builder = new FormBody.Builder();
-        builder.add("phone", MyFragment.phoneNum);
+//        builder.add("phone", MyFragment.phoneNum);
+        builder.add("phone", ConfigUtil.PHONE);
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
                 .post(formBody)
@@ -292,6 +346,13 @@ public class MyFragment extends Fragment {
     }
 
     private void findViews() {
+        //个人信息
+        tvUserName = view.findViewById(R.id.tv_mine_userName);
+        tvUserPhone = view.findViewById(R.id.tv_mine_phone);
+        ivUserPic = view.findViewById(R.id.iv_headPhoto);
+        
+        
+        
         MyListener myListener=new MyListener();
         addChild=view.findViewById(R.id.rl_mine_addChild);
         addChild.setOnClickListener(myListener);

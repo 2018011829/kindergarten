@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+//mob
 apply plugin: 'com.mob.sdk'
 
 //BufferKnife依赖
@@ -17,6 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.myapplication"
+        applicationId "cn.leancloud.imkitapplication"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -80,16 +81,63 @@ dependencies {
     }
     //添加
     implementation 'com.contrarywind:wheelview:4.1.0'
+
+
+
+
+
+    //leancloud chatkit
+    implementation project(':leancloudchatkit')
+//    //使用存储功能
+////    implementation 'cn.leancloud:storage-android:7.1.1'
+////    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+////    //
+////    implementation 'cn.leancloud:storage-core:7.1.1'
+////    //使用即时通讯
+////    implementation 'cn.leancloud:realtime-android:7.1.1'
+//////    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+////    //混合推送
+////    implementation 'cn.leancloud:mixpush-android:7.1.1'
+//////    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation('cn.leancloud:realtime-android:6.5.7') {
+        exclude group: 'cn.leancloud', module: 'realtime-core'
+    }
+    implementation('cn.leancloud:storage-android:6.5.7') {
+        exclude group: 'cn.leancloud', module: 'realtime-core'
+    }
+    implementation ('cn.leancloud:realtime-core:6.5.7') {
+        exclude group: 'org.java-websocket', module: 'Java-WebSocket'
+    }
+    implementation 'cn.leancloud:storage-core:6.5.7'
+
+    implementation 'org.java-websocket:Java-WebSocket:1.4.1'
+
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'de.greenrobot:eventbus:2.4.0'
+
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.github.stuxuhai:jpinyin:1.0'
 }
 allprojects {
     repositories {
+        google()
         jcenter()
+        // leancloud chatkit 增加下面的配置
+        maven {
+            url "https://oss.sonatype.org/content/groups/public/"
+        }
     }
 }
 buildscript {
     repositories {
+        google()
         jcenter()
-//        maven { url "https://jitpack.io" }
+        // leancloud chatkit 增加下面的配置
+        maven {
+            url "https://oss.sonatype.org/content/groups/public/"
+        }
     }
     dependencies {
         // 注册MobSDK

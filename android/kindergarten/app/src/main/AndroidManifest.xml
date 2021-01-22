@@ -39,14 +39,6 @@
         <activity android:name=".main.activity.my.ApplyInfoActivity" />
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".login.LoginByPasswordActivity" >
-
-<<<<<<< HEAD
-        </activity>
-=======
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
->>>>>>> 301806bdb334dfbafcf934df94df428ac872767b
-
         </activity>
         <activity android:name=".login.LoginByPhoneActivity" />
         <activity android:name=".teacher.tool.euclid.EuclidActivity" />

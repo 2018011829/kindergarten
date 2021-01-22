@@ -58,6 +58,9 @@
 			<div style="padding-top:100px;margin-left:260px;text-align:center">
 	<h1 style="color:green">报名信息</h1>
 	<br>
+	<form action="ExportFileToExcel">
+        <input type="submit" value="导出报名表" style="width:100px;height:30px">
+    </form><br>
 	<div style="width:1050px;overflow-y:none;overflow-x:scroll">
 	<table border="1px" cellspacing="0" bordercolor="#C0C0C0" width="2700px">
 		<tr align="center" style="background-color:#D3D3D3" height="40px">
@@ -118,4 +121,9 @@
 
 	
 </body>
+<script type="text/javascript">
+	if(${path!=null}){
+		alert("${path}");
+	}
+</script>
 </html>

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -137,6 +138,8 @@ public class ExportFileToExcel extends HttpServlet {
 		FileOutputStream out = new FileOutputStream("D:\\报名信息.xls");
 		hssfWorkbook.write(out);
 		out.flush();
+		request.getSession().setAttribute("path", "文件已保存在'D:\\报名信息.xls'！");
+		request.getRequestDispatcher("GetApplyInfoServlet").forward(request, response);
 	}
 
 	/**

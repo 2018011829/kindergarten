@@ -49,7 +49,7 @@ public class AddChildActivity extends AppCompatActivity {
     private List<String> name = new ArrayList<>();
     private List<String> sClasses = new ArrayList<>();
     private TextView tv_relation;
-    private TextView tv_class;
+    private EditText tv_id;
     private WheelView wheelView;
     private TextView tv_ok;
     private TextView tv_cancle;
@@ -66,13 +66,16 @@ public class AddChildActivity extends AppCompatActivity {
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what){
                 case 1:
-                    if (!msg.obj.equals("") && msg.obj.equals("success")){
-                        Toast.makeText(AddChildActivity.this,"添加成功！",Toast.LENGTH_SHORT).show();
-                        finish();
-                    }else if (!msg.obj.equals("") && msg.obj.equals("faliure")){
-                        Toast.makeText(AddChildActivity.this,"添加失败！",Toast.LENGTH_SHORT).show();
+                    String str= (String) msg.obj;
+                    if (!str.equals("")){
+                        if (str.equals("success")){
+                            Toast.makeText(AddChildActivity.this,"添加成功！",Toast.LENGTH_SHORT).show();
+                            finish();
+                        }else {
+                            Toast.makeText(AddChildActivity.this, str, Toast.LENGTH_SHORT).show();
+                        }
                     }else {
-                        Toast.makeText(AddChildActivity.this,"孩子已存在！",Toast.LENGTH_SHORT).show();
+                        Log.e("msg","收到的消息为空！");
                     }
 
                     break;
@@ -123,13 +126,15 @@ public class AddChildActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(tv_relation.getText().equals("请选择与孩子的关系")
-                        ||tv_class.getText().equals("请选择孩子的年级")
+                        ||tv_id.getText().equals("请输入孩子的身份证号")
                         ||charSequence.toString().trim().equals("")||charSequence.toString().trim().length()==0){
                     btn_child_ok.setBackgroundColor(Color.GRAY);
                     btn_child_ok.setTextColor(Color.WHITE);
+                    btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button1,null));
                 }else {
-                    btn_child_ok.setBackgroundColor(Color.parseColor("#90EE90"));
+                    btn_child_ok.setBackgroundColor(Color.parseColor("#99CCFF"));
                     btn_child_ok.setTextColor(Color.BLACK);
+                    btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button2,null));
                 }
             }
 
@@ -148,15 +153,7 @@ public class AddChildActivity extends AppCompatActivity {
                 relation = "父亲";
             }
         });
-        //点击选择年级文本框时初始化相关参数
-        tv_class.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tag = 2;
-                showPopupwindow();
-                sClass = "小班";
-            }
-        });
+
         //单选按钮的点击操作
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -179,11 +176,20 @@ public class AddChildActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(tv_relation.getText().equals("请选择与孩子的关系")
-                        ||tv_class.getText().equals("请选择孩子的年级")
+                        ||tv_id.getText().equals("请输入孩子的身份证号")
                         ||edt_name.getText().toString().trim().equals("")||edt_name.getText().toString().trim().length()==0){
                     Toast.makeText(AddChildActivity.this,"请补全孩子信息",Toast.LENGTH_LONG).show();
                 }else {
-                    addChildMessage();
+                    //先判断身份证号的位数是否正确
+                    String str=tv_id.getText().toString();
+                    if (str.length()==18){
+                        addChildMessage();
+                    }else{
+                        Toast.makeText(AddChildActivity.this,
+                                "身份证号是18位！",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -194,7 +200,7 @@ public class AddChildActivity extends AppCompatActivity {
 //        builder.add("parentPhone", MyFragment.phoneNum);
         builder.add("parentPhone", ConfigUtil.PHONE);
         builder.add("name",edt_name.getText().toString());
-        builder.add("grade", tv_class.getText().toString());
+        builder.add("idNum", tv_id.getText().toString());
         builder.add("sex",sex);
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
@@ -216,6 +222,7 @@ public class AddChildActivity extends AppCompatActivity {
                 String result = response.body().string();
                 Message message = new Message();
                 message.what = 1;
+                message.obj=result;
                 handler.sendMessage(message);
                 Log.i("result", result);
             }
@@ -230,7 +237,7 @@ public class AddChildActivity extends AppCompatActivity {
         btn_child_ok = findViewById(R.id.btn_child_session_ok);
         radioGroup = findViewById(R.id.rg_sex);
         tv_relation = findViewById(R.id.tv_relation_child);
-        tv_class = findViewById(R.id.tv_class_child);
+        tv_id = findViewById(R.id.tv_child_id);
     }
 
     /*
@@ -240,10 +247,6 @@ public class AddChildActivity extends AppCompatActivity {
         name.add("父亲");
         name.add("母亲");
         name.add("其他");
-        sClasses.add("小班");
-        sClasses.add("中班");
-        sClasses.add("大班");
-        sClasses.add("学前班");
     }
 
     /*
@@ -277,36 +280,15 @@ public class AddChildActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     tv_relation.setText(relation);
                     if(tv_relation.getText().equals("请选择与孩子的关系")
-                            ||tv_class.getText().equals("请选择孩子的年级")
+                            ||tv_id.getText().equals("请输入孩子的身份证号")
                             ||edt_name.getText().toString().trim().equals("")||edt_name.getText().toString().trim().length()==0){
                         btn_child_ok.setBackgroundColor(Color.GRAY);
                         btn_child_ok.setTextColor(Color.WHITE);
+                        btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button1,null));
                     }else {
                         btn_child_ok.setBackgroundColor(Color.parseColor("#90EE90"));
                         btn_child_ok.setTextColor(Color.BLACK);
-                    }
-                    popupWindow.dismiss();
-                }
-            });
-            tv_cancle.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    popupWindow.dismiss();
-                }
-            });
-        }else if(tag==2) {
-            tv_ok.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    tv_class.setText(sClass);
-                    if(tv_relation.getText().equals("请选择与孩子的关系")
-                            ||tv_class.getText().equals("请选择孩子的年级")
-                            ||edt_name.getText().toString().trim().equals("")||edt_name.getText().toString().trim().length()==0){
-                        btn_child_ok.setBackgroundColor(Color.GRAY);
-                        btn_child_ok.setTextColor(Color.WHITE);
-                    }else {
-                        btn_child_ok.setBackgroundColor(Color.parseColor("#90EE90"));
-                        btn_child_ok.setTextColor(Color.BLACK);
+                        btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button2,null));
                     }
                     popupWindow.dismiss();
                 }

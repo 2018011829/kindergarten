@@ -3,6 +3,7 @@
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bckapply"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
@@ -23,7 +24,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@mipmap/baby_relation"/>
+                android:src="@mipmap/view_relationship"/>
             <TextView
                 android:id="@+id/tv_relation_child"
                 android:textSize="20sp"
@@ -45,13 +46,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/baby_out"/>
-            <TextView
-                android:id="@+id/tv_class_child"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/identify"/>
+            <EditText
+                android:id="@+id/tv_child_id"
                 android:textSize="20sp"
-                android:hint="请选择孩子的年级"
+                android:hint="请输入孩子的身份证号"
+                android:background="@android:color/white"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -71,11 +73,11 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@mipmap/baby_name"/>
+                android:src="@mipmap/child_name"/>
             <EditText
                 android:id="@+id/edt_child_name"
                 android:textSize="20sp"
-                android:background="#FAFAFA"
+                android:background="@android:color/white"
                 android:hint="请输入孩子的姓名"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
@@ -117,7 +119,8 @@
             android:textSize="20sp"
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"/>
+            android:layout_height="60dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/apply_button1"/>
     </LinearLayout>
 </ScrollView>

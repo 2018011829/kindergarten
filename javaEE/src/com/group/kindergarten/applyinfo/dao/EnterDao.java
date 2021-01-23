@@ -268,7 +268,7 @@ public class EnterDao {
 	 */
 	public List<ApplyInfo> searchChildByPhoneNum(String phoneNum){
 		List<ApplyInfo> list=null;
-		String sql="select * from applyinfo where phoneNum=?";
+		String sql="select * from applyinfo where userNumber=?";
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, phoneNum);

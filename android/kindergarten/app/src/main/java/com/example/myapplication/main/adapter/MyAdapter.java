@@ -61,6 +61,11 @@ public class MyAdapter extends BaseAdapter {
         ApplyInfo applyInfo=data.get(i);
         holder.tvBabyName.setText(applyInfo.getBabyName());
         holder.tvBabySex.setText(applyInfo.getBabySex());
+        if (applyInfo.getBabySex().equals("男")){
+            holder.iv.setImageResource(R.drawable.boy);
+        }else{
+            holder.iv.setImageResource(R.drawable.girl);
+        }
         holder.tvBabyBirthday.setText(applyInfo.getBabyBirthday());
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override

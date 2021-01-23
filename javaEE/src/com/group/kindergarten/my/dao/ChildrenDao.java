@@ -40,7 +40,7 @@ public class ChildrenDao {
 	public boolean addChild(String name,String grade,String sex,String parentPhone) {
 		boolean b=false;
 		try {
-			preparedStatement=connection.prepareStatement("insert into child(name,grade,sex,parentPhone) values(?,?,?,?)");
+			preparedStatement=connection.prepareStatement("insert into child(name,id_num,sex,parentPhone) values(?,?,?,?)");
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, grade);
 			preparedStatement.setString(3, sex);
@@ -103,5 +103,53 @@ public class ChildrenDao {
 			e.printStackTrace();
 		}
 		return children;
+	}
+
+	/**
+	 * 查找该孩子是否在幼儿园已经报名
+	 * @param idNum
+	 * @return
+	 */
+	public boolean searchIdNumIsRight(String idNum) {
+		boolean b=false;
+		String sql="select * from applyinfo where babyIDnumber=?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, idNum);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs.next()) {
+				b=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return b;
+	}
+	
+	/**
+	 * 判断孩子名字与身份证号是否吻合
+	 * @param name
+	 * @param idNum
+	 * @return
+	 */
+	public boolean searchNameAndId(String name, String idNum) {
+		boolean b=false;
+		String sql="select * from applyinfo where babyIDnumber=? and babyName=?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, idNum);
+			preparedStatement.setString(2, name);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs.next()) {
+				b=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return b;
 	}
 }

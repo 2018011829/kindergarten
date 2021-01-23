@@ -74,8 +74,8 @@ ul, li {
 }
 
 #admin {
-	width: 100px;
 	padding-left: 20px;
+	width: 100px;
 	height: 70px;
 	line-height: 70px;
 }
@@ -156,7 +156,7 @@ ul, li {
 	font-size: 15px;
 }
 
-.idiom_menu li {
+.enroll_menu li {
 	height: 50px;
 	width: 200px;
 	text-align: center;
@@ -167,7 +167,7 @@ ul, li {
 	font-size: 15px;
 }
 
-.book_menu li {
+.introduce_menu li {
 	height: 50px;
 	width: 200px;
 	text-align: center;
@@ -178,7 +178,7 @@ ul, li {
 	font-size: 15px;
 }
 
-.active_menu li {
+.teacher_menu li {
 	height: 50px;
 	width: 200px;
 	text-align: center;

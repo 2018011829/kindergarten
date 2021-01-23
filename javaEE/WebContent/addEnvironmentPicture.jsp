@@ -33,10 +33,11 @@
                     </ul>
                     <li id="introduce" onclick="showIntroduceMenu()"><a href="#">管理学校简介信息</a> <img
                         src="imgs/home/xiala.png" id="xiala3"></li>
-                    <ul class="introduce_menu" id="click_introduce_menu" style="display: none">
+                    <ul class="introduce_menu" id="click_introduce_menu" style="display: block">
                         <li onclick="showMenu_info3()" id="introduce_info"><a
                             href="DescriptionManageServlet">学校简介</a></li>
-                        <li onclick="showMenu_add3()" id="introduce_add"><a
+                        <li onclick="showMenu_add3()" id="introduce_add"
+							style="background: #009688"><a
                             href="addEnvironmentPicture.jsp">新增学校信息</a></li>
                     </ul>
                     <li id="teacher" onclick="showTeacherMenu()"><a>教师信息管理</a><img

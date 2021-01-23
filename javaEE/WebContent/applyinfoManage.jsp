@@ -27,9 +27,10 @@
 					<li id="enroll" onclick="showEnrollMenu()"><a>报名信息管理</a><img
 						src="imgs/home/xiala.png" id="xiala2"></li>
 					<ul class="enroll_menu" id="click_enroll_menu"
-						style="display: none">
+						style="display: block">
 						<li onclick="showMenu_info2()" id="enroll_info"><a href="GetApplyInfoServlet">查看报名信息</a></li>
-						<li onclick="showMenu_manage2()" id="enroll_info_manage"><a
+						<li onclick="showMenu_manage2()" id="enroll_info_manage"
+							style="background: #009688"><a
 							href="GetApplyInfoServlet2">管理报名信息</a></li>
 						<li onclick="showMenu_add2()" id="enroll_info_add"><a
 							href="addApplyinfo.jsp">新增报名信息</a></li>

@@ -29,11 +29,11 @@
 					<ul class="enroll_menu" id="click_enroll_menu"
 						style="display: none">
 						<li onclick="showMenu_info2()" id="enroll_info"><a
-							class="jump" href="#">查看报名信息</a></li>
+							class="jump" href="GetApplyInfoServlet">查看报名信息</a></li>
 						<li onclick="showMenu_manage2()" id="enroll_info_manage"><a
-							class="jump" href="#">管理报名信息</a></li>
+							class="jump" href="GetApplyInfoServlet2">管理报名信息</a></li>
 						<li onclick="showMenu_add2()" id="enroll_info_add"><a
-							class="jump" href="#">新增报名信息</a></li>
+							class="jump" href="addApplyinfo.jsp">新增报名信息</a></li>
 					</ul>
 					<li id="introduce" onclick="showIntroduceMenu()"><a
 						class="jump">管理学校简介信息</a> <img src="imgs/home/xiala.png"
@@ -41,9 +41,9 @@
 					<ul class="introduce_menu" id="click_introduce_menu"
 						style="display: none">
 						<li onclick="showMenu_info3()" id="introduce_info"><a
-							class="jump" href="environmentDescription.jsp">学校简介</a></li>
+							class="jump" href="DescriptionManageServlet">学校简介</a></li>
 						<li onclick="showMenu_add3()" id="introduce_add"><a
-							class="jump" href="addEnvironmentDescription.jsp">新增学校信息</a></li>
+							class="jump" href="addEnvironmentPicture.jsp">新增学校信息</a></li>
 					</ul>
 					<li id="teacher" onclick="showTeacherMenu()"><a class="jump">教师信息管理</a><img
 						src="imgs/home/xiala.png" id="xiala4"></li>

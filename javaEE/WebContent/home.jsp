@@ -33,7 +33,7 @@
 						<li onclick="showMenu_add2()" id="enroll_info_add"><a
 							href="addApplyinfo.jsp">新增报名信息</a></li>
 					</ul>
-					<li id="introduce" onclick="showIntroduceMenu()"><a href="#">管理学校简介信息</a> <img
+					<li id="introduce" onclick="showIntroduceMenu()"><a>管理学校简介信息</a> <img
 						src="imgs/home/xiala.png" id="xiala3"></li>
 					<ul class="introduce_menu" id="click_introduce_menu" style="display: none">
 						<li onclick="showMenu_info3()" id="introduce_info"><a

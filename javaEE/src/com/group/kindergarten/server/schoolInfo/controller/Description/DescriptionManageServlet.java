@@ -33,7 +33,7 @@ public class DescriptionManageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page1 = request.getParameter("page");
-		int pageNum = 1, pageSize = 10;
+		int pageNum = 1, pageSize = 3;
 		if (page1 != null && !page1.equals("")) {
 			pageNum = Integer.parseInt(page1);
 		}

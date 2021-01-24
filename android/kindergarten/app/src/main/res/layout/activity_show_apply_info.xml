@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bckapply"
     tools:context=".main.activity.my.ShowApplyInfoActivity">
 
     <LinearLayout
@@ -231,6 +232,7 @@
 
         <LinearLayout
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

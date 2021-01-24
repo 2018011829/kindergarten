@@ -63,7 +63,7 @@ public class MyFragment extends Fragment {
     private ImageView ivUserPic;
     
     
-
+    private static String phone=ConfigUtil.PHONE;
     private View view;
     private RelativeLayout addChild;
     private LinearLayout chooseChild;
@@ -140,6 +140,7 @@ public class MyFragment extends Fragment {
         findViews();
         //个人信息填充
         getUserMsg();
+        Log.e("phone",phone);
         
         queryChildren();
 
@@ -151,7 +152,7 @@ public class MyFragment extends Fragment {
      */
     private void getUserMsg() {
         FormBody.Builder builder = new FormBody.Builder();
-        builder.add("phone", ConfigUtil.PHONE);
+        builder.add("phone", phone);
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
                 .post(formBody)

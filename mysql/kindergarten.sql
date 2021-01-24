@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50506
+Source Server Version : 50701
 Source Host           : localhost:3306
 Source Database       : kindergarten
 
 Target Server Type    : MYSQL
-Target Server Version : 50506
+Target Server Version : 50701
 File Encoding         : 65001
 
-Date: 2021-01-21 21:13:04
+Date: 2021-01-23 18:39:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -58,11 +58,13 @@ CREATE TABLE `applyinfo` (
   `workSpace2` varchar(255) DEFAULT NULL,
   `homeAddress2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of applyinfo
 -- ----------------------------
+INSERT INTO `applyinfo` VALUES ('1', '18831166551', '天天', '1', '男', '610526200008160721', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `applyinfo` VALUES ('2', '18831166551', '花花', '2', '女', '610526199908160721', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2');
 
 -- ----------------------------
 -- Table structure for `child`
@@ -71,17 +73,17 @@ DROP TABLE IF EXISTS `child`;
 CREATE TABLE `child` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `grade` varchar(10) NOT NULL,
+  `id_num` varchar(18) NOT NULL,
   `sex` varchar(5) NOT NULL,
   `parentPhone` varchar(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of child
 -- ----------------------------
-INSERT INTO `child` VALUES ('1', '小红', '小班', '女', '19831127142');
-INSERT INTO `child` VALUES ('2', '小明', '中班', '男', '19831127142');
+INSERT INTO `child` VALUES ('8', '天天', '610526200008160721', '男', '18831166551');
+INSERT INTO `child` VALUES ('9', '花花', '610526199908160721', '女', '18831166551');
 
 -- ----------------------------
 -- Table structure for `class`
@@ -119,16 +121,17 @@ CREATE TABLE `kindergarten_environment_description` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(600) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of kindergarten_environment_description
 -- ----------------------------
-INSERT INTO `kindergarten_environment_description` VALUES ('1', '我园环境优美，空气清新，阳光充足。\r\n宽敞的操场，硕果累累：');
-INSERT INTO `kindergarten_environment_description` VALUES ('2', '充满文艺气息的楼道');
-INSERT INTO `kindergarten_environment_description` VALUES ('3', '整洁的室内环境');
-INSERT INTO `kindergarten_environment_description` VALUES ('4', '好玩的大滑梯（我园配备了大型玩具游乐设施供幼儿玩耍）');
-INSERT INTO `kindergarten_environment_description` VALUES ('5', '温馨的区角：我园非常注重幼儿动手，动脑能力，发展幼儿思维，为此设立了活动区域');
+INSERT INTO `kindergarten_environment_description` VALUES ('1', '环境优美\\n空气清新\\n阳光充足\\n宽敞的操场\\n硕果累累');
+INSERT INTO `kindergarten_environment_description` VALUES ('2', '充满\\n文艺气息\\n的楼道');
+INSERT INTO `kindergarten_environment_description` VALUES ('3', '整洁的\\n室内环境');
+INSERT INTO `kindergarten_environment_description` VALUES ('4', '我园配备了\\n大型玩具\\n游乐设施\\n供幼儿玩耍');
+INSERT INTO `kindergarten_environment_description` VALUES ('5', '非常注重\\n幼儿动手、\\n动脑能力\\n发展幼儿思维\\n为此\\n设立了活动区域非常注重\\n幼儿动手、\\n动脑能力\\n发展幼儿思维\\n为此\\n设立了活动区域');
+INSERT INTO `kindergarten_environment_description` VALUES ('6', '有利于幼儿\\n积极动脑\\n大胆创作\\n学会友好合作\\n互帮互助\\n促进幼儿\\n良好个性发展');
 
 -- ----------------------------
 -- Table structure for `kindergarten_environment_picture`
@@ -154,20 +157,20 @@ INSERT INTO `kindergarten_environment_picture` VALUES ('7', 'wall2.png', '2');
 INSERT INTO `kindergarten_environment_picture` VALUES ('8', 'desk.png', '3');
 INSERT INTO `kindergarten_environment_picture` VALUES ('9', 'drawer.png', '3');
 INSERT INTO `kindergarten_environment_picture` VALUES ('10', 'play1.png', '4');
-INSERT INTO `kindergarten_environment_picture` VALUES ('11', 'play2.png', '4');
+INSERT INTO `kindergarten_environment_picture` VALUES ('11', 'play2.png', '0');
 INSERT INTO `kindergarten_environment_picture` VALUES ('12', 'play3.png', '4');
 INSERT INTO `kindergarten_environment_picture` VALUES ('13', 'play4.png', '4');
-INSERT INTO `kindergarten_environment_picture` VALUES ('14', 'angle1.png', '5');
+INSERT INTO `kindergarten_environment_picture` VALUES ('14', 'angle1.png', '6');
 INSERT INTO `kindergarten_environment_picture` VALUES ('15', 'angle2.png', '5');
 INSERT INTO `kindergarten_environment_picture` VALUES ('16', 'angle3.png', '5');
 INSERT INTO `kindergarten_environment_picture` VALUES ('17', 'angle4.png', '5');
-INSERT INTO `kindergarten_environment_picture` VALUES ('18', 'angle5.png', '5');
-INSERT INTO `kindergarten_environment_picture` VALUES ('19', 'angle6.png', '5');
+INSERT INTO `kindergarten_environment_picture` VALUES ('18', 'angle5.png', '0');
+INSERT INTO `kindergarten_environment_picture` VALUES ('19', 'angle6.png', '0');
 INSERT INTO `kindergarten_environment_picture` VALUES ('20', 'angle7.png', '5');
-INSERT INTO `kindergarten_environment_picture` VALUES ('21', 'angle8.png', '5');
-INSERT INTO `kindergarten_environment_picture` VALUES ('22', 'angle9.png', '5');
-INSERT INTO `kindergarten_environment_picture` VALUES ('23', 'angle10.png', '5');
-INSERT INTO `kindergarten_environment_picture` VALUES ('24', 'angle11.png', '5');
+INSERT INTO `kindergarten_environment_picture` VALUES ('21', 'angle8.png', '6');
+INSERT INTO `kindergarten_environment_picture` VALUES ('22', 'angle9.png', '6');
+INSERT INTO `kindergarten_environment_picture` VALUES ('23', 'angle10.png', '6');
+INSERT INTO `kindergarten_environment_picture` VALUES ('24', 'angle11.png', '6');
 INSERT INTO `kindergarten_environment_picture` VALUES ('25', 'angle12.png', '5');
 INSERT INTO `kindergarten_environment_picture` VALUES ('26', 'angle13.png', '5');
 INSERT INTO `kindergarten_environment_picture` VALUES ('27', 'angle14.png', '5');

@@ -48,8 +48,9 @@
 					<li id="teacher" onclick="showTeacherMenu()"><a class="jump">教师信息管理</a><img
 						src="imgs/home/xiala.png" id="xiala4"></li>
 					<ul class="teacher_menu" id="click_teacher_menu"
-						style="display: none">
-						<li onclick="showMenu_info4()" id="teacher_info"><a
+						style="display: block">
+						<li onclick="showMenu_info4()" id="teacher_info"
+							style="background: #009688"><a
 							class="jump" href="teacherManage">查看教师信息</a></li>
 						<li onclick="showMenu_add4()" id="teacher_add"><a
 							class="jump" href="addTeacher.jsp">新增教师信息</a></li>

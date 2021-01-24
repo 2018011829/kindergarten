@@ -44,7 +44,7 @@ public class InitDataAboutIntroduceText extends HttpServlet {
 		if(!fileName.equals("") && fileName!=null) {
 			//通过流来循环读取
 			//拼接读取路径
-			String path=getServletContext().getRealPath("/files/")+fileName;
+			String path=getServletContext().getRealPath("/imgs/schoolInfoPicture/")+fileName;
 			System.out.println(path);
 			//按行读取文件
 			BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(path),"utf-8"));

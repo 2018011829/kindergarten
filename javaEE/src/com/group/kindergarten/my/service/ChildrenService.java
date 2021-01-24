@@ -47,6 +47,17 @@ public class ChildrenService {
 	}
 	
 	/**
+	 * 查找该孩子是否在幼儿园已经报名
+	 * @param idNum
+	 * @return
+	 */
+	public boolean searchIdNumIsRight(String idNum) {
+		boolean b=childrenDao.searchIdNumIsRight(idNum);
+		
+		return b;
+	}
+	
+	/**
 	 * 查询某电话号码下的所有孩子信息
 	 * @return 
 	 * */
@@ -55,5 +66,17 @@ public class ChildrenService {
 		
 		return childrenDao.queryChildrenByPhone(phone);
 		
+	}
+
+	/**
+	 * 判断孩子名字与身份证号是否吻合
+	 * @param name
+	 * @param idNum
+	 * @return
+	 */
+	public boolean searchNameAndId(String name, String idNum) {
+		boolean b=childrenDao.searchNameAndId(name, idNum);
+		
+		return b;
 	}
 }

@@ -33,7 +33,7 @@ public class AddChildServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		//获取传递过来的孩子的信息
 		String name = request.getParameter("name");
-		String grade = request.getParameter("grade");
+		String idNum = request.getParameter("idNum");
 		String sex = request.getParameter("sex");
 		String phone = request.getParameter("parentPhone");
 		System.out.println("AddChildServlet");
@@ -41,15 +41,34 @@ public class AddChildServlet extends HttpServlet {
 		//先判断孩子是否已经存在
 		if(!childrenService.searchChild(name, phone)) {
 			System.out.println("孩子不存在");
-			boolean b=childrenService.addChild(name, grade, sex, phone);
-			if(b) {//添加成功
-				System.out.println("成功添加孩子");
-				response.getWriter().write("success");
+			//判断孩子是否在幼儿园里已经报名
+			if(idNum!=null) {
+				boolean a=childrenService.searchIdNumIsRight(idNum);
+				if(a) {
+					//判断该身份证号与孩子的名字是否吻合
+					boolean c=childrenService.searchNameAndId(name, idNum);
+					if(c) {
+						boolean b=childrenService.addChild(name, idNum, sex, phone);
+						if(b) {//添加成功
+							System.out.println("成功添加孩子");
+							response.getWriter().write("success");
+						}else {
+							response.getWriter().write("faliure");
+						}
+					}else {
+						System.out.println("孩子的姓名与身份证号不符！");
+						response.getWriter().write("孩子的姓名与身份证号不符");
+					}
+				}else {
+					System.out.println("孩子还没有在幼儿园报名！");
+					response.getWriter().write("孩子还没有在幼儿园报名");
+				}
 			}else {
-				response.getWriter().write("faliure");
+				System.out.println("身份证号为空！");
 			}
 		}else {
-			response.getWriter().write("exist");
+			System.out.println("孩子已经添加过了！");
+			response.getWriter().write("孩子已经添加过了");
 		}
 		
 	}

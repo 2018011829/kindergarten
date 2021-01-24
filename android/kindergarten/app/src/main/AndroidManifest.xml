@@ -39,7 +39,15 @@
         <activity android:name=".main.activity.my.ApplyInfoActivity" />
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".login.LoginByPasswordActivity" >
+<<<<<<< HEAD
 
+=======
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> fd798993192db495b67c4b926b3a1d40a093162a
         </activity>
         <activity android:name=".login.LoginByPhoneActivity" />
         <activity android:name=".teacher.tool.euclid.EuclidActivity" />
@@ -50,11 +58,7 @@
         <activity android:name=".apply.activity.ApplyActivityParents" />
         <activity android:name=".apply.activity.ApplyActivityAffirm" />
         <activity android:name=".main.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity> <!-- 学校简介用到的activity 开始 -->
         <activity android:name=".school.activity.ImageShower" />
         <activity android:name=".main.activity.my.AddChildActivity" /> <!-- 即时通讯和推送 START -->

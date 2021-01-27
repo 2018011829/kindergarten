@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-01-24 17:02:23
+Date: 2021-01-28 00:49:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -98,6 +98,29 @@ CREATE TABLE `class` (
 -- ----------------------------
 -- Records of class
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `contact_remark`
+-- ----------------------------
+DROP TABLE IF EXISTS `contact_remark`;
+CREATE TABLE `contact_remark` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_user` int(11) NOT NULL,
+  `to_user` int(11) NOT NULL,
+  `remark_str` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `from_user` (`from_user`),
+  KEY `to_user` (`to_user`),
+  CONSTRAINT `contact_remark_ibfk_2` FOREIGN KEY (`to_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `contact_remark_ibfk_1` FOREIGN KEY (`from_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of contact_remark
+-- ----------------------------
+INSERT INTO `contact_remark` VALUES ('4', '1', '2', 'user2');
+INSERT INTO `contact_remark` VALUES ('5', '1', '3', '备注');
+INSERT INTO `contact_remark` VALUES ('6', '1', '4', '备注');
 
 -- ----------------------------
 -- Table structure for `course`
@@ -245,22 +268,6 @@ INSERT INTO `parent` VALUES ('1', '18831166551', '7777777', '七道', null);
 INSERT INTO `parent` VALUES ('2', '18831166552', '77777772', '七道二', null);
 
 -- ----------------------------
--- Table structure for `relation`
--- ----------------------------
-DROP TABLE IF EXISTS `relation`;
-CREATE TABLE `relation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `from` char(11) NOT NULL,
-  `to` char(11) NOT NULL,
-  `remark` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of relation
--- ----------------------------
-
--- ----------------------------
 -- Table structure for `teacher`
 -- ----------------------------
 DROP TABLE IF EXISTS `teacher`;
@@ -333,6 +340,28 @@ CREATE TABLE `teacher_course` (
 -- ----------------------------
 -- Records of teacher_course
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` char(11) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `nickname` varchar(20) NOT NULL DEFAULT 'user',
+  `avatar` varchar(20) NOT NULL DEFAULT 'user_default.png',
+  `identity` char(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', '18831166551', '7777777', '七道', 'user_default.png', '0');
+INSERT INTO `user` VALUES ('2', '18831166552', '77777772', 'user', 'user_default.png', '0');
+INSERT INTO `user` VALUES ('3', '18831166553', '77777773', 'user3', 'user_default.png', '0');
+INSERT INTO `user` VALUES ('4', '18831166554', '77777774', 'user4', 'user_default.png', '1');
 
 -- ----------------------------
 -- Table structure for `user_parent`

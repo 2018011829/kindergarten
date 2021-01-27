@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //注册的身份
+    private RadioButton rbParent;
+    private RadioButton rbTeacher;
 
     private EditText etPhone;
     private EditText etNickName;
@@ -54,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         intent.setClass(RegisterActivity.this, LoginByPasswordActivity.class);
                         startActivity(intent);
                         finish();
-                    }else{//登录失败 显示错误信息
+                    }else{//注册失败 显示错误信息
                         Toast.makeText(getApplicationContext(),
                                 ""+response,
                                 Toast.LENGTH_LONG).show();
@@ -74,6 +79,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void findViews() {
+        rbParent = findViewById(R.id.rb_parent);
+        rbTeacher = findViewById(R.id.rb_teacher);
         etNickName=findViewById(R.id.et_nickname);
         etPassword=findViewById(R.id.et_password);
         etPhone=findViewById(R.id.et_phone);
@@ -154,6 +161,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void registerMsg() {
         //提交键值对格式的数据
         FormBody.Builder builder=new FormBody.Builder();
+        if (rbTeacher.isChecked()){
+            builder.add("identity","1");
+        }else {
+            builder.add("identity","0");
+        }
         builder.add("phone",etPhone.getText().toString().trim());
         builder.add("password",etPassword.getText().toString().trim());
         builder.add("nickname",etNickName.getText().toString().trim());

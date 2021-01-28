@@ -3,7 +3,10 @@ package com.group.kindergarten.contact.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.group.kindergarten.contact.entity.LCChatKitUser;
 import com.group.kindergarten.util.DBUtil;
 
 public class RemarkDaoImpl {
@@ -55,25 +58,44 @@ public class RemarkDaoImpl {
 		return b;
 	}
 	
-	public String getContactByPhone(String phone) { 
-		String sql = "select (id,nickname,avatar) from user where id is in(select to_user from contact_remark where ?='"+ phone
-				+ "')";
+	
+	/**
+	 * 获取联系人列表
+	 * @param phone
+	 * @return 联系人（用于chatkit）
+	 */
+	public List<LCChatKitUser> getContactByPhone(String phone) {
+		String sqlForid = "select id from user where phone='"+ phone+"'";
+		int id=-1;
+		String sql = "select (id,nickname,avatar) from user where id is in(select to_user from contact_remark where id=?)";
 
+		List<LCChatKitUser> lcChatKitUsers = new ArrayList<LCChatKitUser>();
 		try {
+			//查询到phone对应的id
+			preparedStatement = connection.prepareStatement(sqlForid);
+			ResultSet resultSetForId = preparedStatement.executeQuery();
+			if (resultSetForId.next()) {
+				System.out.println(phone+"对应的id："+resultSetForId.getInt(1));
+				id = resultSetForId.getInt(1);
+			}
 			preparedStatement = connection
 					.prepareStatement(sql);
 		
-			preparedStatement.setString(1,phone);
+			preparedStatement.setInt(1,id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
-//			if (rows > 0) {
-//				System.out.println("添加备注成功");
-//			}
-
+			while (resultSet.next()) {
+				LCChatKitUser lcChatKitUser = new LCChatKitUser();
+				lcChatKitUser.setUserId(resultSet.getString(1));
+				lcChatKitUser.setName(resultSet.getString(2));
+				lcChatKitUser.setAvatarUrl(resultSet.getString(3));
+				lcChatKitUsers.add(lcChatKitUser);
+			}
+			System.out.println(lcChatKitUsers.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return lcChatKitUsers;
 	}
 
 }

@@ -8,8 +8,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.contact.CustomUserProvider;
+import com.example.myapplication.login.LoginByPasswordActivity;
 import com.example.myapplication.main.fragment.HomeFragment;
 import com.example.myapplication.main.fragment.MyFragment;
 import com.example.myapplication.main.fragment.NewFragment;
@@ -22,8 +25,16 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.im.AVIMOptions;
+import cn.leancloud.im.v2.AVIMClient;
+import cn.leancloud.im.v2.AVIMException;
+import cn.leancloud.im.v2.callback.AVIMClientCallback;
 
 public class MainActivity extends AppCompatActivity {
+
+
+
 
     @BindView(R.id.main_view_pager) ViewPager viewPager;
     @BindView(R.id.main_tab) TabLayout tabLayout;
@@ -43,6 +54,22 @@ public class MainActivity extends AppCompatActivity {
 
         //将ViewPager和TabLayout互相绑定
         BindViewPagerAndTabLayout(viewPager);
+
+        //chatkit获取联系人
+        AVIMOptions.getGlobalOptions().setAutoOpen(true);
+        LCChatKit.getInstance().open("18831166551", new AVIMClientCallback() {
+            @Override
+            public void done(AVIMClient avimClient, AVIMException e) {
+                if (null == e) {
+//                                    Intent intent = new Intent(LoginByPasswordActivity.this, TestActivity.class);
+//                                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        CustomUserProvider.getContact();
 
     }
 

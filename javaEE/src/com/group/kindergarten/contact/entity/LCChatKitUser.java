@@ -74,4 +74,9 @@ public class LCChatKitUser {
 		}
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return " userId:"+userId+" name:"+name+" avatar:"+avatarUrl;
+	}
 }

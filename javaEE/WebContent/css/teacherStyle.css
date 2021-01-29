@@ -6,6 +6,7 @@
 
 a {
 	text-decoration: none;
+	color: #FCFCFC;
 }
 
 ul, li {
@@ -152,7 +153,18 @@ ul, li {
     font-size: 15px;
 }
 
-.idiom_menu li {
+.enroll_menu li {
+	height: 50px;
+	width: 200px;
+	text-align: center;
+	line-height: 50px;
+	background: #1A1B20;
+	color: white;
+	display: block;
+	font-size: 15px;
+}
+
+.introduce_menu li {
     height: 50px;
     width: 200px;
     text-align: center;
@@ -163,18 +175,7 @@ ul, li {
     font-size: 15px;
 }
 
-.book_menu li {
-    height: 50px;
-    width: 200px;
-    text-align: center;
-    line-height: 50px;
-    background: #1A1B20;
-    color: white;
-    display: block;
-    font-size: 15px;
-}
-
-.active_menu li {
+.teacher_menu li {
     height: 50px;
     width: 200px;
     text-align: center;

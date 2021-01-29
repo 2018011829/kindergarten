@@ -154,14 +154,14 @@ ul, li {
 }
 
 .enroll_menu li {
-    height: 50px;
-    width: 200px;
-    text-align: center;
-    line-height: 50px;
-    background: #1A1B20;
-    color: white;
-    display: block;
-    font-size: 15px;
+	height: 50px;
+	width: 200px;
+	text-align: center;
+	line-height: 50px;
+	background: #1A1B20;
+	color: white;
+	display: block;
+	font-size: 15px;
 }
 
 .introduce_menu li {
@@ -186,21 +186,6 @@ ul, li {
     font-size: 15px;
 }
 
-tr:hover{
-    background:#F2F2F2;
-}
-#schoolInfo{
-	top: 70px;
-    position: fixed;
-    left: 200px;
-    height: 1000px;
-    width: 100%;
-}
-#schoolInfoMenu{
-    width: 100%;
-    position: absolute;
-}
-
 /* 展示教师信息的界面 */
 #inputName {
 	width: 260px;
@@ -209,13 +194,14 @@ tr:hover{
 	margin-top: 100px;
 	margin-left:240px;
 	text-indent: 8px;
-	position: relative;
+	private: relative;
 	background: #ffffff;
 	border: 2px solid #009688;
 }
 
 #submitSearch {
-	width: 80px;
+	margin-left:240px;
+	width: 110px;
 	height: 39px;
 	float: left;
 	border: none;

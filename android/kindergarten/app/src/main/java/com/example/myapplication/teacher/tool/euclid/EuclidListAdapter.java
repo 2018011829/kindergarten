@@ -66,7 +66,7 @@ public class EuclidListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Picasso.with(context).load(ConfigUtil.SERVICE_ADDRESS + "pics/"+teachers.get(position).getPicture())
+        Picasso.with(context).load(ConfigUtil.SERVICE_ADDRESS + teachers.get(position).getPicture())
                 .resize(EuclidActivity.sScreenWidth, EuclidActivity.sProfileImageHeight).centerCrop()
                 .placeholder(R.color.blue)
                 .into(viewHolder.mListItemAvatar);

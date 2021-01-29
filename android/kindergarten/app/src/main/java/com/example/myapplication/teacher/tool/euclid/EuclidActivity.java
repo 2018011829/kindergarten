@@ -163,11 +163,11 @@ public abstract class EuclidActivity extends Activity {
 
         mOverlayListItemView.findViewById(R.id.view_avatar_overlay).setBackground(sOverlayShape);
 
-        Picasso.with(EuclidActivity.this).load(ConfigUtil.SERVICE_ADDRESS + "pics/"+item.getPicture())
+        Picasso.with(EuclidActivity.this).load(ConfigUtil.SERVICE_ADDRESS +item.getPicture())
                 .resize(sScreenWidth, sProfileImageHeight).centerCrop()
                 .placeholder(R.color.blue)
                 .into((ImageView) mOverlayListItemView.findViewById(R.id.image_view_reveal_avatar));
-        Picasso.with(EuclidActivity.this).load(ConfigUtil.SERVICE_ADDRESS + "pics/"+item.getPicture())
+        Picasso.with(EuclidActivity.this).load(ConfigUtil.SERVICE_ADDRESS +item.getPicture())
                 .resize(sScreenWidth, sProfileImageHeight).centerCrop()
                 .placeholder(R.color.blue)
                 .into((ImageView) mOverlayListItemView.findViewById(R.id.image_view_avatar));

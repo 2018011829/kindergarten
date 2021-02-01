@@ -35,63 +35,68 @@
 						<li onclick="showMenu_info3()" id="introduce_info"
 							style="background: #009688"><a
 							href="DescriptionManageServlet">学校简介</a></li>
-						<li onclick="showMenu_add3()" id="introduce_add"><a href="addEnvironmentDescription.jsp">新增学校信息</a></li>
+						<li onclick="showMenu_add3()" id="introduce_add"><a
+							href="addEnvironmentDescription.jsp">新增学校信息</a></li>
 					</ul>
 					<li id="teacher" onclick="showTeacherMenu()"><a>教师信息管理</a><img
 						src="imgs/home/xiala.png" id="xiala4"></li>
 					<ul class="teacher_menu" id="click_teacher_menu"
 						style="display: none">
-                        <li onclick="showMenu_info4()" id="teacher_info"><a href="teacherManage">查看教师信息</a></li>
-                        <li onclick="showMenu_add4()" id="teacher_add"><a href="addTeacher.jsp">新增教师信息</a></li>
-                        <li onclick="showMenu_info5()" id="teacher_add"><a href="deletedTeacherManage">查看离职教师信息</a></li>
+						<li onclick="showMenu_info4()" id="teacher_info"><a
+							href="teacherManage">查看教师信息</a></li>
+						<li onclick="showMenu_add4()" id="teacher_add"><a
+							href="addTeacher.jsp">新增教师信息</a></li>
+						<li onclick="showMenu_info5()" id="teacher_add"><a
+							href="deletedTeacherManage">查看离职教师信息</a></li>
 					</ul>
 				</ul>
 			</div>
 			<div id="schoolInfo">
 				<div id="schoolInfoMenu">
-					<ul class="schoolInfoMenu">
-						<li>环境描述</li>
-						<li><a href="PictureManageServlet">环境图片</a></li>
-						<li><a href="BasicInfoServlet">基本信息</a></li>
-						<li><a href="PhoneManageServlet">联系电话</a></li>
-					</ul>
+						<ul class="schoolInfoMenu">
+							<li>环境描述</li>
+							<li><a href="PictureManageServlet">环境图片</a></li>
+							<li><a href="BasicInfoServlet">基本信息</a></li>
+							<li><a href="PhoneManageServlet">联系电话</a></li>
+						</ul>
 				</div>
-				<div id="environment">
-					<!-- 显示表格 -->
-					<div style="height: 40px; line-height: 40px; margin-bottom: 20px">
-                    <form action="SearchDescriptionServlet" style="margin-left: 500px">
-                        <span> <input type="text" name="searchInfo"
-                            style="height: 25px; width: 200px; vertical-align: bottom"
-                            placeholder="请输入要查找的描述信息" value="${searchInfo }">
-                        </span> 
-                        <span> 
-                            <input value="" type="submit" style="border:none;width:40px;height:30px;background: url('imgs/home/search.png');background-size: 40px 30px; vertical-align: bottom">
-                        </span>
-                        <input type="hidden" name="userName" value="${userName }">
-                    </form>
-                </div>
-					<div
-						style="width: 1100px; text-align: center; margin-bottom: 20px; margin-left: 100px">
-						<table class="table">
-							<tr>
-								<td style="background: #F2F2F2">id</td>
-								<td style="background: #F2F2F2">描述</td>
-								<td style="background: #F2F2F2">操作1</td>
-								<td style="background: #F2F2F2">操作2</td>
-							</tr>
-							<!-- 循环输出菜单 -->
+			</div>
+			<div class="box1"  style="height:150px;">
+				<form action="SearchDescriptionServlet" method="post">
+					<input type="text" name="teacherName" placeholder="请输入要查找的描述信息"
+						id="inputName" value="${searchInfo }"/> 
+					<input type="submit" value="点击搜索"
+						id="submitSearch">
+					<input type="hidden" name="userName" value="${userName }">
+				</form>
+			</div>
+			<div class="box2">
+				<div class="box3">
+					<table border="1" style="margin: 0 auto;">
+						<tr height="40px">
+							<th width="100px" style="text-align: center;">id</th>
+							<th width="120px" style="text-align: center;">描述</th>
+							<th width="100px"
+								style="padding-left: 10px; padding-right: 10px; text-align: center;">操作</th>
+						</tr>
+						<!-- 循环输出菜单 -->
 							<c:forEach var="description" items="${page.list }">
 								<tr>
 									<td>${description.id }</td>
 									<td>${description.description }</td>
-									<td><a
-										href="uploadEnvironmentDescription.jsp?id=${description.id }&userName=${userName }&idiom=${idiomItem.idiom }&idiomType=${idiomItem.idiomType }"
-										style="color: black">修改</a></td>
-									<td><a
-										href="DeleteDescriptionServlet?id=${description.id }&userName=${userName }&page=${page.prePageNum+1 }"
-										style="color: black">删除</a></td>
+									<td style="padding-left: 10px; padding-right: 10px;">
+										<a href="updateTeacher?id=${teacher.id }"
+										style="margin-right: 8px;"> <img alt=""
+											src="imgs/updateTeacher.png"
+											style="width: 22px; height: 22px;">
+										</a> <a href="deleteTeacher?id=${teacher.id }"> <img alt=""
+												src="imgs/deleteTeacher.png"
+												style="width: 22px; height: 22px;">
+										</a>
+									</td>
 								</tr>
 							</c:forEach>
+<<<<<<< HEAD
 						</table>
 						<div style="margin-top: 30px">
 							总共有${page.totalPageNum }页，总共有${page.totalCount }个数据； <a
@@ -103,9 +108,18 @@
 								style="color: black">下一页</a> <a
 								href="SearchDescriptionServlet?page=${page.totalPageNum }&searchInfo=${searchInfo }&userName=${userName }"
 								style="color: black">末页</a>
+=======
+					</table>
+					<div class="box4">
+						<div class="box5">
+							总共有${page.totalPageNum }页，总共有${page.totalCount }个数据；&nbsp;&nbsp;
+							<a href="DescriptionManageServlet?page=1&userName=${userName }" style="color: black">首页</a>&nbsp;&nbsp; 
+							<a href="DescriptionManageServlet?page=${page.prePageNum }&userName=${userName }" style="color: black">上一页</a>&nbsp;&nbsp;
+							<a href="DescriptionManageServlet?page=${page.nextPageNum }&userName=${userName }" style="color: black">下一页</a>&nbsp;&nbsp;
+							<a href="DescriptionManageServlet?page=${page.totalPageNum }&userName=${userName }" style="color: black">末页</a>&nbsp;&nbsp;
+>>>>>>> 922b1d1b4ca730fc3a635410834e76466e384b59
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>

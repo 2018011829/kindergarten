@@ -87,7 +87,7 @@
 		联系方式：<input type="text" name="phoneNumber2"><br>
 		工作单位：<input type="text" name="workSpace2"><br>
 		家庭住址：<input type="text" name="homeAddress2"><br><br>
-		<input type="submit" value="提交" style="background-color: #7ED321;width: 100px;height: 30px">
+		<input type="submit" value="提交" id="submitSearch">
 	</form>
 	</div>
 </body>

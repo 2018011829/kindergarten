@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -59,6 +60,19 @@ public class ApplyActivityAffirm extends AppCompatActivity {
     private String appInfo;//上一个activity传来的gson串
     private Button btnSubmit;//提交按钮
     private String whether;
+    private void initHandler() {
+        handler = new Handler(){//handlerThread.getLooper()){
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                switch (msg.what){
+                    case 1:
+                        String str = (String) msg.obj;//接收到的是一个说说对象
+                        Toast.makeText(ApplyActivityAffirm.this,str,Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }
+        };
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,6 +122,12 @@ public class ApplyActivityAffirm extends AppCompatActivity {
             public void handleMessage(@NonNull Message msg) {
                 switch (msg.what){
                     case 1:
+                        String str = (String)msg.obj;
+                        if (!str.equals("")&&str!=null){
+                            Toast.makeText(ApplyActivityAffirm.this,str,Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(ApplyActivityAffirm.this,"提交失败",Toast.LENGTH_LONG).show();
+                        }
                         break;
                 }
             }

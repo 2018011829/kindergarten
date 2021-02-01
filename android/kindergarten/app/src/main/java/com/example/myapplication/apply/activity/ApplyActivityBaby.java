@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +36,7 @@ public class ApplyActivityBaby extends AppCompatActivity {
     private EditText babyName;//宝宝姓名
     private EditText babyBirthday;//宝宝生日
     private EditText babySex;//宝宝性别
+    private RadioGroup rgBabySex;//宝宝性别的单选按钮
     private EditText babyIDnumber;//宝宝身份证号
     private EditText babyAddoAllergies;//宝宝过敏食物
     private DatePicker datePicker;//日期选择器
@@ -65,12 +68,21 @@ public class ApplyActivityBaby extends AppCompatActivity {
                 }
             }
         });
+        //为radioGroup设置一个监听器:setOnCheckedChanged()
+        rgBabySex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radbtn = (RadioButton) findViewById(checkedId);
+                babySex.setText(radbtn.getText());
+            }
+        });
     }
     private void initView() {
         babyName = findViewById(R.id.baby_name);//宝宝姓名
         babyBirthday = findViewById(R.id.baby_birthday);//宝宝生日
         babyBirthday.setInputType(InputType.TYPE_NULL);
         babySex = findViewById(R.id.baby_sex);//宝宝性别
+        rgBabySex = findViewById(R.id.rg_baby_sex);//宝宝性别的单选按钮
         babyIDnumber = findViewById(R.id.baby_IDnumber);//宝宝身份证号
         babyAddoAllergies = findViewById(R.id.baby_addo_allergies);//宝宝过敏食物
         datePicker = findViewById(R.id.dp_datapick);//日期选择器

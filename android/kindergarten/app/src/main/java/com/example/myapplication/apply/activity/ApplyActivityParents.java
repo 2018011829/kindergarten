@@ -13,6 +13,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -33,12 +35,14 @@ import java.util.regex.Pattern;
 public class ApplyActivityParents extends AppCompatActivity {
     private EditText parentName1;//家长姓名1
     private EditText relation1;//与宝宝关系1
+    private RadioGroup rgRelation1 ;//与宝宝关系单选按钮
     private EditText parentIDnumber1;//家长身份证号1
     private EditText phoneNumber1;//联系方式1
     private EditText workSpace1;//工作单位1
     private EditText homeAddress1;//家庭住址1
     private EditText parentName2;//家长姓名2
     private EditText relation2;//与宝宝关系2
+    private RadioGroup rgRelation2 ;//与宝宝关系单选按钮
     private EditText parentIDnumber2;//家长身份证号1
     private EditText phoneNumber2;//联系方式2
     private EditText workSpace2;//工作单位2
@@ -58,6 +62,21 @@ public class ApplyActivityParents extends AppCompatActivity {
         Intent intent = getIntent();
         String appInfo = intent.getStringExtra("applyInfo");
         applyInfo = gson.fromJson(appInfo, ApplyInfo.class);
+
+        rgRelation1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radbtn = (RadioButton) findViewById(checkedId);
+                relation1.setText(radbtn.getText());
+            }
+        });
+        rgRelation2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radbtn = (RadioButton) findViewById(checkedId);
+                relation2.setText(radbtn.getText());
+            }
+        });
     }
 
     private void initView() {
@@ -65,6 +84,8 @@ public class ApplyActivityParents extends AppCompatActivity {
         parentName2 = findViewById(R.id.parent_name2);
         relation1 = findViewById(R.id.relation1);
         relation2 = findViewById(R.id.relation2);
+        rgRelation1 = findViewById(R.id.rg_relation1);
+        rgRelation2 = findViewById(R.id.rg_relation2);
         parentIDnumber1 = findViewById(R.id.parentIDnumber1);
         parentIDnumber2 = findViewById(R.id.parentIDnumber2);
         phoneNumber1 = findViewById(R.id.phone_number1);

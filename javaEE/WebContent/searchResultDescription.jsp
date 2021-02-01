@@ -95,13 +95,13 @@
 						</table>
 						<div style="margin-top: 30px">
 							总共有${page.totalPageNum }页，总共有${page.totalCount }个数据； <a
-								href="SearchDescriptionServlet?page=1&userName=${userName }"
+								href="SearchDescriptionServlet?page=1&searchInfo=${searchInfo }&userName=${userName }"
 								style="color: black">首页</a> <a
-								href="SearchDescriptionServlet?page=${page.prePageNum }&userName=${userName }"
+								href="SearchDescriptionServlet?page=${page.prePageNum }&searchInfo=${searchInfo }&userName=${userName }"
 								style="color: black">上一页</a> <a
-								href="SearchDescriptionServlet?page=${page.nextPageNum }&userName=${userName }"
+								href="SearchDescriptionServlet?page=${page.nextPageNum }&searchInfo=${searchInfo }&userName=${userName }"
 								style="color: black">下一页</a> <a
-								href="SearchDescriptionServlet?page=${page.totalPageNum }&userName=${userName }"
+								href="SearchDescriptionServlet?page=${page.totalPageNum }&searchInfo=${searchInfo }&userName=${userName }"
 								style="color: black">末页</a>
 						</div>
 					</div>

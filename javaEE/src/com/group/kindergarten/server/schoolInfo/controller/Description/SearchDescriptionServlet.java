@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.group.kindergarten.schoolInfo.entity.Description;
+import com.group.kindergarten.schoolInfo.entity.Picture;
 import com.group.kindergarten.schoolInfo.service.DescriptionService;
+import com.group.kindergarten.schoolInfo.service.PictureServce;
 import com.group.kindergarten.teacher.entity.Teacher;
 import com.group.kindergarten.teacher.service.TeacherServiceImpl;
 import com.group.kindergarten.util.Page;
@@ -33,9 +35,9 @@ public class SearchDescriptionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String searchInfo = request.getParameter("searchInfo");
+		String page1 = request.getParameter("page");
 		if(searchInfo != null && !searchInfo.equals("")) {
-			String page1 = request.getParameter("page");
-			int pageNum = 1, pageSize = 10;
+			int pageNum = 1, pageSize = 3;
 			if (page1 != null && !page1.equals("")) {
 				pageNum = Integer.parseInt(page1);
 			}

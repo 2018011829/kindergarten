@@ -83,6 +83,7 @@
                     />
             </RelativeLayout>
 
+
             <RelativeLayout
                 android:id="@+id/ll2"
                 android:layout_below="@+id/ll1"
@@ -97,15 +98,46 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="与宝宝关系"/>
-                <EditText
-                    android:textSize="18dp"
+                <RadioGroup
                     android:layout_toRightOf="@+id/tv_relation1"
-                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/rg_relation1"
                     android:layout_centerVertical="true"
-                    android:id="@+id/relation1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/btnFather1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="父子" />
+                    <RadioButton
+                        android:id="@+id/btnMather1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="母子"/>
+                    <RadioButton
+                        android:id="@+id/btnGrandParent1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="祖孙"/>
+                    <RadioButton
+                        android:id="@+id/btnOther1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="其他"/>
+                    <EditText
+                        android:visibility="gone"
+                        android:textSize="18dp"
+                        android:layout_toRightOf="@+id/tv_relation1"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/relation1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </RadioGroup>
+
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/ll2x"
@@ -263,15 +295,45 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="与宝宝关系"/>
-                <EditText
-                    android:textSize="18dp"
+                <RadioGroup
                     android:layout_toRightOf="@+id/tv_relation2"
-                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/rg_relation2"
                     android:layout_centerVertical="true"
-                    android:id="@+id/relation2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    />
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/btnFather2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="父子" />
+                    <RadioButton
+                        android:id="@+id/btnMather2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="母子"/>
+                    <RadioButton
+                        android:id="@+id/btnGrandParent2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="祖孙"/>
+                    <RadioButton
+                        android:id="@+id/btnOther2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="其他"/>
+                    <EditText
+                        android:visibility="gone"
+                        android:textSize="18dp"
+                        android:layout_toRightOf="@+id/tv_relation1"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/relation2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </RadioGroup>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/ll7x"

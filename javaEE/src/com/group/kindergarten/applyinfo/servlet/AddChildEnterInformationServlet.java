@@ -59,10 +59,16 @@ public class AddChildEnterInformationServlet extends HttpServlet {
 			String workSpace2 = applyInfo.getWorkSpace2();
 			String homeAddress1 = applyInfo.getHomeAddress1();
 			String homeAddress2 = applyInfo.getHomeAddress2();
-			enterService.addChildApplyInformation(userNumber, babyName, babyBirthday, babySex,
+			boolean flag =  enterService.addChildApplyInformation(userNumber, babyName, babyBirthday, babySex,
 					babyIDnumber, babyAddoAllergies, parentName1, relation1, parentIDnumber1, 
 					phoneNumber1, workSpace1, homeAddress1, parentName2, relation2, parentIDnumber2, 
 					phoneNumber2, workSpace2, homeAddress2);
+			if(flag) {
+				// 返回响应
+				response.getWriter().write("提交成功");
+			}else {
+				response.getWriter().write("提交失败");
+			}	
 		}
 	}
 

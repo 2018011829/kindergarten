@@ -60,16 +60,14 @@
                 </div>
                 <div id="environment">
                 <!-- 显示表格 -->
-                <div style="height: 40px; line-height: 40px; margin-bottom: 20px">
-                    <form action="SearchPictureServlet" style="margin-left: 500px">
-                        <span> <input type="text" name="searchInfo"
-                            style="height: 25px; width: 200px; vertical-align: bottom"
-                            placeholder="请输入要查找的书籍信息" value="${searchInfo }">
-                        </span> 
-                        <span> 
-                            <input value="" type="submit" style="border:none;width:40px;height:30px;background: url('imgs/home/search.png');background-size: 40px 30px; vertical-align: bottom">
-                        </span>
-                        <input type="hidden" name="userName" value="${userName }">
+                <div class="box1"  style="height:150px;">
+                    <form action="SearchPictureServlet" method="post">
+                        <input type="text" name="teacherName" placeholder="请输入要查找的描述信息"
+							id="inputName" value="${searchInfo }"/> 
+						<input type="submit" value="点击搜索"
+							id="submitSearch">
+						<input type="hidden" name="userName" value="${userName }">
+	                        <input type="hidden" name="userName" value="${userName }">
                     </form>
                 </div>
                 <div style="width: 1100px; text-align: center; margin-bottom: 20px;margin-left: 100px">

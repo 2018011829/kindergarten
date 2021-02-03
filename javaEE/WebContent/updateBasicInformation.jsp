@@ -74,7 +74,7 @@
 									<input type="text" name="address" value="${address }"
 										class="updateInput" />
 								</div>
-								<br /> <input type="submit" value="提交修改信息" id="submitUpdate" />
+								<br /> <input type="submit" value="提交" id="submitSearch">
 							</form>
 						</div>
 					</div>

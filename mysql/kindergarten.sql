@@ -2,18 +2,34 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50506
+Source Server Version : 50701
 Source Host           : localhost:3306
 Source Database       : kindergarten
 
 Target Server Type    : MYSQL
-Target Server Version : 50506
+Target Server Version : 50701
 File Encoding         : 65001
 
-Date: 2021-01-28 00:49:56
+Date: 2021-02-04 21:53:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `account_balance`
+-- ----------------------------
+DROP TABLE IF EXISTS `account_balance`;
+CREATE TABLE `account_balance` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` varchar(11) NOT NULL,
+  `child_id` int(11) NOT NULL,
+  `account_balance_money` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of account_balance
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `admin`
@@ -86,6 +102,23 @@ INSERT INTO `child` VALUES ('8', '天天', '610526200008160721', '男', '1883116
 INSERT INTO `child` VALUES ('9', '花花', '610526199908160721', '女', '18831166551');
 
 -- ----------------------------
+-- Table structure for `child_attendence`
+-- ----------------------------
+DROP TABLE IF EXISTS `child_attendence`;
+CREATE TABLE `child_attendence` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` varchar(11) NOT NULL,
+  `child_id` int(11) NOT NULL,
+  `last_attendence_day` int(11) NOT NULL,
+  `next_attendence_day` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of child_attendence
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `class`
 -- ----------------------------
 DROP TABLE IF EXISTS `class`;
@@ -111,9 +144,9 @@ CREATE TABLE `contact_remark` (
   PRIMARY KEY (`id`),
   KEY `from_user` (`from_user`),
   KEY `to_user` (`to_user`),
-  CONSTRAINT `contact_remark_ibfk_2` FOREIGN KEY (`to_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `contact_remark_ibfk_1` FOREIGN KEY (`from_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `contact_remark_ibfk_1` FOREIGN KEY (`from_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `contact_remark_ibfk_2` FOREIGN KEY (`to_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of contact_remark
@@ -266,6 +299,22 @@ CREATE TABLE `parent` (
 -- ----------------------------
 INSERT INTO `parent` VALUES ('1', '18831166551', '7777777', '七道', null);
 INSERT INTO `parent` VALUES ('2', '18831166552', '77777772', '七道二', null);
+
+-- ----------------------------
+-- Table structure for `relation`
+-- ----------------------------
+DROP TABLE IF EXISTS `relation`;
+CREATE TABLE `relation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from` char(11) NOT NULL,
+  `to` char(11) NOT NULL,
+  `remark` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of relation
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `teacher`

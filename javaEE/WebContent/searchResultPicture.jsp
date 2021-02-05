@@ -83,6 +83,7 @@
 							varStatus="s">
 							<tr>
 
+<<<<<<< HEAD
 								<c:if test="${s.index ==0 }">
 									<c:forEach items="${page.list }" begin="0" end="5"
 										var="picture" step="3">
@@ -146,6 +147,64 @@
 										</a></td>
 									</c:forEach>
 								</c:if>
+=======
+                <ul class="schoolInfoMenu">
+                    <li><a href="DescriptionManageServlet">环境描述</a></li>
+                    <li>环境图片</li>
+                    <li><a href="BasicInfoServlet">基本信息</a></li>
+                    <li><a href="PhoneManageServlet">联系电话</a></li>
+                </ul>
+                </div>
+                <div id="environment">
+                <!-- 显示表格 -->
+                <div class="box1"  style="height:150px;">
+                    <form action="SearchPictureServlet" method="post">
+                        <input type="text" name="teacherName" placeholder="请输入要查找的描述信息"
+							id="inputName" value="${searchInfo }"/> 
+						<input type="submit" value="点击搜索"
+							id="submitSearch">
+						<input type="hidden" name="userName" value="${userName }">
+	                        <input type="hidden" name="userName" value="${userName }">
+                    </form>
+                </div>
+                <div style="width: 1100px; text-align: center; margin-bottom: 20px;margin-left: 100px">
+                    <table class="table">
+                        <tr>
+                            <td style="background: #F2F2F2">id</td>
+                            <td style="background: #F2F2F2">图片</td>
+                            <td style="background: #F2F2F2">描述id</td>
+                            <td style="background: #F2F2F2">操作1</td>
+                            <td style="background: #F2F2F2">操作2</td>
+                        </tr>
+                        <!-- 循环输出菜单 -->
+                        <c:forEach var="picture" items="${page.list }">
+                            <tr>
+                                <td>${picture.id }</td>
+                                <td><img alt="${picture.picture}" src="imgs/schoolInfoPicture/${picture.picture }"
+                                    style="width: 90px; height: 120px"></td>
+                                <td>${picture.descriptionId }</td>
+                                <td><a
+                                    href="uploadEnvironmentPicture.jsp?id=${picture.id }&userName=${userName }"
+                                    style="color: black">修改</a></td>
+                                <td><a
+                                    href="DeletePictureServlet?id=${picture.id }&userName=${userName }&page=${page.prePageNum+1 }"
+                                    style="color: black">删除</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                    <div style="margin-top: 30px">
+                        总共有${page.totalPageNum }页，总共有${page.totalCount }个数据； <a
+                            href="SearchPictureServlet?page=1&searchInfo=${searchInfo }&userName=${userName }"
+                            style="color: black">首页</a> <a
+                            href="SearchPictureServlet?page=${page.prePageNum }&searchInfo=${searchInfo }&userName=${userName }"
+                            style="color: black">上一页</a> <a
+                            href="SearchPictureServlet?page=${page.nextPageNum }&searchInfo=${searchInfo }&userName=${userName }"
+                            style="color: black">下一页</a> <a
+                            href="SearchPictureServlet?page=${page.totalPageNum }&searchInfo=${searchInfo }&userName=${userName }"
+                            style="color: black">末页</a>
+                    </div>
+                </div>
+>>>>>>> d9bfef12ebbba32c968d74b96ea91fb60a9bffd9
 
 							</tr>
 						</c:forEach>

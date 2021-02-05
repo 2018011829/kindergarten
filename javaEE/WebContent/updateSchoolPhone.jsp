@@ -62,7 +62,7 @@
 									<input type="text" name="phone"
 										value="${phone }" class="updateInput" />
 								</div>
-								<br /> <input type="submit" value="提交修改信息" id="submitUpdate" />
+								<br /> <input type="submit" value="提交" id="submitSearch">
 							</form>
 						</div>
 					</div>

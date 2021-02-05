@@ -51,29 +51,21 @@
                 </ul>
 			</div>
 			<div id="schoolInfo">
-				<fieldset>
-					<div class="editBox1"
-						style="width: 100%; height: 800px; text-align: center;">
-						<div class="updateBox2">
-							<form action="UploadPhone" method="post" style="margin-top: 30px">
-								<input type="hidden" name="phoneId" value="${id }" />
-								<div class="updateBox3">
-									<div class="updateBox4">电话：</div>
-									<input type="text" name="phone"
-										value="${phone }" class="updateInput" />
-								</div>
-								<br /> <input type="submit" value="提交" id="submitSearch">
-							</form>
-						</div>
-					</div>
-				</fieldset>
+				<div class="editBox1">
+                        <div class="updateBox2">
+                            <p id="updateTitle">Update Teacher Info</p>
+                            <form action="UploadPhone" method="post" style="margin-top: 30px">
+                                <input type="hidden" name="phoneId" value="${id }" />
+                                <div class="updateBox3">
+                                    <div class="updateBox4">电话：</div>
+                                    <input type="text" name="phone"
+                                        value="${phone }" class="updateInput" />
+                                </div>
+                                <br /> <input type="submit" value="提交" id="submitSearch">
+                            </form>
+                        </div>
+                    </div>
 			</div>
-
-
-
-
-
-
 		</div>
 	</div>
 </body>

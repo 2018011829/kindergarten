@@ -51,41 +51,33 @@
                 </ul>
 			</div>
 			<div id="schoolInfo">
-				<fieldset>
-					<div class="editBox1"
-						style="width: 100%; height: 800px; text-align: center;">
-						<div class="updateBox2">
-							<form action="UploadBasicInfo" method="post"
-								enctype="multipart/form-data" style="margin-top: 30px">
-								<input type="hidden" name="id" value="${id }" />
-								<input type="hidden" name="introduceLast" value="${introduceFile }" />
-								<div
-									style="width: 500px; height: 50px; text-align: center; text-indent: 8px;">
-									<div style="margin: 0 auto;">
-										<div class="updateBox4">校园简介：</div>
-										<div class="updateBox5">
-											<input type="file" name="introduce" id="updateImgFile" />
-										</div>
-									</div>
-								</div>
-								<br />
-								<div class="updateBox3">
-									<div class="updateBox4">地址：</div>
-									<input type="text" name="address" value="${address }"
-										class="updateInput" />
-								</div>
-								<br /> <input type="submit" value="提交" id="submitSearch">
-							</form>
-						</div>
-					</div>
-				</fieldset>
+				<div class="editBox1">
+                        <div class="updateBox2">
+                            <p id="updateTitle">Update Teacher Info</p>
+                            <form action="UploadBasicInfo" method="post"
+                                enctype="multipart/form-data" style="margin-top: 30px">
+                                <input type="hidden" name="id" value="${id }" />
+                                <input type="hidden" name="introduceLast" value="${introduceFile }" />
+                                <div
+                                    style="width: 500px; height: 50px; text-align: center; text-indent: 8px;">
+                                    <div style="margin: 0 auto;">
+                                        <div class="updateBox4">校园简介：</div>
+                                        <div class="updateBox5">
+                                            <input type="file" name="introduce" id="updateImgFile" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="updateBox3">
+                                    <div class="updateBox4">地址：</div>
+                                    <input type="text" name="address" value="${address }"
+                                        class="updateInput" />
+                                </div>
+                                <br /> <input type="submit" value="提交" id="submitSearch">
+                            </form>
+                        </div>
+                    </div>
 			</div>
-
-
-
-
-
-
 		</div>
 	</div>
 </body>

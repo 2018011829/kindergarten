@@ -35,7 +35,7 @@ public class SearchPictureServlet extends HttpServlet {
 		String searchInfo = request.getParameter("searchInfo");
 		String page1 = request.getParameter("page");
 		if(searchInfo != null && !searchInfo.equals("")) {
-			int pageNum = 1, pageSize = 3;
+			int pageNum = 1, pageSize = 6;
 			if (page1 != null && !page1.equals("")) {
 				pageNum = Integer.parseInt(page1);
 			}

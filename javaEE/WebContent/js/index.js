@@ -15,6 +15,11 @@ function showUserMenu() {
 	var xiala3 = document.getElementById("xiala3");
 	var teacherMenu = document.getElementById("click_teacher_menu");
 	var xiala4 = document.getElementById("xiala4");
+	var accountMenu = document.getElementById("click_account_menu");
+	var xiala5 = document.getElementById("xiala5");
+	accountMenu.style.visibility = "hidden";
+	accountMenu.style.display = "none";
+	xiala5.src = "imgs/home/xiala.png";
 	enrollMenu.style.visibility = "hidden";
 	enrollMenu.style.display = "none";
 	xiala2.src = "imgs/home/xiala.png";
@@ -46,6 +51,11 @@ function showEnrollMenu() {
 	var xiala3 = document.getElementById("xiala3");
 	var teacherMenu = document.getElementById("click_teacher_menu");
 	var xiala4 = document.getElementById("xiala4");
+	var accountMenu = document.getElementById("click_account_menu");
+	var xiala5 = document.getElementById("xiala5");
+	accountMenu.style.visibility = "hidden";
+	accountMenu.style.display = "none";
+	xiala5.src = "imgs/home/xiala.png";
 	userMenu.style.visibility = "hidden";
 	userMenu.style.display = "none";
 	xiala2.src = "imgs/home/xiala.png";
@@ -77,6 +87,11 @@ function showIntroduceMenu() {
 	var xiala3 = document.getElementById("xiala2");
 	var teacherMenu = document.getElementById("click_teacher_menu");
 	var xiala4 = document.getElementById("xiala4");
+	var accountMenu = document.getElementById("click_account_menu");
+	var xiala5 = document.getElementById("xiala5");
+	accountMenu.style.visibility = "hidden";
+	accountMenu.style.display = "none";
+	xiala5.src = "imgs/home/xiala.png";
 	userMenu.style.visibility = "hidden";
 	userMenu.style.display = "none";
 	xiala2.src = "imgs/home/xiala.png";
@@ -107,6 +122,11 @@ function showTeacherMenu() {
 	var xiala3 = document.getElementById("xiala2");
 	var introduceMenu = document.getElementById("click_introduce_menu");
 	var xiala4 = document.getElementById("xiala3");
+	var accountMenu = document.getElementById("click_account_menu");
+	var xiala5 = document.getElementById("xiala5");
+	accountMenu.style.visibility = "hidden";
+	accountMenu.style.display = "none";
+	xiala5.src = "imgs/home/xiala.png";
 	userMenu.style.visibility = "hidden";
 	userMenu.style.display = "none";
 	xiala2.src = "imgs/home/xiala.png";
@@ -124,6 +144,41 @@ function showTeacherMenu() {
 	} else {
 		teacherMenu.style.visibility = "hidden";
 		teacherMenu.style.display = "none";
+		xiala.src = "imgs/home/xiala.png";
+	}
+}
+function showAccountMenu() {
+	var account = document.getElementById("account");
+	var accountMenu = document.getElementById("click_account_menu");
+	var xiala = document.getElementById("xiala5");
+	var userMenu = document.getElementById("click_user_menu");
+	var xiala2 = document.getElementById("xiala1");
+	var enrollMenu = document.getElementById("click_enroll_menu");
+	var xiala3 = document.getElementById("xiala2");
+	var introduceMenu = document.getElementById("click_introduce_menu");
+	var xiala4 = document.getElementById("xiala3");
+	var teacherMenu = document.getElementById("click_teacher_menu");
+	var xiala5 = document.getElementById("xiala4");
+	userMenu.style.visibility = "hidden";
+	userMenu.style.display = "none";
+	xiala2.src = "imgs/home/xiala.png";
+	enrollMenu.style.visibility = "hidden";
+	enrollMenu.style.display = "none";
+	xiala3.src = "imgs/home/xiala.png";
+	introduceMenu.style.visibility = "hidden";
+	introduceMenu.style.display = "none";
+	xiala4.src = "imgs/home/xiala.png";
+	teacherMenu.style.visibility = "hidden";
+	teacherMenu.style.display = "none";
+	xiala5.src = "imgs/home/xiala.png";
+	g("account");
+	if (accountMenu.style.display == "none") {
+		accountMenu.style.visibility = "visible";
+		accountMenu.style.display = "inline-block";
+		xiala.src = "imgs/home/shangla.png";
+	} else {
+		accountMenu.style.visibility = "hidden";
+		accountMenu.style.display = "none";
 		xiala.src = "imgs/home/xiala.png";
 	}
 }
@@ -316,6 +371,32 @@ function showMenu_add4() {
 	teacherMenu.style.visibility = "visible";
 	teacherMenu.style.display = "inline-block";
 	g("teacher_add");
+}
+function showMenu_info5() {
+	var accountMenu = document.getElementById("click_account_menu");
+	var userMenu = document.getElementById("click_user_menu");
+	var xiala2 = document.getElementById("xiala1");
+	var enrollMenu = document.getElementById("click_enroll_menu");
+	var xiala3 = document.getElementById("xiala2");
+	var introduceMenu = document.getElementById("click_introduce_menu");
+	var xiala4 = document.getElementById("xiala3");
+	var teacherMenu = document.getElementById("click_teacher_menu");
+	var xiala5 = document.getElementById("xiala4");
+	userMenu.style.visibility = "hidden";
+	userMenu.style.display = "none";
+	xiala2.src = "imgs/home/xiala.png";
+	enrollMenu.style.visibility = "hidden";
+	enrollMenu.style.display = "none";
+	xiala3.src = "imgs/home/xiala.png";
+	introduceMenu.style.visibility = "hidden";
+	introduceMenu.style.display = "none";
+	xiala4.src = "imgs/home/xiala.png";
+	teacherMenu.style.visibility = "hidden";
+	teacherMenu.style.display = "none";
+	xiala5.src = "imgs/home/xiala.png";
+	accountMenu.style.visibility = "visible";
+	accountMenu.style.display = "inline-block";
+	g("account_info");
 }
 function g(x) {
 	d = document.getElementsByTagName('li')

@@ -31,8 +31,9 @@
 					<li id="introduce" onclick="showIntroduceMenu()"><a>学校简介信息管理</a>
 						<img src="imgs/home/xiala.png" id="xiala3"></li>
 					<ul class="introduce_menu" id="click_introduce_menu"
-						style="display: none">
-						<li onclick="showMenu_info3()" id="introduce_info"><a
+						style="display: block">
+						<li onclick="showMenu_info3()" id="introduce_info"
+							style="background: #009688"><a
 							href="DescriptionManageServlet">学校简介</a></li>
 						<li onclick="showMenu_add3()" id="introduce_add"><a
 							class="jump" href="addEnvironmentPicture.jsp">新增学校信息</a></li>
@@ -67,7 +68,20 @@
 			</div>
 			<div class="box2">
 				<div class="box3">
-					
+					<table border="1" style="margin: 0 auto;">
+						<tr height="40px">
+							<th width="100px" style="text-align: center;">id</th>
+							<th width="150px" style="text-align: center;">月份</th>
+							<th width="180px" style="text-align: center;">天数</th>
+						</tr>
+						<c:forEach items="${schoolSemester }" var="monthInfo">
+							<tr align="center">
+								<td>${monthInfo.id }</td>
+								<td>${monthInfo.month }</td>
+								<td>${monthInfo.dayNum }</td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
 			</div>
 		</div>

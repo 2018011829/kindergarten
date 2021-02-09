@@ -9,7 +9,6 @@ public class ChildrenService {
 	private static ChildrenService childrenService;
 	private static ChildrenDao childrenDao;
 	
-	
 	/**
 	 * 得到一个childrenService实例
 	 * 

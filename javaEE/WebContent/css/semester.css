@@ -409,3 +409,10 @@ ul, li {
 	color: #ffffff;
 	background: #009688;
 }
+.error_info{
+	line-height: 50px;
+	color: red;
+}
+.leave_div{
+	line-height: 70px;
+}

@@ -44,4 +44,51 @@ public class CostMoneyService {
 		
 		return list;
 	}
+	
+	/**
+	 * 判断月份在数据库中是否存在，存在则进行修改，不存在进行保存
+	 * @param monthNum
+	 * @return 
+	 */
+	public boolean justAndPreserve(int monthNum,int dayNum) {
+		boolean b=costMoneyDao.justAndPreserve(monthNum, dayNum);
+		
+		return b;
+	}
+	
+	/**
+	 * 查询孩子姓名是否存在
+	 * @param stuName
+	 * @return
+	 */
+	public boolean isExistChildName(String stuName) {
+		boolean b=costMoneyDao.isExistChildName(stuName);
+		
+		return b;
+	}
+	
+	/**
+	 * 查找孩子的id
+	 * @param name
+	 * @param parentPhone
+	 * @return
+	 */
+	public int returnChildId(String name,String parentPhone) {
+		int id=costMoneyDao.returnChildId(name, parentPhone);
+		
+		return id;
+	}
+	
+	/**
+	 * 在数据库中更新孩子的到课天数
+	 * @param id
+	 * @param parentPhone
+	 * @param dayNum
+	 * @return
+	 */
+	public boolean updateLeaveInfo(int id,String parentPhone,int dayNum) {
+		boolean b=costMoneyDao.updateLeaveInfo(id, parentPhone, dayNum);
+		
+		return b;
+	}
 }

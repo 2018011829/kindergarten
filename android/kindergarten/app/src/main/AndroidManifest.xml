@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,14 +14,23 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" /> <!-- 从短信中读取验证码接口（非必须） -->
     <uses-permission android:name="android.permission.READ_SMS" />
 
-
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.RECORD_VIDEO" />
 <!--    <uses-permission android:name="android.permission.READ_LOGS" />-->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" /> <!-- 申请手机存储权限 -->
 
 <!--    <uses-feature-->
 <!--        android:name="org.apache.http.legacy"-->
@@ -55,6 +65,9 @@
         <activity android:name=".apply.activity.ApplyActivityBaby" />
         <activity android:name=".apply.activity.ApplyActivityParents" />
         <activity android:name=".apply.activity.ApplyActivityAffirm" />
+        <activity android:name=".money.activity.Attendance"/>
+        <activity android:name=".money.activity.Money"/>
+        <activity android:name=".money.activity.UploadPicture"/>
         <activity android:name=".main.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

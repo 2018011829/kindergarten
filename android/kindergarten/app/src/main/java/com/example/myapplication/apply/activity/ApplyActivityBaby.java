@@ -139,8 +139,6 @@ public class ApplyActivityBaby extends AppCompatActivity {
             }
         }
     }
-
-
     //此方法只是关闭软键盘
     private void hintKbTwo() {
         InputMethodManager imm = (InputMethodManager)getSystemService(ApplyActivityBaby.this.INPUT_METHOD_SERVICE);

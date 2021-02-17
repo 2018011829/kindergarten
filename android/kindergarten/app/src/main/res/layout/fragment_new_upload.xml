@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:background="#f3f2f1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#f3f2f1">
+        <EditText
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#ffffff"
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:gravity="top"
+            android:hint="请输入上传内容"
+            android:textColor="@color/colorAccent"
+            android:padding="15dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:background="#ffffff"/>
+        <Button
+            android:background="@drawable/apply_button2"
+            android:layout_gravity="center"
+            android:id="@+id/upload"
+            android:text="提交"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</ScrollView>

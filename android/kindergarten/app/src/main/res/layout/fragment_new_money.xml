@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lcim_common_blue">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:text="石家庄市裕华区华兴幼儿园"
+                android:textSize="25dp"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lcim_commom_read" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="幼儿园性质"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+
+            <TextView
+                android:text="惠普幼儿园"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="5dp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lcim_commom_read"  />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="幼儿园类别"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+
+            <TextView
+                android:text="城市二类幼儿园"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="5dp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lcim_commom_read"  />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="收费项目和标准"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lcim_commom_read"  />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="收费项目"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="计算单位"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="收费标准"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lcim_commom_read"  />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="保教费"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="元/生/月"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="1000元"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lcim_commom_read"  />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="伙食费"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="元/生/月"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="18元"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lcim_commom_read"  />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="退费规定"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+            <TextView
+                android:text="      当月幼儿园实际在园时间（即出勤天数不足一天按整天计算)，不足一月，保教费按以下方法计算:
+\n      1、实际在园时间为0天的不得收费;\n      2、实际在园时间为1-10天的,按月收费标准的50%收取，实际在园时间11天及以上的按整月收取。"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:padding="5dp"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_marginLeft="2dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/lcim_commom_read" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lcim_commom_read"  />
+
+        <LinearLayout
+            android:id="@+id/wr_areas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="幼儿园咨询电话:0311-85885701"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>

@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50506
+Source Server Version : 50701
 Source Host           : localhost:3306
 Source Database       : kindergarten
 
 Target Server Type    : MYSQL
-Target Server Version : 50506
+Target Server Version : 50701
 File Encoding         : 65001
 
-Date: 2021-02-06 10:16:40
+Date: 2021-02-14 19:24:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,9 +21,9 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `account_balance`;
 CREATE TABLE `account_balance` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` char(11) NOT NULL,
+  `phone` varchar(11) NOT NULL,
   `child_id` int(11) NOT NULL,
-  `money` int(11) NOT NULL,
+  `account_balance_money` double NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -107,7 +107,7 @@ INSERT INTO `child` VALUES ('9', '花花', '610526199908160721', '女', '1883116
 DROP TABLE IF EXISTS `child_attendence`;
 CREATE TABLE `child_attendence` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` char(11) NOT NULL,
+  `phone` varchar(11) NOT NULL,
   `child_id` int(11) NOT NULL,
   `last_attendence_day` int(11) NOT NULL,
   `next_attendence_day` int(11) NOT NULL,
@@ -314,6 +314,21 @@ CREATE TABLE `relation` (
 
 -- ----------------------------
 -- Records of relation
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `school_semester`
+-- ----------------------------
+DROP TABLE IF EXISTS `school_semester`;
+CREATE TABLE `school_semester` (
+  `month` smallint(6) DEFAULT NULL,
+  `day_num` smallint(6) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of school_semester
 -- ----------------------------
 
 -- ----------------------------

@@ -91,4 +91,29 @@ public class CostMoneyService {
 		
 		return b;
 	}
+	
+
+	/**
+	 * 返回孩子上个月的出勤天数
+	 * @param name
+	 * @param parentPhone
+	 * @return
+	 */
+	public int childAttendLastMonth(String name,String parentPhone) {
+		int day=0;
+		
+		return day;
+	}
+	
+	/**
+	 * 返回孩子本月应该交的费用
+	 * @param name
+	 * @param parentPhone
+	 * @return
+	 */
+	public int childNeedMoney(String name,String parentPhone) {
+		int day=0;
+		
+		return day;
+	}
 }

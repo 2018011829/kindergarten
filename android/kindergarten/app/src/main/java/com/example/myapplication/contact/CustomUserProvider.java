@@ -42,34 +42,34 @@ public class CustomUserProvider implements LCChatProfileProvider {
 
     // 此数据均为 fake，仅供参考
     public static void getContact(){
-        //提交键值对格式的数据
-        FormBody.Builder builder = new FormBody.Builder();
-        builder.add("phone", ConfigUtil.PHONE);
-        FormBody body = builder.build();
-        Request request = new Request.Builder()
-                .post(body)
-                .url(ConfigUtil.SERVICE_ADDRESS + "GetContactByPhoneServlet")
-                .build();
-        //获得call对象
-        Call call = new OkHttpClient().newCall(request);
-        //提交请求并获取响应
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Log.e("chatkit", "getContact请求失败");
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String result = response.body().string();
-                Log.i("lxl","onResponse: "+result);
-                //处理请求结果
-//                Message msg = handler.obtainMessage();
-//                msg.what = 1;
-//                msg.obj = result;
-//                handler.sendMessage(msg);
-            }
-        });
+//        //提交键值对格式的数据
+//        FormBody.Builder builder = new FormBody.Builder();
+//        builder.add("phone", ConfigUtil.PHONE);
+//        FormBody body = builder.build();
+//        Request request = new Request.Builder()
+//                .post(body)
+//                .url(ConfigUtil.SERVICE_ADDRESS + "GetContactByPhoneServlet")
+//                .build();
+//        //获得call对象
+//        Call call = new OkHttpClient().newCall(request);
+//        //提交请求并获取响应
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+//                Log.e("chatkit", "getContact请求失败");
+//            }
+//
+//            @Override
+//            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+//                String result = response.body().string();
+//                Log.i("lxl","onResponse: "+result);
+//                //处理请求结果
+////                Message msg = handler.obtainMessage();
+////                msg.what = 1;
+////                msg.obj = result;
+////                handler.sendMessage(msg);
+//            }
+//        });
 //    partUsers.add(new LCChatKitUser("Tom", "Tom", "http://www.avatarsdb.com/avatars/tom_and_jerry2.jpg"));
 
         partUsers.add(new LCChatKitUser("Tom", "Tom", "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1825282309,2865804785&fm=26&gp=0.jpg"));

@@ -28,7 +28,7 @@ public class TeacherActivity extends EuclidActivity {
 
     @Override
     protected BaseAdapter getAdapter() {
-        //todo：需要有一个传入
+       
         Intent intent = getIntent();
         String result = intent.getStringExtra("results");
         List<Teacher> profilesList = new ArrayList<>();

@@ -62,19 +62,19 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
                     if (response.equals("success")) {
                         // 存入用户手机电话
                         ConfigUtil.PHONE= etPhone.getText().toString().trim();
-                        // 在LeanCloud登录
-                        AVIMOptions.getGlobalOptions().setAutoOpen(true);
-                        LCChatKit.getInstance().open(etPhone.getText().toString().trim(), new AVIMClientCallback() {
-                            @Override
-                            public void done(AVIMClient avimClient, AVIMException e) {
-                                if (null == e) {
-//                                    Intent intent = new Intent(LoginByPasswordActivity.this, TestActivity.class);
-//                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(LoginByPasswordActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+//                        // 在LeanCloud登录
+//                        AVIMOptions.getGlobalOptions().setAutoOpen(true);
+//                        LCChatKit.getInstance().open(etPhone.getText().toString().trim(), new AVIMClientCallback() {
+//                            @Override
+//                            public void done(AVIMClient avimClient, AVIMException e) {
+//                                if (null == e) {
+////                                    Intent intent = new Intent(LoginByPasswordActivity.this, TestActivity.class);
+////                                    startActivity(intent);
+//                                } else {
+//                                    Toast.makeText(LoginByPasswordActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
 
                         //登录成功 跳转到首页
                         Intent intent = new Intent();

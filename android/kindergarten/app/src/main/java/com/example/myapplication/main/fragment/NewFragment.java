@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.main.activity.my.ApplyInfoActivity;
 import com.example.myapplication.main.entity.Child;
+import com.example.myapplication.main.entity.ChildConsumeInfo;
 import com.example.myapplication.main.entity.UserParent;
 import com.example.myapplication.main.util.ConfigUtil;
 import com.example.myapplication.money.activity.Attendance;
@@ -56,7 +57,10 @@ public class NewFragment extends Fragment {
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what){
                 case 1:
-                    String str1= (String) msg.obj;
+                    String str= (String) msg.obj;
+                    ChildConsumeInfo childInfo=new Gson().fromJson(str,ChildConsumeInfo.class);
+                    tvDay.setText(childInfo.getDay());
+                    tvMoney.setText(childInfo.getMoney()+"");
 
                     break;
             }

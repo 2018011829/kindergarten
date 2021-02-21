@@ -307,66 +307,26 @@ public class CostMoneyDao {
 		return day;
 	}
 	
+	
 	/**
-	 * 计算孩子本月应该交的费用
-	 * @param name
-	 * @param parentPhone
+	 * 根据月份获取对应月份的天数 
+	 * @param month
 	 * @return
 	 */
-	public int childNeedMoney(String name,String parentPhone) {
+	public int getOneMonthAboutDayNum(int month) {
 		int day=0;
-		int preMonth=0;
-		int nowMonth=0;
-		//获取当前时间
-		Calendar c = Calendar.getInstance();
-	    //获取上个月月份 从0开始，0-11
-		//获取上个月月份
-		if(c.get(Calendar.MONTH)==0) {
-			preMonth=12;
-		}else {
-			preMonth=c.get(Calendar.MONTH);
+		try {
+			preparedStatement=connection.prepareStatement("select * from school_semester where month=?");
+			preparedStatement.setInt(1, month);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs.next()) {
+				day=rs.getInt("day_num");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		//获取本月月份
-		if(preMonth==12) {
-			nowMonth=1;
-		}else {
-			nowMonth=preMonth+1;
-		}
-		//获取上个月的出勤天数
-		day=getChildLastAttendenceDay(name, parentPhone);
-		//计算上个月的余额
-		
-		//计算本月要交的钱
-		
 		
 		return day;
-	}
-	
-	/**
-	 * 计算上个月的余额
-	 * @param preMonth
-	 * @return
-	 */
-	public int caculateLastMoney(int preMonth) {
-		int money=0;
-		//获取上个月要上学的天数
-		//计算保育费和餐费，先判断天数的多少（0, 1-10 ，11及以上）
-		//计算实际应支付的费用（上个月出勤天数计算）
-		
-		return money;
-	}
-	
-	/**
-	 * 计算本月要交的钱
-	 * @param nowMonth
-	 * @return
-	 */
-	public int caculateNowMoney(int nowMonth) {
-		int money=0;
-		//获取本月要上学的天数
-		//获取上个月的余额
-		//计算本月实际应交的费用（本月费用减去上个月的余额）
-		
-		return money;
 	}
 }

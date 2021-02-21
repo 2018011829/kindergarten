@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Search Teacher</title>
-<link rel="stylesheet" href="css/teacherStyle.css">
+<link rel="stylesheet" type="text/css" href="css/teacherStyle.css">
+<script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
 	<div id="box">
@@ -46,14 +47,20 @@
                     <li id="teacher" onclick="showTeacherMenu()"><a class="jump">教师信息管理</a><img
                         src="imgs/home/xiala.png" id="xiala4"></li>
                     <ul class="teacher_menu" id="click_teacher_menu"
-                        style="display: block">
+                        style="display: none">
                         <li onclick="showMenu_info4()" id="teacher_info"
 							style="background: #009688"><a
                             class="jump" href="teacherManage">查看教师信息</a></li>
                         <li onclick="showMenu_add4()" id="teacher_add"><a
                             class="jump" href="addTeacher.jsp">新增教师信息</a></li>
-                        <li onclick="showMenu_info5()" id="teacher_add"><a
+                        <li onclick="showMenu_info5()" id="teacher_delete"><a
                             class="jump" href="deletedTeacherManage">查看离职教师信息</a></li>
+                    </ul>
+                    <li id="account" onclick="showAccountMenu()"><a>本学期上课安排</a><img
+                        src="imgs/home/xiala.png" id="xiala5"></li>
+                    <ul class="account_menu" id="click_account_menu"
+                        style="display: none">
+                        <li onclick="showMenu_info5()" id="account_info"><a class="jump" href="SearchClassTime">查看本学期上课时间</a></li>
                     </ul>
                 </ul>
             </div>
@@ -96,10 +103,10 @@
 					<div class="box4">
 						<div class="box5">
 							总共有${page.totalPageNum }页，总共有${page.totalCount }个数据；&nbsp;&nbsp;
-							<a href="searchTeacherByName?teacherName=${name }&page=1">首页</a>&nbsp;&nbsp;
-							<a href="searchTeacherByName?teacherName=${name }&page=${page.prePageNum }">上一页</a>&nbsp;&nbsp;
-							<a href="searchTeacherByName?teacherName=${name }&page=${page.nextPageNum }">下一页</a>&nbsp;&nbsp;
-							<a href="searchTeacherByName?teacherName=${name }&page=${page.totalPageNum }">末页</a>&nbsp;&nbsp;
+							<a href="searchTeacherByName?teacherName=${name }&page=1" style="color: black">首页</a>&nbsp;&nbsp;
+							<a href="searchTeacherByName?teacherName=${name }&page=${page.prePageNum }" style="color: black">上一页</a>&nbsp;&nbsp;
+							<a href="searchTeacherByName?teacherName=${name }&page=${page.nextPageNum }" style="color: black">下一页</a>&nbsp;&nbsp;
+							<a href="searchTeacherByName?teacherName=${name }&page=${page.totalPageNum }" style="color: black">末页</a>&nbsp;&nbsp;
 						</div>
 					</div>
 				</div>

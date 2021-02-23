@@ -4,10 +4,13 @@ import android.os.Message;
 import android.util.Log;
 
 import com.example.myapplication.main.util.ConfigUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +43,7 @@ public class CustomUserProvider implements LCChatProfileProvider {
 
     private static List<LCChatKitUser> partUsers = new ArrayList<LCChatKitUser>();
 
-    // 此数据均为 fake，仅供参考
+    // 从用户体系获取数据
     public static void getContact(){
         //提交键值对格式的数据
         FormBody.Builder builder = new FormBody.Builder();
@@ -63,6 +66,21 @@ public class CustomUserProvider implements LCChatProfileProvider {
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String result = response.body().string();
                 Log.i("lxl","onResponse: "+result);
+                if (!result.equals("您还没有联系人[]")){
+                    //将得到的结果反序列化
+                    Type myType = new TypeToken<ArrayList<LCChatKitUser>>(){}.getType();
+                    List<LCChatKitUser> lcChatKitUsers = new Gson().fromJson(result,myType);
+                    Log.i("lxl", "onResponse: "+lcChatKitUsers.size());
+                    //添加到我的好友列表，替换掉假数据
+                    for (LCChatKitUser user:lcChatKitUsers) {
+                        Log.i("lxl", "onResponse: 即将添加");
+                        partUsers.add(new LCChatKitUser(user.getUserId(), user.getName(), ConfigUtil.SETVER_AVATAR+user.getAvatarUrl()));
+                        Log.i("lxl", "onResponse: 添加成功");
+                    }
+                }
+
+
+
                 //处理请求结果
 //                Message msg = handler.obtainMessage();
 //                msg.what = 1;
@@ -72,11 +90,11 @@ public class CustomUserProvider implements LCChatProfileProvider {
         });
 //    partUsers.add(new LCChatKitUser("Tom", "Tom", "http://www.avatarsdb.com/avatars/tom_and_jerry2.jpg"));
 
-        partUsers.add(new LCChatKitUser("Tom", "Tom", "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1825282309,2865804785&fm=26&gp=0.jpg"));
-        partUsers.add(new LCChatKitUser("Jerry", "Jerry", "http://www.avatarsdb.com/avatars/jerry.jpg"));
-        partUsers.add(new LCChatKitUser("Harry", "Harry", "http://www.avatarsdb.com/avatars/young_harry.jpg"));
-        partUsers.add(new LCChatKitUser("William", "William", "http://www.avatarsdb.com/avatars/william_shakespeare.jpg"));
-        partUsers.add(new LCChatKitUser("Bob", "Bob", "http://www.avatarsdb.com/avatars/bath_bob.jpg"));
+//        partUsers.add(new LCChatKitUser("Tom", "Tom", "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1825282309,2865804785&fm=26&gp=0.jpg"));
+//        partUsers.add(new LCChatKitUser("Jerry", "Jerry", "http://www.avatarsdb.com/avatars/jerry.jpg"));
+//        partUsers.add(new LCChatKitUser("Harry", "Harry", "http://www.avatarsdb.com/avatars/young_harry.jpg"));
+//        partUsers.add(new LCChatKitUser("William", "William", "http://www.avatarsdb.com/avatars/william_shakespeare.jpg"));
+//        partUsers.add(new LCChatKitUser("Bob", "Bob", "http://www.avatarsdb.com/avatars/bath_bob.jpg"));
     }
 
     @Override

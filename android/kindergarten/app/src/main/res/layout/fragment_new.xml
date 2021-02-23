@@ -33,13 +33,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:text="您的孩子"
+                android:text="您的孩子："
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="小明"
+                android:id="@+id/money_child_name"
+                android:text="***"
                 android:textColor="@color/lcim_commom_read"
                 android:textSize="20dp"
                 android:layout_width="wrap_content"
@@ -64,7 +65,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="25"
+                android:id="@+id/money_child_day"
+                android:text="**"
                 android:textColor="@color/lcim_commom_read"
                 android:textSize="20dp"
                 android:layout_width="wrap_content"
@@ -102,9 +104,10 @@
                 android:textSize="20dp" />
 
             <TextView
+                android:id="@+id/money_child"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2500"
+                android:text="****"
                 android:textColor="@color/lcim_commom_read"
                 android:textSize="20dp" />
 

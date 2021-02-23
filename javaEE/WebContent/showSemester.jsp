@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/semester.css">
+<link rel="stylesheet" type="text/css" href="css/semester.css">
 <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>

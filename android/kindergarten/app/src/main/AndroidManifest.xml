@@ -37,6 +37,7 @@
 <!--        android:required="false" />-->
 
 
+
     <application
         android:name=".contact.util.App"
         android:allowBackup="true"
@@ -47,6 +48,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<!--        <uses-library android:name="org.apache.http.legacy" android:required="false"/>-->
         <activity android:name=".contact.TestActivity"></activity>
         <activity android:name=".contact.LoginActivity" >
 
@@ -56,6 +58,11 @@
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".login.LoginByPasswordActivity" >
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".login.LoginByPhoneActivity" />
         <activity android:name=".teacher.tool.euclid.EuclidActivity" />
@@ -69,11 +76,7 @@
         <activity android:name=".money.activity.Money"/>
         <activity android:name=".money.activity.UploadPicture"/>
         <activity android:name=".main.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity> <!-- 学校简介用到的activity 开始 -->
         <activity android:name=".school.activity.ImageShower" />

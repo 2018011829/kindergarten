@@ -65,19 +65,22 @@ public class RemarkDaoImpl {
 	 * @return 联系人（用于chatkit）
 	 */
 	public List<LCChatKitUser> getContactByPhone(String phone) {
+		//查询到当前用户的id
 		String sqlForid = "select id from user where phone='"+ phone+"'";
 		int id=-1;
-		String sql = "select (id,nickname,avatar) from user where id is in(select to_user from contact_remark where id=?)";
+		String sql = "select id,nickname,avatar from user where id in(select to_user from contact_remark where from_user=?)";
 
 		List<LCChatKitUser> lcChatKitUsers = new ArrayList<LCChatKitUser>();
 		try {
 			//查询到phone对应的id
+//			String a= connection.prepareStatement(sqlForid) != null?"not null":"null";
 			preparedStatement = connection.prepareStatement(sqlForid);
 			ResultSet resultSetForId = preparedStatement.executeQuery();
 			if (resultSetForId.next()) {
 				System.out.println(phone+"对应的id："+resultSetForId.getInt(1));
 				id = resultSetForId.getInt(1);
 			}
+			
 			preparedStatement = connection
 					.prepareStatement(sql);
 		

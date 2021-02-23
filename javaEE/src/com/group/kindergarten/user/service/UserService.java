@@ -21,8 +21,8 @@ public class UserService {
 		if (null == userService) {
 			userService = new UserService();
 		}
-		if (null == userService) {
-			userService = UserService.getInstance();
+		if (null == userDao) {
+			userDao = UserDaoImpl.getInstance();
 		}
 		if (null == gson) {
 			gson = new Gson();

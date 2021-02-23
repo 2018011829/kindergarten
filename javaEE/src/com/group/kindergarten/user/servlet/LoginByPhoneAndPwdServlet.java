@@ -35,6 +35,8 @@ public class LoginByPhoneAndPwdServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		
+		System.out.println(phone);
+		
 		// 查找手机号是否已经注册
 		UserService userService = UserService.getInstance();
 		boolean b = userService.isExistPhone(phone);

@@ -91,4 +91,83 @@ public class CostMoneyService {
 		
 		return b;
 	}
+	
+
+	/**
+	 * 返回孩子上个月的出勤天数
+	 * @param name
+	 * @param parentPhone
+	 * @return
+	 */
+	public int childAttendLastMonth(String name,String parentPhone) {
+		int day=costMoneyDao.childAttendLastMonth(name, parentPhone);
+		
+		return day;
+	}
+
+	/**
+	 * 计算上个月的余额
+	 * @param preMonth
+	 * @return
+	 */
+	public double caculateLastMoney(int preMonth,String name,String parentPhone) {
+		double money=0;
+		//获取上个月要上学的天数
+		int day=0;
+		day=costMoneyDao.getOneMonthAboutDayNum(preMonth);
+		//计算应交的保育费和餐费，先判断天数的多少（0, 1-10 ，11及以上）
+		double shouldMoney=0;
+		if(day==0) {
+			shouldMoney=0;
+		}else if(day>=1 && day<=10) {//1-10
+			shouldMoney=1000*0.5+18*day;
+		}else {//11及以上
+			shouldMoney=1000+18*day;
+		}
+		//计算实际应支付的费用（上个月出勤天数计算）
+		double actualMoney=0;
+		int attendenceDay=costMoneyDao.getChildLastAttendenceDay(name, parentPhone);
+		if(attendenceDay==0) {
+			actualMoney=0;
+		}else if(attendenceDay>=1 && attendenceDay<=10) {//1-10
+			actualMoney=1000*0.5+18*attendenceDay;
+		}else {//11及以上
+			actualMoney=1000+18*attendenceDay;
+		}
+		//计算剩余的余额
+		money=shouldMoney-actualMoney;
+		
+		return money;
+	}
+	
+	/**
+	 * 计算本月要交的钱
+	 * @param nowMonth
+	 * @return
+	 */
+	public double caculateNowMoney(int nowMonth,String name,String parentPhone) {
+		double money=0;
+		int day=0;
+		//获取本月要上学的天数
+		day=costMoneyDao.getOneMonthAboutDayNum(nowMonth);//获取上个月月份 从0开始，0-11
+		int preMonth=nowMonth-1;
+		if(preMonth==0) {
+			preMonth=12;
+		}
+		//获取上个月的余额
+		double lastMonthMoney=caculateLastMoney(nowMonth-1, name, parentPhone);
+		//计算应交的保育费和餐费，先判断天数的多少（0, 1-10 ，11及以上）
+		double shouldMoney=0;
+		if(day==0) {
+			shouldMoney=0;
+		}else if(day>=1 && day<=10) {//1-10
+			shouldMoney=1000*0.5+18*day;
+		}else {//11及以上
+			shouldMoney=1000+18*day;
+		}
+		//计算本月实际应交的费用（本月费用减去上个月的余额）
+		money=shouldMoney-lastMonthMoney;
+		
+		return money;
+	}
 }

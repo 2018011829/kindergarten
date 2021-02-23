@@ -104,8 +104,9 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
                             @Override
                             public void done(AVIMClient avimClient, AVIMException e) {
                                 if (null == e) {
-                                    Intent intent = new Intent(LoginByPhoneActivity.this, TestActivity.class);
-                                    startActivity(intent);
+                                    ///测试内容为跳转到聊天界面
+//                                    Intent intent = new Intent(LoginByPhoneActivity.this, TestActivity.class);
+//                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(LoginByPhoneActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                                 }
@@ -230,7 +231,7 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
         //创建请求对象
         Request request = new Request.Builder()
                 .url(ConfigUtil.SERVICE_ADDRESS
-                        + "ParentLoginByPhoneNumServlet"+"?phone="+trim)
+                        + "LoginByPhoneNumServlet"+"?phone="+trim)
                 .build();
         //创建CALL对象
         Call call = new OkHttpClient().newCall(request);

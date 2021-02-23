@@ -19,7 +19,7 @@ import cn.leancloud.im.v2.AVIMException;
 import cn.leancloud.im.v2.callback.AVIMClientCallback;
 
 /**
- * 登陆页面
+ * 登陆页面  正式应用中不会出现
  */
 public class LoginActivity extends AppCompatActivity {
 

@@ -172,7 +172,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         FormBody body=builder.build();
         Request request=new Request.Builder()
                 .post(body)
-                .url(ConfigUtil.SERVICE_ADDRESS+"ParentRegisterServlet")
+                .url(ConfigUtil.SERVICE_ADDRESS+"RegisterServlet")
                 .build();
         //获得call对象
         Call call=new OkHttpClient().newCall(request);

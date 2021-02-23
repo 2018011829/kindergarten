@@ -50,12 +50,14 @@ public class App extends Application {
             @Override
             public void onNext(AVObject avObject) {
                 String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+                Log.i("contact", "onNext: "+"---  " + installationId);
                 System.out.println("---  " + installationId);
             }
 
             @Override
             public void onError(Throwable e) {
-                // 保存失败，输出错误信息
+                // 保存失败，
+                Log.i("contact", "onError: failed to save installation.");
                 System.out.println("failed to save installation.");
             }
 

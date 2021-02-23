@@ -19,9 +19,11 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.contact.LoginActivity;
 import com.example.myapplication.contact.TestActivity;
+import com.example.myapplication.login.entity.User;
 import com.example.myapplication.main.activity.MainActivity;
 import com.example.myapplication.main.util.ChangeStatusBarColor;
 import com.example.myapplication.main.util.ConfigUtil;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -43,12 +45,12 @@ import okhttp3.Response;
 public class LoginByPasswordActivity extends AppCompatActivity implements View.OnClickListener {
     private final static String TAG = "LoginByPasswordActivity";
 
-
     private EditText etPhone;
     private EditText etPassword;
     private Button btnLogin;
     private TextView tvLoginByMsg;
     private TextView tvRegister;
+    private String userId;
 
     //定义一个用于判断退出时的时间
     private long mExitTime;
@@ -60,11 +62,15 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
                 case 1://获得密码登录的请求结果
                     String response = (String) msg.obj;
                     if (response.equals("success")) {
+                        //获取用户id
+                        getUserIdByPhone(etPhone.getText().toString().trim());
                         // 存入用户手机电话
                         ConfigUtil.PHONE= etPhone.getText().toString().trim();
+
 //                        // 在LeanCloud登录
 //                        AVIMOptions.getGlobalOptions().setAutoOpen(true);
-//                        LCChatKit.getInstance().open(etPhone.getText().toString().trim(), new AVIMClientCallback() {
+//                        //使用用户id登录
+//                        LCChatKit.getInstance().open(userId, new AVIMClientCallback() {
 //                            @Override
 //                            public void done(AVIMClient avimClient, AVIMException e) {
 //                                if (null == e) {
@@ -75,18 +81,41 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
 //                                }
 //                            }
 //                        });
-
-                        //登录成功 跳转到首页
-                        Intent intent = new Intent();
-                        intent.setClass(LoginByPasswordActivity.this, MainActivity.class);
-                        intent.putExtra("phone", etPhone.getText().toString().trim());
-                        startActivity(intent);
-                        finish();
+//
+//                        //登录成功 跳转到首页
+//                        Intent intent = new Intent();
+//                        intent.setClass(LoginByPasswordActivity.this, MainActivity.class);
+//                        intent.putExtra("phone", etPhone.getText().toString().trim());
+//                        startActivity(intent);
+//                        finish();
                     } else {//登录失败 显示错误信息
                         Toast.makeText(getApplicationContext(),
                                 "" + response,
                                 Toast.LENGTH_LONG).show();
                     }
+                    break;
+                case 2:
+                    // 在LeanCloud登录
+                    AVIMOptions.getGlobalOptions().setAutoOpen(true);
+                    //使用用户id登录
+                    LCChatKit.getInstance().open(userId, new AVIMClientCallback() {
+                        @Override
+                        public void done(AVIMClient avimClient, AVIMException e) {
+                            if (null == e) {
+//                                    Intent intent = new Intent(LoginByPasswordActivity.this, TestActivity.class);
+//                                    startActivity(intent);
+                            } else {
+                                Toast.makeText(LoginByPasswordActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                    //登录成功 跳转到首页
+                    Intent intent = new Intent();
+                    intent.setClass(LoginByPasswordActivity.this, MainActivity.class);
+                    intent.putExtra("phone", etPhone.getText().toString().trim());
+                    startActivity(intent);
+                    finish();
                     break;
             }
         }
@@ -131,6 +160,39 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
                 finish();
                 break;
         }
+    }
+
+    public void getUserIdByPhone(String phone){
+        //提交键值对格式的数据
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("phone", phone);
+        FormBody body = builder.build();
+        Request request = new Request.Builder()
+                .post(body)
+                .url(ConfigUtil.SERVICE_ADDRESS + "GetUserMsgServlet")
+                .build();
+        //获得call对象
+        Call call = new OkHttpClient().newCall(request);
+        //提交请求并获取响应
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("lxl", "请求失败");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                User user = new Gson().fromJson(result,User.class);
+                userId = user.getId()+"";
+                //处理请求结果
+                Message msg = handler.obtainMessage();
+                msg.what = 2;
+                msg.obj = result;
+                handler.sendMessage(msg);
+            }
+        });
+
     }
 
     /**
@@ -203,7 +265,7 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
         FormBody body = builder.build();
         Request request = new Request.Builder()
                 .post(body)
-                .url(ConfigUtil.SERVICE_ADDRESS + "ParentLoginByPhoneAndPwdServlet")
+                .url(ConfigUtil.SERVICE_ADDRESS + "LoginByPhoneAndPwdServlet")
                 .build();
         //获得call对象
         Call call = new OkHttpClient().newCall(request);

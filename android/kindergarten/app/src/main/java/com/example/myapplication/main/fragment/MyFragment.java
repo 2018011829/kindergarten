@@ -143,6 +143,15 @@ public class MyFragment extends Fragment {
         Log.e("phone",phone);
         
         queryChildren();
+        //判断是否已经选择过孩子，是直接显示之前选择过的
+        if (childName!=null && !childName.equals("")){
+            tv_mine_myChildName.setText(childName);
+            if(childSex.equals("男")){
+                iv_mine_myChildImg.setImageDrawable(MyFragment.this.getContext().getDrawable(R.drawable.boy));
+            }else {
+                iv_mine_myChildImg.setImageDrawable(MyFragment.this.getContext().getDrawable(R.drawable.girl));
+            }
+        }
 
         return view;
     }

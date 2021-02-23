@@ -59,7 +59,7 @@ public class NewFragment extends Fragment {
                 case 1:
                     String str= (String) msg.obj;
                     ChildConsumeInfo childInfo=new Gson().fromJson(str,ChildConsumeInfo.class);
-                    tvDay.setText(childInfo.getDay());
+                    tvDay.setText(childInfo.getDay()+"");
                     tvMoney.setText(childInfo.getMoney()+"");
 
                     break;

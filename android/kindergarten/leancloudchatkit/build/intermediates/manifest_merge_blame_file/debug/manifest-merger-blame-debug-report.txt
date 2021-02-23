@@ -6,117 +6,288 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="14"
+<<<<<<< HEAD
 8-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
+=======
+8-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 9        android:targetSdkVersion="26" />
+<<<<<<< HEAD
 9-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
+=======
+9-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
+<<<<<<< HEAD
 11-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:5:5-66
 11-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:5:22-64
+=======
+11-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:5:5-66
+11-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:5:22-64
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<<<<<<< HEAD
 12-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:6:5-80
 12-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:6:22-78
+=======
+12-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:6:5-80
+12-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:6:22-78
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<<<<<<< HEAD
 13-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:7:5-78
 13-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:7:22-76
+=======
+13-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:7:5-78
+13-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:7:22-76
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<<<<<<< HEAD
 14-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:8:5-75
 14-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:8:22-73
+=======
+14-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:8:5-75
+14-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:8:22-73
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 15    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+<<<<<<< HEAD
 15-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:9:5-70
 15-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:9:22-68
+=======
+15-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:9:5-70
+15-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:9:22-68
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 16    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<<<<<<< HEAD
 16-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:10:5-75
 16-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:10:22-72
+=======
+16-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:10:5-75
+16-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:10:22-72
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 17    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+<<<<<<< HEAD
 17-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:11:5-80
 17-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:11:22-78
+=======
+17-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:11:5-80
+17-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:11:22-78
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 18    <uses-permission android:name="android.permission.VIBRATE" />
+<<<<<<< HEAD
 18-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:12:5-65
 18-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:12:22-63
+=======
+18-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:12:5-65
+18-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:12:22-63
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 19
 20    <uses-feature
+<<<<<<< HEAD
 20-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:14:5-16:34
+=======
+20-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:14:5-16:34
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 21        android:name="android.hardware.camera"
+<<<<<<< HEAD
 21-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:15:9-47
+=======
+21-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:15:9-47
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 22        android:required="true" />
+<<<<<<< HEAD
 22-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:16:9-32
+=======
+22-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:16:9-32
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 23
 24    <application>
+<<<<<<< HEAD
 24-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:18:5-58:19
+=======
+24-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:18:5-58:19
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 25        <activity
+<<<<<<< HEAD
 25-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:19:9-27:20
+=======
+25-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:19:9-27:20
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 26            android:name="cn.leancloud.chatkit.activity.LCIMConversationActivity"
+<<<<<<< HEAD
 26-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:20:13-62
+=======
+26-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:20:13-62
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 27            android:launchMode="singleTask" >
+<<<<<<< HEAD
 27-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:21:13-44
+=======
+27-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:21:13-44
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 28            <intent-filter>
+<<<<<<< HEAD
 28-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:22:13-26:29
+=======
+28-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:22:13-26:29
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 29                <action android:name="cn.leancloud.chatkit.conversation_item_click_action" />
+<<<<<<< HEAD
 29-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:23:17-93
 29-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:23:25-91
+=======
+29-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:23:17-93
+29-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:23:25-91
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 30
 31                <category android:name="android.intent.category.DEFAULT" />
+<<<<<<< HEAD
 31-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:25:17-75
 31-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:25:27-73
+=======
+31-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:25:17-75
+31-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:25:27-73
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 32            </intent-filter>
 33        </activity>
 34        <activity android:name="cn.leancloud.chatkit.activity.LCIMImageActivity" />
+<<<<<<< HEAD
 34-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:28:9-63
 34-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:28:19-61
+=======
+34-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:28:9-63
+34-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:28:19-61
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 35        <activity android:name="cn.leancloud.chatkit.activity.LCIMConversationSettingActivity" >
+<<<<<<< HEAD
 35-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:29:9-30:20
 35-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:29:19-75
+=======
+35-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:29:9-30:20
+35-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:29:19-75
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 36        </activity>
 37
 38        <receiver android:name="cn.leancloud.push.AVBroadcastReceiver" >
+<<<<<<< HEAD
 38-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:32:9-38:20
 38-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:32:19-71
+=======
+38-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:32:9-38:20
+38-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:32:19-71
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 39            <intent-filter>
+<<<<<<< HEAD
 39-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:33:13-37:29
+=======
+39-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:33:13-37:29
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 40                <action android:name="android.intent.action.BOOT_COMPLETED" />
+<<<<<<< HEAD
 40-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:34:17-78
 40-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:34:25-76
+=======
+40-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:34:17-78
+40-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:34:25-76
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 41                <action android:name="android.intent.action.USER_PRESENT" />
+<<<<<<< HEAD
 41-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:35:17-76
 41-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:35:25-74
+=======
+41-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:35:17-76
+41-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:35:25-74
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 42                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+<<<<<<< HEAD
 42-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:17-78
 42-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:25-76
+=======
+42-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:17-78
+42-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:25-76
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 43            </intent-filter>
 44        </receiver>
 45
 46        <provider
+<<<<<<< HEAD
 46-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:40:9-49:20
+=======
+46-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:40:9-49:20
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 47            android:name="androidx.core.content.FileProvider"
+<<<<<<< HEAD
 47-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:41:13-62
+=======
+47-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:41:13-62
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 48            android:authorities="${applicationId}.provider"
+<<<<<<< HEAD
 48-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:42:13-60
+=======
+48-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:42:13-60
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 49            android:exported="false"
+<<<<<<< HEAD
 49-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:43:13-37
+=======
+49-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:43:13-37
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 50            android:grantUriPermissions="true" >
+<<<<<<< HEAD
 50-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:44:13-47
+=======
+50-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:44:13-47
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 51            <meta-data
+<<<<<<< HEAD
 51-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:45:13-48:25
+=======
+51-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:45:13-48:25
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 52                android:name="android.support.FILE_PROVIDER_PATHS"
+<<<<<<< HEAD
 52-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:46:17-67
+=======
+52-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:46:17-67
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 53                android:resource="@xml/file_paths" >
+<<<<<<< HEAD
 53-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:47:17-51
+=======
+53-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:47:17-51
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 54            </meta-data>
 55        </provider>
 56
 57        <activity android:name="cn.leancloud.chatkit.activity.LCIMConversationDetailActivity" >
+<<<<<<< HEAD
 57-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:9-52:20
 57-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:19-74
+=======
+57-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:9-52:20
+57-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:19-74
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 58        </activity>
 59        <activity android:name="cn.leancloud.chatkit.activity.LCIMUserSelectActivity" >
+<<<<<<< HEAD
 59-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:53:9-54:20
 59-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:53:19-66
+=======
+59-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:53:9-54:20
+59-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:53:19-66
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 60        </activity>
 61
 62        <service android:name="cn.leancloud.push.PushService" />
+<<<<<<< HEAD
 62-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:9-64
 62-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:18-62
+=======
+62-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:9-64
+62-->D:\dasan-cangku\yyy\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:18-62
+>>>>>>> branch 'master' of https://github.com/2018011829/kindergarten.git
 63    </application>
 64
 65</manifest>

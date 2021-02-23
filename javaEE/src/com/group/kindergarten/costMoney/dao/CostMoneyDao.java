@@ -159,7 +159,7 @@ public class CostMoneyDao {
 	public boolean updateLeaveInfo(int id,String parentPhone,int dayNum) {
 		boolean b=false;
 		try {
-			preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and parentPhone=?");
+			preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and phone=?");
 			preparedStatement.setInt(1, id);
 			preparedStatement.setString(2, parentPhone);
 			ResultSet rs=preparedStatement.executeQuery();
@@ -169,7 +169,7 @@ public class CostMoneyDao {
 				// 减去现在的请假天数
 				int nowDayNum=preDayNum+dayNum;
 				// 修改数据库中的数据
-				preparedStatement=connection.prepareStatement("update child_attendence set leave_day=? where child_id=? and parentPhone=?");
+				preparedStatement=connection.prepareStatement("update child_attendence set leave_day=? where child_id=? and phone=?");
 				preparedStatement.setInt(1, nowDayNum);
 				preparedStatement.setInt(2, id);
 				preparedStatement.setString(3, parentPhone);
@@ -192,7 +192,7 @@ public class CostMoneyDao {
 		boolean b=false;
 		int id=returnChildId(name, parentPhone);
 		try {
-			preparedStatement=connection.prepareStatement("update child_attendence set leave_day=0 where child_id=? and parentPhone=?");
+			preparedStatement=connection.prepareStatement("update child_attendence set leave_day=0 where child_id=? and phone=?");
 			preparedStatement.setInt(1, id);
 			preparedStatement.setString(2, parentPhone);
 			b=preparedStatement.execute();
@@ -214,7 +214,7 @@ public class CostMoneyDao {
 		int day=0;
 		int id=returnChildId(name, parentPhone);
 		try {
-			preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and parentPhone=?");
+			preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and phone=?");
 			preparedStatement.setInt(1, id);
 			preparedStatement.setString(2, parentPhone);
 			ResultSet rs=preparedStatement.executeQuery();
@@ -265,7 +265,7 @@ public class CostMoneyDao {
 	    int id=returnChildId(name, parentPhone);
 	    boolean b=false;
 	    try {
-			preparedStatement=connection.prepareStatement("update child_attendence set last_attendence_day=? where child_id=? and parentPhone=?");
+			preparedStatement=connection.prepareStatement("update child_attendence set last_attendence_day=? where child_id=? and phone=?");
 			preparedStatement.setInt(1, day);
 			preparedStatement.setInt(2, id);
 			preparedStatement.setString(3, parentPhone);
@@ -292,7 +292,7 @@ public class CostMoneyDao {
 		int day=0;
 		int id=returnChildId(name, parentPhone);
 		try {
-			preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and parentPhone=?");
+			preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and phone=?");
 			preparedStatement.setInt(1, id);
 			preparedStatement.setString(2, parentPhone);
 			ResultSet rs=preparedStatement.executeQuery();

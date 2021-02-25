@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.group.kindergarten.schoolInfo.entity.Description;
 import com.group.kindergarten.schoolInfo.service.DescriptionService;
-import com.group.kindergarten.teacher.entity.Teacher;
-import com.group.kindergarten.teacher.service.TeacherServiceImpl;
 import com.group.kindergarten.util.Page;
 
 /**

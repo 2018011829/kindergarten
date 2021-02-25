@@ -329,4 +329,18 @@ public class CostMoneyDao {
 		
 		return day;
 	}
+	
+	/**
+	 * 计算请事假时间总天数，并请求数据库更新请假天数，以及保存请假日期
+	 * @param id
+	 * @param phone
+	 * @param dayStartNum
+	 * @param dayEndNum
+	 * @return
+	 */
+	public boolean updateLeaveInfo(int id, String phone, int dayStartNum, int dayEndNum) {
+		boolean b=false;
+		
+		return b;
+	}
 }

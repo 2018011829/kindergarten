@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.group.kindergarten.schoolInfo.entity.Description;
-import com.group.kindergarten.teacher.entity.Teacher;
 import com.group.kindergarten.util.DBUtil;
 
 public class DescriptionDao {
@@ -62,7 +61,8 @@ public class DescriptionDao {
 			while (rs.next()) {
 				Description description = new Description();
 				description.setId(rs.getInt(1));
-				description.setDescription(rs.getString(2));
+				String str=rs.getString(2);
+				description.setDescription(str.replace("\\n","\n"));
 				list.add(description);
 			}
 		} catch (Exception e) {

@@ -74,13 +74,16 @@
 							<span class="leave_span">家长联系方式：<input type="text" placeholder="请输入家长的11位电话号码" name="phone" id="input_day" value="${phone }"></span>
 						</div>
 						<div class="leave_div">
-							<span class="leave_span">请假天数：<input type="text" placeholder="请输入天数" name="dayNum" id="input_day" value="${dayNum }"></span>
+							<span class="leave_span">请假开始时间(本月几号)：<input type="text" placeholder="请输入数字" name="dayStart" id="input_day" value="${dayNum }"></span>
+						</div>
+						<div class="leave_div">
+							<span class="leave_span">请假结束时间(本月几号)：<input type="text" placeholder="请输入数字" name="dayEnd" id="input_day" value="${dayNum }"></span>
 						</div>
 						<div class="submit_div">
 							<div class="error_info">
 								${errorInfo }
 							</div>
-							<input type="submit" id="submit_button" value="保存">
+							<input type="submit" id="submit_button" value="提交">
 						</div>
 					</form>
 				</div>

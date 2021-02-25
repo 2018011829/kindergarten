@@ -55,6 +55,7 @@
         </activity>
         <activity android:name=".main.activity.my.ShowApplyInfoActivity" />
         <activity android:name=".main.activity.my.ApplyInfoActivity" />
+        <activity android:name=".main.activity.my.EditorParentActivity" />
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".login.LoginByPasswordActivity" >
 

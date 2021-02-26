@@ -38,7 +38,8 @@ public class AskForLeaveServlet extends HttpServlet {
 		// 获取参数信息
 		String stuName=request.getParameter("stuName");
 		String phone=request.getParameter("phone");
-		String dayNumStr=request.getParameter("dayNum");
+		String dayStart=request.getParameter("dayStart");
+		String dayEnd=request.getParameter("dayEnd");
 		// 判断信息是否为空
 		if(stuName!=null && !stuName.equals("")) {
 			// 查找学生姓名是否存在
@@ -48,53 +49,68 @@ public class AskForLeaveServlet extends HttpServlet {
 					// 查找父母联系方式与学生姓名是否符合
 					boolean b=ChildrenService.getInstance().searchChild(stuName, phone);
 					if(b) {
-						if(dayNumStr!=null && !dayNumStr.equals("")) {
-							// 找到该孩子的id
-							int id=CostMoneyService.getInstance().returnChildId(stuName, phone);
-							int dayNum=Integer.parseInt(dayNumStr);
-							// 更新该孩子的到课信息
-							boolean c=CostMoneyService.getInstance().updateLeaveInfo(id, phone, dayNum);
-							if(c) {
-								request.getRequestDispatcher("success.jsp").forward(request, response);
-							}else {// 更新失败
+						if(dayStart!=null && !dayStart.equals("")) {
+							if(dayEnd!=null && !dayEnd.equals("")) {
+								int dayStartNum=Integer.parseInt(dayStart);
+								int dayEndNum=Integer.parseInt(dayEnd);
+								// 更新该孩子的到课信息
+								boolean c=CostMoneyService.getInstance().updateLeaveInfo(stuName, phone, dayStartNum, dayEndNum);
+								if(c) {
+									request.getRequestDispatcher("success.jsp").forward(request, response);
+								}else {// 更新失败
+									request.setAttribute("stuName", stuName);
+									request.setAttribute("phone", phone);
+									request.setAttribute("dayStart", dayStart);
+									request.setAttribute("dayEnd", dayEnd);
+									request.setAttribute("errorInfo", "网络错误！");
+									request.getRequestDispatcher("inputAskForLeave.jsp").forward(request, response);
+								}
+							}else {
 								request.setAttribute("stuName", stuName);
 								request.setAttribute("phone", phone);
-								request.setAttribute("dayNum", dayNumStr);
-								request.setAttribute("errorInfo", "网络错误！");
+								request.setAttribute("dayStart", dayStart);
+								request.setAttribute("dayEnd", dayEnd);
+								request.setAttribute("errorInfo", "请假结束日期不能为空！");
 								request.getRequestDispatcher("inputAskForLeave.jsp").forward(request, response);
 							}
+							
 						}else {
 							request.setAttribute("stuName", stuName);
 							request.setAttribute("phone", phone);
-							request.setAttribute("dayNum", dayNumStr);
-							request.setAttribute("errorInfo", "请假天数不能为空！");
+							request.setAttribute("dayStart", dayStart);
+							request.setAttribute("dayEnd", dayEnd);
+							request.setAttribute("errorInfo", "请假开始日期不能为空！");
 							request.getRequestDispatcher("inputAskForLeave.jsp").forward(request, response);
 						}
 					}else {// 该联系方式不是该孩子父母的
 						request.setAttribute("stuName", stuName);
 						request.setAttribute("phone", phone);
-						request.setAttribute("dayNum", dayNumStr);
+						request.setAttribute("dayStart", dayStart);
+						request.setAttribute("dayEnd", dayEnd);
 						request.setAttribute("errorInfo", "该联系方式不是该孩子父母的！");
 						request.getRequestDispatcher("inputAskForLeave.jsp").forward(request, response);
 					}
 				}else {
 					request.setAttribute("stuName", stuName);
 					request.setAttribute("phone", phone);
-					request.setAttribute("dayNum", dayNumStr);
+					request.setAttribute("dayStart", dayStart);
+					request.setAttribute("dayEnd", dayEnd);
 					request.setAttribute("errorInfo", "家长联系方式不能为空！");
 					request.getRequestDispatcher("inputAskForLeave.jsp").forward(request, response);
 				}
 			}else {// 孩子姓名不存在
 				request.setAttribute("stuName", stuName);
 				request.setAttribute("phone", phone);
-				request.setAttribute("dayNum", dayNumStr);
+				request.setAttribute("dayStart", dayStart);
+				request.setAttribute("dayEnd", dayEnd);
 				request.setAttribute("errorInfo", "学生姓名不存在！");
 				request.getRequestDispatcher("inputAskForLeave.jsp").forward(request, response);
 			}
 		}else {
 			request.setAttribute("stuName", stuName);
 			request.setAttribute("phone", phone);
-			request.setAttribute("dayNum", dayNumStr);
+			request.setAttribute("dayStart", dayStart);
+			request.setAttribute("dayEnd", dayEnd);
 			request.setAttribute("errorInfo", "学生姓名信息不能为空！");
 			request.getRequestDispatcher("inputAskForLeave.jsp").forward(request, response);
 		}

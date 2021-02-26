@@ -196,7 +196,7 @@ public class UserParentDaoImpl {
 	public Boolean updateParentMessage(String phone,String nickName,String headName) {
 		boolean b=false;
 		try {
-			preparedStatement=connection.prepareStatement("update parent set avatar=?,nickname=? where phone=?");
+			preparedStatement=connection.prepareStatement("update user_parent set avatar=?,nickname=? where phone=?");
 			preparedStatement.setString(1, headName);
 			preparedStatement.setString(2, nickName);
 			preparedStatement.setString(3, phone);

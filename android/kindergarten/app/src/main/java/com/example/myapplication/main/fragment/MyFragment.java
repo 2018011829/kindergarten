@@ -30,6 +30,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.apply.activity.Bean.ApplyInfo;
 import com.example.myapplication.main.activity.my.AddChildActivity;
 import com.example.myapplication.main.activity.my.ApplyInfoActivity;
+import com.example.myapplication.main.activity.my.EditorParentActivity;
 import com.example.myapplication.main.entity.Child;
 import com.example.myapplication.main.entity.UserParent;
 import com.example.myapplication.main.util.ConfigUtil;
@@ -61,8 +62,9 @@ public class MyFragment extends Fragment {
     private TextView tvUserName;
     private TextView tvUserPhone;
     private ImageView ivUserPic;
-    
-    
+    private UserParent userParent;
+
+
     private static String phone=ConfigUtil.PHONE;
     private View view;
     private RelativeLayout addChild;
@@ -74,6 +76,7 @@ public class MyFragment extends Fragment {
     private TextView tv_cancle;
     private TextView tv_mine_myChildName;
     private ImageView iv_mine_myChildImg;
+    private LinearLayout ll_mine_editorParent;
     public static String childName=""; //纪录当前登录的手机号下的孩子姓名，用来在收藏前进行判断、存储收藏信息
     public static String childSex="" ; //记录当前从孩子数据源中选择的孩子性别
     public static String childGrade=""; //记录当前从孩子数据源中选择的孩子年级
@@ -81,7 +84,7 @@ public class MyFragment extends Fragment {
     private String cgrade;
     private String csex;
     private String childMessage = "";
-    private List<String> children = null;
+    private List<String> children = new ArrayList<>();
     private Handler handler=new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -105,7 +108,7 @@ public class MyFragment extends Fragment {
                                 Toast.LENGTH_SHORT).show();
                     }else{
                         try {
-                            children = new ArrayList<>();
+//                            children = new ArrayList<>();
                             JSONObject jChildren = new JSONObject(str);
                             JSONArray jArray = jChildren.getJSONArray("children");
                             for(int i= 0;i<jArray.length();i++){
@@ -123,11 +126,11 @@ public class MyFragment extends Fragment {
                     break;
                 case 3:
                     String userMsg = msg.obj.toString();
-                    UserParent userParent = new Gson().fromJson(userMsg,UserParent.class);
+                    userParent = new Gson().fromJson(userMsg,UserParent.class);
                     tvUserName.setText(userParent.getNickname());
                     tvUserPhone.setText(userParent.getPhone());
                     Glide.with(getActivity()).load(ConfigUtil.SETVER_AVATAR+userParent.getAvator()).into(ivUserPic);
-
+                    Log.e("path",ConfigUtil.SETVER_AVATAR+userParent.getAvator());
                     break;
             }
         }
@@ -141,7 +144,7 @@ public class MyFragment extends Fragment {
         //个人信息填充
         getUserMsg();
         Log.e("phone",phone);
-        
+
         queryChildren();
         //判断是否已经选择过孩子，是直接显示之前选择过的
         if (childName!=null && !childName.equals("")){
@@ -154,6 +157,15 @@ public class MyFragment extends Fragment {
         }
 
         return view;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getUserMsg();
+        children.clear();
+        queryChildren();
     }
 
     /**
@@ -240,6 +252,15 @@ public class MyFragment extends Fragment {
                     break;
                 case R.id.ll_applyinfo_by_phone://点击报名信息，跳转到显示该手机号下的报名信息的activity
                     queryApplyInfoByPhoneNum();
+
+                    break;
+                case R.id.ll_mine_editorParent://点击跳转到编辑家长资料界面
+                    Intent editorParent = new Intent();
+                    editorParent.setClass(getContext(), EditorParentActivity.class);
+                    editorParent.putExtra("userName",userParent.getNickname());
+                    editorParent.putExtra("imgName",userParent.getAvator());
+
+                    startActivity(editorParent);
 
                     break;
             }
@@ -360,9 +381,9 @@ public class MyFragment extends Fragment {
         tvUserName = view.findViewById(R.id.tv_mine_userName);
         tvUserPhone = view.findViewById(R.id.tv_mine_phone);
         ivUserPic = view.findViewById(R.id.iv_headPhoto);
-        
-        
-        
+
+
+
         MyListener myListener=new MyListener();
         addChild=view.findViewById(R.id.rl_mine_addChild);
         addChild.setOnClickListener(myListener);
@@ -372,5 +393,7 @@ public class MyFragment extends Fragment {
         iv_mine_myChildImg = view.findViewById(R.id.iv_mine_myChildImg);
         applyInfo=view.findViewById(R.id.ll_applyinfo_by_phone);
         applyInfo.setOnClickListener(myListener);
+        ll_mine_editorParent  = view.findViewById(R.id.ll_mine_editorParent);
+        ll_mine_editorParent.setOnClickListener(myListener);
     }
 }

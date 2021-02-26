@@ -307,7 +307,6 @@ public class CostMoneyDao {
 		return day;
 	}
 	
-	
 	/**
 	 * 根据月份获取对应月份的天数 
 	 * @param month
@@ -329,4 +328,37 @@ public class CostMoneyDao {
 		
 		return day;
 	}
+	
+	/**
+	 * 计算请假的天数并保存到数据库 ，并请求数据库更新请假天数
+	 * @param id
+	 * @param phone
+	 * @param dayStartNum
+	 * @param dayEndNum
+	 * @return
+	 */
+	public boolean updateLeaveInfo(String name, String phone, int dayStartNum, int dayEndNum) {
+		boolean b=false;
+		//获取孩子的id
+		int id=returnChildId(name, phone);
+		//计算请假天数
+		int leaveNewDay=dayEndNum-dayStartNum;
+		//获取数据库中的请假天数
+		int leaveLastDay=getPreMonthLeave(name, phone);
+		//累计请假天数总和
+		int totalLeaveDay=leaveNewDay+leaveLastDay;
+		//更新数据库
+		try {
+			preparedStatement=connection.prepareStatement("update child_attendence set leave_day=? where child_id=? and phone=?");
+			preparedStatement.setInt(1, totalLeaveDay);
+			preparedStatement.setInt(2, id);
+			preparedStatement.setString(3, phone);
+			b=preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return b;
+	}
+	
 }

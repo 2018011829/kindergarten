@@ -170,4 +170,18 @@ public class CostMoneyService {
 		
 		return money;
 	}
+
+	/**
+	 * 计算请事假时间总天数，并请求数据库更新请假天数
+	 * @param id
+	 * @param phone
+	 * @param dayStartNum
+	 * @param dayEndNum
+	 * @return
+	 */
+	public boolean updateLeaveInfo(String name, String phone, int dayStartNum, int dayEndNum) {
+		boolean b=costMoneyDao.updateLeaveInfo(name, phone, dayStartNum, dayEndNum);
+		
+		return b;
+	}
 }

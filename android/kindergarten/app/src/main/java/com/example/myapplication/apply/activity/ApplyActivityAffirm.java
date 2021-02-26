@@ -125,6 +125,7 @@ public class ApplyActivityAffirm extends AppCompatActivity {
                         String str = (String)msg.obj;
                         if (!str.equals("")&&str!=null){
                             Toast.makeText(ApplyActivityAffirm.this,str,Toast.LENGTH_LONG).show();
+
                         }else {
                             Toast.makeText(ApplyActivityAffirm.this,"提交失败",Toast.LENGTH_LONG).show();
                         }
@@ -148,6 +149,9 @@ public class ApplyActivityAffirm extends AppCompatActivity {
                         @Override
                         public void run() {
                             downLoadImgNameFromServerRequest();
+                            Intent intent = new Intent();
+                            intent.setClass(ApplyActivityAffirm.this,Instruction.class);
+                            startActivity(intent);
                         }
                     }.start();
                     break;

@@ -9,18 +9,155 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#f3f2f1">
-        <EditText
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+        <RelativeLayout
+            android:layout_margin="20dp"
             android:background="#ffffff"
             android:id="@+id/edit"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             android:gravity="top"
-            android:hint="请输入上传内容"
             android:textColor="@color/colorAccent"
-            android:padding="15dp" />
+            android:padding="10dp" >
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/ll1"
+                android:layout_below="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="18dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_grade"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="#000000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="年级"/>
+                <RadioGroup
+                    android:layout_toRightOf="@+id/tv_grade"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/rg_grade"
+                    android:layout_centerVertical="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/btnBigClass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="大班" />
+                    <RadioButton
+                        android:layout_marginLeft="30dp"
+                        android:id="@+id/btnMiddleClass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="中班"/>
+                    <RadioButton
+                        android:layout_marginLeft="30dp"
+                        android:id="@+id/btnSmallClass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="小班"/>
+                    <EditText
+                        android:id="@+id/baby_grade"
+                        android:textSize="18dp"
+                        android:layout_toRightOf="@+id/tv_IDnumber"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </RadioGroup>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/ll2"
+                android:layout_below="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="18dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_class"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="#000000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="班级"/>
+                <RadioGroup
+                    android:layout_toRightOf="@+id/tv_class"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/rg_class"
+                    android:layout_centerVertical="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/btnFirstClass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="一班" />
+                    <RadioButton
+                        android:layout_marginLeft="30dp"
+                        android:id="@+id/btnSecondClass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="二班"/>
+                    <RadioButton
+                        android:layout_marginLeft="30dp"
+                        android:id="@+id/btnThirdClass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="三班"/>
+                    <EditText
+                        android:id="@+id/baby_class"
+                        android:textSize="18dp"
+                        android:layout_toRightOf="@+id/tv_IDnumber"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </RadioGroup>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/ll3"
+                android:layout_below="@+id/ll2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="18dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_name"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="#000000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="姓名："/>
+                <EditText
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="40dp"
+                    android:textSize="18dp"
+                    android:gravity="center_vertical"
+                    android:layout_toRightOf="@id/tv_name"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/baby_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"

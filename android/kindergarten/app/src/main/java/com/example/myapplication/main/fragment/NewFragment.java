@@ -17,12 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
-import com.example.myapplication.main.activity.my.ApplyInfoActivity;
-import com.example.myapplication.main.entity.Child;
 import com.example.myapplication.main.entity.ChildConsumeInfo;
-import com.example.myapplication.main.entity.UserParent;
 import com.example.myapplication.main.util.ConfigUtil;
 import com.example.myapplication.money.activity.Attendance;
 import com.example.myapplication.money.activity.Money;
@@ -30,12 +26,8 @@ import com.example.myapplication.money.activity.UploadPicture;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;

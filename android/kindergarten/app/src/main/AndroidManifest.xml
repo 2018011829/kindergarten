@@ -51,7 +51,10 @@
 <!--        <uses-library android:name="org.apache.http.legacy" android:required="false"/>-->
         <activity android:name=".contact.TestActivity"></activity>
         <activity android:name=".contact.LoginActivity" >
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".main.activity.my.ShowApplyInfoActivity" />
         <activity android:name=".main.activity.my.ApplyInfoActivity" />
@@ -69,10 +72,7 @@
         <activity android:name=".money.activity.Attendance"/>
         <activity android:name=".money.activity.Money"/>
         <activity android:name=".money.activity.UploadPicture">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".apply.activity.Instruction"/>
         <activity android:name=".main.activity.MainActivity">

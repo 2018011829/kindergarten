@@ -32,9 +32,9 @@
         android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" /> <!-- 申请手机存储权限 -->
 
-<!--    <uses-feature-->
-<!--        android:name="org.apache.http.legacy"-->
-<!--        android:required="false" />-->
+    <uses-feature
+        android:name="org.apache.http.legacy"
+        android:required="false" />
 
 
 

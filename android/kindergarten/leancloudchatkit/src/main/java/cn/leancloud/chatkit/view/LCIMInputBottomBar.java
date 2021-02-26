@@ -67,7 +67,9 @@ public class LCIMInputBottomBar extends LinearLayout {
    * action layout
    */
   private LinearLayout actionLayout;
+  //照相
   private View cameraBtn;
+  //发送图片
   private View pictureBtn;
 
   /**

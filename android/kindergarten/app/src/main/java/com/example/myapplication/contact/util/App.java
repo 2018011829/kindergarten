@@ -11,7 +11,9 @@ import cn.leancloud.AVLogger;
 import cn.leancloud.AVOSCloud;
 import cn.leancloud.AVObject;
 import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.chatkit.handler.LCIMConversationHandler;
 import cn.leancloud.im.AVIMOptions;
+import cn.leancloud.im.v2.AVIMMessageManager;
 import cn.leancloud.push.PushService;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -30,6 +32,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         Log.i(App.class.getSimpleName(), "App#onCreate()");
+
 
         LCChatKit.getInstance().setProfileProvider(CustomUserProvider.getInstance());
         AVOSCloud.setLogLevel(AVLogger.Level.DEBUG);

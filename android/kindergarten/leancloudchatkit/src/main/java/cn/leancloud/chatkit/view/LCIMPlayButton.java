@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 import cn.leancloud.chatkit.R;
 import cn.leancloud.chatkit.utils.LCIMAudioHelper;
 
@@ -14,7 +16,9 @@ import cn.leancloud.chatkit.utils.LCIMAudioHelper;
  * Created by lzw on 14-9-22.
  * 语音播放按钮
  */
-public class LCIMPlayButton extends TextView implements View.OnClickListener {
+
+//原來繼承的是TextView
+public class LCIMPlayButton extends AppCompatTextView implements View.OnClickListener {
   private String path;
   private boolean leftSide;
   private AnimationDrawable anim;

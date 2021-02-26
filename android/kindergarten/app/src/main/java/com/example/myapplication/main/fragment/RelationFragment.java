@@ -1,5 +1,6 @@
 package com.example.myapplication.main.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -71,8 +73,9 @@ public class RelationFragment extends Fragment {
         toolbar = view.findViewById(R.id.toolbar);
         viewPager = view.findViewById(R.id.pager);
         tabLayout = view.findViewById(R.id.tablayout);
-//        setTitle(R.string.app_name);
-//        setSupportActionBar(toolbar);
+        getActivity().setTitle(R.string.app_name);
+//        getActivity().setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         initTabLayout();
         Log.d("MainActivity", "onCreate finished.");
 

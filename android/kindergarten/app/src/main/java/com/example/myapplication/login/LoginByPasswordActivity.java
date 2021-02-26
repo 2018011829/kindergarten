@@ -67,27 +67,7 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
                         // 存入用户手机电话
                         ConfigUtil.PHONE= etPhone.getText().toString().trim();
 
-//                        // 在LeanCloud登录
-//                        AVIMOptions.getGlobalOptions().setAutoOpen(true);
-//                        //使用用户id登录
-//                        LCChatKit.getInstance().open(userId, new AVIMClientCallback() {
-//                            @Override
-//                            public void done(AVIMClient avimClient, AVIMException e) {
-//                                if (null == e) {
-////                                    Intent intent = new Intent(LoginByPasswordActivity.this, TestActivity.class);
-////                                    startActivity(intent);
-//                                } else {
-//                                    Toast.makeText(LoginByPasswordActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-//
-//                        //登录成功 跳转到首页
-//                        Intent intent = new Intent();
-//                        intent.setClass(LoginByPasswordActivity.this, MainActivity.class);
-//                        intent.putExtra("phone", etPhone.getText().toString().trim());
-//                        startActivity(intent);
-//                        finish();
+
                     } else {//登录失败 显示错误信息
                         Toast.makeText(getApplicationContext(),
                                 "" + response,

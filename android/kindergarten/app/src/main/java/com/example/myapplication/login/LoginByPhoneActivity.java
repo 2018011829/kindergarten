@@ -20,9 +20,11 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.contact.TestActivity;
+import com.example.myapplication.login.entity.User;
 import com.example.myapplication.main.activity.MainActivity;
 import com.example.myapplication.main.util.ChangeStatusBarColor;
 import com.example.myapplication.main.util.ConfigUtil;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -52,6 +54,7 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
     private Button btnLogin;
     private TextView tvLoginByPassword;
     private TextView tvRegister;
+    private String userId;
     public EventHandler eh; //事件接收器
     private TimeCount mTimeCount;//计时器
     //定义一个用于判断退出时的时间
@@ -70,9 +73,65 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
                         Toast.makeText(LoginByPhoneActivity.this, "该手机号还未注册！", Toast.LENGTH_SHORT).show();
                     }
                     break;
+                case 2:
+                    // 在LeanCloud登录
+                    AVIMOptions.getGlobalOptions().setAutoOpen(true);
+                    //使用用户id登录
+                    LCChatKit.getInstance().open(userId, new AVIMClientCallback() {
+                        @Override
+                        public void done(AVIMClient avimClient, AVIMException e) {
+                            if (null == e) {
+//                                    Intent intent = new Intent(LoginByPasswordActivity.this, TestActivity.class);
+//                                    startActivity(intent);
+                            } else {
+                                Toast.makeText(LoginByPhoneActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                    //登录成功 跳转到首页
+                    Intent intent = new Intent();
+                    intent.setClass(LoginByPhoneActivity.this, MainActivity.class);
+                    intent.putExtra("phone", etPhoneNum.getText().toString().trim());
+                    startActivity(intent);
+                    finish();
+                    break;
             }
         }
     };
+
+    public void getUserIdByPhone(String phone){
+        //提交键值对格式的数据
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("phone", phone);
+        FormBody body = builder.build();
+        Request request = new Request.Builder()
+                .post(body)
+                .url(ConfigUtil.SERVICE_ADDRESS + "GetUserMsgServlet")
+                .build();
+        //获得call对象
+        Call call = new OkHttpClient().newCall(request);
+        //提交请求并获取响应
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("lxl", "请求失败");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                User user = new Gson().fromJson(result,User.class);
+                userId = user.getId()+"";
+                //处理请求结果
+                Message msg = handler.obtainMessage();
+                msg.what = 2;
+                msg.obj = result;
+                handler.sendMessage(msg);
+            }
+        });
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,20 +157,7 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
                         Log.i("lxl", "afterEvent: 验证成功");
                         // 存入用户手机电话
                         ConfigUtil.PHONE= etPhoneNum.getText().toString().trim();
-                        // 在LeanCloud登录
-                        AVIMOptions.getGlobalOptions().setAutoOpen(true);
-                        LCChatKit.getInstance().open(etPhoneNum.getText().toString().trim(), new AVIMClientCallback() {
-                            @Override
-                            public void done(AVIMClient avimClient, AVIMException e) {
-                                if (null == e) {
-                                    ///测试内容为跳转到聊天界面
-//                                    Intent intent = new Intent(LoginByPhoneActivity.this, TestActivity.class);
-//                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(LoginByPhoneActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                        getUserIdByPhone(etPhoneNum.getText().toString().trim());
                        /**
                         *  //1.环信登录需要用户名和密码，需要先从本地服务器得到该用户的密码
                         OkHttpClient okHttpClient=new OkHttpClient();
@@ -159,12 +205,6 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
                                         });
                             }
                         });*/
-                       //跳转到main，结束此Activity
-                       Intent intent = new Intent(LoginByPhoneActivity.this,MainActivity.class);
-
-                       startActivity(intent);
-                       finish();
-
                     } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){ //获取验证码成功
 
                     } else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){ //返回支持发送验证码的国家列表

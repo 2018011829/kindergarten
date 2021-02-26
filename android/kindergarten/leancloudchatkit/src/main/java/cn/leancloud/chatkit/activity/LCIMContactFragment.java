@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -52,6 +54,7 @@ public class LCIMContactFragment extends Fragment {
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    Log.i("contact", "onCreateView: LCIMContactFragment");
     View view = inflater.inflate(R.layout.contact_fragment, container, false);
 
     refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.contact_fragment_srl_list);

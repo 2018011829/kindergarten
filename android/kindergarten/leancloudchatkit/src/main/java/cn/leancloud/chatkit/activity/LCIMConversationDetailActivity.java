@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +42,9 @@ import cn.leancloud.im.v2.conversation.AVIMConversationMemberInfo;
 import cn.leancloud.im.v2.conversation.ConversationMemberRole;
 import de.greenrobot.event.EventBus;
 
+/**
+ * 群组
+ */
 public class LCIMConversationDetailActivity extends AppCompatActivity {
   private static final int REQUEST_CODE_ADD_ADMIN = 10;
   private static final int REQUEST_CODE_MANAGE_ADMIN = 15;
@@ -69,6 +74,7 @@ public class LCIMConversationDetailActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_conversation_detail);
+    Log.i("contact", "onCreate: LCIMConversationDetailActivity");
     adminAddButton = (ImageButton) findViewById(R.id.AdminAddButton);
     adminUserButton = (ImageButton) findViewById(R.id.AdminUserButton);
     adminMoreButton = (ImageButton) findViewById(R.id.AdminMoreButton);

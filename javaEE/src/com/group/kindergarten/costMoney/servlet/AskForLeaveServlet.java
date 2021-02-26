@@ -50,13 +50,11 @@ public class AskForLeaveServlet extends HttpServlet {
 					boolean b=ChildrenService.getInstance().searchChild(stuName, phone);
 					if(b) {
 						if(dayStart!=null && !dayStart.equals("")) {
-							// 找到该孩子的id
-							int id=CostMoneyService.getInstance().returnChildId(stuName, phone);
 							if(dayEnd!=null && !dayEnd.equals("")) {
 								int dayStartNum=Integer.parseInt(dayStart);
 								int dayEndNum=Integer.parseInt(dayEnd);
 								// 更新该孩子的到课信息
-								boolean c=CostMoneyService.getInstance().updateLeaveInfo(id, phone, dayStartNum, dayEndNum);
+								boolean c=CostMoneyService.getInstance().updateLeaveInfo(stuName, phone, dayStartNum, dayEndNum);
 								if(c) {
 									request.getRequestDispatcher("success.jsp").forward(request, response);
 								}else {// 更新失败

@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:textSize="50sp"
             android:textColor="@android:color/holo_red_light"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="0"/>
     </LinearLayout>
 
     <LinearLayout
@@ -46,6 +47,7 @@
             android:layout_height="wrap_content"
             android:textSize="50sp"
             android:textColor="@android:color/holo_red_light"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="0"/>
     </LinearLayout>
 </LinearLayout>

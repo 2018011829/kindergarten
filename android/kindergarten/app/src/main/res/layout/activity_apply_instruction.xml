@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rl_instruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:text="入园须知"
+            android:textSize="25dp"
+            android:textColor="#000000" />
+    </RelativeLayout>
+   <LinearLayout
+       android:layout_margin="5dp"
+       android:id="@+id/ll_instruction"
+       android:layout_below="@+id/rl_instruction"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:background="@drawable/apply_border">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal" >
+           <TextView
+               android:textSize="20dp"
+               android:text="1、 幼儿入园前到裕华区妇幼保健站体检（空腹不喝水，体检三个月内有效）"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1.5"
+               android:padding="5dp"
+               android:textColor="#000000"/>
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_marginTop="10dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal" >
+           <TextView
+               android:textSize="20dp"
+               android:text="2、 报名携带体检单、户口本和保健手册"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1.5"
+               android:padding="5dp"
+               android:textColor="#000000"/>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_marginTop="10dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal" >
+           <TextView
+               android:textSize="20dp"
+               android:text="3、 自备被褥芯和枕头芯：被长1.40米，宽1.1米；褥长1.40米，宽0.6米；枕芯长0.42米，宽0.27米。"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1.5"
+               android:padding="5dp"
+               android:textColor="#000000"/>
+       </LinearLayout>
+       <LinearLayout
+           android:layout_marginTop="10dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal" >
+           <TextView
+               android:textSize="20dp"
+               android:text="4、 准备2张幼儿1寸彩色照片，办理入园档案。"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1.5"
+               android:padding="5dp"
+               android:textColor="#000000"/>
+       </LinearLayout>
+   </LinearLayout>
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/read_finish"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_instruction"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/apply_button2"
+        android:text="阅读完毕" />
+
+</RelativeLayout>

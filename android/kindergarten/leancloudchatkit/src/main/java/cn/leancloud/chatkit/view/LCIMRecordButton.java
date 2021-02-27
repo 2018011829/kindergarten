@@ -31,7 +31,7 @@ import cn.leancloud.im.v2.audio.*;
 /**
  * 录音的按钮
  */
-public class LCIMRecordButton extends Button {
+public class LCIMRecordButton extends androidx.appcompat.widget.AppCompatButton {
   public static final int BACK_RECORDING = R.drawable.lcim_chat_voice_bg_pressed;
   public static final int BACK_IDLE = R.drawable.lcim_chat_voice_bg;
   public static final int SLIDE_UP_TO_CANCEL = 0;

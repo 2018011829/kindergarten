@@ -1499,12 +1499,14 @@ int string abc_searchview_description_voice 0x0
 int string abc_shareactionprovider_share_with 0x0
 int string abc_shareactionprovider_share_with_application 0x0
 int string abc_toolbar_collapse_description 0x0
+int string action_settings 0x0
 int string appbar_scrolling_view_behavior 0x0
 int string bottom_sheet_behavior 0x0
 int string character_counter_content_description 0x0
 int string character_counter_pattern 0x0
 int string fab_transformation_scrim_behavior 0x0
 int string fab_transformation_sheet_behavior 0x0
+int string hello_world 0x0
 int string hide_bottom_view_on_scroll_behavior 0x0
 int string lcim_chat_activity_select_picture 0x0
 int string lcim_chat_bottom_camera 0x0
@@ -1538,7 +1540,9 @@ int string path_password_eye 0x0
 int string path_password_eye_mask_strike_through 0x0
 int string path_password_eye_mask_visible 0x0
 int string path_password_strike_through 0x0
+int string quit 0x0
 int string search_menu_title 0x0
+int string square 0x0
 int string status_bar_notification_info_overflow 0x0
 int style AlertDialog_AppCompat 0x0
 int style AlertDialog_AppCompat_Light 0x0

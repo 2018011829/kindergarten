@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\assets"/><source path="F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\build\intermediates\shader_assets\debug\out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\debug\assets"/></dataSet></merger>
+=======
+<<<<<<< Updated upstream
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\assets"/><source path="D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\build\intermediates\shader_assets\debug\out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\debug\assets"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\assets"/><source path="D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\build\intermediates\shader_assets\debug\out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\debug\assets"/></dataSet></merger>
+>>>>>>> Stashed changes
+>>>>>>> 08089c21adc93d489c9860bf00fca620f84f81bc

@@ -192,6 +192,8 @@ layout lcim_load_more_footer_layout
 menu conv_member_menu
 menu conv_menu
 menu menu_setting
+string action_settings
+string hello_world
 string lcim_chat_activity_select_picture
 string lcim_chat_bottom_camera
 string lcim_chat_bottom_location
@@ -218,6 +220,8 @@ string lcim_message_shorthand_image
 string lcim_message_shorthand_location
 string lcim_message_shorthand_unknown
 string lcim_unspport_message_type
+string quit
+string square
 style LCIMActionBarTheme
 style LCIMActivity
 style LCIMActivity.NoActionBar

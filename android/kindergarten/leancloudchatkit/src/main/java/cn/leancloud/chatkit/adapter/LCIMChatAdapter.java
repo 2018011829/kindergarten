@@ -2,6 +2,7 @@ package cn.leancloud.chatkit.adapter;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.ViewGroup;
 
 import cn.leancloud.im.v2.AVIMMessage;
@@ -87,6 +88,7 @@ public class LCIMChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
   public void addMessage(AVIMMessage message) {
     if (messageIdSet.add(message.getMessageId())) {
       messageList.add(message);
+      Log.i("contact", "addMessage: 添加成功");
     }
   }
 

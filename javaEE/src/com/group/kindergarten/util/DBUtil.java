@@ -29,12 +29,18 @@ public class DBUtil {
 	public static Connection getConnection() {
 		try {
 			return DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/kindergarten?useUnicode=true&characterEncoding=utf-8", "root", "");
+					"jdbc:mysql://localhost:3306/kindergarten?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8", "root","");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
+	//服务器
+	//com.mysql.cj.jdbc.Driver
+	//"jdbc:mysql://121.89.209.191:3306/kindergarten?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai", "kindergarten","123456"
+	//本地
+	//com.mysql.jdbc.Driver
+	//"jdbc:mysql://localhost:3306/kindergarten?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8", "root",""
 	
 	/**
 	 * 关闭数据库连接

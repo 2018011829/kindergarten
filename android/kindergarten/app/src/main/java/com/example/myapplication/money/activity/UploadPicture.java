@@ -1,20 +1,18 @@
 package com.example.myapplication.money.activity;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,8 +22,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.apply.activity.ApplyActivityBaby;
 import com.example.myapplication.main.util.ConfigUtil;
+import com.example.myapplication.money.activity.adapter.SelectPlotAdapter;
+import com.example.myapplication.money.activity.bean.MoneyPicture;
+import com.example.myapplication.money.activity.util.Tools;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.luck.picture.lib.PictureSelector;
@@ -59,8 +59,6 @@ import okhttp3.Response;
 
 public class UploadPicture extends AppCompatActivity {
     private static final String TAG = "UploadDynamic";
-    @BindView(R.id.edit)
-    EditText edit;
     @BindView(R.id.recycler)
     RecyclerView recycler;//RecyclerView对象（九宫格）
     private SelectPlotAdapter adapter;
@@ -71,7 +69,12 @@ public class UploadPicture extends AppCompatActivity {
     private OkHttpClient okHttpClient;//定义OKHTTPClient对象属性
     private Handler handler;//定义Handler对象属性
     private Gson gson;//定义Gson对象属性
-    private Button upload;
+    private RadioGroup rgGrade;//宝宝年级的单选按钮
+    private EditText etBabyGrade;
+    private RadioGroup rgClass;//宝宝班级的单选按钮
+    private EditText etBabyClass;
+    private EditText etBabyName;//宝宝姓名
+    private MoneyPicture moneyPicture;//截图文本对象
     private void initHandler() {
         handler = new Handler(){//handlerThread.getLooper()){
             @Override
@@ -81,7 +84,6 @@ public class UploadPicture extends AppCompatActivity {
                         //获取图片资源路径
                         String json = (String) msg.obj;//接收到的是一个说说对象
                         Toast.makeText(UploadPicture.this,json,Toast.LENGTH_SHORT).show();
-                        Toast.makeText(UploadPicture.this,"上传成功",Toast.LENGTH_LONG).show();
                         break;
                 }
             }
@@ -102,29 +104,62 @@ public class UploadPicture extends AppCompatActivity {
         Tools.requestPermissions(UploadPicture.this);
         initAdapter();
         initView();
+        //为radioGroup设置一个监听器:setOnCheckedChanged()
+        rgGrade.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radbtn = (RadioButton) findViewById(checkedId);
+                etBabyGrade.setText(radbtn.getText());
+            }
+        });
+        rgClass.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radbtn = (RadioButton) findViewById(checkedId);
+                etBabyClass.setText(radbtn.getText());
+            }
+        });
+
     }
     private void initView(){
         initOkHttpClient();//初始化OKHTTPClient对象
         initHandler();//初始化Handler对象
         initGson();//初始化Gson
+        moneyPicture = new MoneyPicture();
+        rgGrade = findViewById(R.id.rg_grade);
+        rgClass = findViewById(R.id.rg_class);
+        etBabyGrade = findViewById(R.id.baby_grade);
+        etBabyClass = findViewById(R.id.baby_class);
+        etBabyName = findViewById(R.id.baby_name);
     }
     //设置点击事件
     @OnClick({R.id.upload})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.upload:
-                String content = edit.getText().toString();
-                if (TextUtils.isEmpty(content)) {
-                    Toast.makeText(this, "请输入上传内容", Toast.LENGTH_LONG).show();
+                String babyName= etBabyName.getText().toString();
+                String babyGrade = etBabyGrade.getText().toString();
+                String babylass = etBabyClass.getText().toString();
+                if (TextUtils.isEmpty(babyName)) {
+                    Toast.makeText(this, "请输入宝宝姓名", Toast.LENGTH_LONG).show();
+                    return;
+                }else if(TextUtils.isEmpty(babyGrade)){
+                    Toast.makeText(this, "请选择宝宝年级", Toast.LENGTH_LONG).show();
+                    return;
+                }else if(TextUtils.isEmpty(babylass)){
+                    Toast.makeText(this, "请选择宝宝班级", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (allSelectList.size() == 0) {
                     Toast.makeText(this, "请选择图片进行上传", Toast.LENGTH_LONG).show();
                     return;
                 }
-                Log.e(TAG, "内容: " + content);
-                Log.e(TAG, "图片: " + allSelectList.toString());
-                sendTimeAndContentToServer(content);//向服务端发送当前用户手机号，当前时间和说说文本
+                moneyPicture.setBabyGrade(babyGrade);
+                moneyPicture.setBabyClass(babylass);
+                moneyPicture.setBabyName(babyName);
+                //序列化
+                String json = gson.toJson(moneyPicture);
+                sendTimeAndContentToServer(json);//向服务端发送当前用户手机号，当前时间和说说文本
                 String pictureUrl = allSelectList.toString().substring(1,allSelectList.toString().length()-1);//图片路径集合
                 List<String> pictureUrls = Arrays.asList(pictureUrl.split(", "));//将图片路径集合分割开
                 for(int i=0;i<pictureUrls.size();i++){
@@ -153,7 +188,6 @@ public class UploadPicture extends AppCompatActivity {
                 categoryLists.remove(position);
                 adapter.setImageList(allSelectList);//再set所有集合
             }
-
             @Override
             public void item(int position, List<String> mList) {
                 selectList.clear();
@@ -222,19 +256,15 @@ public class UploadPicture extends AppCompatActivity {
             }
         }.start();
     }
-    // 采用POST请求方式提交当前时间的字符串用于区分动态
+    // 采用POST请求方式提交截图文本信息
     private void sendTimeAndContentToServer(String content) {
         //2 创建Request对象
         //1) 使用RequestBody封装请求数据
         //获取待传输数据对应的MIME类型
         MediaType type = MediaType.parse("text/plain");
-        //创建FormBody对象
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
         //序列化
         FormBody formBody =
                 new FormBody.Builder()
-                        .add("time",formatter.format(date))
                         .add("content",content)
                         .build();
         //2) 创建请求对象

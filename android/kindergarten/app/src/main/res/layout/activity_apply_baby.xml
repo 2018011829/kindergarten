@@ -219,7 +219,6 @@
         android:layout_marginTop="35dp"
         android:background="@drawable/apply_button1"
         android:text="下一步" />
-
     <DatePicker
         android:visibility="gone"
         android:layout_alignParentBottom="true"

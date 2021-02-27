@@ -32,9 +32,9 @@
         android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" /> <!-- 申请手机存储权限 -->
 
-<!--    <uses-feature-->
-<!--        android:name="org.apache.http.legacy"-->
-<!--        android:required="false" />-->
+    <uses-feature
+        android:name="org.apache.http.legacy"
+        android:required="false" />
 
 
 
@@ -51,18 +51,16 @@
 <!--        <uses-library android:name="org.apache.http.legacy" android:required="false"/>-->
         <activity android:name=".contact.TestActivity"></activity>
         <activity android:name=".contact.LoginActivity" >
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".main.activity.my.ShowApplyInfoActivity" />
         <activity android:name=".main.activity.my.ApplyInfoActivity" />
+        <activity android:name=".main.activity.my.EditorParentActivity" />
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".login.LoginByPasswordActivity" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".login.LoginByPhoneActivity" />
         <activity android:name=".teacher.tool.euclid.EuclidActivity" />
@@ -74,9 +72,11 @@
         <activity android:name=".apply.activity.ApplyActivityAffirm" />
         <activity android:name=".money.activity.Attendance"/>
         <activity android:name=".money.activity.Money"/>
-        <activity android:name=".money.activity.UploadPicture"/>
-        <activity android:name=".main.activity.MainActivity">
+        <activity android:name=".money.activity.UploadPicture">
 
+        </activity>
+        <activity android:name=".apply.activity.Instruction"/>
+        <activity android:name=".main.activity.MainActivity">
 
         </activity> <!-- 学校简介用到的activity 开始 -->
         <activity android:name=".school.activity.ImageShower" />

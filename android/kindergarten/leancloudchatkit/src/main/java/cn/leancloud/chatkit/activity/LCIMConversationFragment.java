@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -405,6 +406,10 @@ public class LCIMConversationFragment extends Fragment {
     builder.show();
   }
 
+  /**
+   * 撤回消息
+   * @param message
+   */
   private void recallMessage(AVIMMessage message) {
     imConversation.recallMessage(message, new AVIMMessageRecalledCallback() {
       @Override
@@ -413,11 +418,17 @@ public class LCIMConversationFragment extends Fragment {
           itemAdapter.updateMessage(recalledMessage);
         } else {
           Toast.makeText(getActivity(), "撤回失败", Toast.LENGTH_SHORT).show();
+          Log.i("contact", "done: 撤回消息失败"+e);
         }
       }
     });
   }
 
+  /**
+   * 更新消息
+   * @param message
+   * @param newContent
+   */
   private void updateMessage(AVIMMessage message, String newContent) {
     AVIMTextMessage textMessage = new AVIMTextMessage();
     textMessage.setText(newContent);
@@ -428,6 +439,7 @@ public class LCIMConversationFragment extends Fragment {
             itemAdapter.updateMessage(message);
           } else {
             Toast.makeText(getActivity(), "更新失败", Toast.LENGTH_SHORT).show();
+            Log.i("contact", "done: 更新消息失败"+e);
           }
         }
       });
@@ -574,6 +586,7 @@ public class LCIMConversationFragment extends Fragment {
   public void sendMessage(AVIMMessage message, boolean addToList) {
     if (addToList) {
       itemAdapter.addMessage(message);
+      Log.i("contact", "sendMessage: 添加消息列表成功");
     }
     itemAdapter.notifyDataSetChanged();
     scrollToBottom();

@@ -67,8 +67,8 @@
 			<div class="box1">
 				<form action="SearchDescriptionServlet" method="post">
 					<input type="text" name="searchInfo" placeholder="请输入描述信息"
-						id="inputName" value="${searchInfo }" /> <input type="submit"
-						value="点击搜索" id="submitSearch">
+						id="inputName" value="${searchInfo }" /> 
+						<input type="submit" value="点击搜索" id="submitSearch">
 				</form>
 			</div>
 			<div class="box2">

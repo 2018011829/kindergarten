@@ -1,15 +1,9 @@
 package com.group.kindergarten.schoolInfo.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 
 import com.group.kindergarten.schoolInfo.dao.DescriptionDao;
 import com.group.kindergarten.schoolInfo.entity.Description;
-import com.group.kindergarten.teacher.dao.TeacherDaoImpl;
-import com.group.kindergarten.teacher.entity.Teacher;
-import com.group.kindergarten.util.DBUtil;
 import com.group.kindergarten.util.Page;
 
 public class DescriptionService {

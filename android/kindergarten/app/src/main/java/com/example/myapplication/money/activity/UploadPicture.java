@@ -157,6 +157,7 @@ public class UploadPicture extends AppCompatActivity {
                 moneyPicture.setBabyGrade(babyGrade);
                 moneyPicture.setBabyClass(babylass);
                 moneyPicture.setBabyName(babyName);
+                moneyPicture.setPhone(ConfigUtil.PHONE);
                 //序列化
                 String json = gson.toJson(moneyPicture);
                 sendTimeAndContentToServer(json);//向服务端发送当前用户手机号，当前时间和说说文本
@@ -269,7 +270,7 @@ public class UploadPicture extends AppCompatActivity {
                         .build();
         //2) 创建请求对象
         Request request = new Request.Builder()
-                .url(ConfigUtil.SERVICE_ADDRESS +"TimeStringServlet")
+                .url(ConfigUtil.SERVICE_ADDRESS +"UploadScreenShot")
                 .post(formBody)
                 .build();
         //3. 创建CALL对象

@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.group.kindergarten.costMoney.entity.MoneyPicture;
 import com.group.kindergarten.costMoney.entity.SchoolSemester;
+import com.group.kindergarten.costMoney.entity.ScreenshotInfo;
 import com.group.kindergarten.util.DBUtil;
 
 public class CostMoneyDao {
@@ -361,4 +363,60 @@ public class CostMoneyDao {
 		return b;
 	}
 	
+	/**
+	 * 将用户上传截图的相关信息保存到数据库
+	 * @param moneyPicture
+	 * @param monthNow
+	 * @param screenshotName
+	 * @return
+	 */
+	public boolean preserveScreenshotInfo(MoneyPicture moneyPicture,int monthNow,String screenshotName) {
+		boolean b=false;
+		try {
+			preparedStatement=connection.prepareStatement("insert into money_screenshot(child_name,phone,grade_num,class_num,screenshot_name,month) values(?,?,?,?,?,?)");
+			preparedStatement.setString(1, moneyPicture.getBabyName());
+			preparedStatement.setString(2, moneyPicture.getPhone());
+			preparedStatement.setString(3, moneyPicture.getBabyGrade());
+			preparedStatement.setString(4, moneyPicture.getBabyClass());
+			preparedStatement.setString(5, screenshotName);
+			preparedStatement.setInt(6, monthNow);
+			b=preparedStatement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return b;
+	}
+	
+	/**
+	 * 根据当前月份获取所有相关的缴费截图信息
+	 * @param monthNow
+	 * @return
+	 */
+	public List<ScreenshotInfo> searchScreenshotInfo(int monthNow){
+		List<ScreenshotInfo> list=null;
+		try {
+			preparedStatement=connection.prepareStatement("select * from money_screenshot where month=?");
+			preparedStatement.setInt(1, monthNow);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs!=null) {
+				list=new ArrayList<ScreenshotInfo>();
+				while(rs.next()) {
+					ScreenshotInfo screenshotInfo=new ScreenshotInfo();
+					screenshotInfo.setId(rs.getInt("id"));
+					screenshotInfo.setBabyClass(rs.getString("class_num"));
+					screenshotInfo.setBabyGrade(rs.getString("grade_num"));
+					screenshotInfo.setPhone(rs.getString("phone"));
+					screenshotInfo.setBabyName(rs.getString("child_name"));
+					screenshotInfo.setPhotoName(rs.getString("screenshot_name"));
+					list.add(screenshotInfo);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }

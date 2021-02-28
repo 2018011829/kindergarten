@@ -2,15 +2,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    >
-
-    <DatePicker
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        />
-=======
     android:orientation="vertical"
     android:layout_margin="20dp">
 
@@ -19,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
->>>>>>> c3c07b6d0e28f454d2e79681cd2c1d38dac578ce
+
 
         <TextView
             android:layout_width="match_parent"

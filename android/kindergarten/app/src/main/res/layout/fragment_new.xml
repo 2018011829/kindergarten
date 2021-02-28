@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/bckapply">
     <RelativeLayout
+        android:background="#99CCFF"
         android:id="@+id/apply_them"
         android:paddingTop="5dp"
         android:paddingLeft="15dp"
@@ -23,7 +25,10 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/apply_inside_yellow2"
         android:layout_width="match_parent"
         android:layout_height="40dp">
         <LinearLayout
@@ -33,12 +38,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:text="您的孩子："
+                android:text="您的孩子:"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/money_child_name"
                 android:text="***"
                 android:textColor="@color/lcim_commom_read"
@@ -49,7 +55,10 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/apply_inside_yellow2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -79,6 +88,7 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <Button
+            android:background="@drawable/apply_inside_blue2"
             android:id="@+id/btn_attendance"
             android:layout_alignParentRight="true"
             android:text="查看详情"
@@ -86,7 +96,10 @@
             android:layout_height="wrap_content" />
     </RelativeLayout>
     <RelativeLayout
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/apply_inside_yellow2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -119,6 +132,7 @@
                 android:textSize="20dp" />
         </LinearLayout>
         <Button
+            android:background="@drawable/apply_inside_blue2"
             android:id="@+id/btn_money"
             android:layout_alignParentRight="true"
             android:text="查看详情"
@@ -132,18 +146,26 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageView
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:background="@drawable/apply_inside_yellow2"
             android:src="@drawable/gathering1"
-            android:layout_width="200dp"
+            android:layout_width="180dp"
             android:layout_height="200dp"/>
         <ImageView
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:background="@drawable/apply_inside_yellow2"
             android:src="@drawable/gathering2"
-            android:layout_width="200dp"
+            android:layout_width="180dp"
             android:layout_height="200dp"/>
     </LinearLayout>
 
     <Button
+        android:layout_gravity="center"
+        android:background="@drawable/apply_button2"
         android:id="@+id/btn_upload_picture"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="提交截图" />

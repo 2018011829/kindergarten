@@ -13,6 +13,7 @@
         android:orientation="vertical"
         tools:context=".apply.activity.ApplyActivityBaby">
         <RelativeLayout
+            android:background="#99CCFF"
             android:id="@+id/apply_them"
             android:paddingTop="5dp"
             android:paddingLeft="15dp"

@@ -15,7 +15,10 @@
                     <ul>
                         <li onmouseout="hiddenAdminSetting()"
                             onmouseover="showAdminSetting()" id="admin"><span> <b>
-                            admin
+                                    ${userName } <c:if test="${empty userName }">
+                                        <jsp:forward page="error.jsp"></jsp:forward>
+                                    </c:if>
+                                    <c:set value="${userName }" var="userName" scope="request"></c:set>
                             </b>
                         </span><span><img src="imgs/home/xiala.png" id="admin_img"></span></li>
                     </ul>

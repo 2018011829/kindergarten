@@ -1,4 +1,4 @@
-package com.example.myapplication.money.activity.bean;
+package com.group.kindergarten.costMoney.entity;
 
 public class MoneyPicture {
     private int id;

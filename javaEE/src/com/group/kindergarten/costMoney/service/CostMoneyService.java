@@ -3,7 +3,9 @@ package com.group.kindergarten.costMoney.service;
 import java.util.List;
 
 import com.group.kindergarten.costMoney.dao.CostMoneyDao;
+import com.group.kindergarten.costMoney.entity.MoneyPicture;
 import com.group.kindergarten.costMoney.entity.SchoolSemester;
+import com.group.kindergarten.costMoney.entity.ScreenshotInfo;
 
 public class CostMoneyService {
 
@@ -183,5 +185,29 @@ public class CostMoneyService {
 		boolean b=costMoneyDao.updateLeaveInfo(name, phone, dayStartNum, dayEndNum);
 		
 		return b;
+	}
+	
+	/**
+	 * 将用户上传截图的相关信息保存到数据库
+	 * @param moneyPicture
+	 * @param monthNow
+	 * @param screenshotName
+	 * @return
+	 */
+	public boolean preserveScreenshotInfo(MoneyPicture moneyPicture,int monthNow,String screenshotName) {
+		boolean b=costMoneyDao.preserveScreenshotInfo(moneyPicture, monthNow, screenshotName);
+		
+		return b;
+	}
+	
+	/**
+	 * 根据当前月份获取所有相关的缴费截图信息
+	 * @param monthNow
+	 * @return
+	 */
+	public List<ScreenshotInfo> searchScreenshotInfo(int monthNow){
+		List<ScreenshotInfo> list=costMoneyDao.searchScreenshotInfo(monthNow);
+		
+		return list;
 	}
 }

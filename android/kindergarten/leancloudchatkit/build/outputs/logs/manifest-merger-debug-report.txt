@@ -1,5 +1,6 @@
 -- Merging decision tree log ---
 manifest
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 ADDED from F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:2:1-60:12
 INJECTED from F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:2:1-60:12
@@ -294,6 +295,8 @@ INJECTED from D:\KindergartenProject\kindergarten\android\kindergarten\leancloud
 		ADDED from D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
 		INJECTED from D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
 =======
+=======
+>>>>>>> Stashed changes
 ADDED from D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:2:1-60:12
 INJECTED from D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:2:1-60:12
 INJECTED from D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:2:1-60:12
@@ -439,5 +442,8 @@ INJECTED from D:\git\myRepositories\kindergarten\android\kindergarten\leancloudc
 		INJECTED from D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
 		ADDED from D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
 		INJECTED from D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 >>>>>>> 08089c21adc93d489c9860bf00fca620f84f81bc
+=======
+>>>>>>> Stashed changes

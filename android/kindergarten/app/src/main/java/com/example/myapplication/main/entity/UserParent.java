@@ -5,8 +5,7 @@ public class UserParent {
     private String phone;
     private String password;
     private String nickname;
-    private String avator;
-
+    private String avatar;
     public int getId() {
         return id;
     }
@@ -40,11 +39,11 @@ public class UserParent {
     }
 
     public String getAvator() {
-        return avator;
+        return avatar;
     }
 
     public void setAvator(String avator) {
-        this.avator = avator;
+        this.avatar = avator;
     }
 
     public UserParent() {
@@ -57,13 +56,13 @@ public class UserParent {
         this.phone = phone;
         this.password = password;
         this.nickname = nickname;
-        this.avator = avator;
+        this.avatar = avator;
     }
 
     @Override
     public String toString() {
         return "UserParent [id=" + id + ", phone=" + phone + ", password=" + password + ", nickname=" + nickname
-                + ", avator=" + avator + "]";
+                + ", avator=" + avatar + "]";
     }
 
 }

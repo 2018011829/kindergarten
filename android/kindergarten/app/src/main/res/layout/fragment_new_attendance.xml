@@ -10,10 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-<<<<<<< Updated upstream
-=======
+<!--<<<<<<< Updated upstream-->
+<!--=======-->
 
->>>>>>> Stashed changes
+<!--&gt;>>>>>> Stashed changes-->
 
         <TextView
             android:layout_width="match_parent"

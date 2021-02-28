@@ -6,167 +6,6 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="14"
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-8-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
-9        android:targetSdkVersion="26" />
-9-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
-10
-11    <uses-permission android:name="android.permission.INTERNET" />
-11-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:5:5-66
-11-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:5:22-64
-12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-12-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:6:5-80
-12-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:6:22-78
-13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:7:5-78
-13-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:7:22-76
-14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-14-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:8:5-75
-14-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:8:22-73
-15    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-15-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:9:5-70
-15-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:9:22-68
-16    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-16-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:10:5-75
-16-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:10:22-72
-17    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-17-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:11:5-80
-17-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:11:22-78
-18    <uses-permission android:name="android.permission.VIBRATE" />
-18-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:12:5-65
-18-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:12:22-63
-19
-20    <uses-feature
-20-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:14:5-16:34
-21        android:name="android.hardware.camera"
-21-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:15:9-47
-22        android:required="true" />
-22-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:16:9-32
-23
-24    <application>
-24-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:18:5-58:19
-25        <activity
-25-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:19:9-27:20
-26            android:name="cn.leancloud.chatkit.activity.LCIMConversationActivity"
-26-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:20:13-62
-27            android:launchMode="singleTask" >
-27-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:21:13-44
-28            <intent-filter>
-28-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:22:13-26:29
-29                <action android:name="cn.leancloud.chatkit.conversation_item_click_action" />
-29-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:23:17-93
-29-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:23:25-91
-30
-31                <category android:name="android.intent.category.DEFAULT" />
-31-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:25:17-75
-31-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:25:27-73
-32            </intent-filter>
-33        </activity>
-34        <activity android:name="cn.leancloud.chatkit.activity.LCIMImageActivity" />
-34-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:28:9-63
-34-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:28:19-61
-35        <activity android:name="cn.leancloud.chatkit.activity.LCIMConversationSettingActivity" >
-35-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:29:9-30:20
-35-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:29:19-75
-36        </activity>
-37
-38        <receiver android:name="cn.leancloud.push.AVBroadcastReceiver" >
-38-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:32:9-38:20
-38-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:32:19-71
-39            <intent-filter>
-39-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:33:13-37:29
-40                <action android:name="android.intent.action.BOOT_COMPLETED" />
-40-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:34:17-78
-40-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:34:25-76
-41                <action android:name="android.intent.action.USER_PRESENT" />
-41-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:35:17-76
-41-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:35:25-74
-42                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-42-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:17-78
-42-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:25-76
-=======
-<<<<<<< Updated upstream
-8-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
-9        android:targetSdkVersion="26" />
-9-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
-10
-11    <uses-permission android:name="android.permission.INTERNET" />
-11-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:5:5-66
-11-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:5:22-64
-12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-12-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:6:5-80
-12-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:6:22-78
-13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:7:5-78
-13-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:7:22-76
-14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-14-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:8:5-75
-14-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:8:22-73
-15    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-15-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:9:5-70
-15-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:9:22-68
-16    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-16-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:10:5-75
-16-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:10:22-72
-17    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-17-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:11:5-80
-17-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:11:22-78
-18    <uses-permission android:name="android.permission.VIBRATE" />
-18-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:12:5-65
-18-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:12:22-63
-19
-20    <uses-feature
-20-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:14:5-16:34
-21        android:name="android.hardware.camera"
-21-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:15:9-47
-22        android:required="true" />
-22-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:16:9-32
-23
-24    <application>
-24-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:18:5-58:19
-25        <activity
-25-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:19:9-27:20
-26            android:name="cn.leancloud.chatkit.activity.LCIMConversationActivity"
-26-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:20:13-62
-27            android:launchMode="singleTask" >
-27-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:21:13-44
-28            <intent-filter>
-28-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:22:13-26:29
-29                <action android:name="cn.leancloud.chatkit.conversation_item_click_action" />
-29-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:23:17-93
-29-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:23:25-91
-30
-31                <category android:name="android.intent.category.DEFAULT" />
-31-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:25:17-75
-31-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:25:27-73
-32            </intent-filter>
-33        </activity>
-34        <activity android:name="cn.leancloud.chatkit.activity.LCIMImageActivity" />
-34-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:28:9-63
-34-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:28:19-61
-35        <activity android:name="cn.leancloud.chatkit.activity.LCIMConversationSettingActivity" >
-35-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:29:9-30:20
-35-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:29:19-75
-36        </activity>
-37
-38        <receiver android:name="cn.leancloud.push.AVBroadcastReceiver" >
-38-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:32:9-38:20
-38-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:32:19-71
-39            <intent-filter>
-39-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:33:13-37:29
-40                <action android:name="android.intent.action.BOOT_COMPLETED" />
-40-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:34:17-78
-40-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:34:25-76
-41                <action android:name="android.intent.action.USER_PRESENT" />
-41-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:35:17-76
-41-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:35:25-74
-42                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-42-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:17-78
-42-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:25-76
-=======
-=======
->>>>>>> Stashed changes
 8-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="26" />
 9-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml
@@ -244,52 +83,10 @@
 42                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
 42-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:17-78
 42-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:36:25-76
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
->>>>>>> 08089c21adc93d489c9860bf00fca620f84f81bc
-=======
->>>>>>> Stashed changes
 43            </intent-filter>
 44        </receiver>
 45
 46        <provider
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-46-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:40:9-49:20
-47            android:name="androidx.core.content.FileProvider"
-47-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:41:13-62
-48            android:authorities="${applicationId}.provider"
-48-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:42:13-60
-49            android:exported="false"
-49-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:43:13-37
-50            android:grantUriPermissions="true" >
-50-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:44:13-47
-51            <meta-data
-51-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:45:13-48:25
-52                android:name="android.support.FILE_PROVIDER_PATHS"
-52-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:46:17-67
-53                android:resource="@xml/file_paths" >
-53-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:47:17-51
-=======
-<<<<<<< Updated upstream
-46-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:40:9-49:20
-47            android:name="androidx.core.content.FileProvider"
-47-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:41:13-62
-48            android:authorities="${applicationId}.provider"
-48-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:42:13-60
-49            android:exported="false"
-49-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:43:13-37
-50            android:grantUriPermissions="true" >
-50-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:44:13-47
-51            <meta-data
-51-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:45:13-48:25
-52                android:name="android.support.FILE_PROVIDER_PATHS"
-52-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:46:17-67
-53                android:resource="@xml/file_paths" >
-53-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:47:17-51
-=======
-=======
->>>>>>> Stashed changes
 46-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:40:9-49:20
 47            android:name="androidx.core.content.FileProvider"
 47-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:41:13-62
@@ -305,44 +102,10 @@
 52-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:46:17-67
 53                android:resource="@xml/file_paths" >
 53-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:47:17-51
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
->>>>>>> 08089c21adc93d489c9860bf00fca620f84f81bc
-=======
->>>>>>> Stashed changes
 54            </meta-data>
 55        </provider>
 56
 57        <activity android:name="cn.leancloud.chatkit.activity.LCIMConversationDetailActivity" >
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-57-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:9-52:20
-57-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:19-74
-58        </activity>
-59        <activity android:name="cn.leancloud.chatkit.activity.LCIMUserSelectActivity" >
-59-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:53:9-54:20
-59-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:53:19-66
-60        </activity>
-61
-62        <service android:name="cn.leancloud.push.PushService" />
-62-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:9-64
-62-->F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:18-62
-=======
-<<<<<<< Updated upstream
-57-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:9-52:20
-57-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:19-74
-58        </activity>
-59        <activity android:name="cn.leancloud.chatkit.activity.LCIMUserSelectActivity" >
-59-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:53:9-54:20
-59-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:53:19-66
-60        </activity>
-61
-62        <service android:name="cn.leancloud.push.PushService" />
-62-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:9-64
-62-->D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:18-62
-=======
-=======
->>>>>>> Stashed changes
 57-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:9-52:20
 57-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:51:19-74
 58        </activity>
@@ -354,11 +117,6 @@
 62        <service android:name="cn.leancloud.push.PushService" />
 62-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:9-64
 62-->D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\AndroidManifest.xml:56:18-62
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
->>>>>>> 08089c21adc93d489c9860bf00fca620f84f81bc
-=======
->>>>>>> Stashed changes
 63    </application>
 64
 65</manifest>

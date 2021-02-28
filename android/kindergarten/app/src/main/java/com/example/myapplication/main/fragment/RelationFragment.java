@@ -76,7 +76,7 @@ public class RelationFragment extends Fragment {
 //        getActivity().setTitle(R.string.app_name);
 
 
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+//        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         initTabLayout();
         Log.d("MainActivity", "onCreate finished.");
 

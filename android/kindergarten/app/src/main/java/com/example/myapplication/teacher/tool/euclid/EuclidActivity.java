@@ -59,7 +59,9 @@ public abstract class EuclidActivity extends Activity {
     protected TextView mTextViewProfilePosition;
     protected TextView mTextViewProfilePhone;
     protected TextView mTextViewProfileDescription;
-    protected View mButtonProfile;
+
+//    此处无用
+//    protected View mButtonProfile;
 
     public static ShapeDrawable sOverlayShape;
     static int sScreenWidth;
@@ -91,13 +93,13 @@ public abstract class EuclidActivity extends Activity {
         mTextViewProfilePosition = (TextView) findViewById(R.id.text_view_profile_position);
         mTextViewProfilePhone = (TextView) findViewById(R.id.text_view_profile_phone);
         mTextViewProfileDescription = (TextView) findViewById(R.id.text_view_profile_motto);
-        mButtonProfile = findViewById(R.id.button_profile);
-        mButtonProfile.post(new Runnable() {
-            @Override
-            public void run() {
-                mInitialProfileButtonX = mButtonProfile.getX();
-            }
-        });
+//        mButtonProfile = findViewById(R.id.button_profile);
+//        mButtonProfile.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                mInitialProfileButtonX = mButtonProfile.getX();
+//            }
+//        });
         findViewById(R.id.toolbar_profile_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -336,7 +338,7 @@ public abstract class EuclidActivity extends Activity {
             mProfileButtonShowAnimation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
-                    mButtonProfile.setVisibility(View.VISIBLE);
+//                    mButtonProfile.setVisibility(View.VISIBLE);
                 }
 
                 @Override
@@ -369,13 +371,13 @@ public abstract class EuclidActivity extends Activity {
                 mProfileDetails.bringToFront();
                 mProfileDetails.setVisibility(View.VISIBLE);
 
-                mButtonProfile.setX(mInitialProfileButtonX);
-                mButtonProfile.bringToFront();
+//                mButtonProfile.setX(mInitialProfileButtonX);
+//                mButtonProfile.bringToFront();
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                mButtonProfile.startAnimation(mProfileButtonShowAnimation);
+//                mButtonProfile.startAnimation(mProfileButtonShowAnimation);
 
                 mState = EuclidState.Opened;
             }
@@ -430,9 +432,9 @@ public abstract class EuclidActivity extends Activity {
                     0, mOverlayListItemView.getWidth());
             profilePhotoAnimator.setStartDelay(getStepDelayHideDetailsAnimation());
 
-            Animator profileButtonAnimator = ObjectAnimator.ofFloat(mButtonProfile, View.X,
-                    mInitialProfileButtonX, mOverlayListItemView.getWidth() + mInitialProfileButtonX);
-            profileButtonAnimator.setStartDelay(getStepDelayHideDetailsAnimation() * 2);
+//            Animator profileButtonAnimator = ObjectAnimator.ofFloat(mButtonProfile, View.X,
+//                    mInitialProfileButtonX, mOverlayListItemView.getWidth() + mInitialProfileButtonX);
+//            profileButtonAnimator.setStartDelay(getStepDelayHideDetailsAnimation() * 2);
 
             Animator profileDetailsAnimator = ObjectAnimator.ofFloat(mProfileDetails, View.X,
                     0, mToolbarProfile.getWidth());
@@ -441,7 +443,7 @@ public abstract class EuclidActivity extends Activity {
             List<Animator> profileAnimators = new ArrayList<>();
             profileAnimators.add(profileToolbarAnimator);
             profileAnimators.add(profilePhotoAnimator);
-            profileAnimators.add(profileButtonAnimator);
+//            profileAnimators.add(profileButtonAnimator);
             profileAnimators.add(profileDetailsAnimator);
 
             mCloseProfileAnimatorSet = new AnimatorSet();
@@ -460,7 +462,7 @@ public abstract class EuclidActivity extends Activity {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     mToolbarProfile.setVisibility(View.INVISIBLE);
-                    mButtonProfile.setVisibility(View.INVISIBLE);
+//                    mButtonProfile.setVisibility(View.INVISIBLE);
                     mProfileDetails.setVisibility(View.INVISIBLE);
 
                     mListView.setEnabled(true);

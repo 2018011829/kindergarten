@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@drawable/euclid_teacher_list">
 
     <include
         layout="@layout/euclid_list_item"
@@ -18,7 +18,7 @@
         android:layout_alignBottom="@+id/wrapper_list_item"
         android:orientation="vertical"
         android:visibility="invisible"
-        android:background="@color/white">
+        >
 
         <ImageView
             android:id="@+id/image_view_reveal_avatar"

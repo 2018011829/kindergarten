@@ -500,7 +500,7 @@ public abstract class EuclidActivity extends Activity {
                         sScreenWidth / 2 - dpToPx(getCircleRadiusDp() * 2),
                         sProfileImageHeight / 2 - dpToPx(getCircleRadiusDp() * 2)),
                 new float[]{radius, radius, radius, radius, radius, radius, radius, radius}));
-        overlay.getPaint().setColor(getResources().getColor(R.color.white));
+        overlay.getPaint().setColor(getResources().getColor(R.color.orange_light));
 
         return overlay;
     }

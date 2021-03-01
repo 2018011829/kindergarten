@@ -70,7 +70,7 @@
         <item name="android:layout_width">45dp</item>
         <item name="android:layout_height">45dp</item>
         <item name="android:scaleType">centerCrop</item>
-        
+        <!--<item name="android:src">@drawable/chat_default_user_avatar</item>-->
     </style>
     <style name="LCIMAvatar.Large">
         <item name="android:layout_width">50dp</item>
@@ -96,7 +96,7 @@
         <item name="android:textColorPrimary">@android:color/black</item>
     </style>
     <style name="LCIMKitTheme" parent="Theme.AppCompat.Light">
-        
+        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/lcim_common_blue</item>
         <item name="colorPrimaryDark">@color/lcim_common_blue</item>
         <item name="colorAccent">@color/lcim_common_blue</item>

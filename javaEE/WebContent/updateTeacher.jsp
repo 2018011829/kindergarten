@@ -18,11 +18,9 @@
                 <ul class="menu">
                     <li id="user" onclick="showUserMenu()"><a class="jump">用户信息管理</a>
                         <img src="imgs/home/xiala.png" id="xiala1"></li>
-                    <ul class="user_menu" id="click_user_menu" style="display: none">
+                    <<ul class="user_menu" id="click_user_menu" style="display: none">
                         <li onclick="showMenu_info1()" id="user_info"><a class="jump"
-                            href="#">用户信息</a></li>
-                        <li onclick="showMenu_add1()" id="user_add"><a class="jump"
-                            href="#">新增用户</a></li>
+                            href="userManage">用户信息</a></li>
                     </ul>
                     <li id="enroll" onclick="showEnrollMenu()"><a class="jump">报名信息管理</a><img
                         src="imgs/home/xiala.png" id="xiala2"></li>

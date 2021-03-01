@@ -74,7 +74,7 @@
 						</div>
 						<div class="day_div">
 							<span>3：<input type="text" placeholder="请输入天数" name="three" id="input_day"></span>
-							<span class="day_span">4：<input type="text" placeholder="请输入天数" name="4" id="input_day"></span>
+							<span class="day_span">4：<input type="text" placeholder="请输入天数" name="four" id="input_day"></span>
 						</div>
 						<div class="day_div">
 							<span>5：<input type="text" placeholder="请输入天数" name="five" id="input_day"></span>

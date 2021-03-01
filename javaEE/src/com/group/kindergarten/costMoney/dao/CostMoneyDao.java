@@ -90,16 +90,19 @@ public class CostMoneyDao {
 			preparedStatement=connection.prepareStatement("select * from school_semester where month=?");
 			preparedStatement.setInt(1, monthNum);
 			ResultSet rs=preparedStatement.executeQuery();
-			if(rs!=null) {// 进行修改
+			if(rs.next()) {// 进行修改
+				System.out.println("rs不为空");
 				preparedStatement=connection.prepareStatement("update school_semester set day_num=? where month=?");
 				preparedStatement.setInt(1, dayNum);
 				preparedStatement.setInt(2, monthNum);
 				b=preparedStatement.execute();
 			}else {// 进行插入
-				preparedStatement=connection.prepareStatement("insert into school_semester(month,day_num) values(?,?)");
+				System.out.println("rs为空");
+				preparedStatement=connection.prepareStatement("insert into school_semester (month,day_num) values (?,?)");
 				preparedStatement.setInt(2, dayNum);
 				preparedStatement.setInt(1, monthNum);
 				b=preparedStatement.execute();
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -271,7 +274,10 @@ public class CostMoneyDao {
 			preparedStatement.setInt(1, day);
 			preparedStatement.setInt(2, id);
 			preparedStatement.setString(3, parentPhone);
-			b=preparedStatement.execute();
+			int row=preparedStatement.executeUpdate();
+			if(row>0) {
+				b=true;
+			}
 	    } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -343,23 +349,31 @@ public class CostMoneyDao {
 		boolean b=false;
 		//获取孩子的id
 		int id=returnChildId(name, phone);
+		System.out.println("id:"+id);
 		//计算请假天数
 		int leaveNewDay=dayEndNum-dayStartNum;
+		System.out.println("请假天数:"+leaveNewDay);
 		//获取数据库中的请假天数
 		int leaveLastDay=getPreMonthLeave(name, phone);
+		System.out.println("数据库中的请假天数:"+leaveLastDay);
 		//累计请假天数总和
 		int totalLeaveDay=leaveNewDay+leaveLastDay;
+		System.out.println("累计请假天数总和:"+totalLeaveDay);
 		//更新数据库
 		try {
 			preparedStatement=connection.prepareStatement("update child_attendence set leave_day=? where child_id=? and phone=?");
 			preparedStatement.setInt(1, totalLeaveDay);
 			preparedStatement.setInt(2, id);
 			preparedStatement.setString(3, phone);
-			b=preparedStatement.execute();
+			int row=preparedStatement.executeUpdate();
+			if(row>0) {
+				b=true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+//		System.out.println("请假结果："+b);
 		return b;
 	}
 	
@@ -400,6 +414,7 @@ public class CostMoneyDao {
 			preparedStatement.setInt(1, monthNow);
 			ResultSet rs=preparedStatement.executeQuery();
 			if(rs!=null) {
+				System.out.println("rs不为空");
 				list=new ArrayList<ScreenshotInfo>();
 				while(rs.next()) {
 					ScreenshotInfo screenshotInfo=new ScreenshotInfo();
@@ -409,6 +424,7 @@ public class CostMoneyDao {
 					screenshotInfo.setPhone(rs.getString("phone"));
 					screenshotInfo.setBabyName(rs.getString("child_name"));
 					screenshotInfo.setPhotoName(rs.getString("screenshot_name"));
+					System.out.println(screenshotInfo.toString());
 					list.add(screenshotInfo);
 				}
 			}

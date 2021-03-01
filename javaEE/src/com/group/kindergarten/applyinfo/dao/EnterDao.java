@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.group.kindergarten.applyinfo.entity.ApplyInfo;
+import com.group.kindergarten.my.entity.Child;
 import com.group.kindergarten.util.DBUtil;
 
 
@@ -112,6 +113,43 @@ public class EnterDao {
 			if(rows>0) {
 				b=true;
 				System.out.println("成功添加孩子报名信息");
+				//将所有孩子的信息添加到出勤表中，表示该学期开始
+				if(b) {
+					//从孩子表中获取孩子信息
+					List<Child> list=null;
+					preparedStatement=connection.prepareStatement("select * from child");
+					ResultSet resultSet=preparedStatement.executeQuery();
+					if(resultSet.next()) {
+						list=new ArrayList<Child>();
+						while(resultSet.next()) {
+							Child child=new Child();
+							child.setId(resultSet.getInt("id"));
+							child.setGrade(resultSet.getString("id_num"));
+							child.setName(resultSet.getString("name"));
+							child.setSex(resultSet.getString("sex"));
+							child.setParentPhone(resultSet.getString("parentPhone"));
+							list.add(child);
+						}
+					}
+					//如果出勤表中没有孩子的信息 再将孩子信息插入到数据库中
+					for(Child c:list) {
+						preparedStatement=connection.prepareStatement("select * from child_attendence");
+						ResultSet rSet=preparedStatement.executeQuery();
+						if(rSet.next()) {
+							while(rSet.next()) {
+								if(c.getId()==rSet.getInt("child_id")) {
+									break;
+								}else {// 不存在孩子信息，进行插入
+									preparedStatement=connection.prepareStatement("insert into child_attendence(child_id,phone) values(?,?)");
+									preparedStatement.setInt(1, c.getId());
+									preparedStatement.setString(2, c.getParentPhone());
+									boolean a=preparedStatement.execute();
+									System.out.println("将报名的孩子信息插入到出勤表结果："+a);
+								}
+							}
+						}
+					}
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

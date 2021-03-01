@@ -42,6 +42,7 @@ public class SearchScreenshotInfo extends HttpServlet {
 		int month = 0;
 		Calendar c = Calendar.getInstance();// 0-11
 		month = c.get(Calendar.MONTH) + 1;
+		System.out.println("本月月份："+month);
 		List<ScreenshotInfo> list = CostMoneyService.getInstance().searchScreenshotInfo(month);
 		if (list != null && list.size() != 0) {
 			request.setAttribute("ScreenshotList", list);
@@ -49,7 +50,7 @@ public class SearchScreenshotInfo extends HttpServlet {
 		} else {
 			System.out.println("未查询到相关数据");
 			request.setAttribute("errorInfo", "未查询到相关数据");
-			request.getRequestDispatcher("error.jsp").forward(request, response);
+			request.getRequestDispatcher("showErrorInfo.jsp").forward(request, response);
 		}
 	}
 

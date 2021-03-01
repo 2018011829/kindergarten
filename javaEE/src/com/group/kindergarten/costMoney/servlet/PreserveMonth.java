@@ -54,60 +54,72 @@ public class PreserveMonth extends HttpServlet {
 		if(one!=null && !one.equals("")) {
 			int dayNum=Integer.parseInt(one);
 			a=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			System.out.println("1:"+a);
 		}
 		if(two!=null && !two.equals("")) {
 			int dayNum=Integer.parseInt(two);
-			b=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			b=CostMoneyService.getInstance().justAndPreserve(2, dayNum);
+			System.out.println("2:"+b);
 		}
 		if(three!=null && !three.equals("")) {
 			int dayNum=Integer.parseInt(three);
-			c=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			c=CostMoneyService.getInstance().justAndPreserve(3, dayNum);
+			System.out.println("3:"+c);
 		}
 		if(four!=null && !four.equals("")) {
 			int dayNum=Integer.parseInt(four);
-			d=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			d=CostMoneyService.getInstance().justAndPreserve(4, dayNum);
+			System.out.println("4:"+d);
 		}
 		if(five!=null && !five.equals("")) {
 			int dayNum=Integer.parseInt(five);
-			e=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			e=CostMoneyService.getInstance().justAndPreserve(5, dayNum);
+			System.out.println("5:"+e);
 		}
 		if(six!=null && !six.equals("")) {
 			int dayNum=Integer.parseInt(six);
-			f=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			f=CostMoneyService.getInstance().justAndPreserve(6, dayNum);
+			System.out.println("6:"+f);
 		}
 		if(seven!=null && !seven.equals("")) {
 			int dayNum=Integer.parseInt(seven);
-			g=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			g=CostMoneyService.getInstance().justAndPreserve(7, dayNum);
+			System.out.println("7:"+g);
 		}
 		if(eight!=null && !eight.equals("")) {
 			int dayNum=Integer.parseInt(eight);
-			h=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			h=CostMoneyService.getInstance().justAndPreserve(8, dayNum);
+			System.out.println("8:"+h);
 		}
 		if(ten!=null && !ten.equals("")) {
 			int dayNum=Integer.parseInt(ten);
-			i=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			i=CostMoneyService.getInstance().justAndPreserve(10, dayNum);
+			System.out.println("10:"+i);
 		}
 		if(nine!=null && !nine.equals("")) {
 			int dayNum=Integer.parseInt(nine);
-			j=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			j=CostMoneyService.getInstance().justAndPreserve(9, dayNum);
+			System.out.println("9:"+j);
 		}
 		if(eleven!=null && !eleven.equals("")) {
 			int dayNum=Integer.parseInt(eleven);
-			k=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			k=CostMoneyService.getInstance().justAndPreserve(11, dayNum);
+			System.out.println("11:"+k);
 		}
 		if(twelve!=null && !twelve.equals("")) {
 			int dayNum=Integer.parseInt(twelve);
-			l=CostMoneyService.getInstance().justAndPreserve(1, dayNum);
+			l=CostMoneyService.getInstance().justAndPreserve(12, dayNum);
+			System.out.println("12:"+l);
 		}
-		if(a||b||c||d||e||f||g||h||i||j||k||l) {// 跳转到显示界面
+//		if(a|b|c|d|e|f|g|h|i|j|k|l) {// 跳转到显示界面
 			//从数据库中获取设置的学期信息
 			List<SchoolSemester> list=CostMoneyService.getInstance().searchSemesterInfo();
 			request.getSession().setAttribute("schoolSemester", list);
 			request.getRequestDispatcher("showSemester.jsp").forward(request, response);
-		}else {// 跳转回设置界面，显示设置失败
-			request.setAttribute("errorInfo", "设置失败，请重新设置！");
-			request.getRequestDispatcher("SetSemester.jsp").forward(request, response);
-		}
+//		}else {// 跳转回设置界面，显示设置失败
+//			request.setAttribute("errorInfo", "设置失败，请重新设置！");
+//			request.getRequestDispatcher("SetSemester.jsp").forward(request, response);
+//		}
 	}
 
 	/**

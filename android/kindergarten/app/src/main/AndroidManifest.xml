@@ -51,16 +51,17 @@
 <!--        <uses-library android:name="org.apache.http.legacy" android:required="false"/>-->
         <activity android:name=".contact.TestActivity"></activity>
         <activity android:name=".contact.LoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".main.activity.my.ShowApplyInfoActivity" />
         <activity android:name=".main.activity.my.ApplyInfoActivity" />
         <activity android:name=".main.activity.my.EditorParentActivity" />
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".login.LoginByPasswordActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".login.LoginByPhoneActivity" />
         <activity android:name=".teacher.tool.euclid.EuclidActivity" />

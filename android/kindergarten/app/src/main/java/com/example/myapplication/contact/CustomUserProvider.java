@@ -80,6 +80,7 @@ public class CustomUserProvider implements LCChatProfileProvider {
                 }
 
 
+                response.close();
 
                 //处理请求结果
 //                Message msg = handler.obtainMessage();

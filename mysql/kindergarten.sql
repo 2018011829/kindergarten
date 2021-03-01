@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50701
 File Encoding         : 65001
 
-Date: 2021-02-14 19:24:10
+Date: 2021-02-28 14:23:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,9 +21,9 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `account_balance`;
 CREATE TABLE `account_balance` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(11) NOT NULL,
+  `phone` char(11) NOT NULL,
   `child_id` int(11) NOT NULL,
-  `account_balance_money` double NOT NULL,
+  `money` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -107,16 +107,18 @@ INSERT INTO `child` VALUES ('9', '花花', '610526199908160721', '女', '1883116
 DROP TABLE IF EXISTS `child_attendence`;
 CREATE TABLE `child_attendence` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(11) NOT NULL,
+  `phone` char(11) NOT NULL,
   `child_id` int(11) NOT NULL,
-  `last_attendence_day` int(11) NOT NULL,
-  `next_attendence_day` int(11) NOT NULL,
+  `last_attendence_day` int(11) DEFAULT NULL,
+  `next_attendence_day` int(11) DEFAULT NULL,
+  `leave_day` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of child_attendence
 -- ----------------------------
+INSERT INTO `child_attendence` VALUES ('1', '18831166551', '8', '25', null, null);
 
 -- ----------------------------
 -- Table structure for `class`
@@ -282,6 +284,25 @@ CREATE TABLE `kindergarten_phone` (
 INSERT INTO `kindergarten_phone` VALUES ('1', '0311-858857');
 
 -- ----------------------------
+-- Table structure for `money_screenshot`
+-- ----------------------------
+DROP TABLE IF EXISTS `money_screenshot`;
+CREATE TABLE `money_screenshot` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `child_name` varchar(20) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `grade_num` varchar(3) NOT NULL,
+  `class_num` varchar(3) NOT NULL,
+  `screenshot_name` varchar(100) NOT NULL,
+  `month` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of money_screenshot
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `parent`
 -- ----------------------------
 DROP TABLE IF EXISTS `parent`;
@@ -325,11 +346,13 @@ CREATE TABLE `school_semester` (
   `day_num` smallint(6) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of school_semester
 -- ----------------------------
+INSERT INTO `school_semester` VALUES ('2', '25', '1');
+INSERT INTO `school_semester` VALUES ('1', '25', '2');
 
 -- ----------------------------
 -- Table structure for `teacher`

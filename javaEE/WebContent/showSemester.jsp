@@ -63,7 +63,7 @@
 					<li><a href="SearchClassTime">查看本学期上课时间</a></li>
 					<li><a href="inputAskForLeave.jsp">录入学生请假信息</a></li>
 					<li><a href="SetSemester.jsp">安排本学期上课时间</a></li>
-					<li><a href="SearchAccountBalance">查看学生生活费余额</a></li>
+					<li><a href="SearchScreenshotInfo">查看本月缴费情况</a></li>
 				</ul>
 			</div>
 			<div class="box2">

@@ -68,14 +68,15 @@ public class RelationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_test,container,false);
 
-
-//        setContentView(R.layout.activity_test);
         toolbar = view.findViewById(R.id.toolbar);
         viewPager = view.findViewById(R.id.pager);
         tabLayout = view.findViewById(R.id.tablayout);
-        getActivity().setTitle(R.string.app_name);
-//        getActivity().setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+
+        //去掉标题栏
+//        getActivity().setTitle(R.string.app_name);
+
+
+//        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         initTabLayout();
         Log.d("MainActivity", "onCreate finished.");
 

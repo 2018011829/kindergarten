@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50701
 File Encoding         : 65001
 
-Date: 2021-02-28 14:23:08
+Date: 2021-03-01 17:42:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -110,7 +110,6 @@ CREATE TABLE `child_attendence` (
   `phone` char(11) NOT NULL,
   `child_id` int(11) NOT NULL,
   `last_attendence_day` int(11) DEFAULT NULL,
-  `next_attendence_day` int(11) DEFAULT NULL,
   `leave_day` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -118,7 +117,7 @@ CREATE TABLE `child_attendence` (
 -- ----------------------------
 -- Records of child_attendence
 -- ----------------------------
-INSERT INTO `child_attendence` VALUES ('1', '18831166551', '8', '25', null, null);
+INSERT INTO `child_attendence` VALUES ('1', '18831166551', '8', null, '4');
 
 -- ----------------------------
 -- Table structure for `class`
@@ -296,11 +295,12 @@ CREATE TABLE `money_screenshot` (
   `screenshot_name` varchar(100) NOT NULL,
   `month` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of money_screenshot
 -- ----------------------------
+INSERT INTO `money_screenshot` VALUES ('1', '天天', '18831166551', '1', '2', 'tiantian.jpg', '3');
 
 -- ----------------------------
 -- Table structure for `parent`
@@ -346,13 +346,17 @@ CREATE TABLE `school_semester` (
   `day_num` smallint(6) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of school_semester
 -- ----------------------------
-INSERT INTO `school_semester` VALUES ('2', '25', '1');
-INSERT INTO `school_semester` VALUES ('1', '25', '2');
+INSERT INTO `school_semester` VALUES ('2', '10', '3');
+INSERT INTO `school_semester` VALUES ('3', '15', '4');
+INSERT INTO `school_semester` VALUES ('4', '20', '5');
+INSERT INTO `school_semester` VALUES ('5', '21', '6');
+INSERT INTO `school_semester` VALUES ('6', '20', '7');
+INSERT INTO `school_semester` VALUES ('7', '10', '8');
 
 -- ----------------------------
 -- Table structure for `teacher`

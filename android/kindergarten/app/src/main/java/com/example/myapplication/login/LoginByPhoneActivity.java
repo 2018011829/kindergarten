@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.contact.TestActivity;
 import com.example.myapplication.login.entity.User;
 import com.example.myapplication.main.activity.MainActivity;
 import com.example.myapplication.main.util.ChangeStatusBarColor;
@@ -29,7 +28,6 @@ import com.google.gson.Gson;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import cn.leancloud.chatkit.LCChatKit;
 import cn.leancloud.im.AVIMOptions;

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -28,9 +27,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.text.ParseException;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ApplyActivityParents extends AppCompatActivity {
     private EditText parentName1;//家长姓名1
@@ -188,7 +184,7 @@ public class ApplyActivityParents extends AppCompatActivity {
                     });
                 }else {
                     Resources resources = ApplyActivityParents.this.getResources();
-                    Drawable drawable = resources.getDrawable(R.drawable.apply_button2);
+                    Drawable drawable = resources.getDrawable(R.drawable.apply_button_blue);
                     next2.setBackground(drawable);
                     next2.setOnClickListener(new View.OnClickListener() {
                         @Override

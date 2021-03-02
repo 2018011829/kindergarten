@@ -8,7 +8,7 @@
     >
 
     <ImageView
-        android:background="#f3f2f1"
+        android:background="@drawable/apply_inside_blue2"
         android:id="@+id/im_show_gallery"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

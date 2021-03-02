@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
-    android:background="#FFFFFF">
+    android:background="#99CCFF">
 
     <ImageView
         android:id="@+id/image_view_avatar"
@@ -22,12 +22,15 @@
     <View
         android:id="@+id/view_avatar_overlay"
         android:layout_width="match_parent"
+        android:background="@drawable/euclid_teacher_list"
         android:layout_height="@dimen/height_profile_image"/>
 
     <TextView
+        android:layout_marginTop="12dp"
         android:id="@+id/text_view_name"
-        android:textColor="@color/theme"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
+        android:textFontWeight="@android:integer/config_longAnimTime"
         android:textAllCaps="true"
         android:gravity="center_horizontal"
         android:singleLine="true"
@@ -40,7 +43,8 @@
 
     <TextView
         android:id="@+id/text_view_description"
-        android:textColor="@color/theme"
+        android:textColor="@color/orange"
+        android:textFontWeight="@android:integer/config_longAnimTime"
         android:textSize="18sp"
         android:padding="10dp"
         android:fontFamily="sans-serif"

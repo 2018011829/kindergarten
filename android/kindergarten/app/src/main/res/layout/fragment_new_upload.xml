@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-    android:background="#f3f2f1"
+    android:background="#ffffff"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,10 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#f3f2f1">
+        android:background="#ffffff">
         <RelativeLayout
             android:layout_margin="20dp"
-            android:background="#ffffff"
+            android:background="@drawable/apply_button_blue"
             android:id="@+id/edit"
             android:layout_width="match_parent"
             android:layout_height="180dp"
@@ -25,16 +25,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal">
+
                 <TextView
-                    android:textSize="18dp"
-                    android:gravity="center_vertical"
                     android:id="@+id/tv_grade"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="年级"/>
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center_vertical"
+                    android:text="年级:"
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
                 <RadioGroup
                     android:layout_toRightOf="@+id/tv_grade"
                     android:layout_marginLeft="30dp"
@@ -88,7 +88,7 @@
                     android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="班级"/>
+                    android:text="班级:"/>
                 <RadioGroup
                     android:layout_toRightOf="@+id/tv_class"
                     android:layout_marginLeft="30dp"
@@ -164,10 +164,23 @@
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_weight="1"
-            android:layout_margin="20dp"
-            android:background="#ffffff"/>
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/apply_button_yellow"/>
+        <EditText
+            android:id="@+id/picture_num"
+            android:textSize="18dp"
+            android:layout_toRightOf="@+id/tv_IDnumber"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
         <Button
-            android:background="@drawable/apply_button2"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/apply_button1"
             android:layout_gravity="center"
             android:id="@+id/upload"
             android:text="提交"

@@ -55,19 +55,6 @@ public class MainActivity extends AppCompatActivity {
         //将ViewPager和TabLayout互相绑定
         BindViewPagerAndTabLayout(viewPager);
 
-//        //chatkit获取联系人
-//        AVIMOptions.getGlobalOptions().setAutoOpen(true);
-//        LCChatKit.getInstance().open("18831166551", new AVIMClientCallback() {
-//            @Override
-//            public void done(AVIMClient avimClient, AVIMException e) {
-//                if (null == e) {
-////                                    Intent intent = new Intent(LoginByPasswordActivity.this, TestActivity.class);
-////                                    startActivity(intent);
-//                } else {
-//                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
 
         CustomUserProvider.getContact();
 
@@ -90,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         tab.setIcon(R.mipmap.home_img1);
                         break;
                     case 1:
-                        tab.setIcon(R.mipmap.moments_img1);
+                        tab.setIcon(R.mipmap.charge_imgs1);
                         break;
                     case 2:
                         tab.setIcon(R.mipmap.relations_img1);
@@ -108,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                         tab.setIcon(R.mipmap.home_img0);
                         break;
                     case 1:
-                        tab.setIcon(R.mipmap.moments_img0);
+                        tab.setIcon(R.mipmap.charge_imgs0);
                         break;
                     case 2:
                         tab.setIcon(R.mipmap.relations_img0);

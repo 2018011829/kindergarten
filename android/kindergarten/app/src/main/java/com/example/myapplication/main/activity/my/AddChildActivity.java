@@ -28,7 +28,6 @@ import com.contrarywind.adapter.WheelAdapter;
 import com.contrarywind.listener.OnItemSelectedListener;
 import com.contrarywind.view.WheelView;
 import com.example.myapplication.R;
-import com.example.myapplication.main.fragment.MyFragment;
 import com.example.myapplication.main.util.ChangeStatusBarColor;
 import com.example.myapplication.main.util.ConfigUtil;
 
@@ -134,7 +133,7 @@ public class AddChildActivity extends AppCompatActivity {
                 }else {
                     btn_child_ok.setBackgroundColor(Color.parseColor("#99CCFF"));
                     btn_child_ok.setTextColor(Color.BLACK);
-                    btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button2,null));
+                    btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button_blue,null));
                 }
             }
 
@@ -288,7 +287,7 @@ public class AddChildActivity extends AppCompatActivity {
                     }else {
                         btn_child_ok.setBackgroundColor(Color.parseColor("#90EE90"));
                         btn_child_ok.setTextColor(Color.BLACK);
-                        btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button2,null));
+                        btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button_blue,null));
                     }
                     popupWindow.dismiss();
                 }

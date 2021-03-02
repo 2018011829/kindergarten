@@ -42,6 +42,7 @@ import cn.leancloud.im.v2.AVIMConversation;
 import cn.leancloud.im.v2.AVIMException;
 import cn.leancloud.im.v2.callback.AVIMClientCallback;
 import cn.leancloud.im.v2.callback.AVIMConversationCreatedCallback;
+import de.greenrobot.event.EventBus;
 
 public class RelationFragment extends Fragment {
     private View view;
@@ -68,14 +69,15 @@ public class RelationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_test,container,false);
 
-
-//        setContentView(R.layout.activity_test);
         toolbar = view.findViewById(R.id.toolbar);
         viewPager = view.findViewById(R.id.pager);
         tabLayout = view.findViewById(R.id.tablayout);
-        getActivity().setTitle(R.string.app_name);
-//        getActivity().setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+
+        //去掉标题栏
+//        getActivity().setTitle(R.string.app_name);
+
+
+//        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         initTabLayout();
         Log.d("MainActivity", "onCreate finished.");
 
@@ -94,11 +96,12 @@ public class RelationFragment extends Fragment {
     public void onResume() {
         super.onResume();
     }
+
 //    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getActivity().getMenuInflater().inflate(R.menu.test_menu_square, menu);
-        return true;
-    }
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getActivity().getMenuInflater().inflate(R.menu.test_menu_square, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -112,7 +115,6 @@ public class RelationFragment extends Fragment {
                     if (null!= e) {
                         e.printStackTrace();
                     } else {
-//                        RelationFragment.this.finish();
                         getActivity().finish();
                     }
                 }
@@ -125,14 +127,17 @@ public class RelationFragment extends Fragment {
         String[] tabList = new String[]{"会话", "联系人"};
         final Fragment[] fragmentList = new Fragment[] {new LCIMConversationListFragment(),
                 new LCIMContactFragment()};
+//        final Fragment[] fragmentList = new Fragment[] {new MyFragment(),
+//                new NewFragment()};
+//        final List<Fragment> fragmentList =getChildFragmentManager().getFragments();
 
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         for (int i = 0; i < tabList.length; i++) {
             tabLayout.addTab(tabLayout.newTab().setText(tabList[i]));
         }
 
-       TabFragmentAdapter adapter = new  TabFragmentAdapter(getActivity().getSupportFragmentManager(),
-                Arrays.asList(fragmentList), Arrays.asList(tabList));
+       TabFragmentAdapter adapter = new  TabFragmentAdapter(getChildFragmentManager(),
+               Arrays.asList(fragmentList), Arrays.asList(tabList));
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

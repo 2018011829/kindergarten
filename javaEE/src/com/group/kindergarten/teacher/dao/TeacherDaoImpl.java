@@ -424,7 +424,7 @@ public class TeacherDaoImpl {
 			if (isExist) {
 				String sql = "update teacher set name='" + name + "', position='" + position + "', phone='" + phone
 						+ "', picture='" + picture + "', motto='" + motto + "', status=0 where id=" + id + "";
-				// 将成语收藏信息从数据库表中删除
+				// 将教师信息从数据库表中删除
 				n = pstm.executeUpdate(sql);
 			}
 		} catch (Exception e) {

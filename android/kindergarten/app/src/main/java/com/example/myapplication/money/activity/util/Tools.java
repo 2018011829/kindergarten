@@ -112,10 +112,10 @@ public class Tools {
                 .isPreviewImage(true)// 是否可预览图片 true or false
                 .isCamera(true)// 是否显示拍照按钮 true or false
                 .isZoomAnim(true)// 图片列表点击 缩放效果 默认true
-                .isEnableCrop(true)// 是否裁剪 true or false
+                //.isEnableCrop(true)// 是否裁剪 true or false
                 .isCompress(true)// 是否压缩 true or false
                 .minimumCompressSize(100)// 小于100kb的图片不压缩
-                .rotateEnabled(true) // 裁剪是否可旋转图片 true or false
+                //.rotateEnabled(true) // 裁剪是否可旋转图片 true or false
                 .forResult(PictureConfig.CHOOSE_REQUEST);//结果回调onActivityResult code
     }
 
@@ -129,7 +129,7 @@ public class Tools {
 
     public static void showGlide(Context context, ImageView view, String url) {
         RequestOptions options = new RequestOptions()
-                .error(R.mipmap.child_name)
+                .error(R.drawable.add)
                 .transform(new GlideRoundTransform(context,5));
         Glide.with(context)
                 .load(url)

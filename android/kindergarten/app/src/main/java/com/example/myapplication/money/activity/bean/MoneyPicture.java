@@ -5,6 +5,7 @@ public class MoneyPicture {
     private String babyGrade;
     private String babyClass;
     private String babyName;
+    private String phone;
 
     public MoneyPicture() {
     }
@@ -51,5 +52,13 @@ public class MoneyPicture {
 
     public void setBabyName(String babyName) {
         this.babyName = babyName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

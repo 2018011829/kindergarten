@@ -10,6 +10,7 @@
     tools:context=".apply.activity.ApplyActivityBaby"
     android:background="@mipmap/bckapply">
     <RelativeLayout
+        android:background="#5ab9ff"
         android:id="@+id/apply_them"
         android:paddingTop="5dp"
         android:paddingLeft="15dp"

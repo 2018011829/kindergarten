@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50701
+Source Server Version : 50506
 Source Host           : localhost:3306
 Source Database       : kindergarten
 
 Target Server Type    : MYSQL
-Target Server Version : 50701
+Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-03-01 17:42:28
+Date: 2021-03-02 18:15:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -83,6 +83,31 @@ INSERT INTO `applyinfo` VALUES ('1', '18831166551', '天天', '1', '男', '61052
 INSERT INTO `applyinfo` VALUES ('2', '18831166551', '花花', '2', '女', '610526199908160721', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2');
 
 -- ----------------------------
+-- Table structure for `charge`
+-- ----------------------------
+DROP TABLE IF EXISTS `charge`;
+CREATE TABLE `charge` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `babyClass` varchar(255) NOT NULL,
+  `teacher` varchar(255) NOT NULL,
+  `WeChat` varchar(255) NOT NULL,
+  `Alipay` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of charge
+-- ----------------------------
+INSERT INTO `charge` VALUES ('1', '小班一班', '老师', '20210302130408w.jpg', 'alipay1.jpg');
+INSERT INTO `charge` VALUES ('2', '小班二班', '老师', 'weChat2.jpg', 'alipay2.jpg');
+INSERT INTO `charge` VALUES ('3', '小班三班', '老师', 'weChat3.jpg', 'alipay3.jpg');
+INSERT INTO `charge` VALUES ('4', '中班一班', '老师', 'weChat4.jpg', 'alipay4.jpg');
+INSERT INTO `charge` VALUES ('5', '中班二班', '老师', 'weChat5.jpg', 'alipay5.jpg');
+INSERT INTO `charge` VALUES ('6', '大班一班', '老师', 'weChat6.jpg', 'alipay6.jpg');
+INSERT INTO `charge` VALUES ('7', '大班二班', '老师', 'weChat7.jpg', 'alipay7.jpg');
+INSERT INTO `charge` VALUES ('10', '小班一', '1', '1614660173652.jpg', '1614660173654.jpg');
+
+-- ----------------------------
 -- Table structure for `child`
 -- ----------------------------
 DROP TABLE IF EXISTS `child`;
@@ -110,6 +135,7 @@ CREATE TABLE `child_attendence` (
   `phone` char(11) NOT NULL,
   `child_id` int(11) NOT NULL,
   `last_attendence_day` int(11) DEFAULT NULL,
+  `next_attendence_day` int(11) DEFAULT NULL,
   `leave_day` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -117,7 +143,7 @@ CREATE TABLE `child_attendence` (
 -- ----------------------------
 -- Records of child_attendence
 -- ----------------------------
-INSERT INTO `child_attendence` VALUES ('1', '18831166551', '8', null, '4');
+INSERT INTO `child_attendence` VALUES ('1', '18831166551', '8', '25', null, '0');
 
 -- ----------------------------
 -- Table structure for `class`
@@ -211,7 +237,6 @@ INSERT INTO `kindergarten_environment_picture` VALUES ('4', 'fruit3.png', '1');
 INSERT INTO `kindergarten_environment_picture` VALUES ('5', 'fruit4.png', '1');
 INSERT INTO `kindergarten_environment_picture` VALUES ('6', 'wall1.png', '2');
 INSERT INTO `kindergarten_environment_picture` VALUES ('7', 'wall2.png', '2');
-INSERT INTO `kindergarten_environment_picture` VALUES ('8', 'desk.png', '3');
 INSERT INTO `kindergarten_environment_picture` VALUES ('9', 'drawer.png', '3');
 INSERT INTO `kindergarten_environment_picture` VALUES ('10', 'play1.png', '4');
 INSERT INTO `kindergarten_environment_picture` VALUES ('11', 'play2.png', '0');
@@ -295,12 +320,20 @@ CREATE TABLE `money_screenshot` (
   `screenshot_name` varchar(100) NOT NULL,
   `month` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of money_screenshot
 -- ----------------------------
-INSERT INTO `money_screenshot` VALUES ('1', '天天', '18831166551', '1', '2', 'tiantian.jpg', '3');
+INSERT INTO `money_screenshot` VALUES ('1', '1', '18831166551', '大班', '一班', '1-大班-一班-18831166551.jpg', '3');
+INSERT INTO `money_screenshot` VALUES ('2', 'xiaoming', '18831166551', '大班', '一班', 'xiaoming-大班-一班-18831166551.jpg', '3');
+INSERT INTO `money_screenshot` VALUES ('3', 'asd', '18831166551', '大班', '一班', 'asd-大班-一班-18831166551.jpg', '3');
+INSERT INTO `money_screenshot` VALUES ('4', '123', '18831166551', '大班', '一班', '123-大班-一班-18831166551.jpg', '3');
+INSERT INTO `money_screenshot` VALUES ('5', '123', '18831166551', '大班', '一班', '123-大班-一班-18831166551.jpg', '3');
+INSERT INTO `money_screenshot` VALUES ('6', 'lizhe', '18831166551', '大班', '一班', 'lizhe-大班-一班-18831166551.jpg', '3');
+INSERT INTO `money_screenshot` VALUES ('7', 'lizhe', '18831166551', '大班', '一班', 'lizhe-大班-一班-18831166551.jpg', '3');
+INSERT INTO `money_screenshot` VALUES ('8', 'lizhe', '18831166551', '大班', '一班', 'lizhe-大班-一班-18831166551.jpg', '3');
+INSERT INTO `money_screenshot` VALUES ('9', 'sss', '18831166551', '大班', '二班', 'sss-大班-二班-18831166551.jpg', '3');
 
 -- ----------------------------
 -- Table structure for `parent`
@@ -346,17 +379,13 @@ CREATE TABLE `school_semester` (
   `day_num` smallint(6) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of school_semester
 -- ----------------------------
-INSERT INTO `school_semester` VALUES ('2', '10', '3');
-INSERT INTO `school_semester` VALUES ('3', '15', '4');
-INSERT INTO `school_semester` VALUES ('4', '20', '5');
-INSERT INTO `school_semester` VALUES ('5', '21', '6');
-INSERT INTO `school_semester` VALUES ('6', '20', '7');
-INSERT INTO `school_semester` VALUES ('7', '10', '8');
+INSERT INTO `school_semester` VALUES ('2', '25', '1');
+INSERT INTO `school_semester` VALUES ('1', '25', '2');
 
 -- ----------------------------
 -- Table structure for `teacher`
@@ -371,7 +400,7 @@ CREATE TABLE `teacher` (
   `motto` varchar(200) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teacher
@@ -403,6 +432,7 @@ INSERT INTO `teacher` VALUES ('24', '戎计梅', '保育员', '13633212136', 'te
 INSERT INTO `teacher` VALUES ('25', '王俊杰', '保育员', '13315989238', 'teacherImgs/wangjunjie.jpg', null, '1');
 INSERT INTO `teacher` VALUES ('26', '刘哲', '保育员', '13933127175', 'teacherImgs/liuzhe.jpg', null, '1');
 INSERT INTO `teacher` VALUES ('27', '刘兰', '保育员', '15303292267', 'teacherImgs/liulan.jpg', null, '1');
+INSERT INTO `teacher` VALUES ('39', 'null', 'null', 'null', 'teacherImgs/1614517401727.png', null, '1');
 
 -- ----------------------------
 -- Table structure for `teacher_class`

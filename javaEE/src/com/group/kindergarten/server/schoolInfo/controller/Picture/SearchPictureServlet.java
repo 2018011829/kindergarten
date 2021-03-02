@@ -43,7 +43,7 @@ public class SearchPictureServlet extends HttpServlet {
 			Page<Picture> page = pictureServce.listByPageAndSearchInfo(pageNum, pageSize,searchInfo);			
 			request.setAttribute("searchInfo",searchInfo);
 			request.setAttribute("page", page);
-			request.getRequestDispatcher("searchResultPicture.jsp").forward(request, response);
+			request.getRequestDispatcher("searchPicture.jsp").forward(request, response);
 		}else {
 			response.sendRedirect("PictureManageServlet");
 		}

@@ -62,6 +62,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".login.LoginByPhoneActivity" />
         <activity android:name=".teacher.tool.euclid.EuclidActivity" />
@@ -74,10 +75,12 @@
         <activity android:name=".money.activity.Attendance"/>
         <activity android:name=".money.activity.Money"/>
         <activity android:name=".money.activity.UploadPicture">
+        </activity>
+        <activity android:name=".apply.activity.Instruction">
 
         </activity>
-        <activity android:name=".apply.activity.Instruction"/>
         <activity android:name=".main.activity.MainActivity">
+
 
         </activity> <!-- 学校简介用到的activity 开始 -->
         <activity android:name=".school.activity.ImageShower" />

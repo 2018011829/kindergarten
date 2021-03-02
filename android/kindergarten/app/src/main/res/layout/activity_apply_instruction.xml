@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:background="@mipmap/bckapply"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <RelativeLayout
+        android:background="#99CCFF"
+        android:id="@+id/apply_them"
+        android:paddingTop="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/return_main"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/ic_return"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:text="报名入口"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@id/apply_them"
         android:id="@+id/rl_instruction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,13 +48,14 @@
             android:textColor="#000000" />
     </RelativeLayout>
    <LinearLayout
-       android:layout_margin="5dp"
+       android:layout_margin="12dp"
+       android:padding="8dp"
        android:id="@+id/ll_instruction"
        android:layout_below="@+id/rl_instruction"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="vertical"
-       android:background="@drawable/apply_border">
+       android:background="@drawable/apply_border_blue">
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"

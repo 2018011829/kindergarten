@@ -20,7 +20,7 @@
             android:textSize="20dp" />
 
         <LinearLayout
-            android:background="@drawable/apply_border_blue"
+            android:background="@drawable/apply_inside_blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -166,7 +166,7 @@
 
         <LinearLayout
 
-            android:background="@drawable/apply_border_yellow"
+            android:background="@drawable/apply_inside_yellow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

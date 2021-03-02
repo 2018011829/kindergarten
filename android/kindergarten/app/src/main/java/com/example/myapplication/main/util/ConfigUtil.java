@@ -9,9 +9,8 @@ public class ConfigUtil {
     //服务器端用户头像地址
     public static final String SETVER_AVATAR = "http://192.168.137.1:8080/kindergarten/avatars/";
 =======
-
-    public static final String SERVICE_ADDRESS="http://192.168.43.15:8080/kindergarten/";
+    public static final String SERVICE_ADDRESS="http://192.168.1.102:8080/kindergarten/";
     //服务器端用户头像地址
-    public static final String SETVER_AVATAR = "http://192.168.43.15:8080/kindergarten/avatars/";
->>>>>>> 72915c102bd04d1ccc13b933c66e718964a0a4d2
+    public static final String SETVER_AVATAR = "http://192.168.1.102:8080/kindergarten/avatars/";
+>>>>>>> 94ea41c712651720625a3913e27a368a8e8ae0d6
 }

@@ -152,4 +152,48 @@ public class ChildrenDao {
 		
 		return b;
 	}
+	
+	/**
+	 * 判断用户输入的原密码是否正确
+	 * 
+	 * @param phone
+	 * @param password
+	 * @return
+	 */
+	public boolean isExistUser(String phone, String password) {
+		boolean b = false;
+		String sql = "select * from user_parent where phone = ? and password = ?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, phone);
+			preparedStatement.setString(2, password);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				b = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return b;
+	}
+	
+	
+	
+	public boolean updatePwd(String phone,String password) {
+		boolean b=false;
+		String sql="update user_parent set password=? where phone = ?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, password);
+			preparedStatement.setString(2, phone);
+			int row=preparedStatement.executeUpdate();
+			if(row>0) {
+				b=true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return b;
+	}
 }

@@ -78,4 +78,23 @@ public class ChildrenService {
 		
 		return b;
 	}
+	
+	
+	/**
+	 * 判断用户输入的原密码是否正确
+	 * 
+	 * @param phone
+	 * @param password
+	 * @return
+	 */
+	public boolean isExistUser(String phone, String password) {
+		
+		return childrenDao.isExistUser(phone, password);
+	}
+	
+	
+	public boolean updatePwd(String phone,String password) {
+		
+		return childrenDao.updatePwd(phone, password);
+	}
 }

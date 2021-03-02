@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
-            android:background="#99CCFF"
+            android:background="#5ab9ff"
             android:id="@+id/apply_them"
             android:paddingTop="5dp"
             android:paddingLeft="15dp"
@@ -350,7 +350,7 @@
         </RelativeLayout>
         <Button
             android:layout_centerHorizontal="true"
-            android:background="@drawable/apply_button2"
+            android:background="@drawable/apply_button_blue"
             android:layout_marginTop="10dp"
             android:visibility="visible"
             android:id="@+id/btn_submit"

@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Android2\z-kindergarten\kindergarten\android\kindergarten\leancloudchatkit\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Android2\z-kindergarten\kindergarten\android\kindergarten\leancloudchatkit\src\debug\jniLibs"/></dataSet></merger>
-=======
-<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\debug\jniLibs"/></dataSet></merger>
->>>>>>> 94ea41c712651720625a3913e27a368a8e8ae0d6

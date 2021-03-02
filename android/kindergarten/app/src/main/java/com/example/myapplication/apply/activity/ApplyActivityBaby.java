@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -18,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -191,7 +189,7 @@ public class ApplyActivityBaby extends AppCompatActivity {
                     });
                 }else {
                     Resources resources = ApplyActivityBaby.this.getResources();
-                    Drawable drawable = resources.getDrawable(R.drawable.apply_button2);
+                    Drawable drawable = resources.getDrawable(R.drawable.apply_button_blue);
                     next1.setBackground(drawable);
                     next1.setOnClickListener(new View.OnClickListener() {
                         @Override

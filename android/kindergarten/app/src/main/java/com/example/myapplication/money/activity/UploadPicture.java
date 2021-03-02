@@ -1,11 +1,15 @@
 package com.example.myapplication.money.activity;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +26,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.apply.activity.ApplyActivityBaby;
 import com.example.myapplication.main.util.ConfigUtil;
 import com.example.myapplication.money.activity.adapter.SelectPlotAdapter;
 import com.example.myapplication.money.activity.bean.MoneyPicture;
@@ -61,6 +66,7 @@ public class UploadPicture extends AppCompatActivity {
     private static final String TAG = "UploadDynamic";
     @BindView(R.id.recycler)
     RecyclerView recycler;//RecyclerView对象（九宫格）
+    private Button upload;
     private SelectPlotAdapter adapter;
     private ArrayList<String> allSelectList;//所有的图片集合
     private ArrayList<String> categoryLists;//查看图片集合
@@ -75,6 +81,7 @@ public class UploadPicture extends AppCompatActivity {
     private EditText etBabyClass;
     private EditText etBabyName;//宝宝姓名
     private MoneyPicture moneyPicture;//截图文本对象
+    private EditText pictureNum;//图片数量
     private void initHandler() {
         handler = new Handler(){//handlerThread.getLooper()){
             @Override
@@ -104,6 +111,7 @@ public class UploadPicture extends AppCompatActivity {
         Tools.requestPermissions(UploadPicture.this);
         initAdapter();
         initView();
+        setListener();
         //为radioGroup设置一个监听器:setOnCheckedChanged()
         rgGrade.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -119,60 +127,75 @@ public class UploadPicture extends AppCompatActivity {
                 etBabyClass.setText(radbtn.getText());
             }
         });
-
+        pictureNum.setText(allSelectList.size()+"");
     }
     private void initView(){
         initOkHttpClient();//初始化OKHTTPClient对象
         initHandler();//初始化Handler对象
         initGson();//初始化Gson
         moneyPicture = new MoneyPicture();
+        upload = findViewById(R.id.upload);
         rgGrade = findViewById(R.id.rg_grade);
         rgClass = findViewById(R.id.rg_class);
         etBabyGrade = findViewById(R.id.baby_grade);
         etBabyClass = findViewById(R.id.baby_class);
         etBabyName = findViewById(R.id.baby_name);
+        pictureNum = findViewById(R.id.picture_num);
     }
-    //设置点击事件
-    @OnClick({R.id.upload})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.upload:
-                String babyName= etBabyName.getText().toString();
-                String babyGrade = etBabyGrade.getText().toString();
-                String babylass = etBabyClass.getText().toString();
-                if (TextUtils.isEmpty(babyName)) {
-                    Toast.makeText(this, "请输入宝宝姓名", Toast.LENGTH_LONG).show();
-                    return;
-                }else if(TextUtils.isEmpty(babyGrade)){
-                    Toast.makeText(this, "请选择宝宝年级", Toast.LENGTH_LONG).show();
-                    return;
-                }else if(TextUtils.isEmpty(babylass)){
-                    Toast.makeText(this, "请选择宝宝班级", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if (allSelectList.size() == 0) {
-                    Toast.makeText(this, "请选择图片进行上传", Toast.LENGTH_LONG).show();
-                    return;
-                }
+    private void setListener() {
+        etBabyGrade.addTextChangedListener(textWatcher);
+        etBabyClass.addTextChangedListener(textWatcher);
+        etBabyName.addTextChangedListener(textWatcher);
+        pictureNum.addTextChangedListener(textWatcher);
+    }
+    TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String babyName= etBabyName.getText().toString();
+            String babyGrade = etBabyGrade.getText().toString();
+            String babyClass = etBabyClass.getText().toString();
+            String pictureNumber = pictureNum.getText().toString();
+            Log.e("3",babyGrade+" "+babyClass+" "+babyName+" "+allSelectList.size());
+            if(!babyName.equals("")&&!babyGrade.equals("")&&!babyClass.equals("")&&Integer.parseInt(pictureNumber) > 0){
+                Resources resources = UploadPicture.this.getResources();
+                Drawable drawable = resources.getDrawable(R.drawable.apply_button_blue);
+                upload.setBackground(drawable);
                 moneyPicture.setBabyGrade(babyGrade);
-                moneyPicture.setBabyClass(babylass);
+                moneyPicture.setBabyClass(babyClass);
                 moneyPicture.setBabyName(babyName);
                 moneyPicture.setPhone(ConfigUtil.PHONE);
                 //序列化
                 String json = gson.toJson(moneyPicture);
-                sendTimeAndContentToServer(json);//向服务端发送当前用户手机号，当前时间和说说文本
-                String pictureUrl = allSelectList.toString().substring(1,allSelectList.toString().length()-1);//图片路径集合
-                List<String> pictureUrls = Arrays.asList(pictureUrl.split(", "));//将图片路径集合分割开
-                for(int i=0;i<pictureUrls.size();i++){
-                    sendPictureToServer(pictureUrls.get(i));//循环发送多张图片
-                }
-                finish();
-                break;
+                upload.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sendTimeAndContentToServer(json);//向服务端发送当前用户手机号，当前时间和说说文本
+                        String pictureUrl = allSelectList.toString().substring(1,allSelectList.toString().length()-1);//图片路径集合
+                        List<String> pictureUrls = Arrays.asList(pictureUrl.split(", "));//将图片路径集合分割开
+                        sendPictureToServer(pictureUrls.get(0));
+                        finish();
+                    }
+                });
+            }else {
+                Resources resources = UploadPicture.this.getResources();
+                Drawable drawable = resources.getDrawable(R.drawable.apply_button1);
+                upload.setBackground(drawable);
+                upload.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(UploadPicture.this, "信息未完成", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
         }
-    }
+        @Override
+        public void afterTextChanged(Editable s) {}
+    };
     private void initAdapter() {
-        //最多9张图片
-        adapter = new SelectPlotAdapter(this, 9);//定义adapter对象
+        //最多1张图片
+        adapter = new SelectPlotAdapter(this, 1);//定义adapter对象
         recycler.setLayoutManager(new GridLayoutManager(this, 3));
         adapter.setImageList(allSelectList);//所有图片的集合
         recycler.setAdapter(adapter);
@@ -180,7 +203,7 @@ public class UploadPicture extends AppCompatActivity {
             @Override
             public void add() {
                 //可添加的最大张数=9-当前已选的张数
-                int size = 9 - allSelectList.size();
+                int size = 1 - allSelectList.size();
                 Tools.galleryPictures(UploadPicture.this, size);
             }
             @Override
@@ -229,10 +252,11 @@ public class UploadPicture extends AppCompatActivity {
             Log.e(TAG, "图片链接: " + path);
         }
         adapter.setImageList(allSelectList);
+        pictureNum.setText(allSelectList.size()+"");
     }
     //向服务端发送图片
     private void sendPictureToServer(String urlPath) {
-        final String path= ConfigUtil.SERVICE_ADDRESS+"MomentsPicturesServlet";
+        final String path= ConfigUtil.SERVICE_ADDRESS+"UploadScreenshotPhoto";
         new Thread(){
             @Override
             public void run() {

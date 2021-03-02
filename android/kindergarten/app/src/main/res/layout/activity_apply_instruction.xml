@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <RelativeLayout
-        android:background="#99CCFF"
+        android:background="#5ab9ff"
         android:id="@+id/apply_them"
         android:paddingTop="5dp"
         android:paddingLeft="15dp"
@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll_instruction"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/apply_button2"
+        android:background="@drawable/apply_button_blue"
         android:text="阅读完毕" />
 
 </RelativeLayout>

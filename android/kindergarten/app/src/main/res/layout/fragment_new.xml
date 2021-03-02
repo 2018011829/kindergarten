@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@mipmap/bckapply">
     <RelativeLayout
-        android:background="#99CCFF"
+        android:background="#5ab9ff"
         android:id="@+id/apply_them"
         android:paddingTop="5dp"
         android:paddingLeft="15dp"
@@ -17,7 +17,7 @@
         android:layout_height="60dp">
         <TextView
             android:text="缴费入口"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -163,7 +163,7 @@
 
     <Button
         android:layout_gravity="center"
-        android:background="@drawable/apply_button2"
+        android:background="@drawable/apply_button_blue"
         android:id="@+id/btn_upload_picture"
         android:layout_width="300dp"
         android:layout_height="wrap_content"

@@ -55,19 +55,6 @@ public class MainActivity extends AppCompatActivity {
         //将ViewPager和TabLayout互相绑定
         BindViewPagerAndTabLayout(viewPager);
 
-//        //chatkit获取联系人
-//        AVIMOptions.getGlobalOptions().setAutoOpen(true);
-//        LCChatKit.getInstance().open("18831166551", new AVIMClientCallback() {
-//            @Override
-//            public void done(AVIMClient avimClient, AVIMException e) {
-//                if (null == e) {
-////                                    Intent intent = new Intent(LoginByPasswordActivity.this, TestActivity.class);
-////                                    startActivity(intent);
-//                } else {
-//                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
 
         CustomUserProvider.getContact();
 

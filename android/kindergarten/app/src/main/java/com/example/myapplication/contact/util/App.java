@@ -4,7 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.example.myapplication.contact.CustomUserProvider;
-import com.example.myapplication.contact.TestActivity;
+import com.example.myapplication.main.activity.MainActivity;
 
 import cn.leancloud.AVInstallation;
 import cn.leancloud.AVLogger;
@@ -40,7 +40,7 @@ public class App extends Application {
         AVIMOptions.getGlobalOptions().setDisableAutoLogin4Push(true);
         LCChatKit.getInstance().init(getApplicationContext(), APP_ID, APP_KEY, "https://dyrq8yfh.lc-cn-n1-shared.com");
 
-        PushService.setDefaultPushCallback(this, TestActivity.class);
+        PushService.setDefaultPushCallback(this, MainActivity.class);
         PushService.setAutoWakeUp(true);
         PushService.setDefaultChannelId(this, "default");
 

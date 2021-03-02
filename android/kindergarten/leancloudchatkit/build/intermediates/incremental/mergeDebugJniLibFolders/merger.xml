@@ -1,18 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Android2\z-kindergarten\kindergarten\android\kindergarten\leancloudchatkit\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\Android2\z-kindergarten\kindergarten\android\kindergarten\leancloudchatkit\src\debug\jniLibs"/></dataSet></merger>
-=======
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="F:\JavaGroupWork\kindMaster\kindergarten\android\kindergarten\leancloudchatkit\src\debug\jniLibs"/></dataSet></merger>
-=======
-<<<<<<< Updated upstream
-<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\KindergartenProject\kindergarten\android\kindergarten\leancloudchatkit\src\debug\jniLibs"/></dataSet></merger>
-=======
-<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\debug\jniLibs"/></dataSet></merger>
->>>>>>> Stashed changes
->>>>>>> 08089c21adc93d489c9860bf00fca620f84f81bc
-=======
-<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\main\jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="D:\git\myRepositories\kindergarten\android\kindergarten\leancloudchatkit\src\debug\jniLibs"/></dataSet></merger>
->>>>>>> Stashed changes
->>>>>>> a57afd45292e143a6950747e231370aefde4dd2d

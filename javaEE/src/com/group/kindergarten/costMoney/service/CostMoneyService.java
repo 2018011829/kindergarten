@@ -1,11 +1,20 @@
 package com.group.kindergarten.costMoney.service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.group.kindergarten.costMoney.dao.CostMoneyDao;
+import com.group.kindergarten.costMoney.entity.Charge;
 import com.group.kindergarten.costMoney.entity.MoneyPicture;
 import com.group.kindergarten.costMoney.entity.SchoolSemester;
 import com.group.kindergarten.costMoney.entity.ScreenshotInfo;
+import com.group.kindergarten.schoolInfo.dao.PictureDao;
+import com.group.kindergarten.schoolInfo.entity.Picture;
+import com.group.kindergarten.util.DBUtil;
+import com.group.kindergarten.util.Page;
 
 public class CostMoneyService {
 
@@ -209,5 +218,77 @@ public class CostMoneyService {
 		List<ScreenshotInfo> list=costMoneyDao.searchScreenshotInfo(monthNow);
 		
 		return list;
+	}
+	
+	/**
+	 * 分页查询描述的图片信息
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public Page<Charge> listByPage(int pageNum, int pageSize){
+		Page<Charge> page= new Page<Charge>(pageNum, pageSize);
+		CostMoneyDao costMoneyDao = new CostMoneyDao();
+		int count = costMoneyDao.countByPageCharge();
+		List<Charge> list = costMoneyDao.findChargeByPage(pageNum,pageSize);
+		page.setList(list);
+		page.setTotalCount(count);
+		return page;
+	}
+	/**
+	 * 新增收款码信息
+	 * @param teacher
+	 * @return
+	 */
+	public boolean addCharge(Charge charge) {
+		return new CostMoneyDao().addCharge(charge);
+	}
+	/**
+	 * 根据id删除收款码信息
+	 * @param id
+	 * @return
+	 */
+	public boolean deleteCharge(int id,String url) {
+		return new CostMoneyDao().deleteCharge(id,url);
+	}
+	/**
+	 * 根据id获取收款码信息
+	 * @param id
+	 * @return
+	 */
+	public Charge findChargeById(int id) {
+		return new CostMoneyDao().findChargeById(id);
+	}
+	
+	/**
+	 * 修改收款码信息
+	 * @return
+	 */
+	public boolean updateCharge(Charge charge) {
+		return new CostMoneyDao().updateCharge(charge);
+	}
+	/**
+	 * 根据id获取收款码信息
+	 * @param id
+	 * @return
+	 */
+	public Charge findChargeByBabyClass(String babyClass) {
+		return new CostMoneyDao().findChargeByBabyClass(babyClass);
+	}
+	/**
+	 * 根据页数和搜索条件查找描述信息
+	 * @param pageNum
+	 * @param pageSize
+	 * @param name
+	 * @return
+	 */
+	public Page<Charge> listByPageAndSearchInfo(int pageNum, int pageSize, String searchInfo){
+		Page<Charge> page = new Page<Charge>(pageNum, pageSize);
+		CostMoneyDao costMoneyDao = new CostMoneyDao();
+		int count = costMoneyDao.countByPageAndSearchInfo(searchInfo);
+		List<Charge> list = costMoneyDao.findByPageAndSearchInfo(pageNum,pageSize,searchInfo);
+		page.setList(list);
+		page.setTotalCount(count);
+		return page;
 	}
 }

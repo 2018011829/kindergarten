@@ -10,18 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 29633e69955cebe38aa3fc81a4b622b01bbcf717
-=======
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
->>>>>>> a57afd45292e143a6950747e231370aefde4dd2d
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

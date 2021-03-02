@@ -16,7 +16,7 @@ public class DBUtil {
 	
 	static {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -29,7 +29,7 @@ public class DBUtil {
 	public static Connection getConnection() {
 		try {
 			return DriverManager.getConnection(
-					"jdbc:mysql://121.89.209.191:3306/kindergarten?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai", "kindergarten","123456");
+					"jdbc:mysql://localhost:3306/kindergarten?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8", "root","");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

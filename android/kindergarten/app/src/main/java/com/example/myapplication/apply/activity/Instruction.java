@@ -1,5 +1,6 @@
 package com.example.myapplication.apply.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.example.myapplication.main.activity.MainActivity;
 
 public class Instruction extends AppCompatActivity {
     private Button btnReadFinish;
@@ -20,7 +22,9 @@ public class Instruction extends AppCompatActivity {
         btnReadFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent();
+                intent.setClass(Instruction.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }

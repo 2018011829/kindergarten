@@ -91,7 +91,7 @@ public abstract class EuclidActivity extends Activity {
         mTextViewProfilePosition = (TextView) findViewById(R.id.text_view_profile_position);
         mTextViewProfilePhone = (TextView) findViewById(R.id.text_view_profile_phone);
         mTextViewProfileDescription = (TextView) findViewById(R.id.text_view_profile_motto);
-        mButtonProfile = findViewById(R.id.button_profile);
+        //mButtonProfile = findViewById(R.id.button_profile);
         mButtonProfile.post(new Runnable() {
             @Override
             public void run() {

@@ -386,3 +386,10 @@ ul, li {
     color: #ffffff;
     background: #009688;
 }
+.weChat{
+    width:160px;
+    margin-top:20px;
+    margin-left:120px;
+    float:left;
+    position:relative;
+}

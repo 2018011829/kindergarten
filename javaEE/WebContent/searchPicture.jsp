@@ -20,8 +20,7 @@
                     <li id="user" onclick="showUserMenu()"><a>用户信息管理</a> <img
                         src="imgs/home/xiala.png" id="xiala1"></li>
                     <ul class="user_menu" id="click_user_menu" style="display: none">
-                        <li onclick="showMenu_info1()" id="user_info"><a href="#">用户信息</a></li>
-                        <li onclick="showMenu_add1()" id="user_add"><a href="#">新增用户</a></li>
+                        <li onclick="showMenu_info1()" id="user_info"><a href="userManage">用户信息</a></li>
                     </ul>
                     <li id="enroll" onclick="showEnrollMenu()"><a>报名信息管理</a><img
                         src="imgs/home/xiala.png" id="xiala2"></li>
@@ -33,7 +32,7 @@
                         <li onclick="showMenu_add2()" id="enroll_info_add"><a
                             href="addApplyinfo.jsp">新增报名信息</a></li>
                     </ul>
-                    <li id="introduce" onclick="showIntroduceMenu()"><a>管理学校简介信息</a> <img
+                    <li id="introduce" onclick="showIntroduceMenu()"><a>学校简介信息管理</a> <img
                         src="imgs/home/xiala.png" id="xiala3"></li>
                     <ul class="introduce_menu" id="click_introduce_menu" style="display: none">
                         <li onclick="showMenu_info3()" id="introduce_info"><a
@@ -49,11 +48,12 @@
                         <li onclick="showMenu_add4()" id="teacher_add"><a href="addTeacher.jsp">新增教师信息</a></li>
                         <li onclick="showMenu_info4()" id="teacher_delete"><a href="deletedTeacherManage">查看离职教师信息</a></li>
                     </ul>
-                    <li id="account" onclick="showAccountMenu()"><a>本学期上课安排</a><img
+                    <li id="account" onclick="showAccountMenu()"><a>收费信息管理</a><img
                         src="imgs/home/xiala.png" id="xiala5"></li>
                     <ul class="account_menu" id="click_account_menu"
                         style="display: none">
                         <li onclick="showMenu_info5()" id="account_info"><a href="SearchClassTime">查看本学期上课时间</a></li>
+                        <li onclick="showMenu_info5()" id="account_info"><a href="ChargeManagerServlet">查看收款码信息</a></li>
                     </ul>
                 </ul>
 			</div>

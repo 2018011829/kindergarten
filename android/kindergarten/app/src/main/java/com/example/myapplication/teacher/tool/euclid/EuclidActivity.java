@@ -93,15 +93,7 @@ public abstract class EuclidActivity extends Activity {
         mTextViewProfilePosition = (TextView) findViewById(R.id.text_view_profile_position);
         mTextViewProfilePhone = (TextView) findViewById(R.id.text_view_profile_phone);
         mTextViewProfileDescription = (TextView) findViewById(R.id.text_view_profile_motto);
-<<<<<<< HEAD
-        //mButtonProfile = findViewById(R.id.button_profile);
-        mButtonProfile.post(new Runnable() {
-            @Override
-            public void run() {
-                mInitialProfileButtonX = mButtonProfile.getX();
-            }
-        });
-=======
+
 //        mButtonProfile = findViewById(R.id.button_profile);
 //        mButtonProfile.post(new Runnable() {
 //            @Override
@@ -109,7 +101,7 @@ public abstract class EuclidActivity extends Activity {
 //                mInitialProfileButtonX = mButtonProfile.getX();
 //            }
 //        });
->>>>>>> ef0d9500f84ec444c46dad0845bb250967d35aab
+
         findViewById(R.id.toolbar_profile_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -19,15 +19,18 @@
 					<li id="user" onclick="showUserMenu()"><a>用户信息管理</a> <img
 						src="imgs/home/xiala.png" id="xiala1"></li>
 					<ul class="user_menu" id="click_user_menu" style="display: none">
-						<li onclick="showMenu_info1()" id="user_info"><a href="#">用户信息</a></li>
-						<li onclick="showMenu_add1()" id="user_add"><a href="#">新增用户</a></li>
-					</ul>
+                        <li onclick="showMenu_info1()" id="user_info"><a href="userManage">用户信息</a></li>
+                    </ul>
 					<li id="enroll" onclick="showEnrollMenu()"><a>报名信息管理</a><img
 						src="imgs/home/xiala.png" id="xiala2"></li>
 					<ul class="enroll_menu" id="click_enroll_menu"
-						style="display: none">
-						<li onclick="showMenu_info2()" id="enroll_info"><a href="#">报名信息</a></li>
-					</ul>
+                        style="display: none">
+                        <li onclick="showMenu_info2()" id="enroll_info"><a href="GetApplyInfoServlet">查看报名信息</a></li>
+                        <li onclick="showMenu_manage2()" id="enroll_info_manage"><a
+                            href="GetApplyInfoServlet2">管理报名信息</a></li>
+                        <li onclick="showMenu_add2()" id="enroll_info_add"><a
+                            href="addApplyinfo.jsp">新增报名信息</a></li>
+                    </ul>
 					<li id="introduce" onclick="showIntroduceMenu()"><a>学校简介信息管理</a>
 						<img src="imgs/home/xiala.png" id="xiala3"></li>
 					<ul class="introduce_menu" id="click_introduce_menu"
@@ -74,7 +77,7 @@
 						</div>
 						<div class="day_div">
 							<span>3：<input type="text" placeholder="请输入天数" name="three" id="input_day"></span>
-							<span class="day_span">4：<input type="text" placeholder="请输入天数" name="4" id="input_day"></span>
+							<span class="day_span">4：<input type="text" placeholder="请输入天数" name="four" id="input_day"></span>
 						</div>
 						<div class="day_div">
 							<span>5：<input type="text" placeholder="请输入天数" name="five" id="input_day"></span>

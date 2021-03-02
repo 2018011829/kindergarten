@@ -19,8 +19,7 @@
                     <li id="user" onclick="showUserMenu()"><a>用户信息管理</a> <img
                         src="imgs/home/xiala.png" id="xiala1"></li>
                     <ul class="user_menu" id="click_user_menu" style="display: none">
-                        <li onclick="showMenu_info1()" id="user_info"><a href="#">用户信息</a></li>
-                        <li onclick="showMenu_add1()" id="user_add"><a href="#">新增用户</a></li>
+                        <li onclick="showMenu_info1()" id="user_info"><a href="userManage">用户信息</a></li>
                     </ul>
                     <li id="enroll" onclick="showEnrollMenu()"><a>报名信息管理</a><img
                         src="imgs/home/xiala.png" id="xiala2"></li>
@@ -70,19 +69,19 @@
 						<tr height="40px">
 							<th width="100px" style="text-align: center;">id</th>
 							<th width="150px" style="text-align: center;">孩子姓名</th>
-							<th width="180px" style="text-align: center;">年级</th>
-							<th width="180px" style="text-align: center;">班级</th>
-							<th width="180px" style="text-align: center;">联系方式</th>
-							<th width="180px" style="text-align: center;">截图</th>
+							<th width="100px" style="text-align: center;">年级</th>
+							<th width="100px" style="text-align: center;">班级</th>
+							<th width="150px" style="text-align: center;">联系方式</th>
+							<th width="200px" style="text-align: center;">截图</th>
 						</tr>
-						<c:forEach items="${screenshotInfo }" var="ScreenshotList">
+						<c:forEach items="${ScreenshotList }" var="screenshotInfo">
 							<tr align="center">
 								<td>${screenshotInfo.id }</td>
 								<td>${screenshotInfo.babyName }</td>
 								<td>${screenshotInfo.babyGrade }</td>
 								<td>${screenshotInfo.babyClass }</td>
 								<td>${screenshotInfo.phone }</td>
-								<td><img src="imgs/screenshot/${screenshotInfo.photoName }"></td>
+								<td><img src="imgs/screenshot/${screenshotInfo.photoName }" height="150px" width="100px"></td>
 							</tr>
 						</c:forEach>
 					</table>

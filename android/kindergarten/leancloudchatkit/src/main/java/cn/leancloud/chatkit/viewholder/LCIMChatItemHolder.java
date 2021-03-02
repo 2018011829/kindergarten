@@ -193,6 +193,7 @@ public class LCIMChatItemHolder extends LCIMCommonViewHolder {
     });
   }
 
+
   //TODO 展示更人性一点
   private static String millisecsToDateString(long timestamp) {
     SimpleDateFormat format = new SimpleDateFormat("MM-dd HH:mm");

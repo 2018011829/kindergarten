@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                         tab.setIcon(R.mipmap.home_img1);
                         break;
                     case 1:
-                        tab.setIcon(R.mipmap.moments_img1);
+                        tab.setIcon(R.mipmap.charge_imgs1);
                         break;
                     case 2:
                         tab.setIcon(R.mipmap.relations_img1);
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         tab.setIcon(R.mipmap.home_img0);
                         break;
                     case 1:
-                        tab.setIcon(R.mipmap.moments_img0);
+                        tab.setIcon(R.mipmap.charge_imgs0);
                         break;
                     case 2:
                         tab.setIcon(R.mipmap.relations_img0);

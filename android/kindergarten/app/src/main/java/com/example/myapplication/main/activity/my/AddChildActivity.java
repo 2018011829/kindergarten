@@ -30,10 +30,13 @@ import com.contrarywind.view.WheelView;
 import com.example.myapplication.R;
 import com.example.myapplication.main.util.ChangeStatusBarColor;
 import com.example.myapplication.main.util.ConfigUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +51,7 @@ public class AddChildActivity extends AppCompatActivity {
     private List<String> name = new ArrayList<>();
     private List<String> sClasses = new ArrayList<>();
     private TextView tv_relation;
+    private TextView tv_class;
     private EditText tv_id;
     private WheelView wheelView;
     private TextView tv_ok;
@@ -76,6 +80,14 @@ public class AddChildActivity extends AppCompatActivity {
                     }else {
                         Log.e("msg","收到的消息为空！");
                     }
+
+                    break;
+                case 2:
+                    String classStr= (String) msg.obj;
+                    Type typeList=new TypeToken<List<String>>(){}.getType();
+                    sClasses=new Gson().fromJson(classStr,typeList);
+                    //将数据显示在选择条中
+
 
                     break;
             }
@@ -153,6 +165,16 @@ public class AddChildActivity extends AppCompatActivity {
             }
         });
 
+        //点击选择关系文本框时初始化相关参数
+        tv_class.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tag = 2;
+                showPopupwindow();
+                sClass = "小班一班";
+            }
+        });
+
         //单选按钮的点击操作
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -201,6 +223,7 @@ public class AddChildActivity extends AppCompatActivity {
         builder.add("name",edt_name.getText().toString());
         builder.add("idNum", tv_id.getText().toString());
         builder.add("sex",sex);
+        builder.add("sClass",tv_class.getText().toString());
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
                 .post(formBody)
@@ -236,6 +259,7 @@ public class AddChildActivity extends AppCompatActivity {
         btn_child_ok = findViewById(R.id.btn_child_session_ok);
         radioGroup = findViewById(R.id.rg_sex);
         tv_relation = findViewById(R.id.tv_relation_child);
+        tv_class = findViewById(R.id.tv_class_child);
         tv_id = findViewById(R.id.tv_child_id);
     }
 
@@ -246,6 +270,37 @@ public class AddChildActivity extends AppCompatActivity {
         name.add("父亲");
         name.add("母亲");
         name.add("其他");
+        //从数据库中获取班级信息
+        searchAllClassInfo();
+    }
+
+    /**
+     * 从数据库中获取班级信息
+     */
+    private void searchAllClassInfo() {
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVICE_ADDRESS + "SearchClassInfoServlet")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("班级信息更新", "请求失败");
+                Toast.makeText(AddChildActivity.this,
+                        "请检查网络是否已断开",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = new Message();
+                message.what = 2;
+                message.obj=result;
+                handler.sendMessage(message);
+                Log.i("result", result);
+            }
+        });
     }
 
     /*
@@ -279,6 +334,34 @@ public class AddChildActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     tv_relation.setText(relation);
                     if(tv_relation.getText().equals("请选择与孩子的关系")
+                            ||tv_class.getText().equals("请选择孩子所在的班级")
+                            ||tv_id.getText().equals("请输入孩子的身份证号")
+                            ||edt_name.getText().toString().trim().equals("")||edt_name.getText().toString().trim().length()==0){
+                        btn_child_ok.setBackgroundColor(Color.GRAY);
+                        btn_child_ok.setTextColor(Color.WHITE);
+                        btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button1,null));
+                    }else {
+                        btn_child_ok.setBackgroundColor(Color.parseColor("#90EE90"));
+                        btn_child_ok.setTextColor(Color.BLACK);
+                        btn_child_ok.setBackground(getResources().getDrawable(R.drawable.apply_button_blue,null));
+                    }
+                    popupWindow.dismiss();
+                }
+            });
+            tv_cancle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    popupWindow.dismiss();
+                }
+            });
+        }
+        if(tag==2) {
+            tv_ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tv_class.setText(sClass);
+                    if(tv_relation.getText().equals("请选择与孩子的关系")
+                            ||tv_class.getText().equals("请选择孩子所在的班级")
                             ||tv_id.getText().equals("请输入孩子的身份证号")
                             ||edt_name.getText().toString().trim().equals("")||edt_name.getText().toString().trim().length()==0){
                         btn_child_ok.setBackgroundColor(Color.GRAY);

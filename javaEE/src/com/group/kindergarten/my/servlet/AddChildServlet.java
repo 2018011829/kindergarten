@@ -36,6 +36,7 @@ public class AddChildServlet extends HttpServlet {
 		String idNum = request.getParameter("idNum");
 		String sex = request.getParameter("sex");
 		String phone = request.getParameter("parentPhone");
+		String sClass = request.getParameter("sClass");
 		System.out.println("AddChildServlet");
 		ChildrenService childrenService = ChildrenService.getInstance();
 		//先判断孩子是否已经存在
@@ -48,12 +49,18 @@ public class AddChildServlet extends HttpServlet {
 					//判断该身份证号与孩子的名字是否吻合
 					boolean c=childrenService.searchNameAndId(name, idNum);
 					if(c) {
-						boolean b=childrenService.addChild(name, idNum, sex, phone);
-						if(b) {//添加成功
-							System.out.println("成功添加孩子");
-							response.getWriter().write("success");
+						boolean d=childrenService.searchNameAndId(name, idNum, sClass);
+						if(d) {
+							boolean b=childrenService.addChild(name, idNum, sex, phone);
+							if(b) {//添加成功
+								System.out.println("成功添加孩子");
+								response.getWriter().write("success");
+							}else {
+								response.getWriter().write("faliure");
+							}
 						}else {
-							response.getWriter().write("faliure");
+							System.out.println("孩子所在的班级不正确！");
+							response.getWriter().write("孩子所在的班级不正确");
 						}
 					}else {
 						System.out.println("孩子的姓名与身份证号不符！");

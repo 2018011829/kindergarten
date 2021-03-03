@@ -83,6 +83,7 @@ public class MyFragment extends Fragment {
     private String cname;
     private String cgrade;
     private String csex;
+    private String cClass;
     private String childMessage = "";
     private List<String> children = new ArrayList<>();
     private Handler handler=new Handler(Looper.getMainLooper()){
@@ -115,7 +116,7 @@ public class MyFragment extends Fragment {
                                 String json = jArray.getJSONObject(i).toString();
                                 Log.i("json", json);
                                 Child child = new Gson().fromJson(json, Child.class);
-                                childMessage = child.getName()+" "+child.getGrade()+" "+child.getSex();
+                                childMessage = child.getName()+" "+child.getGrade()+" "+child.getSex()+" "+child.getsClass();
                                 children.add(childMessage);
                             }
                         } catch (JSONException e) {
@@ -165,7 +166,7 @@ public class MyFragment extends Fragment {
         super.onResume();
         getUserMsg();
         children.clear();
-        queryChildren();
+//        queryChildren();
     }
 
     /**
@@ -246,6 +247,7 @@ public class MyFragment extends Fragment {
                         cname = message[0];
                         cgrade = message[1];
                         csex = message[2];
+                        cClass = message[3];
                         showSelectChildPopupwindow();
                     }
 
@@ -319,7 +321,7 @@ public class MyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 childName = cname;
-                childGrade = cgrade;
+                childGrade = cClass;
                 childSex = csex;
                 tv_mine_myChildName.setText(childName);
                 if(childSex.equals("男")){

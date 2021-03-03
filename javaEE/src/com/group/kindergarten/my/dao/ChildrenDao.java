@@ -189,7 +189,7 @@ public class ChildrenDao {
 	 */
 	public boolean isExistUser(String phone, String password) {
 		boolean b = false;
-		String sql = "select * from user_parent where phone = ? and password = ?";
+		String sql = "select * from user where phone = ? and password = ?";
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, phone);
@@ -209,7 +209,7 @@ public class ChildrenDao {
 	
 	public boolean updatePwd(String phone,String password) {
 		boolean b=false;
-		String sql="update user_parent set password=? where phone = ?";
+		String sql="update user set password=? where phone = ?";
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, password);

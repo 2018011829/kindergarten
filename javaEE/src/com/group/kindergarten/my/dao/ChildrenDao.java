@@ -96,6 +96,7 @@ public class ChildrenDao {
 				child.setGrade(resultSet.getString(3));
 				child.setSex(resultSet.getString(4));
 				child.setParentPhone(resultSet.getString(5));
+				child.setsClass(resultSet.getString(6));
 				children.add(child);
 			}
 		} catch (SQLException e) {
@@ -134,9 +135,35 @@ public class ChildrenDao {
 	 * @param idNum
 	 * @return
 	 */
+	public boolean searchNameAndId(String name, String idNum, String sClass) {
+		boolean b=false;
+		String sql="select * from students where babyIDnumber=? and babyName=? and babyClass=?";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, idNum);
+			preparedStatement.setString(2, name);
+			preparedStatement.setString(3, sClass);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs.next()) {
+				b=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return b;
+	}
+	
+	/**
+	 * 判断孩子名字与身份证号是否吻合
+	 * @param name
+	 * @param idNum
+	 * @return
+	 */
 	public boolean searchNameAndId(String name, String idNum) {
 		boolean b=false;
-		String sql="select * from applyinfo where babyIDnumber=? and babyName=?";
+		String sql="select * from students where babyIDnumber=? and babyName=?";
 		try {
 			preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, idNum);
@@ -195,5 +222,28 @@ public class ChildrenDao {
 			e.printStackTrace();
 		}
 		return b;
+	}
+	
+	/**
+	 * 从数据库中获取所有的班级信息
+	 * @return
+	 */
+	public List<String> searchClassInfo(){
+		List<String> list=null;
+		String sql="select * from class";
+		try {
+			preparedStatement=connection.prepareStatement(sql);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs!=null) {
+				list=new ArrayList<String>();
+				while(rs.next()) {
+					list.add(rs.getString("class_name"));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 }

@@ -1,10 +1,13 @@
 package com.group.kindergarten.costMoney.service;
 
+<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+=======
+>>>>>>> 0671296dbdd420066b46046c35926f778d6da934
 import java.util.List;
 
 import com.group.kindergarten.costMoney.dao.CostMoneyDao;
@@ -12,9 +15,6 @@ import com.group.kindergarten.costMoney.entity.Charge;
 import com.group.kindergarten.costMoney.entity.MoneyPicture;
 import com.group.kindergarten.costMoney.entity.SchoolSemester;
 import com.group.kindergarten.costMoney.entity.ScreenshotInfo;
-import com.group.kindergarten.schoolInfo.dao.PictureDao;
-import com.group.kindergarten.schoolInfo.entity.Picture;
-import com.group.kindergarten.util.DBUtil;
 import com.group.kindergarten.util.Page;
 
 public class CostMoneyService {
@@ -166,8 +166,9 @@ public class CostMoneyService {
 		if(preMonth==0) {
 			preMonth=12;
 		}
+		System.out.println("上个月："+preMonth+"下个月："+nowMonth);
 		//获取上个月的余额
-		double lastMonthMoney=caculateLastMoney(nowMonth-1, name, parentPhone);
+		double lastMonthMoney=caculateLastMoney(preMonth, name, parentPhone);
 		//计算应交的保育费和餐费，先判断天数的多少（0, 1-10 ，11及以上）
 		double shouldMoney=0;
 		if(day==0) {
@@ -298,5 +299,28 @@ public class CostMoneyService {
 		page.setList(list);
 		page.setTotalCount(count);
 		return page;
+	}
+	
+	/**
+	 * 获取某个孩子上个月的请假天数
+	 * @param name
+	 * @param parentPhone
+	 * @return
+	 */
+	public int getPreMonthLeave(int month,String name,String parentPhone) {
+		int day=costMoneyDao.getPreMonthLeave(month,name, parentPhone);
+		
+		return day;
+	}
+	
+	/**
+	 * 根据月份获取对应月份的天数 
+	 * @param month
+	 * @return
+	 */
+	public int getOneMonthAboutDayNum(int month) {
+		int day=costMoneyDao.getOneMonthAboutDayNum(month);
+		
+		return day;
 	}
 }

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.group.kindergarten.costMoney.dao.CostMoneyDao;
 import com.group.kindergarten.costMoney.entity.LeaveInfo;
+import com.group.kindergarten.costMoney.service.CostMoneyService;
 
 /**
  * Servlet implementation class GetLeaveDayAndShouldDay
@@ -41,7 +41,7 @@ public class GetLeaveDayAndShouldDay extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		System.out.println("GetLeaveDayAndShouldDay");
 		// 获取参数信息
-		String stuName = request.getParameter("stuName");
+		String stuName = request.getParameter("childName");
 		String phone = request.getParameter("phone");
 		// 从数据库中获取某个孩子的请假天数和应到的天数
 		if(stuName!=null && !stuName.equals("")) {
@@ -56,8 +56,8 @@ public class GetLeaveDayAndShouldDay extends HttpServlet {
 					month=c.get(Calendar.MONTH);
 				}
 				LeaveInfo leave=new LeaveInfo();
-				leave.setLeaveDay(CostMoneyDao.getInstance().getPreMonthLeave(stuName, phone));
-				leave.setMonthDay(CostMoneyDao.getInstance().getOneMonthAboutDayNum(month));
+				leave.setLeaveDay(CostMoneyService.getInstance().getPreMonthLeave(month,stuName, phone));
+				leave.setMonthDay(CostMoneyService.getInstance().getOneMonthAboutDayNum(month));
 				Gson gson = new Gson();
 				String gsonStr = gson.toJson(leave);
 				System.out.println(gsonStr);

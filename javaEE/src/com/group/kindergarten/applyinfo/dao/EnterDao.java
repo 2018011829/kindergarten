@@ -31,6 +31,30 @@ public class EnterDao {
 		return enterDao;
 	}
 	
+	/**
+	 * 判断孩子是否存在
+	 * 
+	 * @param babyIDnumber 孩子身份证号
+	 * @return 是否存在
+	 */
+	public boolean isExist(String babyIDnumber) {
+		String sql = "select * from applyinfo where babyIDnumber = ?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, babyIDnumber);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public int countByPage(){
 		ResultSet rs = null;
 		int count = 0;

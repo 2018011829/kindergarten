@@ -22,9 +22,12 @@ import com.example.myapplication.main.util.ConfigUtil;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 
 import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -68,6 +71,15 @@ public class ApplyActivityAffirm extends AppCompatActivity {
                     case 1:
                         String str = (String) msg.obj;//接收到的是一个说说对象
                         Toast.makeText(ApplyActivityAffirm.this,str,Toast.LENGTH_LONG).show();
+                        break;
+
+                    case 2:
+                        String result = msg.obj.toString();
+                        if(result.equals("success")){
+                            downLoadImgNameFromServerRequest();
+                        }else{
+                            Toast.makeText(ApplyActivityAffirm.this,"该孩子已经存在！",Toast.LENGTH_LONG).show();
+                        }
                         break;
                 }
             }
@@ -125,9 +137,17 @@ public class ApplyActivityAffirm extends AppCompatActivity {
                         String str = (String)msg.obj;
                         if (!str.equals("")&&str!=null){
                             Toast.makeText(ApplyActivityAffirm.this,str,Toast.LENGTH_LONG).show();
-
                         }else {
                             Toast.makeText(ApplyActivityAffirm.this,"提交失败",Toast.LENGTH_LONG).show();
+                        }
+                        break;
+
+                    case 2:
+                        String result = msg.obj.toString();
+                        if(result.equals("success")){
+                            downLoadImgNameFromServerRequest();
+                        }else{
+                            Toast.makeText(ApplyActivityAffirm.this,"该孩子已经完成报名！",Toast.LENGTH_LONG).show();
                         }
                         break;
                 }
@@ -148,10 +168,7 @@ public class ApplyActivityAffirm extends AppCompatActivity {
                     new Thread(){
                         @Override
                         public void run() {
-                            downLoadImgNameFromServerRequest();
-                            Intent intent = new Intent();
-                            intent.setClass(ApplyActivityAffirm.this,Instruction.class);
-                            startActivity(intent);
+                            judgeChildIfExist();
                         }
                     }.start();
                     break;
@@ -161,6 +178,36 @@ public class ApplyActivityAffirm extends AppCompatActivity {
             }
         }
     }
+
+    private void judgeChildIfExist(){
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("babyIDnumber", applyInfo.getBabyIDnumber());
+        FormBody formBody = builder.build();
+        Request request = new Request.Builder()
+                .post(formBody)
+                .url(ConfigUtil.SERVICE_ADDRESS + "JudgeApplyInfoServlet")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("判断孩子是否添加", "请求失败");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Message message = handler.obtainMessage();
+                message.obj = result;
+                message.what = 2;
+                handler.sendMessage(message);
+                Log.i("result", result);
+            }
+        });
+    }
+
+
+
 
     //显示所填信息
     private void setContent(){

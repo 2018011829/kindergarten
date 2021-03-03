@@ -13,10 +13,8 @@
     <!-- GUI自动填充验证码功能（非必须） -->
     <uses-permission android:name="android.permission.RECEIVE_SMS" /> <!-- 从短信中读取验证码接口（非必须） -->
     <uses-permission android:name="android.permission.READ_SMS" />
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.RECORD_VIDEO" />
-<!--    <uses-permission android:name="android.permission.READ_LOGS" />-->
+    <uses-permission android:name="android.permission.RECORD_VIDEO" /> <!-- <uses-permission android:name="android.permission.READ_LOGS" /> -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -24,19 +22,17 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission
         android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" /> <!-- 申请手机存储权限 -->
-
     <uses-feature
         android:name="org.apache.http.legacy"
         android:required="false" />
-
-
 
     <application
         android:name=".contact.util.App"
@@ -48,21 +44,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-<!--        <uses-library android:name="org.apache.http.legacy" android:required="false"/>-->
-        <activity android:name=".contact.TestActivity"></activity>
-        <activity android:name=".contact.LoginActivity" >
-
-        </activity>
+        <!-- <uses-library android:name="org.apache.http.legacy" android:required="false"/> -->
+        <activity android:name=".contact.TestActivity" />
+        <activity android:name=".contact.LoginActivity"></activity>
         <activity android:name=".main.activity.my.ShowApplyInfoActivity" />
         <activity android:name=".main.activity.my.ApplyInfoActivity" />
         <activity android:name=".main.activity.my.EditorParentActivity" />
+        <activity android:name=".main.activity.my.EditorPasswordActivity" />
+        <activity android:name=".main.activity.my.SettingActivity" />
         <activity android:name=".login.RegisterActivity" />
-        <activity android:name=".login.LoginByPasswordActivity" >
+        <activity android:name=".login.LoginByPasswordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".login.LoginByPhoneActivity" />
         <activity android:name=".teacher.tool.euclid.EuclidActivity" />
@@ -72,18 +68,19 @@
         <activity android:name=".apply.activity.ApplyActivityBaby" />
         <activity android:name=".apply.activity.ApplyActivityParents" />
         <activity android:name=".apply.activity.ApplyActivityAffirm" />
-        <activity android:name=".money.activity.Attendance"/>
-        <activity android:name=".money.activity.Money"/>
-        <activity android:name=".money.activity.UploadPicture">
-        </activity>
-        <activity android:name=".apply.activity.Instruction">
-
-        </activity>
+        <activity android:name=".money.activity.Attendance" />
+        <activity android:name=".money.activity.Money" />
+        <activity android:name=".money.activity.UploadPicture"></activity>
+        <activity android:name=".apply.activity.Instruction"></activity>
         <activity android:name=".main.activity.MainActivity">
+<<<<<<< HEAD
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+=======
+
+>>>>>>> f263526f6ac9d4a2b8cdad1ffb4489236b3a04a2
         </activity> <!-- 学校简介用到的activity 开始 -->
         <activity android:name=".school.activity.ImageShower" />
         <activity android:name=".main.activity.my.AddChildActivity" /> <!-- 即时通讯和推送 START -->

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-03-02 18:15:53
+Date: 2021-03-03 17:14:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -386,6 +386,40 @@ CREATE TABLE `school_semester` (
 -- ----------------------------
 INSERT INTO `school_semester` VALUES ('2', '25', '1');
 INSERT INTO `school_semester` VALUES ('1', '25', '2');
+
+-- ----------------------------
+-- Table structure for `students`
+-- ----------------------------
+DROP TABLE IF EXISTS `students`;
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userNumber` varchar(11) NOT NULL,
+  `babyName` varchar(255) NOT NULL,
+  `babyClass` varchar(255) NOT NULL,
+  `babyBirthday` varchar(255) NOT NULL,
+  `babySex` varchar(255) NOT NULL,
+  `babyIDnumber` varchar(255) NOT NULL,
+  `babyAddoAllergies` varchar(255) NOT NULL,
+  `parentName1` varchar(255) NOT NULL,
+  `relation1` varchar(255) NOT NULL,
+  `parentIDnumber1` varchar(255) NOT NULL,
+  `phoneNumber1` varchar(255) NOT NULL,
+  `workSpace1` varchar(255) NOT NULL,
+  `homeAddress1` varchar(255) NOT NULL,
+  `parentName2` varchar(255) DEFAULT NULL,
+  `relation2` varchar(255) DEFAULT NULL,
+  `parentIDnumber2` varchar(255) DEFAULT NULL,
+  `phoneNumber2` varchar(255) DEFAULT NULL,
+  `workSpace2` varchar(255) DEFAULT NULL,
+  `homeAddress2` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of students
+-- ----------------------------
+INSERT INTO `students` VALUES ('1', '18831166551', '天天', '大班一班', '1', '男', '610526200008160721', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `students` VALUES ('2', '18831166551', '花花', '大班二班', '2', '女', '610526199908160721', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2');
 
 -- ----------------------------
 -- Table structure for `teacher`

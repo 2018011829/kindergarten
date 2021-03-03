@@ -54,6 +54,7 @@
         <activity android:name=".main.activity.my.SettingActivity" />
         <activity android:name=".login.RegisterActivity" />
         <activity android:name=".login.LoginByPasswordActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -73,14 +74,7 @@
         <activity android:name=".money.activity.UploadPicture"></activity>
         <activity android:name=".apply.activity.Instruction"></activity>
         <activity android:name=".main.activity.MainActivity">
-<<<<<<< HEAD
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-=======
 
->>>>>>> f263526f6ac9d4a2b8cdad1ffb4489236b3a04a2
         </activity> <!-- 学校简介用到的activity 开始 -->
         <activity android:name=".school.activity.ImageShower" />
         <activity android:name=".main.activity.my.AddChildActivity" /> <!-- 即时通讯和推送 START -->

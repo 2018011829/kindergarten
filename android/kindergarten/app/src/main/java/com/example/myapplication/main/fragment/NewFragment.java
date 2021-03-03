@@ -74,7 +74,9 @@ public class NewFragment extends Fragment {
                     ChildConsumeInfo childInfo=new Gson().fromJson(str,ChildConsumeInfo.class);
                     tvDay.setText(childInfo.getDay()+"");
                     tvMoney.setText(childInfo.getMoney()+"");
-
+                    break;
+                case 2:
+                    String str1= (String) msg.obj;
                     break;
             }
         }
@@ -94,6 +96,8 @@ public class NewFragment extends Fragment {
                 setListeners();
                 //获取孩子的出勤天数，和需要缴费的金额
                 getMoneyMsg();
+                //获取二维码信息
+                getPictureMsg();
             }else{
                 Toast.makeText(getContext(),
                         "您还未选择孩子！",
@@ -106,6 +110,35 @@ public class NewFragment extends Fragment {
         }
 
         return view;
+    }
+
+    private void getPictureMsg() {
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("phone", ConfigUtil.PHONE);
+        builder.add("childName", MyFragment.childName);
+        FormBody formBody = builder.build();
+        Request request = new Request.Builder()
+                .post(formBody)
+                .url(ConfigUtil.SERVICE_ADDRESS + "SendChargeServlet")
+                .build();
+        Call call = new OkHttpClient().newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.e("查询消费信息", "请求失败");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+                Log.i("查询消费信息", "onResponse: "+result);
+                Message message = new Message();
+                message.obj = result;
+                message.what = 2;
+                handler.sendMessage(message);
+                Log.i("result", result);
+            }
+        });
     }
 
     private void getMoneyMsg() {

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.group.kindergarten.costMoney.dao.CostMoneyDao;
@@ -236,6 +237,13 @@ public class CostMoneyService {
 		return page;
 	}
 	/**
+	 * 获取所有收款码信息
+	 * @return
+	 */
+	public List<Charge> findCharge(){
+		return new CostMoneyDao().findCharge();
+	}
+	/**
 	 * 新增收款码信息
 	 * @param teacher
 	 * @return
@@ -268,8 +276,8 @@ public class CostMoneyService {
 		return new CostMoneyDao().updateCharge(charge);
 	}
 	/**
-	 * 根据id获取收款码信息
-	 * @param id
+	 * 根据班级获取收款码信息
+	 * @param babyClass
 	 * @return
 	 */
 	public Charge findChargeByBabyClass(String babyClass) {

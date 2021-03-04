@@ -71,7 +71,8 @@
 			</div>
 			<div class="box2">
 				<div class="box3">
-					<form action="ImportFileServlet" method="post">
+					<form action="ImportFileServlet" method="post"
+						enctype="multipart/form-data">
 						<input type="file" name="fileName" id="inputName" /> 
 						<input type="submit" value="点击上传" id="submitSearch">
 					</form>

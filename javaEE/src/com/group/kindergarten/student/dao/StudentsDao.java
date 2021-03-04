@@ -130,4 +130,19 @@ public class StudentsDao {
 		return list;
 	}
 
+	/**
+	 * 将excel表中的数据保存到数据库中
+	 * @param students
+	 * @return
+	 */
+	public boolean insertDataAboutStudent(List<Students> students) {
+		boolean b=false;
+		
+		for(Students student:students) {
+			
+		}
+		
+		return b;
+	}
+
 }

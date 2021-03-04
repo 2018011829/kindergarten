@@ -53,4 +53,15 @@ public class StudentsService {
 		page.setTotalCount(count);
 		return page;
 	}
+
+	/**
+	 * 将excel表中的数据保存到数据库中
+	 * @param students
+	 * @return
+	 */
+	public boolean insertDataAboutStudent(List<Students> students) {
+		boolean b=studentsDao.insertDataAboutStudent(students);
+		
+		return b;
+	}
 }

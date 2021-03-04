@@ -383,6 +383,7 @@ public class MyFragment extends Fragment {
                 cname = childSessions[0];
                 cgrade = childSessions[1];
                 csex = childSessions[2];
+                cClass = childSessions[3];
             }
         });
     }

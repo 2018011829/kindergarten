@@ -1,13 +1,10 @@
 package com.group.kindergarten.costMoney.service;
 
-<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-=======
->>>>>>> 0671296dbdd420066b46046c35926f778d6da934
 import java.util.List;
 
 import com.group.kindergarten.costMoney.dao.CostMoneyDao;

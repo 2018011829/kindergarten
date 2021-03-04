@@ -14,6 +14,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,13 +30,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
+import com.example.myapplication.main.entity.Charge;
 import com.example.myapplication.main.entity.ChildConsumeInfo;
 import com.example.myapplication.main.util.ConfigUtil;
 import com.example.myapplication.money.activity.Attendance;
 import com.example.myapplication.money.activity.Money;
 import com.example.myapplication.money.activity.UploadPicture;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -43,9 +49,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -65,6 +73,7 @@ public class NewFragment extends Fragment {
     //两张图片
     private ImageView ivWx;
     private ImageView ivZfb;
+    private Gson gson;//定义Gson对象属性
     private Handler handler=new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -77,11 +86,21 @@ public class NewFragment extends Fragment {
                     break;
                 case 2:
                     String str1= (String) msg.obj;
+                    //反序列化
+                    Type type = new TypeToken<List<Charge>>(){}.getType();
+                    List<Charge> charges = gson.fromJson(str1, type);
+                    String babyClass = new MyFragment().childGrade;
+                    Log.e("321",babyClass);
+                    for(int i=0;i<charges.size();i++){
+                        if(charges.get(i).getBabyClass().equals(babyClass)){
+                            Glide.with(getActivity()).load(ConfigUtil.SERVICE_ADDRESS+"/imgs/charge/"+charges.get(i).getWeChat()).into(ivWx);
+                            Glide.with(getActivity()).load(ConfigUtil.SERVICE_ADDRESS+"/imgs/charge/"+charges.get(i).getAlipay()).into(ivZfb);
+                        }
+                    }
                     break;
             }
         }
     };
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -108,6 +127,7 @@ public class NewFragment extends Fragment {
                    "您还未登录！",
                    Toast.LENGTH_SHORT).show();
         }
+        initGson();
 
         return view;
     }
@@ -131,12 +151,10 @@ public class NewFragment extends Fragment {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String result = response.body().string();
-                Log.i("查询消费信息", "onResponse: "+result);
                 Message message = new Message();
                 message.obj = result;
                 message.what = 2;
                 handler.sendMessage(message);
-                Log.i("result", result);
             }
         });
     }
@@ -181,13 +199,32 @@ public class NewFragment extends Fragment {
         ivWx = view.findViewById(R.id.iv_weixin);
         ivZfb = view.findViewById(R.id.iv_zhifubao);
     }
+    //textView变化监听器
+    TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            //获取孩子的出勤天数，和需要缴费的金额
+            getMoneyMsg();
+            //获取二维码信息
+            getPictureMsg();
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
     // 设置点击事件的监听器
     private void setListeners() {
         MyListener myListener = new MyListener();
         btnAttendance.setOnClickListener(myListener);
         btnMoney.setOnClickListener(myListener);
         btnUploadPicture.setOnClickListener(myListener);
-
+        //监听文本变化
+        tvName.addTextChangedListener(textWatcher);
 
         ivZfb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -335,5 +372,12 @@ public class NewFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void initGson() {
+        gson = new GsonBuilder()//创建GsonBuilder对象
+                .setPrettyPrinting()//格式化输出
+                .serializeNulls()//允许输出Null值属性
+                .setDateFormat("YY:MM:dd")//日期格式化
+                .create();//创建Gson对象
     }
 }

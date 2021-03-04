@@ -40,22 +40,11 @@ public class SendChargeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// 初始化json
 		initGson();
-
-		String url = request.getRealPath("/") + "imgs\\charge\\";
-		List<Charge> list = CostMoneyService.getInstance().findCharge();
-		List<Charge> charges = new ArrayList();
-		for (int i = 0; i < list.size(); i++) {
-			Charge charge = new Charge();
-			charge.setId(list.get(i).getId());
-			charge.setBabyClass(list.get(i).getBabyClass());
-			charge.setTeacher(list.get(i).getTeacher());
-			charge.setWeChat(url + list.get(i).getWeChat());
-			charge.setAlipay(url + list.get(i).getAlipay());
-			charges.add(charge);
-		}
+		List<Charge> charges = CostMoneyService.getInstance().findCharge();
 		// 序列化
 		String json = gson.toJson(charges);
 		// 获取网络输出流，并将图片的网络资源路径返回给客户端
+		System.out.println(json);
 		response.getWriter().write(json);
 	}
 

@@ -26,7 +26,7 @@
         android:layout_height="@dimen/height_profile_image"/>
 
     <TextView
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="14dp"
         android:id="@+id/text_view_name"
         android:textColor="#FFFFFF"
         android:textSize="30sp"

@@ -13,7 +13,6 @@ import com.group.kindergarten.costMoney.entity.Charge;
 import com.group.kindergarten.costMoney.entity.MoneyPicture;
 import com.group.kindergarten.costMoney.entity.SchoolSemester;
 import com.group.kindergarten.costMoney.entity.ScreenshotInfo;
-import com.group.kindergarten.schoolInfo.entity.Picture;
 import com.group.kindergarten.util.DBUtil;
 
 public class CostMoneyDao {
@@ -192,68 +191,29 @@ public class CostMoneyDao {
 	
 	/**
 	 * 每到1日进行上个月的请假天数清0
+	 * 并计算上个月的出勤天数 保存到数据库
 	 * @param name
 	 * @param parentPhone
 	 * @return
 	 */
-	public boolean clearLeaveDay(String name,String parentPhone) {
+	public boolean clearLeaveDay(int month,String name,String parentPhone) {
 		boolean b=false;
 		int id=returnChildId(name, parentPhone);
-		try {
-			preparedStatement=connection.prepareStatement("update child_attendence set leave_day=0 where child_id=? and phone=?");
-			preparedStatement.setInt(1, id);
-			preparedStatement.setString(2, parentPhone);
-			b=preparedStatement.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return b;
-	}
-	
-	/**
-	 * 获取某个孩子上个月的请假天数
-	 * @param name
-	 * @param parentPhone
-	 * @return
-	 */
-	public int getPreMonthLeave(String name,String parentPhone) {
-		int day=0;
-		int id=returnChildId(name, parentPhone);
-		try {
+		int preMonthDay=0;
+	    int day=0;
+	    int leaveDay=0;
+	    //获取本月的请假天数
+	    try {
 			preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and phone=?");
 			preparedStatement.setInt(1, id);
 			preparedStatement.setString(2, parentPhone);
 			ResultSet rs=preparedStatement.executeQuery();
 			if(rs.next()) {
-				// 得到孩子上个月请假天数
-				day=rs.getInt("leave_day");
+				// 得到孩子本月请假天数
+				leaveDay=rs.getInt("leave_day");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
-		return day;
-	}
-	
-	/**
-	 * 计算孩子上个月的出勤天数
-	 * @param name
-	 * @param parentPhone
-	 * @return
-	 */
-	public int childAttendLastMonth(String name,String parentPhone) {
-		int day=0;
-		int preMonthDay=0;
-		int month=0;
-		//获取当前时间
-		Calendar c = Calendar.getInstance();
-	    //获取上个月月份 从0开始，0-11
-		if(c.get(Calendar.MONTH)==0) {
-			month=12;
-		}else {
-			month=c.get(Calendar.MONTH);
 		}
 	    //从数据库中获取上个月应上的天数
 	    try {
@@ -267,11 +227,10 @@ public class CostMoneyDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    //计算上个月出勤天数（用上个月应到的天数减去请假天数）
-	    day=preMonthDay-getPreMonthLeave(name, parentPhone);
+	    //计算本月出勤天数（用上个月应到的天数减去请假天数）
+	    day=preMonthDay-leaveDay;
 	    //修改数据库的信息（将计算的上个月出勤天数写入数据库，再将请假天数清0）
-	    int id=returnChildId(name, parentPhone);
-	    boolean b=false;
+	    boolean a=false;
 	    try {
 			preparedStatement=connection.prepareStatement("update child_attendence set last_attendence_day=? where child_id=? and phone=?");
 			preparedStatement.setInt(1, day);
@@ -285,12 +244,96 @@ public class CostMoneyDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    if(b) {
+	    if(a) {
 	    	//请假天数清零
-	    	clearLeaveDay(name, parentPhone);
+	    	try {
+				preparedStatement=connection.prepareStatement("update child_attendence set leave_day=0 where child_id=? and phone=?");
+				preparedStatement.setInt(1, id);
+				preparedStatement.setString(2, parentPhone);
+				int row=preparedStatement.executeUpdate();
+				if(row>0) {
+					b=true;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 		
+		return b;
+	}
+	
+	/**
+	 * 获取某个孩子上个月的请假天数
+	 * @param name
+	 * @param parentPhone
+	 * @return
+	 */
+	public int getPreMonthLeave(int month,String name,String parentPhone) {
+		int day=0;
+		int id=returnChildId(name, parentPhone);
+		try {
+			preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and phone=?");
+			preparedStatement.setInt(1, id);
+			preparedStatement.setString(2, parentPhone);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs.next()) {
+				//得到上个月孩子的出勤天数
+				int lastDay=rs.getInt("last_attendence_day");
+				//获取上个月应到的天数
+				int monthDay=getOneMonthAboutDayNum(month);
+				// 得到孩子上个月请假天数
+				day=monthDay-lastDay;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return day;
+	}
+	
+	/**
+	 * 获取孩子上个月的出勤天数
+	 * @param name
+	 * @param parentPhone
+	 * @return
+	 */
+	public int childAttendLastMonth(String name,String parentPhone) {
+		int day=0;
+		int preAttendenceDay=0;
+		int month=0;
+	    int id=returnChildId(name, parentPhone);
+		//获取当前时间
+		Calendar c = Calendar.getInstance();
+	    //获取上个月月份 从0开始，0-11
+		if(c.get(Calendar.MONTH)==0) {
+			month=12;
+		}else {
+			month=c.get(Calendar.MONTH);
+		}
+	    //先判断上个月是否需要到校
+		day=getOneMonthAboutDayNum(month);
+	    //需要到校
+		if(day!=0) {
+			//获取上个月的出勤天数
+			try {
+				preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and phone=?");
+				preparedStatement.setInt(1, id);
+				preparedStatement.setString(2, parentPhone);
+				ResultSet rs=preparedStatement.executeQuery();
+				if(rs.next()) {
+					preAttendenceDay=rs.getInt("last_attendence_day");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			return day;
+		}
+	
+		
+		return preAttendenceDay;
 	}
 	
 	/**
@@ -357,7 +400,18 @@ public class CostMoneyDao {
 		int leaveNewDay=dayEndNum-dayStartNum;
 		System.out.println("请假天数:"+leaveNewDay);
 		//获取数据库中的请假天数
-		int leaveLastDay=getPreMonthLeave(name, phone);
+		int leaveLastDay=0;
+		try {
+			preparedStatement=connection.prepareStatement("select * from child_attendence where child_id=? and phone=?");
+			preparedStatement.setInt(1, id);
+			preparedStatement.setString(2, phone);
+			ResultSet rs=preparedStatement.executeQuery();
+			if(rs.next()) {
+				leaveLastDay=rs.getInt("leave_day");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		System.out.println("数据库中的请假天数:"+leaveLastDay);
 		//累计请假天数总和
 		int totalLeaveDay=leaveNewDay+leaveLastDay;

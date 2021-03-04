@@ -24,12 +24,15 @@
 			<li onclick="showMenu_add2()" id="enroll_info_add"><a
 				href="addApplyinfo.jsp" class="jump">新增报名信息</a></li>
 		</ul>
+<<<<<<< HEAD
 		<li id="enroll" onclick="showEnrollMenu()"><a>学生信息管理</a><img
 			src="imgs/home/xiala.png" id="xiala2"></li>
 		<ul class="enroll_menu" id="click_enroll_menu" style="display: none">
 			<li onclick="showMenu_info2()" id="enroll_info"><a
 				href="GetApplyInfoServlet" class="jump">查看学生信息</a></li>
 		</ul>
+=======
+>>>>>>> f0574a205cb4cf30eb92280cb4ef455c4cfd80ef
 		<li id="introduce" onclick="showIntroduceMenu()"><a>学校简介信息管理</a>
 			<img src="imgs/home/xiala.png" id="xiala3"></li>
 		<ul class="introduce_menu" id="click_introduce_menu"
@@ -57,6 +60,12 @@
 			<li onclick="showMenu_info5()" id="account_info"><a
 				href="ChargeManagerServlet" class="jump">查看收款码信息</a></li>
 		</ul>
+		<li id="enroll" onclick="showEnrollMenu()"><a>学生信息管理</a><img
+            src="imgs/home/xiala.png" id="xiala2"></li>
+        <ul class="enroll_menu" id="click_enroll_menu" style="display: none">
+            <li onclick="showMenu_info2()" id="enroll_info"><a
+                href="GetApplyInfoServlet">查看学生信息</a></li>
+        </ul>
 	</ul>
 
 </body>

@@ -145,18 +145,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+<!--        微信图片-->
         <ImageView
+            android:id="@+id/iv_weixin"
             android:layout_margin="10dp"
             android:padding="5dp"
             android:background="@drawable/apply_inside_yellow2"
-            android:src="@drawable/gathering1"
             android:layout_width="180dp"
             android:layout_height="200dp"/>
+
+<!--        支付宝图片-->
         <ImageView
+            android:id="@+id/iv_zhifubao"
             android:layout_margin="10dp"
             android:padding="5dp"
             android:background="@drawable/apply_inside_yellow2"
-            android:src="@drawable/gathering2"
             android:layout_width="180dp"
             android:layout_height="200dp"/>
     </LinearLayout>

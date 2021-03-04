@@ -1,52 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="20dp">
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
+    >
+    <RelativeLayout
+        android:background="#5ab9ff"
+        android:id="@+id/apply_them"
+        android:paddingTop="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="应到的天数"
-            android:gravity="center_horizontal"
-            android:textSize="20dp"/>
+        android:layout_height="60dp">
 
+        <ImageView
+            android:id="@+id/return_new"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_return" />
         <TextView
-            android:id="@+id/tv_month_day"
-            android:layout_width="match_parent"
+            android:text="请假详情"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="50sp"
-            android:textColor="@android:color/holo_red_light"
-            android:gravity="center_horizontal"
-            android:text="0"/>
-    </LinearLayout>
+            android:layout_centerInParent="true"
+            android:textColor="#000000"/>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_below="@id/apply_them"
         android:layout_marginTop="20dp"
+        android:id="@+id/rl1"
+
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:background="@drawable/apply_button_yellow"
+            android:layout_margin="20dp"
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="20dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="应到的天数"
+                android:gravity="center_horizontal"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/tv_month_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="50sp"
+                android:textColor="@android:color/holo_red_light"
+                android:gravity="center_horizontal"
+                android:text="0"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/apply_button_yellow"
+            android:layout_margin="20dp"
+            android:layout_below="@id/ll1"
+            android:id="@+id/ll2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="请假的天数"
+                android:gravity="center_horizontal"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/tv_leave_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="50sp"
+                android:textColor="@android:color/holo_red_light"
+                android:gravity="center_horizontal"
+                android:text="0"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <Button
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:id="@+id/btn_return"
+        android:background="@drawable/apply_button_blue"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="请假的天数"
-            android:gravity="center_horizontal"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:id="@+id/tv_leave_day"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="50sp"
-            android:textColor="@android:color/holo_red_light"
-            android:gravity="center_horizontal"
-            android:text="0"/>
-    </LinearLayout>
+        android:text="阅读完毕"/>
 </LinearLayout>

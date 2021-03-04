@@ -28,6 +28,15 @@ public class EnterService {
 	
 	
 	/**
+	 * 判断孩子报名信息
+	 * @return boolean
+	 * */
+	public boolean isExist(String babyIDnumber) {
+		
+		return enterDao.isExist(babyIDnumber);
+	}
+	
+	/**
 	 * 添加孩子报名信息
 	 * @return boolean
 	 * */

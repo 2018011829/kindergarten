@@ -5,6 +5,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +36,8 @@ public class Attendance extends AppCompatActivity {
 
     private TextView tvMonthDay;
     private TextView tvLeaveDay;
+    private ImageView returnNew;
+    private Button btnReturn;
     private Handler handler=new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -95,6 +100,29 @@ public class Attendance extends AppCompatActivity {
     private void findViews() {
         tvMonthDay=findViewById(R.id.tv_month_day);
         tvLeaveDay=findViewById(R.id.tv_leave_day);
+        returnNew = findViewById(R.id.return_new);
+        btnReturn = findViewById(R.id.btn_return);
+        setListeners();
+    }
+    // 设置点击事件的监听器
+    private void setListeners() {
+        MyListener myListener = new MyListener();
+        returnNew.setOnClickListener(myListener);
+        btnReturn.setOnClickListener(myListener);
+    }
+    class MyListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.return_new:
+                    finish();
+                    break;
+                case R.id.btn_return:
+                    finish();
+                    break;
+            }
+
+        }
     }
 
 }

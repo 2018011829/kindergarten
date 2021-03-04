@@ -31,6 +31,7 @@ import com.example.myapplication.apply.activity.Bean.ApplyInfo;
 import com.example.myapplication.main.activity.my.AddChildActivity;
 import com.example.myapplication.main.activity.my.ApplyInfoActivity;
 import com.example.myapplication.main.activity.my.EditorParentActivity;
+import com.example.myapplication.main.activity.my.SettingActivity;
 import com.example.myapplication.main.entity.Child;
 import com.example.myapplication.main.entity.UserParent;
 import com.example.myapplication.main.util.ConfigUtil;
@@ -77,12 +78,14 @@ public class MyFragment extends Fragment {
     private TextView tv_mine_myChildName;
     private ImageView iv_mine_myChildImg;
     private LinearLayout ll_mine_editorParent;
+    private RelativeLayout rl_mine_setting;
     public static String childName=""; //纪录当前登录的手机号下的孩子姓名，用来在收藏前进行判断、存储收藏信息
     public static String childSex="" ; //记录当前从孩子数据源中选择的孩子性别
     public static String childGrade=""; //记录当前从孩子数据源中选择的孩子年级
     private String cname;
     private String cgrade;
     private String csex;
+    private String cClass;
     private String childMessage = "";
     private List<String> children = new ArrayList<>();
     private Handler handler=new Handler(Looper.getMainLooper()){
@@ -115,7 +118,7 @@ public class MyFragment extends Fragment {
                                 String json = jArray.getJSONObject(i).toString();
                                 Log.i("json", json);
                                 Child child = new Gson().fromJson(json, Child.class);
-                                childMessage = child.getName()+" "+child.getGrade()+" "+child.getSex();
+                                childMessage = child.getName()+" "+child.getGrade()+" "+child.getSex()+" "+child.getsClass();
                                 children.add(childMessage);
                             }
                         } catch (JSONException e) {
@@ -165,7 +168,7 @@ public class MyFragment extends Fragment {
         super.onResume();
         getUserMsg();
         children.clear();
-        queryChildren();
+//        queryChildren();
     }
 
     /**
@@ -173,11 +176,11 @@ public class MyFragment extends Fragment {
      */
     private void getUserMsg() {
         FormBody.Builder builder = new FormBody.Builder();
-        builder.add("phone", phone);
+        builder.add("phone", ConfigUtil.PHONE);
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
                 .post(formBody)
-                .url(ConfigUtil.SERVICE_ADDRESS + "GetUserMsgServlet")
+                .url(ConfigUtil.SERVICE_ADDRESS + "GetUserParentMsgServlet")
                 .build();
         Call call = new OkHttpClient().newCall(request);
         call.enqueue(new Callback() {
@@ -246,6 +249,7 @@ public class MyFragment extends Fragment {
                         cname = message[0];
                         cgrade = message[1];
                         csex = message[2];
+                        cClass = message[3];
                         showSelectChildPopupwindow();
                     }
 
@@ -262,6 +266,13 @@ public class MyFragment extends Fragment {
 
                     startActivity(editorParent);
 
+                    break;
+
+                case R.id.rl_mine_setting://点击跳转到设置中心
+                    Intent intent = new Intent();
+                    intent.setClass(getContext(), SettingActivity.class);
+                    intent.putExtra("userPhone",userParent.getPhone());
+                    startActivity(intent);
                     break;
             }
         }
@@ -319,7 +330,7 @@ public class MyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 childName = cname;
-                childGrade = cgrade;
+                childGrade = cClass;
                 childSex = csex;
                 tv_mine_myChildName.setText(childName);
                 if(childSex.equals("男")){
@@ -395,5 +406,7 @@ public class MyFragment extends Fragment {
         applyInfo.setOnClickListener(myListener);
         ll_mine_editorParent  = view.findViewById(R.id.ll_mine_editorParent);
         ll_mine_editorParent.setOnClickListener(myListener);
+        rl_mine_setting = view.findViewById(R.id.rl_mine_setting);
+        rl_mine_setting.setOnClickListener(myListener);
     }
 }

@@ -53,7 +53,7 @@ public class QueryChildrenServlet extends HttpServlet {
 				jObject.put("grade", child.getGrade());
 				jObject.put("sex", child.getSex());
 				jObject.put("parentPhone", child.getParentPhone());
-
+				jObject.put("sClass", child.getsClass());
 				jsonArray.put(jObject);
 			}
 

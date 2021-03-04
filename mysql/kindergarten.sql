@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50506
+Source Server Version : 50701
 Source Host           : localhost:3306
 Source Database       : kindergarten
 
 Target Server Type    : MYSQL
-Target Server Version : 50506
+Target Server Version : 50701
 File Encoding         : 65001
 
-Date: 2021-03-02 18:15:53
+Date: 2021-03-03 20:25:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -117,14 +117,15 @@ CREATE TABLE `child` (
   `id_num` varchar(18) NOT NULL,
   `sex` varchar(5) NOT NULL,
   `parentPhone` varchar(11) NOT NULL,
+  `sClass` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of child
 -- ----------------------------
-INSERT INTO `child` VALUES ('8', '天天', '610526200008160721', '男', '18831166551');
-INSERT INTO `child` VALUES ('9', '花花', '610526199908160721', '女', '18831166551');
+INSERT INTO `child` VALUES ('8', '天天', '610526200008160721', '男', '18831166551', '大班一班');
+INSERT INTO `child` VALUES ('9', '花花', '610526199908160721', '女', '18831166551', '小班二班');
 
 -- ----------------------------
 -- Table structure for `child_attendence`
@@ -135,7 +136,6 @@ CREATE TABLE `child_attendence` (
   `phone` char(11) NOT NULL,
   `child_id` int(11) NOT NULL,
   `last_attendence_day` int(11) DEFAULT NULL,
-  `next_attendence_day` int(11) DEFAULT NULL,
   `leave_day` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -143,7 +143,7 @@ CREATE TABLE `child_attendence` (
 -- ----------------------------
 -- Records of child_attendence
 -- ----------------------------
-INSERT INTO `child_attendence` VALUES ('1', '18831166551', '8', '25', null, '0');
+INSERT INTO `child_attendence` VALUES ('1', '18831166551', '8', '22', '0');
 
 -- ----------------------------
 -- Table structure for `class`
@@ -153,11 +153,18 @@ CREATE TABLE `class` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `class_name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of class
 -- ----------------------------
+INSERT INTO `class` VALUES ('1', '小班一班');
+INSERT INTO `class` VALUES ('2', '小班二班');
+INSERT INTO `class` VALUES ('3', '小班三班');
+INSERT INTO `class` VALUES ('4', '中班一班');
+INSERT INTO `class` VALUES ('5', '中班二班');
+INSERT INTO `class` VALUES ('6', '大班一班');
+INSERT INTO `class` VALUES ('7', '大班二班');
 
 -- ----------------------------
 -- Table structure for `contact_remark`
@@ -379,13 +386,48 @@ CREATE TABLE `school_semester` (
   `day_num` smallint(6) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of school_semester
 -- ----------------------------
 INSERT INTO `school_semester` VALUES ('2', '25', '1');
 INSERT INTO `school_semester` VALUES ('1', '25', '2');
+INSERT INTO `school_semester` VALUES ('3', '25', '3');
+
+-- ----------------------------
+-- Table structure for `students`
+-- ----------------------------
+DROP TABLE IF EXISTS `students`;
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userNumber` varchar(11) NOT NULL,
+  `babyName` varchar(255) NOT NULL,
+  `babyClass` varchar(255) NOT NULL,
+  `babyBirthday` varchar(255) NOT NULL,
+  `babySex` varchar(255) NOT NULL,
+  `babyIDnumber` varchar(255) NOT NULL,
+  `babyAddoAllergies` varchar(255) NOT NULL,
+  `parentName1` varchar(255) NOT NULL,
+  `relation1` varchar(255) NOT NULL,
+  `parentIDnumber1` varchar(255) NOT NULL,
+  `phoneNumber1` varchar(255) NOT NULL,
+  `workSpace1` varchar(255) NOT NULL,
+  `homeAddress1` varchar(255) NOT NULL,
+  `parentName2` varchar(255) DEFAULT NULL,
+  `relation2` varchar(255) DEFAULT NULL,
+  `parentIDnumber2` varchar(255) DEFAULT NULL,
+  `phoneNumber2` varchar(255) DEFAULT NULL,
+  `workSpace2` varchar(255) DEFAULT NULL,
+  `homeAddress2` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of students
+-- ----------------------------
+INSERT INTO `students` VALUES ('1', '18831166551', '天天', '大班一班', '1', '男', '610526200008160721', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `students` VALUES ('2', '18831166551', '花花', '小班二班', '2', '女', '610526199908160721', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2', '2');
 
 -- ----------------------------
 -- Table structure for `teacher`

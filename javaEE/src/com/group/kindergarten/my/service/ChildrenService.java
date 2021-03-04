@@ -73,9 +73,50 @@ public class ChildrenService {
 	 * @param idNum
 	 * @return
 	 */
+	public boolean searchNameAndId(String name, String idNum, String sClass) {
+		boolean b=childrenDao.searchNameAndId(name, idNum, sClass);
+		
+		return b;
+	}
+	
+	/**
+	 * 判断孩子名字与身份证号是否吻合
+	 * @param name
+	 * @param idNum
+	 * @return
+	 */
 	public boolean searchNameAndId(String name, String idNum) {
 		boolean b=childrenDao.searchNameAndId(name, idNum);
 		
 		return b;
+	}
+	
+	
+	/**
+	 * 判断用户输入的原密码是否正确
+	 * 
+	 * @param phone
+	 * @param password
+	 * @return
+	 */
+	public boolean isExistUser(String phone, String password) {
+		
+		return childrenDao.isExistUser(phone, password);
+	}
+	
+	
+	public boolean updatePwd(String phone,String password) {
+		
+		return childrenDao.updatePwd(phone, password);
+	}
+	
+	/**
+	 * 从数据库中获取所有的班级信息
+	 * @return
+	 */
+	public List<String> searchClassInfo(){
+		List<String> list=childrenDao.searchClassInfo();
+		
+		return list;
 	}
 }

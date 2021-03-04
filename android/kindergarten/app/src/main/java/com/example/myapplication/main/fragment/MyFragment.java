@@ -180,7 +180,7 @@ public class MyFragment extends Fragment {
         FormBody formBody = builder.build();
         Request request = new Request.Builder()
                 .post(formBody)
-                .url(ConfigUtil.SERVICE_ADDRESS + "GetUserParentMsgServlet")
+                .url(ConfigUtil.SERVICE_ADDRESS + "GetUserMsgServlet")
                 .build();
         Call call = new OkHttpClient().newCall(request);
         call.enqueue(new Callback() {

@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50701
+Source Server Version : 50506
 Source Host           : localhost:3306
 Source Database       : kindergarten
 
 Target Server Type    : MYSQL
-Target Server Version : 50701
+Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-03-03 20:25:02
+Date: 2021-03-04 18:45:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -143,7 +143,7 @@ CREATE TABLE `child_attendence` (
 -- ----------------------------
 -- Records of child_attendence
 -- ----------------------------
-INSERT INTO `child_attendence` VALUES ('1', '18831166551', '8', '22', '0');
+INSERT INTO `child_attendence` VALUES ('1', '18831166551', '8', '25', '0');
 
 -- ----------------------------
 -- Table structure for `class`
@@ -525,39 +525,3 @@ INSERT INTO `user` VALUES ('1', '18831166551', '7777777', '七道', 'user_defaul
 INSERT INTO `user` VALUES ('2', '18831166552', '77777772', 'user', 'user_default.png', '0');
 INSERT INTO `user` VALUES ('3', '18831166553', '77777773', 'user3', 'user_default.png', '0');
 INSERT INTO `user` VALUES ('4', '18831166554', '77777774', 'user4', 'user_default.png', '1');
-
--- ----------------------------
--- Table structure for `user_parent`
--- ----------------------------
-DROP TABLE IF EXISTS `user_parent`;
-CREATE TABLE `user_parent` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` char(11) NOT NULL,
-  `password` varchar(15) NOT NULL,
-  `nickname` varchar(20) NOT NULL,
-  `avatar` varchar(20) DEFAULT 'user_default.png',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of user_parent
--- ----------------------------
-INSERT INTO `user_parent` VALUES ('1', '18831166551', '7777777', '七道', 'user_default.png');
-INSERT INTO `user_parent` VALUES ('2', '18831166552', '77777772', '七道二', 'user_default.png');
-
--- ----------------------------
--- Table structure for `user_teacher`
--- ----------------------------
-DROP TABLE IF EXISTS `user_teacher`;
-CREATE TABLE `user_teacher` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` char(11) NOT NULL,
-  `password` varchar(15) NOT NULL,
-  `nickname` varchar(20) NOT NULL,
-  `avatar` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of user_teacher
--- ----------------------------

@@ -56,7 +56,7 @@
                         <li onclick="showMenu_info5()" id="account_info"><a href="SearchClassTime">查看本学期上课时间</a></li>
 					</ul>
 					<li id="student" onclick="showStudentMenu()"><a>学生信息管理</a><img
-			            src="imgs/home/xiala.png" id="xiala2"></li>
+			            src="imgs/home/xiala.png" id="xiala6"></li>
 			        <ul class="student_menu" id="click_student_menu" style="display: block">
 			            <li onclick="showMenu_info6()" id="student_info" style="background: #009688"><a
 			                href="StudentsManageServlet">查看学生信息</a></li>

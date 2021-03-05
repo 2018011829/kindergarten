@@ -17,6 +17,11 @@ function showUserMenu() {
 	var xiala4 = document.getElementById("xiala4");
 	var accountMenu = document.getElementById("click_account_menu");
 	var xiala5 = document.getElementById("xiala5");
+	var studentMenu = document.getElementById("click_student_menu");
+	var xiala6 = document.getElementById("xiala6");
+	studentMenu.style.visibility = "hidden";
+	studentMenu.style.display = "none";
+	xiala6.src = "imgs/home/xiala.png";
 	accountMenu.style.visibility = "hidden";
 	accountMenu.style.display = "none";
 	xiala5.src = "imgs/home/xiala.png";
@@ -53,6 +58,11 @@ function showEnrollMenu() {
 	var xiala4 = document.getElementById("xiala4");
 	var accountMenu = document.getElementById("click_account_menu");
 	var xiala5 = document.getElementById("xiala5");
+	var studentMenu = document.getElementById("click_student_menu");
+	var xiala6 = document.getElementById("xiala6");
+	studentMenu.style.visibility = "hidden";
+	studentMenu.style.display = "none";
+	xiala6.src = "imgs/home/xiala.png";
 	accountMenu.style.visibility = "hidden";
 	accountMenu.style.display = "none";
 	xiala5.src = "imgs/home/xiala.png";
@@ -89,6 +99,11 @@ function showIntroduceMenu() {
 	var xiala4 = document.getElementById("xiala4");
 	var accountMenu = document.getElementById("click_account_menu");
 	var xiala5 = document.getElementById("xiala5");
+	var studentMenu = document.getElementById("click_student_menu");
+	var xiala6 = document.getElementById("xiala6");
+	studentMenu.style.visibility = "hidden";
+	studentMenu.style.display = "none";
+	xiala6.src = "imgs/home/xiala.png";
 	accountMenu.style.visibility = "hidden";
 	accountMenu.style.display = "none";
 	xiala5.src = "imgs/home/xiala.png";
@@ -124,6 +139,11 @@ function showTeacherMenu() {
 	var xiala4 = document.getElementById("xiala3");
 	var accountMenu = document.getElementById("click_account_menu");
 	var xiala5 = document.getElementById("xiala5");
+	var studentMenu = document.getElementById("click_student_menu");
+	var xiala6 = document.getElementById("xiala6");
+	studentMenu.style.visibility = "hidden";
+	studentMenu.style.display = "none";
+	xiala6.src = "imgs/home/xiala.png";
 	accountMenu.style.visibility = "hidden";
 	accountMenu.style.display = "none";
 	xiala5.src = "imgs/home/xiala.png";
@@ -159,6 +179,11 @@ function showAccountMenu() {
 	var xiala4 = document.getElementById("xiala3");
 	var teacherMenu = document.getElementById("click_teacher_menu");
 	var xiala5 = document.getElementById("xiala4");
+	var studentMenu = document.getElementById("click_student_menu");
+	var xiala6 = document.getElementById("xiala6");
+	studentMenu.style.visibility = "hidden";
+	studentMenu.style.display = "none";
+	xiala6.src = "imgs/home/xiala.png";
 	userMenu.style.visibility = "hidden";
 	userMenu.style.display = "none";
 	xiala2.src = "imgs/home/xiala.png";
@@ -179,6 +204,47 @@ function showAccountMenu() {
 	} else {
 		accountMenu.style.visibility = "hidden";
 		accountMenu.style.display = "none";
+		xiala.src = "imgs/home/xiala.png";
+	}
+}
+function showStudentMenu() {
+	var student = document.getElementById("student");
+	var userMenu = document.getElementById("click_user_menu");
+	var enroll = document.getElementById("enroll");
+	var xiala = document.getElementById("xiala6");
+	var enrollMenu = document.getElementById("click_enroll_menu");
+	var xiala2 = document.getElementById("xiala2");
+	var introduceMenu = document.getElementById("click_introduce_menu");
+	var xiala3 = document.getElementById("xiala3");
+	var teacherMenu = document.getElementById("click_teacher_menu");
+	var xiala4 = document.getElementById("xiala4");
+	var accountMenu = document.getElementById("click_account_menu");
+	var xiala5 = document.getElementById("xiala5");
+	var studentMenu = document.getElementById("click_student_menu");
+	var xiala6 = document.getElementById("xiala1");
+	userMenu.style.visibility = "hidden";
+	userMenu.style.display = "none";
+	xiala6.src = "imgs/home/xiala.png";
+	accountMenu.style.visibility = "hidden";
+	accountMenu.style.display = "none";
+	xiala5.src = "imgs/home/xiala.png";
+	enrollMenu.style.visibility = "hidden";
+	enrollMenu.style.display = "none";
+	xiala2.src = "imgs/home/xiala.png";
+	introduceMenu.style.visibility = "hidden";
+	introduceMenu.style.display = "none";
+	xiala3.src = "imgs/home/xiala.png";
+	teacherMenu.style.visibility = "hidden";
+	teacherMenu.style.display = "none";
+	xiala4.src = "imgs/home/xiala.png";
+	g("student");
+	if (studentMenu.style.display == "none") {
+		studentMenu.style.visibility = "visible";
+		studentMenu.style.display = "inline-block";
+		xiala.src = "imgs/home/shangla.png";
+	} else {
+		studentMenu.style.visibility = "hidden";
+		studentMenu.style.display = "none";
 		xiala.src = "imgs/home/xiala.png";
 	}
 }
@@ -397,6 +463,37 @@ function showMenu_info5() {
 	accountMenu.style.visibility = "visible";
 	accountMenu.style.display = "inline-block";
 	g("account_info");
+}
+function showMenu_info6() {
+	var studentMenu = document.getElementById("click_student_menu");
+	var userMenu = document.getElementById("click_user_menu");
+	var xiala2 = document.getElementById("xiala1");
+	var enrollMenu = document.getElementById("click_enroll_menu");
+	var xiala3 = document.getElementById("xiala2");
+	var introduceMenu = document.getElementById("click_introduce_menu");
+	var xiala4 = document.getElementById("xiala3");
+	var teacherMenu = document.getElementById("click_teacher_menu");
+	var xiala5 = document.getElementById("xiala4");
+	var accountMenu = document.getElementById("click_account_menu");
+	var xiala6 = document.getElementById("xiala5");
+	userMenu.style.visibility = "hidden";
+	userMenu.style.display = "none";
+	xiala2.src = "imgs/home/xiala.png";
+	enrollMenu.style.visibility = "hidden";
+	enrollMenu.style.display = "none";
+	xiala3.src = "imgs/home/xiala.png";
+	introduceMenu.style.visibility = "hidden";
+	introduceMenu.style.display = "none";
+	xiala4.src = "imgs/home/xiala.png";
+	teacherMenu.style.visibility = "hidden";
+	teacherMenu.style.display = "none";
+	xiala5.src = "imgs/home/xiala.png";
+	accountMenu.style.visibility = "hidden";
+	accountMenu.style.display = "none";
+	xiala6.src = "imgs/home/xiala.png";
+	studentMenu.style.visibility = "visible";
+	studentMenu.style.display = "inline-block";
+	g("student_info");
 }
 function g(x) {
 	d = document.getElementsByTagName('li')

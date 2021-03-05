@@ -51,11 +51,11 @@
 			<li onclick="showMenu_info5()" id="account_info"><a
 				href="ChargeManagerServlet" class="jump">查看收款码信息</a></li>
 		</ul>
-		<li id="enroll" onclick="showEnrollMenu()"><a>学生信息管理</a><img
+		<li id="student" onclick="showStudentMenu()"><a>学生信息管理</a><img
             src="imgs/home/xiala.png" id="xiala2"></li>
-        <ul class="enroll_menu" id="click_enroll_menu" style="display: none">
-            <li onclick="showMenu_info2()" id="enroll_info"><a
-                href="GetApplyInfoServlet">查看学生信息</a></li>
+        <ul class="student_menu" id="click_student_menu" style="display: none">
+            <li onclick="showMenu_info6()" id="student_info"><a
+                href="StudentsManageServlet">查看学生信息</a></li>
         </ul>
 	</ul>
 

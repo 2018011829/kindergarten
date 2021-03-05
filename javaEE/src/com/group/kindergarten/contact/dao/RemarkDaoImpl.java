@@ -58,6 +58,31 @@ public class RemarkDaoImpl {
 		return b;
 	}
 	
+	/**
+	 * 删除好友
+	 * @param fromUser
+	 * @param toUser
+	 * @return
+	 */
+	public boolean delRemark(int fromUser, int toUser) {
+		boolean b = false;
+
+		try {
+			preparedStatement = connection
+					.prepareStatement("delete from contact_remark where from_user=? and to_user=?");
+			preparedStatement.setInt(1, fromUser);
+			preparedStatement.setInt(2, toUser);
+			int rows = preparedStatement.executeUpdate();
+			if (rows > 0) {
+				b = true;
+				System.out.println(fromUser+"删除"+toUser+"成功");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return b;
+	}
 	
 	/**
 	 * 获取联系人列表
@@ -100,5 +125,7 @@ public class RemarkDaoImpl {
 		}
 		return lcChatKitUsers;
 	}
+	
+	 
 
 }

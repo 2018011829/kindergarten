@@ -135,6 +135,33 @@ public class UserDaoImpl {
 		return user;
 
 	}
+	
+	/**
+	 * 返回某个用户的信息
+	 * 
+	 * @param id 根据号码查找该用户
+	 * @return User对象
+	 */
+	public User selectOneUserById(int id) {
+		User user = new User();
+		String sql = "select * from user where id=?";
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			user.setId(resultSet.getInt(1));
+			user.setPhone(resultSet.getString(2));
+			user.setPassword(resultSet.getString(3));
+			user.setNickname(resultSet.getString(4));
+			user.setAvatar(resultSet.getString(5));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+
+	}
 
 	/**
 	 * 分页查询 查询所有的父母信息，用于向后台管理系统展示

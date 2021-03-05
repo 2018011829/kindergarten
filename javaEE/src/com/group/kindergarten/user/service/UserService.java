@@ -83,6 +83,14 @@ public class UserService {
 	public String getOneUserInfo(String phone) {
 		return new Gson().toJson(userDao.selectOneUser(phone));
 	}
+	/**
+	 * 返回用户信息
+	 * @param id
+	 * @return
+	 */
+	public String getOneUserInfoById(int id) {
+		return new Gson().toJson(userDao.selectOneUserById(id));
+	}
 
 	public String searchUsersByPhone(String query) {
 		return new Gson().toJson(userDao.queryUsersByPhone(query));

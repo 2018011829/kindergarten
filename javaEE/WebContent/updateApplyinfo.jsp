@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,24 +89,30 @@
 	<form action="UpdateApplyinfoServlet?page=<%=page2%>" method="post">
 		<a style="color:green;font-size:25px">幼儿信息</a><br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID：<input type="text" name="id" value="<%=id%>" readonly="readonly"><br>
-		报名电话：<input type="text" name="userNumber" value="<%=userNumber%>"><br>
-		宝宝姓名：<input type="text" name="babyName" value="<%=babyName%>"><br>
-		出生日期：<input type="text" name="babyBirthday" value="<%=babyBirthday%>"><br>
-		宝宝性别：<input type="text" name="babySex" value="<%=babySex%>"><br>
-		身份证号：<input type="text" name="babyIDnumber" value="<%=babyIDnumber%>"><br>
-		过敏食物：<input type="text" name="babyAddoAllergies" value="<%=babyAddoAllergies%>"><br><br>
+		报名电话：<input type="text" name="userNumber" value="<%=userNumber%>" required="required" pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" 
+		title="请输入正确的手机号"><br>
+		宝宝姓名：<input type="text" name="babyName" value="<%=babyName%>" required="required"><br>
+		出生日期：<input type="text" name="babyBirthday" value="<%=babyBirthday%>" required="required" placeholder="xxxx年xx月xx日"><br>
+		宝宝性别：<input type="text" name="babySex" value="<%=babySex%>" required="required"><br>
+		身份证号：<input type="text" name="babyIDnumber" value="<%=babyIDnumber%>" required="required" pattern="^[1-9]\d{5}[1-9]\d{3}((0[1-9])|(1[0-2]))((0[1-9])|([1-2]\d)|(3[0-1]))((\d{4})|(\d{3}[Xx]))$" 
+		title="请输入正确的身份证号"><br>
+		过敏食物：<input type="text" name="babyAddoAllergies" value="<%=babyAddoAllergies%>" required="required" placeholder="若没有请填写'无'" ><br><br>
 		<a style="color:green;font-size:25px">家长信息1</a><br>
-		家长姓名：<input type="text" name="parentName1" value="<%=parentName1%>"><br>
-		与宝宝关系：<input type="text" name="relation1" value="<%=relation1%>">&nbsp;&nbsp;&nbsp;<br>
-		身份证号：<input type="text" name="parentIDnumber1" value="<%=parentIDnumber1%>"><br>
-		联系方式：<input type="text" name="phoneNumber1" value="<%=phoneNumber1%>"><br>
-		工作单位：<input type="text" name="workSpace1" value="<%=workSpace1%>"><br>
-		家庭住址：<input type="text" name="homeAddress1" value="<%=homeAddress1%>"><br><br>
+		家长姓名：<input type="text" name="parentName1" value="<%=parentName1%>" required="required"><br>
+		与宝宝关系：<input type="text" name="relation1" value="<%=relation1%>" required="required">&nbsp;&nbsp;&nbsp;<br>
+		身份证号：<input type="text" name="parentIDnumber1" value="<%=parentIDnumber1%>" required="required" pattern="^[1-9]\d{5}[1-9]\d{3}((0[1-9])|(1[0-2]))((0[1-9])|([1-2]\d)|(3[0-1]))((\d{4})|(\d{3}[Xx]))$" 
+		title="请输入正确的身份证号"><br>
+		联系方式：<input type="text" name="phoneNumber1" value="<%=phoneNumber1%>" required="required" pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" 
+		title="请输入正确的手机号"><br>
+		工作单位：<input type="text" name="workSpace1" value="<%=workSpace1%>" required="required"><br>
+		家庭住址：<input type="text" name="homeAddress1" value="<%=homeAddress1%>" required="required"><br><br>
 		<a style="color:green;font-size:25px">家长信息2(选填)</a><br>
 		家长姓名：<input type="text" name="parentName2" value="<%=parentName2%>"><br>
 		与宝宝关系：<input type="text" name="relation2" value="<%=relation2%>">&nbsp;&nbsp;&nbsp;<br>
-		身份证号：<input type="text" name="parentIDnumber2" value="<%=parentIDnumber2%>"><br>
-		联系方式：<input type="text" name="phoneNumber2" value="<%=phoneNumber2%>"><br>
+		身份证号：<input type="text" name="parentIDnumber2" value="<%=parentIDnumber2%>"  pattern="^[1-9]\d{5}[1-9]\d{3}((0[1-9])|(1[0-2]))((0[1-9])|([1-2]\d)|(3[0-1]))((\d{4})|(\d{3}[Xx]))$" 
+		title="请输入正确的身份证号"><br>
+		联系方式：<input type="text" name="phoneNumber2" value="<%=phoneNumber2%>"  pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" 
+		title="请输入正确的手机号"><br>
 		工作单位：<input type="text" name="workSpace2" value="<%=workSpace2%>"><br>
 		家庭住址：<input type="text" name="homeAddress2" value="<%=homeAddress2%>"><br><br>
 		<input type="submit" value="提交" id="submitSearch">

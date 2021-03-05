@@ -76,28 +76,34 @@
 	<div style="padding-top:100px;margin-bottom:20px;margin-left:260px;text-align:center">
 	<form action="AddChildEnterInformationServlet2">
 		<a style="color:green;font-size:25px">幼儿信息</a><br>
-		报名电话：<input type="text" name="userNumber"><br>
-		宝宝姓名：<input type="text" name="babyName"><br>
-		出生日期：<input type="text" name="babyBirthday" placeholder="xxxx年xx月xx日"><br>
-		宝宝性别：&nbsp;&nbsp;&nbsp;&nbsp;
+		报名电话：<input type="text" name="userNumber" required="required" pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" 
+		title="请输入正确的手机号"><br>
+		宝宝姓名：<input type="text" name="babyName" required="required"><br>
+		出生日期：<input type="text" name="babyBirthday" placeholder="xxxx年xx月xx日" required="required"><br>
+		宝宝性别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="radio" name="babySex" value="男">男
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="radio" name="babySex" value="女">女
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-		身份证号：<input type="text" name="babyIDnumber"><br>
-		过敏食物：<input type="text" name="babyAddoAllergies"><br><br>
+		身份证号：<input type="text" name="babyIDnumber" required="required" pattern="^[1-9]\d{5}[1-9]\d{3}((0[1-9])|(1[0-2]))((0[1-9])|([1-2]\d)|(3[0-1]))((\d{4})|(\d{3}[Xx]))$" 
+		title="请输入正确的身份证号"><br>
+		过敏食物：<input type="text" name="babyAddoAllergies" required="required" placeholder="若没有请填写'无'" ><br><br>
 		<a style="color:green;font-size:25px">家长信息1</a><br>
-		家长姓名：<input type="text" name="parentName1"><br>
-		与宝宝关系：<input type="text" name="relation1">&nbsp;&nbsp;&nbsp;<br>
-		身份证号：<input type="text" name="parentIDnumber1"><br>
-		联系方式：<input type="text" name="phoneNumber1"><br>
-		工作单位：<input type="text" name="workSpace1"><br>
-		家庭住址：<input type="text" name="homeAddress1"><br><br>
+		家长姓名：<input type="text" name="parentName1" required="required"><br>
+		与宝宝关系：<input type="text" name="relation1" required="required">&nbsp;&nbsp;&nbsp;<br>
+		身份证号：<input type="text" name="parentIDnumber1" required="required" pattern="^[1-9]\d{5}[1-9]\d{3}((0[1-9])|(1[0-2]))((0[1-9])|([1-2]\d)|(3[0-1]))((\d{4})|(\d{3}[Xx]))$" 
+		title="请输入正确的身份证号"><br>
+		联系方式：<input type="text" name="phoneNumber1" required="required" pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" 
+		title="请输入正确的手机号"><br>
+		工作单位：<input type="text" name="workSpace1" required="required"><br>
+		家庭住址：<input type="text" name="homeAddress1" required="required"><br><br>
 		<a style="color:green;font-size:25px">家长信息2(选填)</a><br>
 		家长姓名：<input type="text" name="parentName2"><br>
 		与宝宝关系：<input type="text" name="relation2">&nbsp;&nbsp;&nbsp;<br>
-		身份证号：<input type="text" name="parentIDnumber2"><br>
-		联系方式：<input type="text" name="phoneNumber2"><br>
+		身份证号：<input type="text" name="parentIDnumber2" pattern="^[1-9]\d{5}[1-9]\d{3}((0[1-9])|(1[0-2]))((0[1-9])|([1-2]\d)|(3[0-1]))((\d{4})|(\d{3}[Xx]))$" 
+		title="请输入正确的身份证号"><br>
+		联系方式：<input type="text" name="phoneNumber2" pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" 
+		title="请输入正确的手机号"><br>
 		工作单位：<input type="text" name="workSpace2"><br>
 		家庭住址：<input type="text" name="homeAddress2"><br><br>
 		<input type="submit" value="提交" id="submitSearch">

@@ -1,5 +1,6 @@
 package com.example.myapplication.main.activity.my;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.example.myapplication.login.LoginByPasswordActivity;
 import com.example.myapplication.main.util.ConfigUtil;
 
 import org.jetbrains.annotations.NotNull;
@@ -40,6 +42,7 @@ public class EditorPasswordActivity extends AppCompatActivity implements View.On
                     String rs = msg.obj.toString();
                     if(rs.equals("success")){
                         Toast.makeText(EditorPasswordActivity.this, "密码修改成功！", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(EditorPasswordActivity.this, LoginByPasswordActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
                     }else if(rs.equals("failure1")){
                         Toast.makeText(EditorPasswordActivity.this, "原密码不正确！", Toast.LENGTH_LONG).show();
                     }else{

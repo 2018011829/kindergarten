@@ -23,8 +23,10 @@
 
             <div id="login_control">
                 <input type="submit" id="btn_login" value="登录"/><br>
+                <!-- 
                 <a id="forget_pwd" href="forgetPwd.jsp">忘记密码？</a>&nbsp&nbsp&nbsp
-                <a id="forget_pwd" href="register.jsp">注册</a><br>
+                <a id="forget_pwd" href="register.jsp">注册</a><br> 
+                -->
                 <div style="color:#990033;font-size: 14px;margin-top:10px">${errorInfo }</div>
             </div>
         </form>

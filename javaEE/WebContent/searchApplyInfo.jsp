@@ -72,7 +72,7 @@
 		</div>
 		<div class="box1" style="height:150px;">
 			<form action="SearchApplyInfoServlet" method="post">
-				<input type="text" name="teacherName" placeholder="请输入孩子的姓氏或名字"
+				<input type="text" name="msg" placeholder="请输入孩子的姓氏或名字"
 					id="inputName" /> <input type="submit" value="点击搜索"
 					id="submitSearch">
 			</form>
@@ -125,13 +125,13 @@
 								<td>${applyInfo.getWorkSpace2() }</td>
 								<td>${applyInfo.getHomeAddress2()}</td>
 								<td><a
-									href="updateApplyinfo.jsp?page=${page.currentPageNum }&id=${applyInfo.getId() }&babyName=${applyInfo.getBabyName()}&babyBirthday=${applyInfo.getBabyBirthday() }&babySex=${applyInfo.getBabySex()}&babyIDnumber=${applyInfo.getBabyIDnumber()}&babyAddoAllergies=${applyInfo.getBabyAddoAllergies()}&
+									href="updateApplyinfo2.jsp?msg=${msg }&page=${page.currentPageNum }&id=${applyInfo.getId() }&babyName=${applyInfo.getBabyName()}&babyBirthday=${applyInfo.getBabyBirthday() }&babySex=${applyInfo.getBabySex()}&babyIDnumber=${applyInfo.getBabyIDnumber()}&babyAddoAllergies=${applyInfo.getBabyAddoAllergies()}&
 									parentName1=${applyInfo.getParentName1()}&relation1=${applyInfo.getRelation1()}&parentIDnumber1=${applyInfo.getParentIDnumber1()}&phoneNumber1=${applyInfo.getPhoneNumber1()}&workSpace1=${applyInfo.getWorkSpace1()}&homeAddress1=${applyInfo.getHomeAddress1()}&userNumber=${applyInfo.getUserNumber()}&
 									parentName2=${applyInfo.getParentName2()}&relation2=${applyInfo.getRelation2()}&parentIDnumber2=${applyInfo.getParentIDnumber2()}&phoneNumber2=${applyInfo.getPhoneNumber2()}&workSpace2=${applyInfo.getWorkSpace2()}&homeAddress2=${applyInfo.getHomeAddress2()}"> <img alt=""
 										src="imgs/updateTeacher.png"
 										style="width: 22px; height: 22px;">
 									</a> 
-									<a href="DeleteApplyinfoServlet?id=${applyInfo.getId() }&page=${page.currentPageNum }&size=${page.pageSize }&count=${page.totalCount }"
+									<a href="DeleteApplyinfoServlet2?msg=${msg }&id=${applyInfo.getId() }&page=${page.currentPageNum }&size=${page.pageSize }&count=${page.totalCount }"
 									> <img alt=""
 											src="imgs/deleteTeacher.png"
 											style="width: 22px; height: 22px;">

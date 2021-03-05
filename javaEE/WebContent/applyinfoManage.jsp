@@ -70,6 +70,8 @@
 				</ul>
 			</div>
 		</div>
+	
+		
 		<div class="box1" style="height:150px;">
 			<form action="SearchApplyInfoServlet" method="post">
 				<input type="text" name="msg" placeholder="请输入孩子的姓氏或名字"

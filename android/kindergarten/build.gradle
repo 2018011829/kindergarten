@@ -5,6 +5,7 @@ buildscript {
         jcenter()
         //BufferKnife依赖
         mavenCentral()
+        maven { url 'https://maven.google.com' }
         //mob
         maven{url "http://mvn.mob.com/android"}
     }
@@ -23,6 +24,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url 'https://maven.google.com' }
         maven { url 'https://jitpack.io' }
     }
 }

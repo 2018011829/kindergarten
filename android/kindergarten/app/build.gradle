@@ -15,6 +15,11 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "com.example.myapplication"
         applicationId "cn.leancloud.imkitapplication"

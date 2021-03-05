@@ -18,7 +18,7 @@
             android:text="用户注册"
             android:textSize="35sp"
             android:gravity="center"
-            android:textColor="@color/theme"
+            android:textColor="@color/orange_light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <LinearLayout
@@ -27,6 +27,7 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/linear_center_border"
             >
             <ImageView
                 android:src="@drawable/identify"
@@ -34,7 +35,7 @@
                 android:layout_height="25dp"
                 android:layout_marginLeft="10dp"/>
             <ImageView
-                android:src="@drawable/part_blue"
+                android:src="@drawable/part"
                 android:layout_width="20dp"
                 android:layout_height="25dp"/>
             <RadioGroup
@@ -49,7 +50,7 @@
                     android:checked="true"
                     android:text="家长"
                     android:textSize="20sp"
-                    android:textColor="@color/theme"/>
+                    android:textColor="@color/white"/>
                 <RadioButton
                     android:id="@+id/rb_teacher"
                     android:layout_width="match_parent"
@@ -57,7 +58,7 @@
                     android:paddingRight="20dp"
                     android:text="教师"
                     android:textSize="20sp"
-                    android:textColor="@color/theme"/>
+                    android:textColor="@color/white"/>
             </RadioGroup>
 
         </LinearLayout>
@@ -153,7 +154,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="验证码登录？"
-                android:textColor="@color/theme"
+                android:textColor="@color/orange_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"/>
@@ -164,7 +165,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="密码登录？"
-                android:textColor="@color/theme"
+                android:textColor="@color/orange_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"/>

@@ -12,14 +12,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <RelativeLayout
+            android:background="#5ab9ff"
+            android:id="@+id/apply_them"
+            android:paddingTop="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="幼儿园简介"
-            android:textSize="20dp" />
+            android:layout_height="60dp">
 
+            <ImageView
+                android:id="@+id/return_parent"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_return" />
+            <TextView
+                android:text="幼儿园简介"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="#000000"/>
+        </RelativeLayout>
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:background="@drawable/apply_inside_blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,25 +1,28 @@
-package com.group.kindergarten.parent.servlet;
+package com.group.kindergarten.my.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.group.kindergarten.parent.service.UserParentService;
+import com.google.gson.Gson;
+import com.group.kindergarten.my.service.ChildrenService;
 
 /**
- * Servlet implementation class LoginByPhoneNumServlet
+ * Servlet implementation class SearchClassInfoServlet
  */
-@WebServlet("/ParentLoginByPhoneNumServlet")
-public class ParentLoginByPhoneNumServlet extends HttpServlet {
+@WebServlet("/SearchClassInfoServlet")
+public class SearchClassInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ParentLoginByPhoneNumServlet() {
+	public SearchClassInfoServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -30,21 +33,17 @@ public class ParentLoginByPhoneNumServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 设置编码方式
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		// 得到手机号码
-		String phone = request.getParameter("phone");
-		System.out.println(phone);
-		// 查找手机号是否已经注册
-		UserParentService parentService = UserParentService.getInstance();
-		boolean b = parentService.isExistPhone(phone);
-		if (b) {
-			response.getWriter().write("success");
-			System.out.println("手机号已经注册：" + phone);
-		} else {
-			response.getWriter().write("faliure");
-			System.out.println("手机号还未注册：" + phone);
+		// 设置编码
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		//从数据库中获取班级信息
+		List<String> list=ChildrenService.getInstance().searchClassInfo();
+		//将信息发送给服务端
+		if(list!=null && list.size()!=0) {
+			String gsonStr=new Gson().toJson(list);
+			response.getWriter().write(gsonStr);
+		}else {
+			System.out.println("班级信息为空！");
 		}
 	}
 

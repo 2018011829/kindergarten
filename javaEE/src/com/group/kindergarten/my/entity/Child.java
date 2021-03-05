@@ -10,7 +10,7 @@ public class Child {
 	private String grade;
 	private String sex;
 	private String parentPhone;
-	
+	private String sClass;
 	
 	public int getId() {
 		return id;
@@ -43,15 +43,15 @@ public class Child {
 	public void setParentPhone(String parentPhone) {
 		this.parentPhone = parentPhone;
 	}
+	public String getsClass() {
+		return sClass;
+	}
+	public void setsClass(String sClass) {
+		this.sClass = sClass;
+	}
 	@Override
 	public String toString() {
 		return "Child [id=" + id + ", name=" + name + ", grade=" + grade + ", sex=" + sex + ", parentPhone="
-				+ parentPhone + "]";
+				+ parentPhone + ", sClass=" + sClass + "]";
 	}
-	
-	
-	
-	
-	
-	
 }

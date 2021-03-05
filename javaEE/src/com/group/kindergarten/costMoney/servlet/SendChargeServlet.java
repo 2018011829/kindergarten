@@ -1,4 +1,4 @@
-package com.group.kindergarten.parent.servlet;
+package com.group.kindergarten.costMoney.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,25 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.group.kindergarten.my.entity.Child;
-import com.group.kindergarten.my.service.ChildrenService;
-import com.group.kindergarten.parent.entity.UserParent;
-import com.group.kindergarten.parent.service.UserParentService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.group.kindergarten.costMoney.entity.Charge;
+import com.group.kindergarten.costMoney.service.CostMoneyService;
 
 /**
- * Servlet implementation class GetUserMsgServlet
+ * Servlet implementation class SendChargeServlet
  */
-@WebServlet("/GetUserParentMsgServlet")
-public class GetUserParentMsgServlet extends HttpServlet {
+@WebServlet("/SendChargeServlet")
+public class SendChargeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	// 定义Gson对象属性
+	private Gson gson;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public GetUserParentMsgServlet() {
+	public SendChargeServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -39,18 +38,25 @@ public class GetUserParentMsgServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String phone = request.getParameter("phone");
-		System.out.println("手机号" + phone);
+		// 初始化json
+		initGson();
+		List<Charge> charges = CostMoneyService.getInstance().findCharge();
+		// 序列化
+		String json = gson.toJson(charges);
+		// 获取网络输出流，并将图片的网络资源路径返回给客户端
+		System.out.println(json);
+		response.getWriter().write(json);
+	}
 
-		String json = UserParentService.getInstance().getOneParentInfo(phone);
-		if (json != null) {
-			response.getWriter().write(json);
-			System.out.println("用户信息"+json);
-
-		} else {
-			response.getWriter().write("查询用户信息出错");
-			System.out.println("查询用户信息出错");
-		}
+	/**
+	 * 初始化Gson对象
+	 */
+	private void initGson() {
+		gson = new GsonBuilder()// 创建GsonBuilder对象
+				.setPrettyPrinting()// 格式化输出
+				.serializeNulls()// 允许输出Null值属性
+				.setDateFormat("YY:MM:dd")// 日期格式化
+				.create();// 创建Gson对象
 	}
 
 	/**

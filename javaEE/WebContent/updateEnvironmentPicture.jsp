@@ -31,18 +31,12 @@
 						<li onclick="showMenu_add2()" id="enroll_info_add"><a
 							href="addApplyinfo.jsp">新增报名信息</a></li>
 					</ul>
-					<li id="enroll" onclick="showEnrollMenu()"><a>学生信息管理</a><img
-						src="imgs/home/xiala.png" id="xiala2"></li>
-					<ul class="enroll_menu" id="click_enroll_menu" style="display: none">
-						<li onclick="showMenu_info2()" id="enroll_info"><a
-							href="GetApplyInfoServlet">查看学生信息</a></li>
-					</ul>
 					<li id="introduce" onclick="showIntroduceMenu()"><a>学校简介信息管理</a>
 						<img src="imgs/home/xiala.png" id="xiala3"></li>
 					<ul class="introduce_menu" id="click_introduce_menu"
 						style="display: block">
-						<li onclick="showMenu_info3()" id="introduce_info"><a
-							href="DescriptionManageServlet" style="background: #009688">学校简介</a></li>
+						<li onclick="showMenu_info3()" id="introduce_info" style="background: #009688"><a
+							href="DescriptionManageServlet">学校简介</a></li>
 						<li onclick="showMenu_add3()" id="introduce_add"><a
 							href="addEnvironmentPicture.jsp">新增学校信息</a></li>
 					</ul>
@@ -64,6 +58,12 @@
 						<li onclick="showMenu_info5()" id="account_info"><a
 							href="ChargeManagerServlet">查看收款码信息</a></li>
 					</ul>
+					<li id="student" onclick="showStudentMenu()"><a>学生信息管理</a><img
+			            src="imgs/home/xiala.png" id="xiala2"></li>
+			        <ul class="student_menu" id="click_student_menu" style="display: none">
+			            <li onclick="showMenu_info6()" id="student_info"><a
+			                href="StudentsManageServlet">查看学生信息</a></li>
+			        </ul>
 				</ul>
 			</div>
 			<div id="schoolInfo">

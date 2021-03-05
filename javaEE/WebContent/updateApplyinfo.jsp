@@ -27,8 +27,8 @@
                     <ul class="enroll_menu" id="click_enroll_menu"
                         style="display: block">
                         <li onclick="showMenu_info2()" id="enroll_info"><a href="GetApplyInfoServlet">查看报名信息</a></li>
-                        <li onclick="showMenu_manage2()" id="enroll_info_manage"><a
-                            href="GetApplyInfoServlet2" style="background: #009688">管理报名信息</a></li>
+                        <li onclick="showMenu_manage2()" id="enroll_info_manage" style="background: #009688"><a
+                            href="GetApplyInfoServlet2">管理报名信息</a></li>
                         <li onclick="showMenu_add2()" id="enroll_info_add"><a
                             href="addApplyinfo.jsp">新增报名信息</a></li>
                     </ul>
@@ -54,6 +54,12 @@
                         style="display: none">
                         <li onclick="showMenu_info5()" id="account_info"><a href="SearchClassTime">查看本学期上课时间</a></li>
                     </ul>
+					<li id="student" onclick="showStudentMenu()"><a>学生信息管理</a><img
+			            src="imgs/home/xiala.png" id="xiala2"></li>
+			        <ul class="student_menu" id="click_student_menu" style="display: none">
+			            <li onclick="showMenu_info6()" id="student_info"><a
+			                href="StudentsManageServlet">查看学生信息</a></li>
+			        </ul>
                 </ul>
 			</div>
 

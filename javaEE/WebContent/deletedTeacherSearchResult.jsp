@@ -50,10 +50,10 @@
 						src="imgs/home/xiala.png" id="xiala4"></li>
 					<ul class="teacher_menu" id="click_teacher_menu" style="display: block">
 						<li onclick="showMenu_info4()" id="teacher_info"><a
-							href="teacherManage"  style="background: #009688">查看教师信息</a></li>
+							href="teacherManage" >查看教师信息</a></li>
 						<li onclick="showMenu_add4()" id="teacher_add"><a
 							href="addTeacher.jsp">新增教师信息</a></li>
-						<li onclick="showMenu_info4()" id="teacher_delete"><a
+						<li onclick="showMenu_info4()" id="teacher_delete" style="background: #009688"><a
 							href="deletedTeacherManage">查看离职教师信息</a></li>
 					</ul>
 					<li id="account" onclick="showAccountMenu()"><a>收费信息管理</a><img
@@ -64,6 +64,12 @@
 						<li onclick="showMenu_info5()" id="account_info"><a
 							href="ChargeManagerServlet">查看收款码信息</a></li>
 					</ul>
+					<li id="student" onclick="showStudentMenu()"><a>学生信息管理</a><img
+			            src="imgs/home/xiala.png" id="xiala2"></li>
+			        <ul class="student_menu" id="click_student_menu" style="display: none">
+			            <li onclick="showMenu_info6()" id="student_info"><a
+			                href="StudentsManageServlet">查看学生信息</a></li>
+			        </ul>
 				</ul>
             </div>
 			<div class="box0">

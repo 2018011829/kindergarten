@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-03-04 18:45:37
+Date: 2021-03-05 13:43:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -180,7 +180,7 @@ CREATE TABLE `contact_remark` (
   KEY `to_user` (`to_user`),
   CONSTRAINT `contact_remark_ibfk_1` FOREIGN KEY (`from_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `contact_remark_ibfk_2` FOREIGN KEY (`to_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of contact_remark
@@ -188,6 +188,29 @@ CREATE TABLE `contact_remark` (
 INSERT INTO `contact_remark` VALUES ('4', '1', '2', 'user2');
 INSERT INTO `contact_remark` VALUES ('5', '1', '3', '备注');
 INSERT INTO `contact_remark` VALUES ('6', '1', '4', '备注');
+INSERT INTO `contact_remark` VALUES ('7', '2', '1', null);
+INSERT INTO `contact_remark` VALUES ('8', '3', '1', null);
+INSERT INTO `contact_remark` VALUES ('9', '4', '1', null);
+
+-- ----------------------------
+-- Table structure for `contact_request`
+-- ----------------------------
+DROP TABLE IF EXISTS `contact_request`;
+CREATE TABLE `contact_request` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `req_user` int(11) NOT NULL,
+  `resp_user` int(11) NOT NULL,
+  `statu` int(11) NOT NULL DEFAULT '0' COMMENT '0为请求中，1为同意请求，2为不同意',
+  PRIMARY KEY (`id`),
+  KEY `req` (`req_user`),
+  KEY `resp` (`resp_user`),
+  CONSTRAINT `req` FOREIGN KEY (`req_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `resp` FOREIGN KEY (`resp_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of contact_request
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `course`

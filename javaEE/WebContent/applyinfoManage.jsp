@@ -22,7 +22,7 @@
 		</div>
 		<div class="box1" style="height:150px;">
 			<form action="SearchApplyInfoServlet" method="post">
-				<input type="text" name="teacherName" placeholder="请输入孩子的姓氏或名字"
+				<input type="text" name="msg" placeholder="请输入孩子的姓氏或名字"
 					id="inputName" /> <input type="submit" value="点击搜索"
 					id="submitSearch">
 			</form>

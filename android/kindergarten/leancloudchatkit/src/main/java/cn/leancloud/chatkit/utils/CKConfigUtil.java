@@ -1,6 +1,10 @@
-package com.example.myapplication.main.util;
+package cn.leancloud.chatkit.utils;
 
-public class ConfigUtil {
+import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.chatkit.LCChatKitUser;
+
+public class CKConfigUtil {
+    public static LCChatKitUser user = null;
     // 用户手机号码
     public static String PHONE=null;
 

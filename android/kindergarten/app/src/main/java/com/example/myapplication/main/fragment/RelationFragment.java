@@ -127,9 +127,6 @@ public class RelationFragment extends Fragment {
         String[] tabList = new String[]{"会话", "联系人"};
         final Fragment[] fragmentList = new Fragment[] {new LCIMConversationListFragment(),
                 new LCIMContactFragment()};
-//        final Fragment[] fragmentList = new Fragment[] {new MyFragment(),
-//                new NewFragment()};
-//        final List<Fragment> fragmentList =getChildFragmentManager().getFragments();
 
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         for (int i = 0; i < tabList.length; i++) {

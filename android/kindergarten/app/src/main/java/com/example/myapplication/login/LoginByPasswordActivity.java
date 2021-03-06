@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 
 import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.chatkit.LCChatKitUser;
+import cn.leancloud.chatkit.utils.CKConfigUtil;
 import cn.leancloud.im.AVIMOptions;
 import cn.leancloud.im.v2.AVIMClient;
 import cn.leancloud.im.v2.AVIMException;
@@ -63,6 +65,7 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
                         getUserIdByPhone(etPhone.getText().toString().trim());
                         // 存入用户手机电话
                         ConfigUtil.PHONE= etPhone.getText().toString().trim();
+                        CKConfigUtil.PHONE= etPhone.getText().toString().trim();
 
 
                     } else {//登录失败 显示错误信息
@@ -162,6 +165,7 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
                 String result = response.body().string();
                 User user = new Gson().fromJson(result,User.class);
                 userId = user.getId()+"";
+                CKConfigUtil.user = new LCChatKitUser(userId,user.getNickname(),ConfigUtil.SETVER_AVATAR+user.getAvatar());
                 //处理请求结果
                 Message msg = handler.obtainMessage();
                 msg.what = 2;
@@ -195,40 +199,7 @@ public class LoginByPasswordActivity extends AppCompatActivity implements View.O
         }
     }
 
-    /**
-     * 连接环信服务器进行登录
-     */
-//    private void EMLogin() {
-//        EMClient.getInstance().login(etPhone.getText().toString().trim(),
-//                etPassword.getText().toString().trim(),
-//                new EMCallBack() {
-//                    @Override
-//                    public void onSuccess() {
-//                        //存储当前用户的昵称和头像
-//                        ParentUtil.storeCurrentParent(EMClient.getInstance().getCurrentUser(), null);
-//                        ContactManager.newFriends.put(EMClient.getInstance().getCurrentUser(), new ArrayList<>());
-//                        startActivity(new Intent(LoginByPasswordActivity.this, MainActivity.class));
-//                        finish();
-//                        Looper.prepare();
-//                        Toast.makeText(getBaseContext(), "登录成功！", Toast.LENGTH_SHORT).show();
-//                        Looper.loop();
-//                    }
-//
-//                    @Override
-//                    public void onError(int i, String s) {
-//                        Looper.prepare();
-//                        Toast.makeText(getBaseContext(), "登录失败！", Toast.LENGTH_SHORT).show();
-//                        Looper.loop();
-//                        Log.e(TAG, "登录失败");
-//                    }
-//
-//                    @Override
-//                    public void onProgress(int i, String s) {
-//
-//                    }
-//
-//                });
-//    }
+
 
     /**
      * OkHttp

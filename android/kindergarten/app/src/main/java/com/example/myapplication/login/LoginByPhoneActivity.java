@@ -30,6 +30,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 
 import cn.leancloud.chatkit.LCChatKit;
+import cn.leancloud.chatkit.LCChatKitUser;
+import cn.leancloud.chatkit.utils.CKConfigUtil;
 import cn.leancloud.im.AVIMOptions;
 import cn.leancloud.im.v2.AVIMClient;
 import cn.leancloud.im.v2.AVIMException;
@@ -121,6 +123,7 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
                 String result = response.body().string();
                 User user = new Gson().fromJson(result,User.class);
                 userId = user.getId()+"";
+                CKConfigUtil.user = new LCChatKitUser(userId,user.getNickname(),ConfigUtil.SETVER_AVATAR+user.getAvatar());
                 //处理请求结果
                 Message msg = handler.obtainMessage();
                 msg.what = 2;
@@ -155,54 +158,8 @@ public class LoginByPhoneActivity extends AppCompatActivity implements View.OnCl
                         Log.i("lxl", "afterEvent: 验证成功");
                         // 存入用户手机电话
                         ConfigUtil.PHONE= etPhoneNum.getText().toString().trim();
+                        CKConfigUtil.PHONE= etPhoneNum.getText().toString().trim();
                         getUserIdByPhone(etPhoneNum.getText().toString().trim());
-                       /**
-                        *  //1.环信登录需要用户名和密码，需要先从本地服务器得到该用户的密码
-                        OkHttpClient okHttpClient=new OkHttpClient();
-                        FormBody formBody=new FormBody.Builder().add("phone",etPhoneNum.getText().toString())
-                                .build();
-                        Request request=new Request.Builder().post(formBody).url(ConfigUtil.SERVICE_ADDRESS+"GetPasswordByPhoneServlet").build();
-                        Call call=okHttpClient.newCall(request);
-                        call.enqueue(new Callback() {
-                            @Override
-                            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                            }
-
-                            @Override
-                            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                                String password=response.body().string();
-                                //提交验证码成功
-                                EMClient.getInstance().login(etPhoneNum.getText().toString().trim(),
-                                        password,
-                                        new EMCallBack() {
-                                            @Override
-                                            public void onSuccess() {
-                                                //存储当前用户的昵称和头像
-                                                ParentUtil.storeCurrentParent(EMClient.getInstance().getCurrentUser(), null);
-                                                ContactManager.newFriends.put(EMClient.getInstance().getCurrentUser(), new ArrayList<>());
-                                                startActivity(new Intent(LoginByPhoneActivity.this, MainActivity.class));
-                                                finish();
-                                                Looper.prepare();
-                                                Toast.makeText(getBaseContext(), "登录成功！", Toast.LENGTH_SHORT).show();
-                                                Looper.loop();
-                                            }
-
-                                            @Override
-                                            public void onError(int i, String s) {
-                                                Looper.prepare();
-                                                Toast.makeText(getBaseContext(), "登录失败！", Toast.LENGTH_SHORT).show();
-                                                Looper.loop();
-                                                Log.e(TAG, "登录失败");
-                                            }
-
-                                            @Override
-                                            public void onProgress(int i, String s) {
-
-                                            }
-
-                                        });
-                            }
-                        });*/
                     } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){ //获取验证码成功
 
                     } else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){ //返回支持发送验证码的国家列表

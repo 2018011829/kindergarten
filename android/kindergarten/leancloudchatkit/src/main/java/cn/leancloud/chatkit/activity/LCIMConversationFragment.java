@@ -175,11 +175,13 @@ public class LCIMConversationFragment extends Fragment {
 
   @Override
   public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
+    Log.i("ChatKit", "onCreateOptionsMenu: 栏");
     inflater.inflate(R.menu.conv_menu, menu);
   }
 
   @Override
   public boolean onOptionsItemSelected (MenuItem item) {
+    Log.i("ChatKit", "onCreateOptionsMenu: 触发栏");
     if (item.getItemId() == R.id.menu_conv_setting) {
       Intent intent = new Intent(getActivity(), LCIMConversationDetailActivity.class);
       intent.putExtra(LCIMConstants.CONVERSATION_ID, imConversation.getConversationId());
@@ -486,10 +488,18 @@ public class LCIMConversationFragment extends Fragment {
     if (Activity.RESULT_OK == resultCode) {
       switch (requestCode) {
         case REQUEST_IMAGE_CAPTURE:
+          Log.i("ChatKit", "onActivityResult: "+localCameraPath);
           sendImage(localCameraPath);
           break;
         case REQUEST_IMAGE_PICK:
-          sendImage(getRealPathFromURI(getActivity(), data.getData()));
+          if (data==null){
+            Log.i("ChatKit", "onActivityResult: data为null");
+            return;
+          }else {
+            Log.i("ChatKit", "onActivityResult: data不为null");
+            sendImage(getRealPathFromURI(getActivity(), data.getData()));
+          }
+
           break;
         default:
           break;

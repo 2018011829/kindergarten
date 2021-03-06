@@ -1,11 +1,20 @@
 package cn.leancloud.chatkit.cache;
 
 import android.content.Context;
+import android.os.Message;
+import android.util.Log;
 
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.jetbrains.annotations.NotNull;
+
 import cn.leancloud.callback.AVCallback;
 import cn.leancloud.AVException;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -16,6 +25,13 @@ import cn.leancloud.chatkit.LCChatKit;
 import cn.leancloud.chatkit.LCChatKitUser;
 import cn.leancloud.chatkit.LCChatProfileProvider;
 import cn.leancloud.chatkit.LCChatProfilesCallBack;
+import cn.leancloud.chatkit.utils.CKConfigUtil;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 /**
@@ -28,6 +44,9 @@ import cn.leancloud.chatkit.LCChatProfilesCallBack;
  * 同时获取到的数据会缓存到内存与 db
  */
 public class LCIMProfileCache {
+
+
+  private static List<LCChatKitUser> partUsers = new ArrayList<LCChatKitUser>();
 
   private static final String USER_NAME = "user_name";
   private static final String USER_AVATAR = "user_avatar";
@@ -210,7 +229,10 @@ public class LCIMProfileCache {
       profileDBHelper.insertData(userProfile.getUserId(), getStringFormUserProfile(userProfile));
     }
   }
-
+  // 从用户体系获取数据
+  public static void getContact(List<LCChatKitUser> chatKitUsers){
+partUsers = chatKitUsers;
+  }
   /**
    * 从 db 中的 String 解析出 LCChatKitUser
    *
@@ -222,7 +244,17 @@ public class LCIMProfileCache {
       JSONObject jsonObject = JSONObject.parseObject(str);
       String userName = jsonObject.getString(USER_NAME);
       String userId = jsonObject.getString(USER_ID);
-      String userAvatar = jsonObject.getString(USER_AVATAR);
+      String userAvatar= null;
+      for (LCChatKitUser user:
+              partUsers
+           ) {
+        Log.i("TAG", "getUserProfileFromJson: "+partUsers.size());
+        if ((user.getUserId()+"").equals(userId)){
+          userAvatar = user.getAvatarUrl();
+        }
+      }
+
+      Log.i("TAG", "getUserProfileFromJson: "+userName+userId+userAvatar);
       return new LCChatKitUser(userId, userName, userAvatar);
     } catch (Exception e) {
     }

@@ -17,6 +17,7 @@ import java.util.List;
 import cn.leancloud.chatkit.LCChatKitUser;
 import cn.leancloud.chatkit.LCChatProfileProvider;
 import cn.leancloud.chatkit.LCChatProfilesCallBack;
+import cn.leancloud.chatkit.cache.LCIMProfileCache;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -77,6 +78,7 @@ public class CustomUserProvider implements LCChatProfileProvider {
                         partUsers.add(new LCChatKitUser(user.getUserId(), user.getName(), ConfigUtil.SETVER_AVATAR+user.getAvatarUrl()));
                         Log.i("lxl", "onResponse: 添加成功");
                     }
+                    LCIMProfileCache.getContact(partUsers);
                 }
 
 

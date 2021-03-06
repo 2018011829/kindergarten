@@ -42,7 +42,7 @@ public class LCIMConversationActivity extends AppCompatActivity {
     setContentView(R.layout.lcim_conversation_activity);
     Log.i("TagLCIMCA", "onCreate: 触发");
     Log.i("contact", "onCreate: LCIMConversationActivity");
-    conversationFragment = (LCIMConversationFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_chat);
+    conversationFragment = (LCIMConversationFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_chat);
     conversationFragment.setHasOptionsMenu(true);
     initByIntent(getIntent());
   }

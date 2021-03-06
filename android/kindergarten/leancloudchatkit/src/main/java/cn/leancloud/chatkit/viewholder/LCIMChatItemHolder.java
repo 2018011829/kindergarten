@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import cn.leancloud.callback.AVCallback;
 import cn.leancloud.AVException;
+import cn.leancloud.chatkit.utils.CKConfigUtil;
 import cn.leancloud.im.v2.AVIMMessage;
 import com.squareup.picasso.Picasso;
 
@@ -85,7 +86,9 @@ public class LCIMChatItemHolder extends LCIMCommonViewHolder {
     message = (AVIMMessage) o;
     timeView.setText(millisecsToDateString(message.getTimestamp()));
     nameView.setText("");
-    avatarView.setImageResource(R.drawable.lcim_default_avatar_icon);
+    Log.i("MyAvatar", "bindData: "+CKConfigUtil.user.getAvatarUrl());
+    Picasso.with(getContext()).load(CKConfigUtil.user.getAvatarUrl())
+            .placeholder(R.drawable.lcim_default_avatar_icon).into(avatarView);
     LCIMProfileCache.getInstance().getCachedUser(message.getFrom(), new AVCallback<LCChatKitUser>() {
       @Override
       protected void internalDone0(LCChatKitUser userProfile, AVException e) {

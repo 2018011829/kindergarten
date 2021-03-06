@@ -138,37 +138,45 @@ public class StudentsDao {
 	public boolean insertDataAboutStudent(List<Students> students) {
 		boolean b=false;
 		int row=0;
-		String sql="insert into students(userNumber,babyName,babyClass,babyBirthday,babyIDnumber,"
+		String sql1="insert into students(userNumber,babyName,babyClass,babyBirthday,babyIDnumber,"
 				+ "babyAddoAllergies,parentName1,relation1,parentIDnumber1,phoneNumber1,workSpace1,homeAddress1"
-				+ ",parentName2,relation2,parentIDnumber2,phoneNumber2,workSpace2,homeAddress2,babySex) "
+				+ ",parentName2,relation2,parentIDnumber2,phoneNumber2,workSpace2,homeAddress2,babySex,id) "
 				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		//先将数据库中的所有数据都删除，在进行插入操作
+		String sql2="truncate table students";
 		try {
-			preparedStatement=connection.prepareStatement(sql);
-			for(Students student:students) {
-				preparedStatement.setString(1, student.getUserNumber());
-				preparedStatement.setString(2, student.getBabyName());
-				preparedStatement.setString(3, student.getBabyClass());
-				preparedStatement.setString(4, student.getBabyBirthday());
-				preparedStatement.setString(5, student.getBabyIDnumber());
-				preparedStatement.setString(6, student.getBabyAddoAllergies());
-				preparedStatement.setString(7, student.getParentName1());
-				preparedStatement.setString(8, student.getRelation1());
-				preparedStatement.setString(9, student.getParentIDnumber1());
-				preparedStatement.setString(10, student.getPhoneNumber1());
-				preparedStatement.setString(11, student.getWorkSpace1());
-				preparedStatement.setString(12, student.getHomeAddress1());
-				preparedStatement.setString(13, student.getParentName2());
-				preparedStatement.setString(14, student.getRelation2());
-				preparedStatement.setString(15, student.getParentIDnumber2());
-				preparedStatement.setString(16, student.getPhoneNumber2());
-				preparedStatement.setString(17, student.getWorkSpace2());
-				preparedStatement.setString(18, student.getHomeAddress2());
-				preparedStatement.setString(19, student.getBabySex());
-				row+=preparedStatement.executeUpdate();
+			preparedStatement=connection.prepareStatement(sql2);
+			boolean a=preparedStatement.execute();
+			if(a) {
+				preparedStatement=connection.prepareStatement(sql1);
+				for(Students student:students) {
+					preparedStatement.setString(1, student.getUserNumber());
+					preparedStatement.setString(2, student.getBabyName());
+					preparedStatement.setString(3, student.getBabyClass());
+					preparedStatement.setString(4, student.getBabyBirthday());
+					preparedStatement.setString(5, student.getBabyIDnumber());
+					preparedStatement.setString(6, student.getBabyAddoAllergies());
+					preparedStatement.setString(7, student.getParentName1());
+					preparedStatement.setString(8, student.getRelation1());
+					preparedStatement.setString(9, student.getParentIDnumber1());
+					preparedStatement.setString(10, student.getPhoneNumber1());
+					preparedStatement.setString(11, student.getWorkSpace1());
+					preparedStatement.setString(12, student.getHomeAddress1());
+					preparedStatement.setString(13, student.getParentName2());
+					preparedStatement.setString(14, student.getRelation2());
+					preparedStatement.setString(15, student.getParentIDnumber2());
+					preparedStatement.setString(16, student.getPhoneNumber2());
+					preparedStatement.setString(17, student.getWorkSpace2());
+					preparedStatement.setString(18, student.getHomeAddress2());
+					preparedStatement.setString(19, student.getBabySex());
+					preparedStatement.setInt(20, student.getId());
+					row+=preparedStatement.executeUpdate();
+				}
+				if(row>=students.size()) {
+					b=true;
+				}
 			}
-			if(row>=students.size()) {
-				b=true;
-			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

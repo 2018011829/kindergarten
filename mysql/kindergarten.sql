@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2021-03-05 13:43:05
+Date: 2021-03-06 18:33:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -200,7 +200,9 @@ CREATE TABLE `contact_request` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `req_user` int(11) NOT NULL,
   `resp_user` int(11) NOT NULL,
-  `statu` int(11) NOT NULL DEFAULT '0' COMMENT '0为请求中，1为同意请求，2为不同意',
+  `status` int(11) NOT NULL DEFAULT '0' COMMENT '0为请求中，1为同意请求，2为不同意',
+  `message` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `req` (`req_user`),
   KEY `resp` (`resp_user`),
@@ -544,7 +546,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '18831166551', '7777777', '七道', 'user_default.png', '0');
-INSERT INTO `user` VALUES ('2', '18831166552', '77777772', 'user', 'user_default.png', '0');
-INSERT INTO `user` VALUES ('3', '18831166553', '77777773', 'user3', 'user_default.png', '0');
-INSERT INTO `user` VALUES ('4', '18831166554', '77777774', 'user4', 'user_default.png', '1');
+INSERT INTO `user` VALUES ('1', '18831166551', '7777777', '七道', 'user.png', '0');
+INSERT INTO `user` VALUES ('2', '18831166552', '77777772', 'user', 'user2.png', '0');
+INSERT INTO `user` VALUES ('3', '18831166553', '77777773', 'user3', 'user3.png', '0');
+INSERT INTO `user` VALUES ('4', '18831166554', '77777774', 'user4', 'user4.png', '1');

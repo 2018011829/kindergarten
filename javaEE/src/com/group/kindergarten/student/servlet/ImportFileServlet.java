@@ -87,7 +87,8 @@ public class ImportFileServlet extends HttpServlet {
 					int i = row.getRowNum();
 					if (i > 0) {// 从第二行开始讲第7列的所有期末成绩都保存到数组中
 						Students student = new Students();
-						student.setId(0);
+						row.getCell(0).setCellType(Cell.CELL_TYPE_NUMERIC);
+						student.setId(Integer.parseInt(row.getCell(0).getStringCellValue()));
 						row.getCell(1).setCellType(Cell.CELL_TYPE_STRING);
 						student.setUserNumber(row.getCell(1).getStringCellValue());
 						row.getCell(2).setCellType(Cell.CELL_TYPE_STRING);

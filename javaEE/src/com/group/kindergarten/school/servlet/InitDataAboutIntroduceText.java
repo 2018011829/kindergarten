@@ -25,7 +25,6 @@ public class InitDataAboutIntroduceText extends HttpServlet {
 	 */
 	public InitDataAboutIntroduceText() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -40,7 +39,7 @@ public class InitDataAboutIntroduceText extends HttpServlet {
 		//从数据库中获取保存幼儿园简介的文字信息
 		String text="";
 		String fileName=SchoolService.getInstance().searchIntroduceTextFileName();
-		//读取站点根目录下的文件信息
+		//读取站点根目录下的文件信息  
 		if(!fileName.equals("") && fileName!=null) {
 			//通过流来循环读取
 			//拼接读取路径
